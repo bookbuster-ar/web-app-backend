@@ -19,7 +19,7 @@ const Session = sequelize.define(
       allowNull: false,
     },
     session_duration: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
     session_status: {
       type: DataTypes.BOOLEAN,
