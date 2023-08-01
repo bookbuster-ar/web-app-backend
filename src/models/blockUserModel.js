@@ -1,16 +1,15 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-  return sequelize.define('rol', {
+  return sequelize.define('blockUser', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      allowwNull: false,
-    },
-    name: {
-      type: DataTypes.STRING,
       allowNull: false,
+    },
+    blockDate: {
+      type: DataTypes.DATE,
     },
   });
 };
