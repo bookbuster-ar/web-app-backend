@@ -1,7 +1,7 @@
+const sequelize = require('./config/database');
 const { DataTypes } = require('sequelize');
 
-module.exports = (sequelize) => {
-  return sequelize.define('rol', {
+const rol = sequelize.define('rol', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -13,4 +13,6 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
   });
-};
+
+
+  module.exports = rol;
