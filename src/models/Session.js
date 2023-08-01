@@ -31,3 +31,5 @@ const Session = sequelize.define(
   },
   { timestamps: false, freezeTableName: true }
 );
+
+module.exports = Session;
