@@ -1,20 +1,20 @@
-const sequelize = require('../config/database');
+const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const SaleStock = sequelize.define(
-  'sale_stock',
+const BlockUser = sequelize.define(
+  'block_user',
   {
     id: {
       type: DataTypes.UUID,
-      primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
-    },
-    stock: {
-      type: DataTypes.INTEGER,
+      primaryKey: true,
       allowNull: false,
+    },
+    block_date: {
+      type: DataTypes.DATE,
     },
   },
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = SaleStock;
+module.exports = BlockUser;

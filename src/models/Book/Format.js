@@ -1,8 +1,8 @@
-const sequelize = require('../config/database');
+const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const BookGenre = sequelize.define(
-  'book_genre',
+const Format = sequelize.define(
+  'format',
   {
     id: {
       type: DataTypes.UUID,
@@ -17,4 +17,4 @@ const BookGenre = sequelize.define(
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = BookGenre;
+module.exports = Format;

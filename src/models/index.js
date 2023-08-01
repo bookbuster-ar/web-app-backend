@@ -1,51 +1,53 @@
 // Book
 module.exports = {
-  Book: require('./Book'),
-  BookDetail: require('./BookDetail'),
-  BookGenre: require('./BookGenre'),
-  BookImage: require('./BookImage'),
-  Editorial: require('./Editorial'),
-  Format: require('./Format'),
-  PublishedBook: require('./PublishedBook'),
+  Book: require('./Book/Book'),
+  BookDetail: require('./Book/BookDetail'),
+  BookGenre: require('./Book/BookGenre'),
+  BookImage: require('./Book/BookImage'),
+  Editorial: require('./Book/Editorial'),
+  Format: require('./Book/Format'),
+  PublishedBook: require('./Book/PublishedBook'),
+  EditorialCollection: require('./Book/EditorialCollection'),
 };
 
 // User
 module.exports = {
-  User: require('./User'),
-  UserImage: require('./UserImage'),
-  Rol: require('./Rol'),
-  InactiveUser: require('./InactiveUser'),
-  BlockUser: require('./BlockUser'),
-  Session: require('./Session'),
+  User: require('./User/User'),
+  UserImage: require('./User/UserImage'),
+  Rol: require('./User/Rol'),
+  InactiveUser: require('./User/InactiveUser'),
+  BlockUser: require('./User/BlockUser'),
+  Session: require('./User/Session'),
 };
 
 // Sale
 module.exports = {
-  SaleStock: require('./SaleStock'),
-  Transaction: require('./Transaction'),
-  TransactionDetail: require('./TransactionDetail'),
-  PaymentMethod: require('./PaymentMethod'),
+  SaleStock: require('./Sale/SaleStock'),
+  Transaction: require('./Sale/Transaction'),
+  TransactionDetail: require('./Sale/TransactionDetail'),
+  PaymentMethod: require('./Sale/PaymentMethod'),
 };
 
 // Rent
 module.exports = {
-  RentStock: require('./RentStock'),
+  RentStock: require('./Rent/RentStock'),
 };
 
 // Review
 module.exports = {
-  Review: require('./Review'),
-  Comment: require('./Comment'),
-  ReviewLike: require('./ReviewLike'),
+  Review: require('./Review/Review'),
+  Comment: require('./Review/Comment'),
+  ReviewLike: require('./Review/ReviewLike'),
+  CommentLike: require('./Review/CommentLike'),
 };
 
 // Admin
 module.exports = {
-  BookToReview: require('./BookToReview'),
+  BookToReview: require('./Admin/BookToReview'),
 };
 
 // Shelves
 module.exports = {
-  BookShelves: require('./BookShelves'),
-  BookShelfCategory: require('./BookShelfCategory'),
+  BookShelves: require('./Shelves/BookShelves'),
+  BookShelfCategory: require('./Shelves/BookShelfCategory'),
 };

@@ -1,20 +1,20 @@
-const sequelize = require('../config/database');
+const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const BookImage = sequelize.define(
-  'book_image',
+const RentStock = sequelize.define(
+  'rent_stock',
   {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    image: {
-      type: DataTypes.BLOB,
+    stock: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = BookImage;
+module.exports = RentStock;

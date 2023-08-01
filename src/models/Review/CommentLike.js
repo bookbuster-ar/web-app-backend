@@ -1,21 +1,16 @@
-const sequelize = require('../config/database');
+const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const Rol = sequelize.define(
-  'rol',
+const CommentLike = sequelize.define(
+  'comment_like',
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      allowwNull: false,
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = Rol;
+module.exports = CommentLike;

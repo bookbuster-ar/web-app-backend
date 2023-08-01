@@ -1,20 +1,24 @@
-const sequelize = require('../config/database');
+const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const BlockUser = sequelize.define(
-  'block_user',
+const Review = sequelize.define(
+  'review',
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
+    },
+    content: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
-    block_date: {
-      type: DataTypes.DATE,
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = BlockUser;
+module.exports = Review;

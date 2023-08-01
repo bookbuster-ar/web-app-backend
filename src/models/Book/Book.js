@@ -1,28 +1,19 @@
-const sequelize = require('../config/database');
-
+const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const BookDetail = sequelize.define(
-  'book_detail',
+const Book = sequelize.define(
+  'book',
   {
     id: {
       type: DataTypes.UUID,
-      primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
     },
-    sinopsis: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    pages: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    ISBN: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    language: {
+    author: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -30,16 +21,15 @@ const BookDetail = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    size: {
-      type: DataTypes.STRING,
+    year: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     price: {
       type: DataTypes.FLOAT,
-      allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = BookDetail;
+module.exports = Book;

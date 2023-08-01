@@ -1,29 +1,33 @@
-const sequelize = require('../config/database');
+const sequelize = require('../../config/database');
 
 const { DataTypes } = require('sequelize');
 
-const TransactionDetail = sequelize.define(
-  'transaction_detail',
+const Transaction = sequelize.define(
+  'transaction',
   {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    quiantity: {
+    mercadopago_transaction_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    unit_price: {
+    transaction_date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    total_amount: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-    total_price: {
-      type: DataTypes.FLOAT,
+    transaction_status: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = TransactionDetail;
+module.exports = Transaction;

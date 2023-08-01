@@ -1,9 +1,8 @@
-const sequelize = require('../config/database');
-
+const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const PaymentMethod = sequelize.define(
-  'payment_method',
+const Editorial = sequelize.define(
+  'editorial',
   {
     id: {
       type: DataTypes.UUID,
@@ -18,4 +17,4 @@ const PaymentMethod = sequelize.define(
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = PaymentMethod;
+module.exports = Editorial;

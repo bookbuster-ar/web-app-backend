@@ -1,20 +1,16 @@
-const sequelize = require('../config/database');
+const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const Comment = sequelize.define(
-  'comment',
+const PublishedBook = sequelize.define(
+  'published_book',
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    content: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
   },
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = Comment;
+module.exports = PublishedBook;

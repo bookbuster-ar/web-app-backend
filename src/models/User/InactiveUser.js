@@ -1,8 +1,8 @@
-const sequelize = require('../config/database');
+const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const PublishedBook = sequelize.define(
-  'published_book',
+const InactiveUser = sequelize.define(
+  'inactive_user',
   {
     id: {
       type: DataTypes.UUID,
@@ -13,4 +13,4 @@ const PublishedBook = sequelize.define(
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = PublishedBook;
+module.exports = InactiveUser;

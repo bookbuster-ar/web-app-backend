@@ -1,16 +1,20 @@
-const sequelize = require('../config/database');
+const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const CommentLike = sequelize.define(
-  'comment_like',
+const UserImage = sequelize.define(
+  'user_image',
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
+      allowNull: false,
+    },
+    image: {
+      type: DataTypes.BLOB,
     },
   },
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = CommentLike;
+module.exports = UserImage;
