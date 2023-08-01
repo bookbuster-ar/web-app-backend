@@ -17,16 +17,6 @@
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.32.1"
   },
-  "_moduleAliases": {
-    "@root": ".",
-    "@app": "src/app",
-    "@controllers": "src/controllers",
-    "@routes": "src/routes",
-    "@handlers": "src/handlers",
-    "@middlewares": "src/middlewares",
-    "@models": "src/models",
-    "@utils": "src/utils"
-  },
   "devDependencies": {
     "cors": "^2.8.5",
     "morgan": "^1.10.0",
