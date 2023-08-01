@@ -16,7 +16,6 @@ module.exports = {
   UserImage: require('./User/UserImage'),
   Rol: require('./User/Rol'),
   InactiveUser: require('./User/InactiveUser'),
-  BlockUser: require('./User/BlockUser'),
   Session: require('./User/Session'),
 };
 
