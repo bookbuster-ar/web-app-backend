@@ -80,4 +80,5 @@ jspm_packages/
 .env.test
 
 # package-lock.json
+pnpm-lock.yarml
 package-lock.json
