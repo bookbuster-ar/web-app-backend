@@ -34,6 +34,11 @@ const User = sequelize.define(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    is_blocked:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    }
   },
   { timestamps: false, freezeTableName: true }
 );
