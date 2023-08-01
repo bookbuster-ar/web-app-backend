@@ -1,17 +1,20 @@
 const sequelize = require('./config/database');
 const { DataTypes } = require('sequelize');
 
-const blockUser =  sequelize.define('blockUser', {
+const BlockUser = sequelize.define(
+  'block_user',
+  {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
     },
-    blockDate: {
+    block_date: {
       type: DataTypes.DATE,
     },
   },
-  { timestamps: false , freezeTableName: true });
+  { timestamps: false, freezeTableName: true }
+);
 
-module.exports = blockUser;
+module.exports = BlockUser;

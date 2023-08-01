@@ -1,14 +1,16 @@
 const sequelize = require('./config/database');
-const {DataTypes} = require('sequelize');
+const { DataTypes } = require('sequelize');
 
-const inactiveUser =  sequelize.define('blockUser',{
-        id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
-            primaryKey: true,
-            allowNull: false,
-        }
+const InactiveUser = sequelize.define(
+  'inactive_user',
+  {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
     },
-    { timestamps: false , freezeTableName: true })
-    
-module.exports = inactiveUser;
+  },
+  { timestamps: false, freezeTableName: true }
+);
+
+module.exports = InactiveUser;

@@ -1,39 +1,41 @@
 const sequelize = require('./config/database');
 const { DataTypes } = require('sequelize');
 
-const user = sequelize.define('user', {
-    id:{
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        primaryKey: true,
-        allowNull: false,
+const User = sequelize.define(
+  'user',
+  {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+      allowNull: false,
     },
     name: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     email: {
-        type: DataTypes.STRING,
-        allowNull: false,   
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     password: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    suscription:{
-        type: DataTypes.BOOLEAN,
-        allowNull: false
+    suscription: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     },
-    dateOfRegister:{
-        type: DataTypes.DATE,
-        allowNull: false
-    }
+    date_of_register: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+  },
+  { timestamps: false, freezeTableName: true }
+);
 
-},
-{ timestamps: false , freezeTableName: true });
-
-module.exports = user;
+module.exports = User;
