@@ -9,6 +9,7 @@ const bookShelves = sequelize.define('bookShelve', {
         allowNull: false,
     }
 },
-{ timestamps: false , freezeTableName: true })
+{ timestamps: false , freezeTableName: true }
+)
 
 module.exports = bookShelves;
