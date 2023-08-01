@@ -14,11 +14,11 @@ const TransactionDetail = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    unitPrice: {
+    unit_price: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-    totalPrice: {
+    total_price: {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
