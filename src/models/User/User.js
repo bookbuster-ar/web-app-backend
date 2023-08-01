@@ -42,6 +42,11 @@ const User = sequelize.define(
     credit:{
       type: DataTypes.FLOAT,
       allowNull: false
+    },
+    is_inactive:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   },
   { timestamps: false, freezeTableName: true }
