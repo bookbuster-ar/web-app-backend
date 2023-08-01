@@ -14,8 +14,7 @@ module.exports = {
 module.exports = {
   User: require('./User/User'),
   UserImage: require('./User/UserImage'),
-  Rol: require('./User/Rol'),
-  InactiveUser: require('./User/InactiveUser'),
+  Rol: require('./User/Role'),
   Session: require('./User/Session'),
 };
 
