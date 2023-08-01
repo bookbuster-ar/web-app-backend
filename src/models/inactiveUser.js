@@ -8,6 +8,7 @@ const inactiveUser =  sequelize.define('blockUser',{
             primaryKey: true,
             allowNull: false,
         }
-    })
+    },
+    { timestamps: false , freezeTableName: true })
     
 module.exports = inactiveUser;

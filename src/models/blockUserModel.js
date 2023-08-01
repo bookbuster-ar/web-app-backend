@@ -11,6 +11,7 @@ const blockUser =  sequelize.define('blockUser', {
     blockDate: {
       type: DataTypes.DATE,
     },
-  });
+  },
+  { timestamps: false , freezeTableName: true });
 
 module.exports = blockUser;

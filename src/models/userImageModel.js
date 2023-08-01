@@ -12,6 +12,7 @@ const userImage = sequelize.define('userImage', {
         type: DataTypes.BLOB,
     }
 
-}) 
+},
+{ timestamps: false , freezeTableName: true }) 
 
 module.exports = userImage;

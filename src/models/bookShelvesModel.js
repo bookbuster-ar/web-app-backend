@@ -8,6 +8,7 @@ const bookShelves = sequelize.define('bookShelve', {
         primaryKey: true,
         allowNull: false,
     }
-})
+},
+{ timestamps: false , freezeTableName: true })
 
 module.exports = bookShelves;
