@@ -41,6 +41,7 @@ const User = sequelize.define(
     },
     credit: {
       type: DataTypes.FLOAT,
+<<<<<<< HEAD
       allowNull: false,
     },
     is_inactive: {
@@ -48,6 +49,15 @@ const User = sequelize.define(
       allowNull: false,
       defaultValue: false,
     },
+=======
+      allowNull: false
+    },
+    is_inactive:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    }
+>>>>>>> b88f9d414d669a4a178b96fe5175d49d673b881c
   },
   { timestamps: false, freezeTableName: true }
 );
