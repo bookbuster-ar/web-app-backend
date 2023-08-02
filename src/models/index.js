@@ -5,7 +5,7 @@ module.exports = {
   BookGenre: require('./Book/BookGenre'),
   BookImage: require('./Book/BookImage'),
   Editorial: require('./Book/Editorial'),
-  Format: require('./Book/Format'),
+  BookFormat: require('./Book/BookFormat'),
   PublishedBook: require('./Book/PublishedBook'),
   EditorialCollection: require('./Book/EditorialCollection'),
 

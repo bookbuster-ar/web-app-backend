@@ -84,6 +84,16 @@ Models.BookToReview.belongsTo(Models.User, {
 Models.Book.hasMany(Models.Review, { foreignKey: 'book_id', as: 'reviews' });
 Models.Review.belongsTo(Models.Book, { foreignKey: 'book_id', as: 'book' });
 
+//Book-BookImage
+Models.Book.hasMany(Models.BookImage, {
+  foreignKey: 'book_id',
+  as: 'images',
+});
+Models.BookImage.belongsTo(Models.Book, {
+  foreignKey: 'book_id',
+  as: 'book',
+});
+
 //Book-BookDetail
 Models.Book.hasOne(Models.BookDetail, { foreignKey: 'book_id', as: 'detail' });
 Models.BookDetail.belongsTo(Models.Book, { foreignKey: 'book_id', as: 'book' });
@@ -99,3 +109,52 @@ Models.BookGenre.belongsToMany(Models.Book, {
   foreignKey: 'genre_id',
   as: 'books',
 });
+
+//Book-BookFormat
+Models.Book.belongsToMany(Models.BookFormat, {
+  through: Models.BookFormatInterm,
+  foreignKey: 'book_id',
+  as: 'formats',
+});
+Models.BookFormat.belongsToMany(Models.Book, {
+  through: Models.BookFormatInterm,
+  foreignKey: 'book_format_id',
+  as: 'books',
+})
+
+//Books-Transaction
+Models.Book.belongsToMany(Models.Transaction, {
+  through: Models.TransactionDetail,
+  foreignKey: 'book_id',
+  as: 'transactions',
+})
+Models.Transaction.belongsToMany(Models.Book, {
+  through: Models.TransactionDetail,
+  foreignKey: 'transaction_id',
+  as: 'books',
+})
+
+//Book-BookToReview
+
+Models.Book.hasMany(Models.BookToReview, {
+  foreignKey: 'book_id',
+  as: 'books_to_review',  
+});
+Models.BookToReview.belongsTo(Models.Book, {
+  foreignKey: 'book_id',
+  as: 'book',
+});
+
+//Book-BookShelfCategory
+Models.Book.belongsToMany(Models.BookShelfCategory, {
+  through: Models.BookShelfCategoryInterm,
+  foreignKey: 'book_id',
+  as: 'shelf_categories',  
+});
+Models.BookShelfCategory.belongsToMany(Models.Book, {
+  through: Models.BookShelfCategoryInterm,
+  foreignKey: 'shelf_category_id',
+  as: 'books',
+});
+
+
