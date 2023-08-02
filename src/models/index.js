@@ -18,7 +18,6 @@ module.exports = {
   // Sale
   SaleStock: require('./Sale/SaleStock'),
   Transaction: require('./Sale/Transaction'),
-  TransactionDetail: require('./Intermediate/TransactionDetail'),
   PaymentMethod: require('./Sale/PaymentMethod'),
 
   // Rent
@@ -36,4 +35,10 @@ module.exports = {
   // Shelves
   BookShelves: require('./Shelves/BookShelves'),
   BookShelfCategory: require('./Shelves/BookShelfCategory'),
+
+  //intermediate
+  BookGenreInterm: require('./Intermediate/BookGenreInterm'),
+  BookFormatInterm: require('./Intermediate/BookFormatInterm'),
+  BookShelfCategoryInterm: require('./Intermediate/BookShelfCategoryInterm'),
+  TransactionDetail: require('./Intermediate/TransactionDetail'),
 };
