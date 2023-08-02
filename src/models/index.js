@@ -1,5 +1,5 @@
-// Book
 module.exports = {
+  // Book
   Book: require('./Book/Book'),
   BookDetail: require('./Book/BookDetail'),
   BookGenre: require('./Book/BookGenre'),
@@ -8,44 +8,32 @@ module.exports = {
   Format: require('./Book/Format'),
   PublishedBook: require('./Book/PublishedBook'),
   EditorialCollection: require('./Book/EditorialCollection'),
-};
 
-// User
-module.exports = {
+  // User
   User: require('./User/User'),
   UserImage: require('./User/UserImage'),
-  Rol: require('./User/Role'),
+  Role: require('./User/Role'),
   Session: require('./User/Session'),
-};
 
-// Sale
-module.exports = {
+  // Sale
   SaleStock: require('./Sale/SaleStock'),
   Transaction: require('./Sale/Transaction'),
   TransactionDetail: require('./Intermediate/TransactionDetail'),
   PaymentMethod: require('./Sale/PaymentMethod'),
-};
 
-// Rent
-module.exports = {
+  // Rent
   RentStock: require('./Rent/RentStock'),
-};
 
-// Review
-module.exports = {
+  // Review
   Review: require('./Review/Review'),
   Comment: require('./Review/Comment'),
   ReviewLike: require('./Review/ReviewLike'),
   CommentLike: require('./Review/CommentLike'),
-};
 
-// Admin
-module.exports = {
+  // Admin
   BookToReview: require('./Admin/BookToReview'),
-};
 
-// Shelves
-module.exports = {
+  // Shelves
   BookShelves: require('./Shelves/BookShelves'),
   BookShelfCategory: require('./Shelves/BookShelfCategory'),
 };

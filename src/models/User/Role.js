@@ -1,8 +1,8 @@
 const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const Rol = sequelize.define(
-  'rol',
+const Role = sequelize.define(
+  'role',
   {
     id: {
       type: DataTypes.UUID,
@@ -18,4 +18,4 @@ const Rol = sequelize.define(
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = Rol;
+module.exports = Role;
