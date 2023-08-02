@@ -22,7 +22,7 @@ module.exports = {
 module.exports = {
   SaleStock: require('./Sale/SaleStock'),
   Transaction: require('./Sale/Transaction'),
-  TransactionDetail: require('./Sale/TransactionDetail'),
+  TransactionDetail: require('./Intermediate/TransactionDetail'),
   PaymentMethod: require('./Sale/PaymentMethod'),
 };
 
