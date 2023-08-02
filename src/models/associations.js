@@ -153,7 +153,7 @@ Models.Book.belongsToMany(Models.BookShelfCategory, {
 });
 Models.BookShelfCategory.belongsToMany(Models.Book, {
   through: Models.BookShelfCategoryInterm,
-  foreignKey: 'shelf_category_id',
+  foreignKey: 'book_shelf_category_id',
   as: 'books',
 });
 
