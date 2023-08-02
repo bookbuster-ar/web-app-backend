@@ -3,7 +3,7 @@ const Models = require('./index');
 //! User
 
 //User-Role
-Models.Role.hasMany(Models.User, { foreignKey: 'role_id', as: 'user' });
+Models.Role.hasMany(Models.User, { foreignKey: 'role_id', as: 'users' });
 Models.User.belongsTo(Models.Role, { foreignKey: 'role_id', as: 'role' });
 
 //User-Session
@@ -13,7 +13,7 @@ Models.Session.belongsTo(Models.User, { foreignKey: 'user_id', as: 'user' });
 //User-Image
 Models.User.belongsTo(Models.UserImage, {
   foreignKey: 'image_id',
-  as: 'user_image',
+  as: 'image',
 });
 Models.UserImage.hasOne(Models.User, { foreignKey: 'image_id', as: 'user' });
 
