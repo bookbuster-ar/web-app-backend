@@ -31,18 +31,23 @@ const User = sequelize.define(
       allowNull: false,
     },
     date_of_register: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    is_blocked:{
+    is_blocked: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
-    credit:{
+    credit: {
       type: DataTypes.FLOAT,
-      allowNull: false
-    }
+      allowNull: false,
+    },
+    is_inactive: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
   },
   { timestamps: false, freezeTableName: true }
 );
