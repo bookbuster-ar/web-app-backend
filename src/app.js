@@ -10,7 +10,7 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
-app.use('/', router);
+app.use('/api', router);
 
 app.use('*', (req, res) => {
   return res.status(404).json({ message: 'Not found' });
