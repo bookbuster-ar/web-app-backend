@@ -10,14 +10,14 @@ Models.User.belongsTo(Models.Role, { foreignKey: 'role_id', as: 'role' });
 Models.User.hasOne(Models.Session, { foreignKey: 'user_id', as: 'session' });
 Models.Session.belongsTo(Models.User, { foreignKey: 'user_id', as: 'user' });
 
-//User-Image
+//* User-Image
 Models.UserImage.hasOne(Models.User, { foreignKey: 'image_id', as: 'user' });
 Models.User.belongsTo(Models.UserImage, {
   foreignKey: 'image_id',
   as: 'image',
 });
 
-//User-BookShelves
+//* User-BookShelves
 Models.User.hasOne(Models.BookShelves, {
   foreignKey: 'user_id',
   as: 'book_shelves',
@@ -27,28 +27,28 @@ Models.BookShelves.belongsTo(Models.User, {
   as: 'user',
 });
 
-//User-Review
+//* User-Review
 Models.User.hasMany(Models.Review, {
   foreignKey: 'user_id',
   as: 'reviews',
 });
 Models.Review.belongsTo(Models.User, { foreignKey: 'user_id', as: 'user' });
 
-//User-ReviewLike
+//* User-ReviewLike
 Models.User.hasMany(Models.ReviewLike, {
   foreignKey: 'user_id',
   as: 'review_likes',
 });
 Models.ReviewLike.belongsTo(Models.User, { foreignKey: 'user_id', as: 'user' });
 
-//User-Comment
+//* User-Comment
 Models.User.hasMany(Models.Comment, {
   foreignKey: 'user_id',
   as: 'comments',
 });
 Models.Comment.belongsTo(Models.User, { foreignKey: 'user_id', as: 'user' });
 
-//User-CommentLike
+//* User-CommentLike
 Models.User.hasMany(Models.CommentLike, {
   foreignKey: 'user_id',
   as: 'comments_likes',
@@ -58,7 +58,7 @@ Models.CommentLike.belongsTo(Models.User, {
   as: 'user',
 });
 
-//User-Transaction
+//* User-Transaction
 Models.User.hasMany(Models.Transaction, {
   foreignKey: 'user_id',
   as: 'transactions',
@@ -68,7 +68,7 @@ Models.Transaction.belongsTo(Models.User, {
   as: 'user',
 });
 
-//User-BookToReview
+//* User-BookToReview
 Models.User.hasMany(Models.BookToReview, {
   foreignKey: 'user_id',
   as: 'books_to_review',
@@ -80,11 +80,11 @@ Models.BookToReview.belongsTo(Models.User, {
 
 //! Book
 
-//Book-Review
+//* Book-Review
 Models.Book.hasMany(Models.Review, { foreignKey: 'book_id', as: 'reviews' });
 Models.Review.belongsTo(Models.Book, { foreignKey: 'book_id', as: 'book' });
 
-//Book-BookImage
+//* Book-BookImage
 Models.Book.hasMany(Models.BookImage, {
   foreignKey: 'book_id',
   as: 'images',
@@ -94,11 +94,11 @@ Models.BookImage.belongsTo(Models.Book, {
   as: 'book',
 });
 
-//Book-BookDetail
+//* Book-BookDetail
 Models.Book.hasOne(Models.BookDetail, { foreignKey: 'book_id', as: 'detail' });
 Models.BookDetail.belongsTo(Models.Book, { foreignKey: 'book_id', as: 'book' });
 
-//Book-BookGenre
+//* Book-BookGenre
 Models.Book.belongsToMany(Models.BookGenre, {
   through: Models.BookGenreInterm,
   foreignKey: 'book_id',
@@ -110,7 +110,7 @@ Models.BookGenre.belongsToMany(Models.Book, {
   as: 'books',
 });
 
-//Book-BookFormat
+//* Book-BookFormat
 Models.Book.belongsToMany(Models.BookFormat, {
   through: Models.BookFormatInterm,
   foreignKey: 'book_id',
@@ -122,7 +122,7 @@ Models.BookFormat.belongsToMany(Models.Book, {
   as: 'books',
 });
 
-//Books-Transaction
+//* Books-Transaction
 Models.Book.belongsToMany(Models.Transaction, {
   through: Models.TransactionDetail,
   foreignKey: 'book_id',
@@ -134,7 +134,7 @@ Models.Transaction.belongsToMany(Models.Book, {
   as: 'books',
 });
 
-//Book-BookToReview
+//* Book-BookToReview
 
 Models.Book.hasMany(Models.BookToReview, {
   foreignKey: 'book_id',
@@ -145,7 +145,7 @@ Models.BookToReview.belongsTo(Models.Book, {
   as: 'book',
 });
 
-//Book-BookShelfCategory
+//* Book-BookShelfCategory
 Models.Book.belongsToMany(Models.BookShelfCategory, {
   through: Models.BookShelfCategoryInterm,
   foreignKey: 'book_id',
@@ -157,7 +157,7 @@ Models.BookShelfCategory.belongsToMany(Models.Book, {
   as: 'books',
 });
 
-// Book-PublishedBook
+//* Book-PublishedBook
 Models.Book.hasOne(Models.PublishedBook, {
   foreignKey: 'book_id',
   as: 'published_book',
@@ -167,7 +167,7 @@ Models.PublishedBook.belongsTo(Models.Book, {
   as: 'book',
 });
 
-// Book-SaleStock
+//* Book-SaleStock
 Models.Book.hasOne(Models.SaleStock, {
   foreignKey: 'book_id',
   as: 'sale_stock',
@@ -177,7 +177,7 @@ Models.SaleStock.belongsTo(Models.Book, {
   as: 'book',
 });
 
-// Book-RentStock
+//* Book-RentStock
 Models.Book.hasOne(Models.RentStock, {
   foreignKey: 'book_id',
   as: 'rent_stock',
@@ -189,7 +189,7 @@ Models.RentStock.belongsTo(Models.Book, {
 
 //! EditorialCollection
 
-// EditorialCollection-Book
+//* EditorialCollection-Book
 Models.EditorialCollection.hasMany(Models.Book, {
   foreignKey: 'editorial_collection_id',
   as: 'books',
@@ -211,7 +211,7 @@ Models.Book.belongsTo(Models.Editorial, {
   as: 'editorial',
 });
 
-// Editorial-EditorialCollection
+//* Editorial-EditorialCollection
 Models.Editorial.hasMany(Models.EditorialCollection, {
   foreignKey: 'editorial_id',
   as: 'editorial_collections',
@@ -223,7 +223,7 @@ Models.EditorialCollection.belongsTo(Models.Editorial, {
 
 //! Payment Method
 
-// PaymentMethod-Transaction
+//* PaymentMethod-Transaction
 Models.PaymentMethod.hasOne(Models.Transaction, {
   foreignKey: 'payment_method_id',
   as: 'transaction',
@@ -235,7 +235,7 @@ Models.Transaction.belongsTo(Models.PaymentMethod, {
 
 //! Review
 
-// Review-Comment
+//* Review-Comment
 Models.Review.hasMany(Models.Comment, {
   foreignKey: 'review_id',
   as: 'comments',
