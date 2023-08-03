@@ -1,32 +1,20 @@
 const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const Book = sequelize.define(
-  'book',
+const Reaction = sequelize.define(
+  'reaction',
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    title: {
+    type: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    author: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    publication_date: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    price: {
-      type: DataTypes.FLOAT,
       allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = Book;
+module.exports = Reaction;

@@ -14,6 +14,10 @@ const BookShelfCategory = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    created: {
+      type: DataTypes.DATE,
+      defaultValue: false,
+    },
   },
   { timestamps: false, freezeTableName: true }
 );

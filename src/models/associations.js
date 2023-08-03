@@ -277,3 +277,17 @@ Models.BookShelfCategory.belongsTo(Models.BookShelves, {
   foreignKey: 'book_shelves_id',
   as: 'book_shelves',
 });
+
+//! BookReaction
+//*Book-User
+
+Models.User.belongsToMany(Models.Book, {
+  through: Models.Reaction,
+  foreignKey: 'user_id',
+  as: 'reactions',
+});
+Models.Book.belongsToMany(Models.User, {
+  through: Models.Reaction,
+  foreignKey: 'book_id',
+  as: 'reactions',
+});

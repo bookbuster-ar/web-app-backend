@@ -10,7 +10,7 @@ const BookDetail = sequelize.define(
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    sinopsis: {
+    synopsis: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
