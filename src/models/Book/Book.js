@@ -11,11 +11,11 @@ const Book = sequelize.define(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     author: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     publication_year: {
       type: DataTypes.INTEGER,
