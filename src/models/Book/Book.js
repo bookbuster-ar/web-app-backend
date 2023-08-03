@@ -21,10 +21,6 @@ const Book = sequelize.define(
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    price: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
   },
   { timestamps: false, freezeTableName: true }
 );
