@@ -19,7 +19,7 @@ const Book = sequelize.define(
     },
     publication_year: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }
