@@ -10,10 +10,6 @@ authRouter.post('/login/google', (req, res) => {
   res.send('Ruta POST login google authentication');
 });
 
-authRouter.post('/login/facebook', (req, res) => {
-  res.send('Ruta POST login facebook authentication');
-});
-
 //signup
 authRouter.post('/signup/local', (req, res) => {
   res.send('Ruta POST signup local authentication');
@@ -21,10 +17,6 @@ authRouter.post('/signup/local', (req, res) => {
 
 authRouter.post('/signup/google', (req, res) => {
   res.send('Ruta POST signup google authentication');
-});
-
-authRouter.post('/signup/facebook', (req, res) => {
-  res.send('Ruta POST signup facebook authentication');
 });
 
 //logout
