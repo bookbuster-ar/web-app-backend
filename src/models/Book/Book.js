@@ -17,8 +17,8 @@ const Book = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    publication_date: {
-      type: DataTypes.DATEONLY,
+    publication_year: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
