@@ -1,25 +1,20 @@
 const sequelize = require('../../config/database');
-
 const { DataTypes } = require('sequelize');
 
-const BookShelfCategory = sequelize.define(
-  'book_shelf_category',
+const Reaction = sequelize.define(
+  'reaction',
   {
     id: {
       type: DataTypes.UUID,
-      primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
     },
-    name: {
+    type: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    created: {
-      type: DataTypes.DATE,
-      defaultValue: false,
     },
   },
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = BookShelfCategory;
+module.exports = Reaction;
