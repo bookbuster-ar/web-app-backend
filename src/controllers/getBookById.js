@@ -24,7 +24,7 @@ const getBookById = async (id) => {
       },
     ],
   });
-  return bookDetail;
+
   const bookWithGenre = await Models.Book.findOne({
     where: { id: id },
     include: ['genres'],
