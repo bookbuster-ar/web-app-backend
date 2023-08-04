@@ -11,19 +11,15 @@ const Book = sequelize.define(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     author: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
-    publication_date: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    price: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
+    publication_year: {
+      type: DataTypes.INTEGER,
+      // allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }

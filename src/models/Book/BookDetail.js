@@ -12,27 +12,27 @@ const BookDetail = sequelize.define(
     },
     synopsis: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      // allowNull: false,
     },
     pages: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
     },
-    ISBN: {
+    isbn: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     language: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     size: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
     price: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      // allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }

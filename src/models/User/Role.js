@@ -8,11 +8,11 @@ const Role = sequelize.define(
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      allowwNull: false,
+      // allowwNull: false,
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }
