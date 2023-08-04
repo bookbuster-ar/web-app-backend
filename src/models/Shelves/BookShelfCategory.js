@@ -15,7 +15,7 @@ const BookShelfCategory = sequelize.define(
       // allowNull: false,
     },
     created: {
-      type: DataTypes.DATE,
+      type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
   },
