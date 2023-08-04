@@ -12,15 +12,15 @@ const TransactionDetail = sequelize.define(
     },
     quiantity: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
     },
     unit_price: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      // allowNull: false,
     },
     total_price: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      // allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }

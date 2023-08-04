@@ -11,7 +11,7 @@ const BookImage = sequelize.define(
     },
     image: {
       type: DataTypes.BLOB,
-      allowNull: false,
+      // allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }

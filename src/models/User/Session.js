@@ -12,11 +12,11 @@ const Session = sequelize.define(
     },
     starting_date: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      // allowNull: false,
     },
     last_connection: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      // allowNull: false,
     },
     session_duration: {
       type: DataTypes.INTEGER,

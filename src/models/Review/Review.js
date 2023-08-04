@@ -11,11 +11,11 @@ const Review = sequelize.define(
     },
     content: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      // allowNull: false,
     },
     rating: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }
