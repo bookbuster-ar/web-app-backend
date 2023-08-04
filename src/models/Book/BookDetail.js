@@ -34,6 +34,10 @@ const BookDetail = sequelize.define(
       type: DataTypes.FLOAT,
       // allowNull: false,
     },
+    subgenre: {
+      type: DataTypes.JSON,
+      // allowNull: false,
+    },
   },
   { timestamps: false, freezeTableName: true }
 );
