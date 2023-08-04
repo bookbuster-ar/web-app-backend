@@ -11,7 +11,7 @@ const Comment = sequelize.define(
     },
     content: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      // allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }
