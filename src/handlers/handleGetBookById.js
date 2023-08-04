@@ -1,4 +1,4 @@
-const getBookById = require('../controllers/getBookById');
+const getBookById = require('../controllers/books/getBookById');
 
 const handleGetBookById = async (req, res) => {
   const { id } = req.params;

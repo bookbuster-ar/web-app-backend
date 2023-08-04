@@ -1,4 +1,4 @@
-const Models = require('../models/index');
+const Models = require('../../models/index');
 
 const getBookById = async (id) => {
   const bookDetail = await Models.BookDetail.findOne({
