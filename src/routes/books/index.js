@@ -7,7 +7,6 @@ bookRouter.get('/', (req, res) => {
   res.send('Ruta GET de books');
 });
 
-// Caro: Buscar detail del libro
 bookRouter.get('/:id', handleGetBookById);
 
 module.exports = bookRouter;
