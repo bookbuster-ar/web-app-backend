@@ -18,7 +18,7 @@ const Book = sequelize.define(
       // allowNull: false,
     },
     publication_year: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.INTEGER,
       // allowNull: false,
     },
   },
