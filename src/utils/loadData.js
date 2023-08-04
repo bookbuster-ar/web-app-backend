@@ -55,6 +55,7 @@ async function loadData(data) {
           pages: item['detail']['pages'],
           isbn: item['detail']['isbn'],
           size: item['detail']['size'],
+          language: item['detail']['language'],
           book_id: book.id,
         },
         { transaction }
