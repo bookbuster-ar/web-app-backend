@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const authRouter = Router();
 
-//login
+// Login
 authRouter.post('/login/local', (req, res) => {
   res.send('Ruta POST login local authentication');
 });
@@ -10,7 +10,7 @@ authRouter.post('/login/google', (req, res) => {
   res.send('Ruta POST login google authentication');
 });
 
-//signup
+// Signup
 authRouter.post('/signup/local', (req, res) => {
   res.send('Ruta POST signup local authentication');
 });
@@ -19,7 +19,7 @@ authRouter.post('/signup/google', (req, res) => {
   res.send('Ruta POST signup google authentication');
 });
 
-//logout
+// Logout
 authRouter.post('/logout', (req, res) => {
   res.send('Ruta POST logout authentication');
 });
