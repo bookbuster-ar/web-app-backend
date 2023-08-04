@@ -12,19 +12,19 @@ const Transaction = sequelize.define(
     },
     mercadopago_transaction_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      // allowNull: false,
     },
     transaction_date: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      // allowNull: false,
     },
     total_amount: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      // allowNull: false,
     },
     transaction_status: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
     },
   },
   { timestamps: false, freezeTableName: true }
