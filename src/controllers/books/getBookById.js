@@ -25,7 +25,6 @@ const getBookById = async (id) => {
   });
 
   const formatedBookDetail = {
-    id: bookDetail.id,
     title: bookDetail.book?.title,
     author: bookDetail.book?.author,
     publication_year: bookDetail.book?.publication_year,
