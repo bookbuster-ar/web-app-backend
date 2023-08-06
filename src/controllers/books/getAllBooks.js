@@ -1,21 +1,25 @@
-const { Book } = require('../../models/');
+const { PublishedBook, Book } = require('../../models/');
 
 const getAllBooks = async () => {
   try {
-    const allBooks = await Book.findAll({
-      include: ['images', 'editorial', 'editorial_collection'],
+    const allBooks = await PublishedBook.findAll({
+      include: {
+        model: Book,
+        as: 'book',
+        include: ['images', 'editorial', 'editorial_collection'],
+      },
     });
 
-    return allBooks.map((book) => {
-      const [cover, ...extra] = book.images.map((image) => image.image);
+    return allBooks.map((field) => {
+      const [cover, ...extra] = field.book.images.map((image) => image.image);
       return {
-        id: book.id,
+        id: field.book.id,
         images: { cover, extra },
-        title: book.title,
-        author: book.author,
-        publication_year: book.publication_year,
-        editorial_collection: book.editorial_collection.name,
-        editorial: book.editorial.name,
+        title: field.book.title,
+        author: field.book.author,
+        publication_year: field.book.publication_year,
+        editorial_collection: field.book.editorial_collection.name,
+        editorial: field.book.editorial.name,
       };
     });
   } catch (error) {
