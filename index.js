@@ -9,7 +9,7 @@ require('./src/models/associations');
 
 app.listen(3001, async () => {
   try {
-    await sequelize.sync({ alter: true, logging: false });
+    await sequelize.sync({ force: true, logging: false });
     loadData(data);
   } catch (error) {
     console.log(error.message);

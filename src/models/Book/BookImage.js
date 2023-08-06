@@ -10,7 +10,7 @@ const BookImage = sequelize.define(
       defaultValue: DataTypes.UUIDV4,
     },
     image: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
       // allowNull: false,
     },
   },

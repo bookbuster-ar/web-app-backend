@@ -11,7 +11,7 @@ const UserImage = sequelize.define(
       // allowNull: false,
     },
     image: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
     },
   },
   { timestamps: false, freezeTableName: true }

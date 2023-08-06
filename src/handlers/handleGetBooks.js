@@ -2,10 +2,10 @@ const getAllBooks = require('../controllers/books/getAllBooks');
 const getFilteredBooks = require('../controllers/books/getFilteredBooks');
 
 const handleGetBooks = async (req, res) => {
-  const { title, author, genre } = req.query;
+  const { title, author } = req.query;
   try {
-    if (title || author || genre) {
-      const filteredBooks = await getFilteredBooks({ title, author, genre });
+    if (title || author) {
+      const filteredBooks = await getFilteredBooks({ title, author });
       return res.status(200).json(filteredBooks);
     } else {
       const allBooks = await getAllBooks();

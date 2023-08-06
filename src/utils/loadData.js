@@ -1,6 +1,9 @@
 const Models = require('../models/index');
 const sequelize = require('../config/database');
 
+const cloudinary = require('../config/cloudinary');
+const { v4: uuidv4 } = require('uuid');
+
 async function loadData(data) {
   const transaction = await sequelize.transaction();
 
@@ -36,6 +39,7 @@ async function loadData(data) {
       // Después, creamos el libro y los detalles del libro.
       const book = await Models.Book.create(
         {
+          id: item['id'],
           title: item['title'],
           author: item['author'],
           publication_year: item['publication_year'],
@@ -61,16 +65,36 @@ async function loadData(data) {
         { transaction }
       );
 
-      // Finalmente, añadimos la relación de muchos a muchos entre el libro y el género.
       if (genre) {
         await book.addGenre(genre, { transaction });
+      }
+
+      const rutaImagenLocal = `./book-images/${item['id']}/${item['id']}.jpg`;
+
+      // Subimos la imagen a Cloudinary
+      const result = await cloudinary.uploader.upload(rutaImagenLocal, {
+        public_id: `book/${item['id']}/${uuidv4()}`,
+      });
+
+      if (result && result.url) {
+        // Guardamos el URL de la imagen en la tabla book_image
+        await Models.BookImage.create(
+          {
+            book_id: book.id,
+            image: result.url,
+          },
+          { transaction }
+        );
+        console.log('Imagen subida y guardada con éxito:', result.url);
+      } else {
+        console.error('Error subiendo la imagen a Cloudinary.');
       }
     }
 
     await transaction.commit();
   } catch (err) {
     await transaction.rollback();
-    throw err; // aquí puedes manejar el error como prefieras
+    throw err;
   }
 }
 

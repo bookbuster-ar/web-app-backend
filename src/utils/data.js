@@ -1,6 +1,6 @@
 const data = [
-  // // David
   {
+    id: '0645213e-330a-4ac5-b2cf-7ba0db79a90f',
     title: 'Poesía completa',
     author: 'Alejandra Pizarnik',
     publication_year: 2016,
@@ -19,6 +19,7 @@ const data = [
     },
   },
   {
+    id: '76534d28-7dfc-4dac-a98d-9926948a2db3',
     title: 'Las cosas que digo son ciertas (Poesía completa 1949-2000)',
     author: 'Blanca Varela',
     publication_year: 2023,
@@ -37,6 +38,7 @@ const data = [
     },
   },
   {
+    id: '27b3cd26-be27-4baa-a367-9148acdfa7e5',
     title: 'Nadie duerme de verdad aquí',
     author: 'Verónica Pérez Arango',
     publication_year: 2023,
@@ -55,6 +57,7 @@ const data = [
     },
   },
   {
+    id: '7e320b7e-842d-49bb-b5d1-b3c65be041d0',
     title: 'Envíame tus poemas y te enviaré los míos',
     author: 'Fabián Casas',
     publication_year: 2023,
@@ -73,6 +76,7 @@ const data = [
     },
   },
   {
+    id: 'ff92db80-294c-4aaf-b52e-4e3fce44c34e',
     title: 'NOVÍSIMOS (Poemas inéditos)',
     author: 'Juana Bignozzi',
     publication_year: 2023,
@@ -91,6 +95,7 @@ const data = [
     },
   },
   {
+    id: 'beae47cc-f897-4086-9962-b4e6ddf30631',
     title: 'Fuerte como la muerte es el amor',
     author: 'Diana Bellessi',
     publication_year: 2005,
@@ -110,6 +115,7 @@ const data = [
     },
   },
   {
+    id: '19a7cfd6-6447-4198-8bb5-b4b9e184ebd9',
     title: 'Diario de una persona inventada Poesía reunida (2001-2023)',
     author: 'Cecilia Pavón',
     publication_year: 2023,
@@ -129,6 +135,7 @@ const data = [
     },
   },
   {
+    id: 'e976c932-8c72-42fc-9d4a-a07b342439eb',
     title: 'Mi Juventud Reunida',
     author: 'Mariano Blatt',
     publication_year: 2022,
@@ -148,6 +155,7 @@ const data = [
     },
   },
   {
+    id: 'a0b1565a-b4f3-4ce6-b5ec-d141417e90b0',
     title: '¿Y si no es suficiente?',
     author: 'Maia Debowicz',
     publication_year: 2014,
@@ -174,6 +182,7 @@ const data = [
     },
   },
   {
+    id: '7d24a43e-6e40-4d31-bf22-38ed9bc2b0ef',
     title: 'La Novela de la Poesía',
     author: 'Tamara Kamenszain',
     publication_year: 2022,
@@ -193,6 +202,7 @@ const data = [
     },
   },
   {
+    id: 'a8f3985c-cc1b-4c1b-8295-9f9addbed29d',
     title: 'Cuentos Completos',
     author: 'Hebe Uhart',
     publication_year: 2014,
@@ -217,6 +227,7 @@ const data = [
     },
   },
   {
+    id: '2bc0e209-7a40-40c9-b0d4-8175658ce79c',
     title: 'La Paciencia Del Agua Sobre Cada Piedra',
     author: 'Alejandra Kamiya',
     publication_year: 2020,
@@ -243,6 +254,7 @@ const data = [
     },
   },
   {
+    id: 'a3ca4967-5ec6-427c-bd59-eb253485a478',
     title: '222 Patitos y otros cuentos',
     author: 'Federico Falco',
     publication_year: 2018,
@@ -262,6 +274,7 @@ const data = [
     },
   },
   {
+    id: '8022896d-1648-4ffa-ac49-629e4bf4b298',
     title: 'CARTAS A THEO',
     author: 'Vincent van Gogh',
     publication_year: 1889,
@@ -281,6 +294,7 @@ const data = [
     },
   },
   {
+    id: '75d4417e-8630-429e-b67c-e7247eded449',
     title: 'Animalia',
     author: 'Sylvia Molloy',
     publication_year: 2019,
@@ -306,6 +320,7 @@ const data = [
     },
   },
   {
+    id: '510f26f6-a7ae-4eb5-a6c9-3b8f339e4cb9',
     title: 'TEATRO COMPLETO',
     author: 'Antón Chéjov',
     publication_year: 1895,
@@ -325,6 +340,7 @@ const data = [
     },
   },
   {
+    id: 'b975c5f4-8e42-49d5-a511-187d35c4a7c6',
     title: 'Los teresos',
     author: 'Blatt & Ríos',
     publication_year: 2021,
@@ -344,6 +360,7 @@ const data = [
     },
   },
   {
+    id: '211ee176-9eac-46ee-bd75-d0e20a0ebdd8',
     title: 'Nutrición Ayurveda',
     author: 'Silvina Draiman',
     publication_year: 2022,
@@ -363,6 +380,7 @@ const data = [
     },
   },
   {
+    id: 'a65cf1ee-e131-4d15-bbff-6b68ce9dfd43',
     title: 'RESET - Medicina del Estilo de vida',
     author: 'Dr. Gabriel Lapman',
     publication_year: 2022,
@@ -382,6 +400,7 @@ const data = [
     },
   },
   {
+    id: '7a057c76-f5b5-4642-b17f-af2b01ca67b8',
     title: 'Astronomía para astrólogos',
     author: 'Alicia Cruzado',
     publication_year: 2022,
@@ -401,13 +420,14 @@ const data = [
     },
   },
   {
+    id: '564c86d7-a982-422c-9f30-4d7738026d9d',
     title: 'Lo que vendrá',
     author: 'Josefina Ludmer',
     publication_year: 2023,
     genre: 'Pensamientos y Filosofía',
     detail: {
-      synopsis: `La historia latinoamericana reciente plantea un difícil interrogante: ¿cómo es posible oscilar de manera tan vertiginosa entre gobiernos neoliberales cada vez más totalitarios y proyectos progresistas de raigambre popular? Diego Sztulwark propone abordar esta coyuntura de manera micropolítica, prestando atención a las formas de vida ligadas a determinado orden político y remitiéndolas a una trama sensible de consumos, lazos sociales, usos del tiempo, modos de habitar los territorios o de concebir la amistad. Desde esta perspectiva, el neoliberalismo ya no puede ser visto simplemente como un partido a derrotar en las urnas sino como un dispositivo de subjetivación que apunta, más allá de los ciclos históricos, a adecuar la intimidad de nuestros afectos y deseos a la valorización mercantil. La pregunta por la capacidad de inventar una vida no-neoliberal se juega entonces en el potencial que emana de todo aquello que se resiste a tal adecuación, es decir, del malestar. Se hace necesario pensar la inclusión –en términos de consumos y derechos– como método y premisa, pero no como modelo y finalidad: una apelación a fuerzas capaces de poner en crisis los dispositivos de mercado y de favorecer una perversión generalizada de la racionalidad neoliberal. «Durante el siglo XX creíamos que los actores de la historia tardo-moderna eran esencialmente tres: el capitalismo liberal-demócrata, el fascismo en sus diferentes formas, y el comunismo como proceso de redistribución igualitaria de la riqueza y de emancipación social del trabajo asalariado.
-      Esta creencia era errónea: solo hay dos alternativas, que se juegan entre la posibilidad del comunismo y la realidad del capitalismo neoliberal respecto del cual el fascismo es su evolución necesaria. El neoliberalismo, dice Sztulwark, no es contrarrevolucionario porque se enfrente a una revolución, sino en la medida en que su odio es por naturaleza contrainsurgente, un rencor preventivo ante toda potencial insolvencia. Insolvencia significa autonomía respecto de la explotación del tiempo de la vida y de la naturaleza.» Franco “Bifo” Berardi «Este libro es representativo de una búsqueda que se despliega más allá de las oposiciones que nos atrapan hace tiempo y que es mi búsqueda también. Indagar fuera de las polaridades acostumbradas, por el lado de atrás, en el reverso de las opciones que nos presenta la política de Estado, que son alternativas bajo el rayo del sol. Pero la luz del día no solo muestra sino que también oculta cosas: esas vidas que se desarrollan en los pliegues de la tierra como la única forma de sobrevivir en un mundo totalizado por el proyecto histórico del capital y del desarrollo. Lo que sabemos, por lo que nos han ensañado los pueblos, es que los afectos y las sensibilidades se desarrollan mucho mejor en esos pliegues.» Rita Segato`,
+      synopsis:
+        'La historia latinoamericana reciente plantea un difícil interrogante: ¿cómo es posible oscilar de manera tan vertiginosa entre gobiernos neoliberales cada vez más totalitarios y proyectos progresistas de raigambre popular? Diego Sztulwark propone abordar esta coyuntura de manera micropolítica, prestando atención a las formas de vida ligadas a determinado orden político y remitiéndolas a una trama sensible de consumos, lazos sociales, usos del tiempo, modos de habitar los territorios o de concebir la amistad. Desde esta perspectiva, el neoliberalismo ya no puede ser visto simplemente como un partido a derrotar en las urnas sino como un dispositivo de subjetivación que apunta, más allá de los ciclos históricos, a adecuar la intimidad de nuestros afectos y deseos a la valorización mercantil. La pregunta por la capacidad de inventar una vida no-neoliberal se juega entonces en el potencial que emana de todo aquello que se resiste a tal adecuación, es decir, del malestar. Se hace necesario pensar la inclusión –en términos de consumos y derechos– como método y premisa, pero no como modelo y finalidad: una apelación a fuerzas capaces de poner en crisis los dispositivos de mercado y de favorecer una perversión generalizada de la racionalidad neoliberal. «Durante el siglo XX creíamos que los actores de la historia tardo-moderna eran esencialmente tres: el capitalismo liberal-demócrata, el fascismo en sus diferentes formas, y el comunismo como proceso de redistribución igualitaria de la riqueza y de emancipación social del trabajo asalariado.\n      Esta creencia era errónea: solo hay dos alternativas, que se juegan entre la posibilidad del comunismo y la realidad del capitalismo neoliberal respecto del cual el fascismo es su evolución necesaria. El neoliberalismo, dice Sztulwark, no es contrarrevolucionario porque se enfrente a una revolución, sino en la medida en que su odio es por naturaleza contrainsurgente, un rencor preventivo ante toda potencial insolvencia. Insolvencia significa autonomía respecto de la explotación del tiempo de la vida y de la naturaleza.» Franco “Bifo” Berardi «Este libro es representativo de una búsqueda que se despliega más allá de las oposiciones que nos atrapan hace tiempo y que es mi búsqueda también. Indagar fuera de las polaridades acostumbradas, por el lado de atrás, en el reverso de las opciones que nos presenta la política de Estado, que son alternativas bajo el rayo del sol. Pero la luz del día no solo muestra sino que también oculta cosas: esas vidas que se desarrollan en los pliegues de la tierra como la única forma de sobrevivir en un mundo totalizado por el proyecto histórico del capital y del desarrollo. Lo que sabemos, por lo que nos han ensañado los pueblos, es que los afectos y las sensibilidades se desarrollan mucho mejor en esos pliegues.» Rita Segato',
       price: 'N/A',
       subgenre: [
         'Ensayo',
@@ -425,6 +445,7 @@ const data = [
     },
   },
   {
+    id: '181805a7-d193-4d69-b8c6-7a65ea021c1e',
     title: 'El elefante y el perro',
     author: 'María Martoccia, Javiera Gutiérrez',
     publication_year: 2020,
@@ -450,6 +471,7 @@ const data = [
     },
   },
   {
+    id: '3412e7cd-1603-4aa6-b23a-58e4d93abdb3',
     title: 'Redondos. A quién le importa',
     author: 'Perros Sapiens',
     publication_year: 2013,
@@ -468,13 +490,14 @@ const data = [
     },
   },
   {
+    id: '99a3e56f-4100-4e0d-a0ec-47ffeb036391',
     title: 'Gritos de Neón',
     author: 'Kit Mackintosh',
     publication_year: 2022,
     genre: 'Música',
     detail: {
-      synopsis: `Estamos frente a un cambio de paradigma. Antes la innovación surgía del avance de los sintetizadores, los samplers y las cajas de ritmo: todo aquello que excluía los rasgos humanos de un paisaje acústico cada vez más maquínico. Pero el Auto-Tune empujó la voz al frente de la actual revolución sonora y ha hecho de la personalidad de los performers su aspecto primordial. Nuestra humanidad ha sido reincorporada al proceso de composición. Podemos seguir llamando a esta nueva música rap, pero la verdad es que no es un nombre adecuado. La música que se crea hoy implica un quiebre con el pasado, tal como lo fue el hip-hop respecto del funk, el house respecto del disco o el rock del blues. Esta original psicodelia vocal constituye un macrogénero en sí mismo, que ya ha producido una cantidad de subestilos y variaciones cuyo rasgo común es un torbellino de voces posthumanas. Déjense intoxicar por sus fluidos alucinatorios multicolores y sus artificios holográficos. El futuro ya no suena ni frío ni robótico. Escuchen esas entonaciones vulnerables y gelatinosas, deformadas tras una niebla de Xanax y codeína.
-      El porvenir de la música será biotecnológico y alienígena, la banda sonora de nuestra propia mutación «Gritos de neón hace foco allí donde las innovaciones musicales resultaron más desconcertantes en los últimos años: la música urbana negra. Si en el siglo XX la música dance se sentía como si las máquinas hubieran tomado el control, los avances en tecnología de sonido digital han ampliado de modo radical la capacidad para la expresión humana. En el siglo XXI emerge la voz como zona privilegiada de la aventura artística. Con el Auto-Tune todos pueden prolongar los límites de sus voces y llevarlas hacia formas de belleza extraña, como un crisol alquímico en el que los performers –y los oyentes– se convierten en ángeles y monstruos.» Del prólogo de Simon Reynolds.Gritos de neón es un manifiesto, un grito de guerra para el nuevo futurismo musical que se anuncia ya en géneros como el trap, variantes contemporáneas del dancehall, el drill o el bashment. ¿Se cansaron de leer a los críticos musicales de siempre repetir que la innovación se terminó? Kit Mackintosh representa a una nueva generación dispuesta a percibir en la experimentación del presente los sonidos del mañana. Tomando como punto de partida el uso no convencional del Auto-Tune para explorar cualidades vocales hasta ahora desconocidas, Mackintosh establece una nueva vanguardia sónica integrada por artistas como Playboi Carti, Travis Scott, Future, Young Thug, Migos y Vybz Kartel.`,
+      synopsis:
+        'Estamos frente a un cambio de paradigma. Antes la innovación surgía del avance de los sintetizadores, los samplers y las cajas de ritmo: todo aquello que excluía los rasgos humanos de un paisaje acústico cada vez más maquínico. Pero el Auto-Tune empujó la voz al frente de la actual revolución sonora y ha hecho de la personalidad de los performers su aspecto primordial. Nuestra humanidad ha sido reincorporada al proceso de composición. Podemos seguir llamando a esta nueva música rap, pero la verdad es que no es un nombre adecuado. La música que se crea hoy implica un quiebre con el pasado, tal como lo fue el hip-hop respecto del funk, el house respecto del disco o el rock del blues. Esta original psicodelia vocal constituye un macrogénero en sí mismo, que ya ha producido una cantidad de subestilos y variaciones cuyo rasgo común es un torbellino de voces posthumanas. Déjense intoxicar por sus fluidos alucinatorios multicolores y sus artificios holográficos. El futuro ya no suena ni frío ni robótico. Escuchen esas entonaciones vulnerables y gelatinosas, deformadas tras una niebla de Xanax y codeína.\n      El porvenir de la música será biotecnológico y alienígena, la banda sonora de nuestra propia mutación «Gritos de neón hace foco allí donde las innovaciones musicales resultaron más desconcertantes en los últimos años: la música urbana negra. Si en el siglo XX la música dance se sentía como si las máquinas hubieran tomado el control, los avances en tecnología de sonido digital han ampliado de modo radical la capacidad para la expresión humana. En el siglo XXI emerge la voz como zona privilegiada de la aventura artística. Con el Auto-Tune todos pueden prolongar los límites de sus voces y llevarlas hacia formas de belleza extraña, como un crisol alquímico en el que los performers –y los oyentes– se convierten en ángeles y monstruos.» Del prólogo de Simon Reynolds.Gritos de neón es un manifiesto, un grito de guerra para el nuevo futurismo musical que se anuncia ya en géneros como el trap, variantes contemporáneas del dancehall, el drill o el bashment. ¿Se cansaron de leer a los críticos musicales de siempre repetir que la innovación se terminó? Kit Mackintosh representa a una nueva generación dispuesta a percibir en la experimentación del presente los sonidos del mañana. Tomando como punto de partida el uso no convencional del Auto-Tune para explorar cualidades vocales hasta ahora desconocidas, Mackintosh establece una nueva vanguardia sónica integrada por artistas como Playboi Carti, Travis Scott, Future, Young Thug, Migos y Vybz Kartel.',
       price: 4500,
       subgenre: ['Ensayo', 'Pensamientos', 'Futuro', 'Tecnología'],
       editorial: 'Caja Negra',
@@ -486,6 +509,7 @@ const data = [
     },
   },
   {
+    id: 'e6185967-08a3-4131-8120-bb08deb55de0',
     title: 'Autobiografía del algodón',
     author: 'Cristina Rivera Garza',
     publication_year: 2022,
@@ -513,6 +537,7 @@ const data = [
     },
   },
   {
+    id: 'd71b0f0d-99eb-4e6e-ae10-b5b3fcd3735c',
     title: 'El invencible verano de Liliana',
     author: 'Cristina Rivera Garza',
     publication_year: 2021,
@@ -541,6 +566,7 @@ const data = [
     },
   },
   {
+    id: 'a15b185f-1db5-43f1-82dd-cb5fe868f5c5',
     title: 'Panfleto (Mapa de las lenguas)',
     author: 'María Moreno',
     publication_year: 2019,
@@ -568,6 +594,7 @@ const data = [
     },
   },
   {
+    id: '777cb928-e267-4be0-b391-8d2de1f0b79e',
     title: 'Black out',
     author: 'María Moreno',
     publication_year: 2021,
@@ -593,13 +620,14 @@ const data = [
     },
   },
   {
+    id: '5187da76-7ffe-4b36-804f-6e7dc3206670',
     title: 'Crónicas Completas',
     author: 'Hebe Uhart',
     publication_year: 2023,
     genre: 'No ficción - Crónicas',
     detail: {
-      synopsis: `En sus crónicas, mucho más que el paisaje o la historia, lo que se registra es el habla. Estos viajes, en general cercanos, son una búsqueda de formas de decir. El trabajo de Hebe Uhart como recolectora de giros y de formas es feliz e importante, porque no es una coleccionista de curiosidades la que escucha, sino una escritora. Su fascinación por el lenguaje no se limita al hablado: recorre las ciudades y los pueblos tomando nota de los nombres de los comercios, los anuncios y los grafitis, una rutina que se repite en casi todos los textos. También se preocupa por las formas de la oralidad cercanas a la literatura, como los refranes. Como viajera y como cronista, Hebe Uhart tiene sus rutinas. Al hotel lo considera su refugio. El café es el otro sitio infaltable, que busca con desesperación. Si no lo encuentra fácilmente se conforma con un parador de ruta, siempre que pueda encender un cigarrillo, hojear el diario, observar a los parroquianos y a los que pasan caminando, del otro lado del vidrio o cerca de su mesa. Es furtiva, además: se queda poco tiempo, necesita absorber mucho, aprovechar al máximo. Sin embargo, no hay urgencia en sus crónicas.
-      La relación con el lugar que visita y su gente es leve: sabe que su presencia es una curiosidad, pero se cuida bien de no ser una intrusa.Siempre que puede visita una casa particular, una escuela, la biblioteca; habla con artistas e historiadores locales y busca libros que la ayuden a comprender el lugar. La lista de autores citados y mencionados sería interminable; es, también, extremadamente ecléctica. Su modelo como entrevistadora puede resumirse en una pregunta que hace en Conchillas, Uruguay: “Señora, ¿dónde puedo encontrar a un vecino de mucha edad, pero que esté bien de la cabeza para que me cuente un poco la historia del lugar?”. Hebe Uhart es voraz pero ofrece toda esta información con gran amabilidad, porque no quiere abrumar a los lectores sino compartir con ellos aquello que, de tan cercano, quizá nunca les haya llamado la atención.\nEn los últimos años de su vida, Hebe Uhart leía tanta ficción como no ficción pero, solía decir, prefería escribir crónica porque sentía que lo que estaba en el mundo era mucho más interesante que su experiencia o su imaginación. Es un gesto político: el de ir hacia afuera, al encuentro de los otros. La posición política de estas crónicas es clara: el anclaje latinoamericano, el rescate de los relatos ignorados o despreciados –la historia local, los saberes cotidianos, las formas de decir– y, principalmente, uno de sus sujetos predilectos: los pueblos originarios del continente. Las crónicas de 'Animales' son las últimas publicadas por Hebe Uhart en un libro.Además, en esta edición de sus Crónicas completas se incluyen varias inéditas. Mariana Enriquez`,
+      synopsis:
+        "En sus crónicas, mucho más que el paisaje o la historia, lo que se registra es el habla. Estos viajes, en general cercanos, son una búsqueda de formas de decir. El trabajo de Hebe Uhart como recolectora de giros y de formas es feliz e importante, porque no es una coleccionista de curiosidades la que escucha, sino una escritora. Su fascinación por el lenguaje no se limita al hablado: recorre las ciudades y los pueblos tomando nota de los nombres de los comercios, los anuncios y los grafitis, una rutina que se repite en casi todos los textos. También se preocupa por las formas de la oralidad cercanas a la literatura, como los refranes. Como viajera y como cronista, Hebe Uhart tiene sus rutinas. Al hotel lo considera su refugio. El café es el otro sitio infaltable, que busca con desesperación. Si no lo encuentra fácilmente se conforma con un parador de ruta, siempre que pueda encender un cigarrillo, hojear el diario, observar a los parroquianos y a los que pasan caminando, del otro lado del vidrio o cerca de su mesa. Es furtiva, además: se queda poco tiempo, necesita absorber mucho, aprovechar al máximo. Sin embargo, no hay urgencia en sus crónicas.\n      La relación con el lugar que visita y su gente es leve: sabe que su presencia es una curiosidad, pero se cuida bien de no ser una intrusa.Siempre que puede visita una casa particular, una escuela, la biblioteca; habla con artistas e historiadores locales y busca libros que la ayuden a comprender el lugar. La lista de autores citados y mencionados sería interminable; es, también, extremadamente ecléctica. Su modelo como entrevistadora puede resumirse en una pregunta que hace en Conchillas, Uruguay: “Señora, ¿dónde puedo encontrar a un vecino de mucha edad, pero que esté bien de la cabeza para que me cuente un poco la historia del lugar?”. Hebe Uhart es voraz pero ofrece toda esta información con gran amabilidad, porque no quiere abrumar a los lectores sino compartir con ellos aquello que, de tan cercano, quizá nunca les haya llamado la atención.\nEn los últimos años de su vida, Hebe Uhart leía tanta ficción como no ficción pero, solía decir, prefería escribir crónica porque sentía que lo que estaba en el mundo era mucho más interesante que su experiencia o su imaginación. Es un gesto político: el de ir hacia afuera, al encuentro de los otros. La posición política de estas crónicas es clara: el anclaje latinoamericano, el rescate de los relatos ignorados o despreciados –la historia local, los saberes cotidianos, las formas de decir– y, principalmente, uno de sus sujetos predilectos: los pueblos originarios del continente. Las crónicas de 'Animales' son las últimas publicadas por Hebe Uhart en un libro.Además, en esta edición de sus Crónicas completas se incluyen varias inéditas. Mariana Enriquez",
       price: 8900,
       subgenre: [
         'Biografía',
@@ -617,6 +645,7 @@ const data = [
     },
   },
   {
+    id: 'b0ec7ccd-b13e-42df-8c53-765155103090',
     title: 'Un barroco de trinchera',
     author: 'Osvaldo Baigorria, Néstor Perlongher',
     publication_year: 2022,
@@ -643,6 +672,7 @@ const data = [
     },
   },
   {
+    id: '97737c2a-1cbe-4afe-bf0c-745ae78b8f83',
     title: 'La ciencia de las (buenas) ideas',
     author: 'Diego Golombek',
     publication_year: 2022,
@@ -662,6 +692,7 @@ const data = [
     },
   },
   {
+    id: 'b102f78c-aab8-4bf0-ae44-5ec88ddb4d32',
     title: 'No hacía falta romperlo todo para salir',
     author: 'Ángelo, Male Varade',
     publication_year: 2022,
@@ -686,6 +717,7 @@ const data = [
     },
   },
   {
+    id: 'a64c7712-a822-4e30-9fec-1560c3edf859',
     title: 'Mi madre favorita tiene bíceps',
     author: 'Lilian Laura Ivachow',
     publication_year: 2016,
@@ -710,6 +742,7 @@ const data = [
     },
   },
   {
+    id: '7502db6a-1043-469b-8461-22368a5f44e9',
     title: 'La marca en la pared y otros cuentos',
     author: 'Virginia Woolf',
     publication_year: 2015,
@@ -729,25 +762,7 @@ const data = [
     },
   },
   {
-    title: 'El elefante y el perro',
-    author: 'María Martoccia',
-    publication_year: 2018,
-    genre: 'Infantil - Niños y Niñas',
-    detail: {
-      synopsis:
-        'El elefante y el perro es una colección de relatos sobre la amistad y la diversidad escrita por María Martoccia. La autora explora la vida de animales que se enfrentan a la discriminación y la importancia de la amistad en la superación de las diferencias. Estos relatos nos invitan a reflexionar sobre la importancia de la diversidad y la inclusión en nuestra sociedad.',
-      price: 1500,
-      subgenre: ['Cuentos', 'Infantil', 'Diversidad', 'Amistad'],
-      editorial: 'La Bestia Equilátera',
-      genre: 'Infantil - Niños y Niñas',
-      collection: 'Efectos colaterales',
-      pages: 48,
-      isbn: '978-987-801-199-8',
-      size: '20 cm. x 20 cm. x 0.5 cm',
-      language: 'Español',
-    },
-  },
-  {
+    id: 'a8d6bd42-3065-4ae2-b2c0-3d793a62be1d',
     title: 'Precursoras del Feminismo',
     author: 'Gonzalo Torné',
     publication_year: 2020,
@@ -775,6 +790,7 @@ const data = [
     },
   },
   {
+    id: '35a07dfa-2409-4896-875e-9e841dce5b04',
     title: 'Vaquera Invertida',
     author: 'Mckenzie Wark',
     publication_year: 2022,
@@ -803,6 +819,7 @@ const data = [
     },
   },
   {
+    id: 'd84dfb68-6bc6-49b2-aead-ed9c2ce5bc61',
     title: 'Masculinidades (im)posibles',
     author: 'Matías de Stéfano Barbero',
     publication_year: 2021,
@@ -822,6 +839,7 @@ const data = [
     },
   },
   {
+    id: '6fad8f91-7c55-4c0f-a312-2db2c1493d20',
     title:
       'Mujeres Viajeras - Política, derechos y aventuras desde miradas pioneras 1864-1920',
     author: 'Luisa Borovsky',
@@ -849,6 +867,7 @@ const data = [
     },
   },
   {
+    id: 'c5e9fd36-4ae7-4fdf-a70b-ca13baf41d94',
     title:
       '¡Denuncia! El activismo de la queja frente a la violencia institucional',
     author: 'Sara Ahmed',
@@ -874,6 +893,7 @@ const data = [
     },
   },
   {
+    id: '53110948-a946-4535-8a7b-a67188e66f64',
     title:
       'Campos Electromagnéticos - Teoría y Práctica de la escritura Artificial',
     author: 'Josefina Ludmer',
@@ -893,30 +913,7 @@ const data = [
     },
   },
   {
-    title: 'Lo que vendrá',
-    author: 'Josefina Ludmer',
-    publication_year: 2023,
-    genre: 'Pensamientos y Filosofía',
-    detail: {
-      synopsis:
-        'A esta altura pienso que la tarea crítica se ha transformado en un delirio y busco entrar por la literatura a lo que llamo la “fábrica de realidad”, o sea a la imaginación en la que la literatura es una parte privilegiada: la imaginación de formas, relatos, personajes, es la que realmente construye la realidad. Estoy absolutamente metida en ese trabajo con cierta presión para terminarlo, pero hasta que no se termine no se sabe. Lo que vendrá recopila intervenciones críticas de Josefina Ludmer dedicadas al estudio de la literatura latinoamericana. Escritos a lo largo de cincuenta años, y hasta hoy dispersos en libros, actas, revistas, estos textos pueden leerse como una historia tentativa de la literatura latinoamericana (con artículos sobre sor Juana, la gauchesca, el naturalismo mexicano, Macedonio Fernández, Alfonsina Storni, Jorge Luis Borges, Felisberto Hernández, Guillermo Cabrera Infante, Augusto Roa Bastos, Pedro Juan Gutiérrez). Pero pueden pensarse también como la historia de un pensamiento, de una máquina de lectura, que en sus recurrencias y variaciones constituye uno de los momentos más brillantes de la crítica literaria latinoamericana. La intensidad de la lectura (de la escritura) que propone Josefina Ludmer en sus ensayos informa la materia de este libro. Ezequiel De Rosso',
-      price: 4990,
-      subgenre: [
-        'Ensayo',
-        'Literatura',
-        'Estudios Literarios',
-        'Biografía',
-        'Investigación',
-      ],
-      editorial: 'Eterna Cadencia',
-      collection: 'Ensayo',
-      pages: 328,
-      isbn: '9789877122183',
-      size: '14 x 22 cm',
-      language: 'Español',
-    },
-  },
-  {
+    id: 'c9bb65d9-bb27-4108-9ceb-8f94442912d2',
     title: 'El arribista del poder',
     author: 'Diego Genoud',
     publication_year: 2023,
@@ -943,6 +940,7 @@ const data = [
     },
   },
   {
+    id: 'b7ea4ddb-753a-498f-a553-704e547034f5',
     title: 'Un peronismo para el siglo XXI',
     author: 'Matías Kulfas',
     publication_year: 2023,
@@ -971,6 +969,7 @@ const data = [
     },
   },
   {
+    id: '77043c4b-e885-4bd7-90e9-c180145ec040',
     title: 'Mareadas en la marea',
     author: 'Cecilia Palmeiro, Fernanda Laguna',
     publication_year: 2023,
@@ -996,6 +995,7 @@ const data = [
     },
   },
   {
+    id: '7bbfa17a-a776-4e86-8e55-51d662c3ba12',
     title: 'Esto También esto pasará',
     author: 'Milena Busquets',
     publication_year: 2015,
@@ -1014,6 +1014,7 @@ const data = [
     },
   },
   {
+    id: '9f13b2ef-b54c-4bb2-8053-82a7bf86938b',
     title: 'Literatura Infantil',
     author: 'Alejandro Zambra',
     publication_year: 2023,
@@ -1032,6 +1033,7 @@ const data = [
     },
   },
   {
+    id: '15b1632a-d54c-4850-9d66-614d002e2add',
     title: 'Poeta Chileno',
     author: 'Alejandro Zambra',
     publication_year: 2022,
@@ -1050,6 +1052,7 @@ const data = [
     },
   },
   {
+    id: '3ab6b4d3-8568-40c2-b7a0-541db7d7356d',
     title: 'La hija única',
     author: 'Guadalupe Nettel',
     publication_year: 2020,
@@ -1068,6 +1071,7 @@ const data = [
     },
   },
   {
+    id: '98d6a813-ca6e-40d3-8b8c-836c5126ea2d',
     title: 'Después del Invierno',
     author: 'Guadalupe Nettel',
     publication_year: 2014,
@@ -1086,6 +1090,7 @@ const data = [
     },
   },
   {
+    id: '158f314a-5812-4c4d-bf6e-042a7f87af5e',
     title: 'La encomienda',
     author: 'Margarita García Robayo',
     publication_year: 2021,
@@ -1104,6 +1109,7 @@ const data = [
     },
   },
   {
+    id: 'eaf95ac8-c131-4366-8835-7205f79a4539',
     title: 'Fortuna',
     author: 'Hernán Díaz',
     publication_year: 2023,
@@ -1122,7 +1128,8 @@ const data = [
     },
   },
   {
-    title: 'Diez Novelas de César Aira',
+    id: '3f4598df-edf8-474c-b72b-c1c30dbebdc3',
+    title: 'Diez Novelas',
     author: 'César Aira',
     publication_year: 2023,
     genre: 'Narrativa',
@@ -1140,6 +1147,7 @@ const data = [
     },
   },
   {
+    id: '1d793059-caf2-4b33-8027-e59479871448',
     title: 'El Tercer Paraíso',
     author: 'Cristian Alarcón',
     publication_year: 2022,
@@ -1158,6 +1166,7 @@ const data = [
     },
   },
   {
+    id: '75423c6d-8900-4a70-89d9-9337d26cef76',
     title: 'El Sonido de las Olas (Mapa de las Lenguas)',
     author: 'Margarita García Robayo',
     publication_year: 2021,
@@ -1183,6 +1192,7 @@ const data = [
     },
   },
   {
+    id: '43ad76a5-bf68-4191-888f-dd0144abf23c',
     title: 'El Amor es una cosa extraña',
     author: 'Hebe Uhart',
     publication_year: 2023,
@@ -1208,6 +1218,7 @@ const data = [
     },
   },
   {
+    id: 'ea4eeb93-55a3-4a79-9d07-4a0ac3e8ddb0',
     title: 'ANAGRAMAS',
     author: 'Lorrie Moore',
     publication_year: 2023,
@@ -1233,6 +1244,7 @@ const data = [
     },
   },
   {
+    id: '007d6e4d-30c6-4401-b800-d133d7c1df86',
     title: 'Viento del Este',
     author: 'Liliana Villanueva',
     publication_year: 2023,
@@ -1251,6 +1263,7 @@ const data = [
     },
   },
   {
+    id: 'ff846cbb-b34e-489a-b71e-0a7802322515',
     title: 'Mentirosa - Una novela de amor deplorable',
     author: 'John Waters',
     publication_year: 2023,
@@ -1269,6 +1282,7 @@ const data = [
     },
   },
   {
+    id: '5f0695fc-763f-4680-9492-e090ad581bc6',
     title: 'Detalle Infinito',
     author: 'Tim Maughan',
     publication_year: 2022,
@@ -1294,6 +1308,7 @@ const data = [
     },
   },
   {
+    id: 'bf543a1c-b7ae-49b6-ac8c-0fe666944779',
     title: 'Historias Secretas de los Mundiales',
     author: 'Alejandro Fabbri',
     publication_year: 2017,
@@ -1318,6 +1333,7 @@ const data = [
     },
   },
   {
+    id: '4940298e-bcd4-47eb-b5ad-b4fa7e9ce30e',
     title: 'El otro lado',
     author: 'Mariana Enriquez',
     publication_year: 2022,
@@ -1347,6 +1363,7 @@ const data = [
     },
   },
   {
+    id: '99e06867-0f3c-4a4b-8a27-4904ab6af627',
     title: 'Rabia',
     author: 'Eliezer Budasoff, Javier Lafuente',
     publication_year: 2022,
@@ -1374,6 +1391,7 @@ const data = [
     },
   },
   {
+    id: '24cf9d04-8f2a-4a1a-9181-6b5beaac2189',
     title: 'Zona de obras',
     author: 'Leila Guerriero',
     publication_year: 2022,
@@ -1399,6 +1417,7 @@ const data = [
     },
   },
   {
+    id: 'd8e62944-ec6a-4b41-be52-586946e0b8f6',
     title: 'Manifiesto ecológico político',
     authors: 'Bruno Latour, Nikolaj Schultz',
     publication_year: 2022,
@@ -1425,6 +1444,7 @@ const data = [
     },
   },
   {
+    id: '55e51406-37fc-4430-adb1-b672877d4fc6',
     title: '(re)calientes',
     authors: 'Laura Rocha, Marina Aizen, Pilar Assefh',
     publication_year: 2023,
@@ -1451,8 +1471,9 @@ const data = [
     },
   },
   {
+    id: '1513cf1a-44a6-4f72-9c07-72ddfdf5f51a',
     title:
-      'el poder de los afectos en la política hacia una revolución democrática y verde',
+      'El poder de los afectos en la política hacia una revolución democrática y verde',
     authors: 'Chantal Mouffe',
     publication_year: 2023,
     detail: {
@@ -1478,6 +1499,7 @@ const data = [
     },
   },
   {
+    id: 'ddbf5aa0-a2c1-428e-b881-3ddba0d36ec7',
     title: 'Cómo hacen los pobres para sobrevivir',
     authors: 'Javier Auyero, Sofia Servián',
     publication_year: 2023,
@@ -1503,6 +1525,7 @@ const data = [
     },
   },
   {
+    id: '420dbf44-bd92-4565-9438-184ee86815c5',
     title: 'Cannabis',
     authors: 'Chris Duvall',
     publication_year: 2022,
