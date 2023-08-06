@@ -1,7 +1,7 @@
 const app = require('./src/app');
 const sequelize = require('./src/config/database');
 
-const data = require('./src/utils/data');
+// const data = require('./src/utils/data');
 // const loadData = require('./src/utils/loadData');
 
 require('./src/models');
