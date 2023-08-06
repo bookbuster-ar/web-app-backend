@@ -17,16 +17,23 @@ const createWhereClause = (columnName, value) => {
   );
 };
 
-const getFilteredBooks = async ({ title, author }) => {
+const getFilteredBooks = async ({ title, author, search }) => {
   try {
     const whereClause = {};
+     console.log("title:",title, "author:",author, "search:",search);
+    if (search) {
+      whereClause[Op.or] = [
+        createWhereClause('title', search),
+        createWhereClause('author', search),
+      ];
+    } else {
+      if (title) {
+        whereClause.title = createWhereClause('title', title);
+      }
 
-    if (title) {
-      whereClause.title = createWhereClause('title', title);
-    }
-
-    if (author) {
-      whereClause.author = createWhereClause('author', author);
+      if (author) {
+        whereClause.author = createWhereClause('author', author);
+      }
     }
 
     const filteredBooks = await Book.findAll({
@@ -50,5 +57,6 @@ const getFilteredBooks = async ({ title, author }) => {
     throw error;
   }
 };
+
 
 module.exports = getFilteredBooks;
