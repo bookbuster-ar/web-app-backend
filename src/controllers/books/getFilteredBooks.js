@@ -1,4 +1,4 @@
-const { Book } = require('../../models/');
+const { PublishedBook, Book } = require('../../models/');
 const { Op, Sequelize } = require('sequelize');
 
 const normalizeAndLowerCase = (input) => {
@@ -29,21 +29,25 @@ const getFilteredBooks = async ({ title, author }) => {
       whereClause.author = createWhereClause('author', author);
     }
 
-    const filteredBooks = await Book.findAll({
+    const filteredBooks = await PublishedBook.findAll({
       where: whereClause,
-      include: ['images', 'editorial_collection', 'editorial'],
+      include: {
+        model: Book,
+        as: 'book',
+        include: ['images', 'editorial', 'editorial_collection'],
+      },
     });
 
-    return filteredBooks.map((book) => {
-      const [cover, ...extra] = book.images.map((image) => image.image);
+    return filteredBooks.map((field) => {
+      const [cover, ...extra] = field.book.images.map((image) => image.image);
       return {
-        id: book.id,
+        id: field.book.id,
         images: { cover, extra },
-        title: book.title,
-        author: book.author,
-        publication_year: book.publication_year,
-        editorial: book.editorial.name,
-        editorial_collection: book.editorial_collection.name,
+        title: field.book.title,
+        author: field.book.author,
+        publication_year: field.book.publication_year,
+        editorial_collection: field.book.editorial_collection.name,
+        editorial: field.book.editorial.name,
       };
     });
   } catch (error) {
