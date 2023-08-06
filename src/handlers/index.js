@@ -3,6 +3,8 @@ const handleGetBooks = require('./books/handleGetBooks');
 const handleGetBookById = require('./books/handleGetBookById');
 const handleGetBooksByGenre = require('./books/handleGetBooksByGenre');
 
+const handleCreateBook = require('./books/handleCreateBook');
+
 // Genres
 const handleGetGenres = require('./handleGetGenres');
 
@@ -11,6 +13,7 @@ module.exports = {
   handleGetBooks,
   handleGetBookById,
   handleGetBooksByGenre,
+  handleCreateBook,
 
   // Genres
   handleGetGenres,
