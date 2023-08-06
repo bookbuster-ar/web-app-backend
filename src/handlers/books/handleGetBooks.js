@@ -1,5 +1,4 @@
-const getAllBooks = require('../controllers/books/getAllBooks');
-const getFilteredBooks = require('../controllers/books/getFilteredBooks');
+const { getAllBooks, getFilteredBooks } = require('../../controllers');
 
 const handleGetBooks = async (req, res) => {
   const { title, author } = req.query;

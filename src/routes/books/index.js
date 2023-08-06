@@ -1,8 +1,11 @@
 const { Router } = require('express');
-const handleGetBookById = require('../../handlers/handleGetBookById');
+
 const bookRouter = Router();
-const handleGetBooks = require('../../handlers/handleGetBooks');
-const handleGetBooksByGenre = require('../../handlers/handleGetBooksByGenre');
+const {
+  handleGetBooks,
+  handleGetBookById,
+  handleGetBooksByGenre,
+} = require('../../handlers');
 
 bookRouter.get('/genre', handleGetBooksByGenre);
 bookRouter.get('/:id', handleGetBookById);

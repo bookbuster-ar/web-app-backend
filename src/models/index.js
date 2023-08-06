@@ -7,6 +7,7 @@ module.exports = {
   Editorial: require('./Book/Editorial'),
   BookFormat: require('./Book/BookFormat'),
   PublishedBook: require('./Book/PublishedBook'),
+  BookToReview: require('./Book/BookToReview'),
   EditorialCollection: require('./Book/EditorialCollection'),
 
   // User
@@ -28,9 +29,6 @@ module.exports = {
   Comment: require('./Review/Comment'),
   ReviewLike: require('./Review/ReviewLike'),
   CommentLike: require('./Review/CommentLike'),
-
-  // Admin
-  BookToReview: require('./Admin/BookToReview'),
 
   // Shelves
   BookShelves: require('./Shelves/BookShelves'),

@@ -10,7 +10,7 @@ Models.User.belongsTo(Models.Role, { foreignKey: 'role_id', as: 'role' });
 Models.User.hasOne(Models.Session, { foreignKey: 'user_id', as: 'session' });
 Models.Session.belongsTo(Models.User, { foreignKey: 'user_id', as: 'user' });
 
-//* User-Image
+// User-Image
 Models.UserImage.hasOne(Models.User, { foreignKey: 'image_id', as: 'user' });
 Models.User.belongsTo(Models.UserImage, {
   foreignKey: 'image_id',

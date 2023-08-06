@@ -1,50 +1,51 @@
 const { Book } = require('../../models/');
 const { Op, Sequelize } = require('sequelize');
 
+const normalizeAndLowerCase = (input) => {
+  return input
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+};
+
+const createWhereClause = (columnName, value) => {
+  return Sequelize.where(
+    Sequelize.fn('unaccent', Sequelize.fn('lower', Sequelize.col(columnName))),
+    {
+      [Op.iLike]: `%${normalizeAndLowerCase(value)}%`,
+    }
+  );
+};
+
 const getFilteredBooks = async ({ title, author }) => {
   try {
     const whereClause = {};
 
     if (title) {
-      whereClause.title = Sequelize.where(
-        Sequelize.fn('unaccent', Sequelize.fn('lower', Sequelize.col('title'))),
-        {
-          [Op.iLike]: `%${title
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase()}%`,
-        }
-      );
+      whereClause.title = createWhereClause('title', title);
     }
 
     if (author) {
-      whereClause.author = Sequelize.where(
-        Sequelize.fn(
-          'unaccent',
-          Sequelize.fn('lower', Sequelize.col('author'))
-        ),
-        {
-          [Op.iLike]: `%${author
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .toLowerCase()}%`,
-        }
-      );
+      whereClause.author = createWhereClause('author', author);
     }
 
     const filteredBooks = await Book.findAll({
       where: whereClause,
-      include: ['editorial_collection', 'editorial'],
+      include: ['images', 'editorial_collection', 'editorial'],
     });
 
-    return filteredBooks.map((book) => ({
-      id: book.id,
-      title: book.title,
-      author: book.author,
-      publication_year: book.publication_year,
-      editorial_collection: book.editorial_collection.name,
-      editorial: book.editorial.name,
-    }));
+    return filteredBooks.map((book) => {
+      const [cover, ...extra] = book.images.map((image) => image.image);
+      return {
+        id: book.id,
+        images: { cover, extra },
+        title: book.title,
+        author: book.author,
+        publication_year: book.publication_year,
+        editorial: book.editorial.name,
+        editorial_collection: book.editorial_collection.name,
+      };
+    });
   } catch (error) {
     throw error;
   }

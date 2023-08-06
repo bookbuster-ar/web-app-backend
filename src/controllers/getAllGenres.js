@@ -1,8 +1,5 @@
-const BookGenre = require('../models/Book/BookGenre');
+const { BookGenre } = require('../models');
 
-const getAllGenres = async () => {
-  const genres = await BookGenre.findAll();
-  return genres;
-};
+const getAllGenres = async () => await BookGenre.findAll();
 
 module.exports = getAllGenres;
