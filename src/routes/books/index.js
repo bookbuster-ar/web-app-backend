@@ -1,4 +1,7 @@
 const { Router } = require('express');
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 const bookRouter = Router();
 const {
@@ -14,6 +17,12 @@ bookRouter.get('/genre', handleGetBooksByGenre);
 bookRouter.get('/:id', handleGetBookById);
 bookRouter.get('/', handleGetBooks);
 
-bookRouter.post('/', validateBook, handleCreateBook);
+bookRouter.post(
+  '/',
+  upload.any(),
+  validateBook,
+  validateImageFile,
+  handleCreateBook
+);
 
 module.exports = bookRouter;
