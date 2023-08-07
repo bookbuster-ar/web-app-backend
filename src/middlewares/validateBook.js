@@ -1,7 +1,18 @@
-const validateBook = (req, res, next) => {
-  const { genres } = req.body;
+const { validate } = require('uuid');
 
-  const requiredFields = ['title', 'author', 'publication_year', 'editorial'];
+const validateBook = (req, res, next) => {
+  const { genres, editorial_id, editorial_name } = req.body;
+  console.log(req.body);
+
+  const requiredFields = [
+    'title',
+    'author',
+    'publication_year',
+    'synopsis',
+    'language',
+    'size',
+    'pages',
+  ];
   const errorMessages = {};
 
   requiredFields.forEach((field) => {
@@ -12,6 +23,11 @@ const validateBook = (req, res, next) => {
 
   if (!genres || genres.length === 0) {
     errorMessages.genres = 'Al menos un género requerido';
+  }
+
+  if (!validate(editorial_id) && editorial_name?.length === 0) {
+    console.log('Entré en el if del editorial');
+    errorMessages.editorial = 'Este campo es obligatorio';
   }
 
   const hasErrors = Object.keys(errorMessages).length > 0;

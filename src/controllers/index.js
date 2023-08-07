@@ -10,6 +10,11 @@ const createBook = require('./books/createBook');
 
 const getAllGenres = require('./getAllGenres');
 
+// Editorial
+
+const getEditorials = require('./editorial/getEditorials');
+const getCollection = require('./editorial/getCollection');
+
 module.exports = {
   // Books
   getAllBooks,
@@ -20,4 +25,8 @@ module.exports = {
 
   // Genres
   getAllGenres,
+
+  // Editorial
+  getEditorials,
+  getCollection,
 };

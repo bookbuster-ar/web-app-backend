@@ -6,8 +6,10 @@ const handleCreateBook = async (req, res) => {
       title,
       author,
       publication_year,
-      editorial,
-      editorial_collection,
+      editorial_id,
+      editorial_name,
+      editorial_collection_id,
+      editorial_collection_name,
       genres,
       size,
       pages,
@@ -15,12 +17,14 @@ const handleCreateBook = async (req, res) => {
       synopsis,
     } = req.body;
 
-    const { status } = await createBook({
+    const { statusCode } = await createBook({
       title,
       author,
       publication_year,
-      editorial,
-      editorial_collection,
+      editorial_id,
+      editorial_name,
+      editorial_collection_id,
+      editorial_collection_name,
       genres,
       subgenres,
       pages,
@@ -28,30 +32,12 @@ const handleCreateBook = async (req, res) => {
       synopsis,
       images: req.files,
     });
-    if (status === 201) {
-      return res.statusCode(status);
+    if (statusCode === 201) {
+      return res.sendStatus(statusCode);
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
-
-// setForm({
-//   title: '',
-//   author: '',
-//   publication_year: '',
-//   editorial: '',
-//   editorial_collection: '',
-//   genres: [],
-//   synopsis: '',
-//   pages: '',
-//   language: '',
-//   size: '',
-//   price: '',
-//   images: {
-//     cover: {},
-//     extra: [], //arreglo de objetos
-//   },
-// });
 
 module.exports = handleCreateBook;
