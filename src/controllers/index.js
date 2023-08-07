@@ -4,6 +4,8 @@ const getBookById = require('./books/getBookById');
 const getBooksByGenre = require('./books/getBooksByGenre');
 const getFilteredBooks = require('./books/getFilteredBooks');
 
+const createBook = require('./books/createBook');
+
 // Genres
 
 const getAllGenres = require('./getAllGenres');
@@ -14,6 +16,7 @@ module.exports = {
   getBookById,
   getBooksByGenre,
   getFilteredBooks,
+  createBook,
 
   // Genres
   getAllGenres,
