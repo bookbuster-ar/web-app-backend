@@ -8,6 +8,10 @@ const handleCreateBook = require('./books/handleCreateBook');
 // Genres
 const handleGetGenres = require('./handleGetGenres');
 
+// Editorial
+const handleGetEditorials = require('./editorial/handleGetEditorials');
+const handleGetCollection = require('./editorial/handleGetCollection');
+
 module.exports = {
   // Books
   handleGetBooks,
@@ -17,4 +21,8 @@ module.exports = {
 
   // Genres
   handleGetGenres,
+
+  // Editorial
+  handleGetEditorials,
+  handleGetCollection,
 };
