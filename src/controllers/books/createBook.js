@@ -7,41 +7,59 @@ const {
   EditorialCollection,
 } = require('../../models');
 
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4, validate } = require('uuid');
 const cloudinary = require('../../config/cloudinary');
 
 const createBook = async (bookInfo) => {
   const bookId = uuidv4();
 
-  const [editorialInstance, editorialWasCreated] = await Editorial.findOrCreate(
-    {
-      where: { id: bookInfo.editorial_id },
-      id: uuidv4(),
-      name: bookInfo.editorial_name,
-    }
-  );
-
-  const [collectionInstance, collectionWasCreated] =
-    await EditorialCollection.findOrCreate({
-      where: { id: bookInfo.editorial_collection_id },
-      id: uuidv4(),
-      editorial_id: editorialInstance.id,
-      name: bookInfo.editorial_collection_name,
-    });
-
-  // Grouping DB operations which do NOT depend on Book
-  await Book.create({
+  const bookToCreate = {
     id: bookId,
-    editorial_id: editorialWasCreated
-      ? editorialInstance.id
-      : bookInfo.editorial_id,
-    editorial_collection: collectionWasCreated
-      ? collectionInstance.id
-      : bookInfo.editorial_collection_id,
     title: bookInfo.title,
     author: bookInfo.author,
     publication_year: bookInfo.publication_year,
-  });
+  };
+
+  console.log('createBook - Editorial Name: ', bookInfo.editorial_name);
+  const [editorialInstance, editorialWasCreated] = await Editorial.findOrCreate(
+    {
+      where: {
+        id: bookInfo.editorial_id || uuidv4(), // Busca por el ID proporcionado en bookInfo.editorial_id
+      },
+      defaults: {
+        id: uuidv4(), // Establece un nuevo UUID solo si se crea una nueva entidad
+        name: bookInfo.editorial_name,
+      },
+    }
+  );
+
+  bookToCreate.editorial_id = editorialWasCreated
+    ? editorialInstance.id
+    : bookInfo.editorial_id;
+
+  if (
+    validate(bookInfo.editorial_collection_id) ||
+    bookInfo.editorial_collection_name?.length > 0
+  ) {
+    const [collectionInstance, collectionWasCreated] =
+      await EditorialCollection.findOrCreate({
+        where: { id: bookInfo.editorial_collection_id || uuidv4() },
+        defaults: {
+          id: uuidv4(),
+          editorial_id: editorialInstance.id,
+          name: bookInfo.editorial_collection_name,
+        },
+      });
+
+    bookToCreate.editorial_collection_id = collectionWasCreated
+      ? collectionInstance.id
+      : bookInfo.editorial_collection_id;
+  }
+
+  console.log('bookToCreate: ', bookToCreate);
+
+  // Grouping DB operations which do NOT depend on Book
+  await Book.create(bookToCreate);
 
   // Upload images in parallel and then bulk create image entries
   const imageUrls = await uploadMultipleToCloudinary(bookInfo.images, bookId);
