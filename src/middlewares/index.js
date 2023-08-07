@@ -3,4 +3,5 @@ const validateImageFile = require('./validateImageFile');
 
 module.exports = {
   validateBook,
+  validateImageFile,
 };

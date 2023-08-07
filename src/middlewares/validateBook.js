@@ -6,12 +6,12 @@ const validateBook = (req, res, next) => {
 
   requiredFields.forEach((field) => {
     if (!req.body[field] || req.body[field] === '') {
-      errorMessages[field] = `This field is required`;
+      errorMessages[field] = `Este campo es obligatorio`;
     }
   });
 
   if (!genres || genres.length === 0) {
-    errorMessages.genres = 'At least one genre is required';
+    errorMessages.genres = 'Al menos un género requerido';
   }
 
   const hasErrors = Object.keys(errorMessages).length > 0;

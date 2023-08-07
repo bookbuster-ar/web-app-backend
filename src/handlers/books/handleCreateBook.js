@@ -1,4 +1,4 @@
-const handleCreateBook = async (error, req, res, next) => {
+const handleCreateBook = async (req, res) => {
   const {
     title,
     author,
@@ -8,7 +8,9 @@ const handleCreateBook = async (error, req, res, next) => {
     genres,
     subgenres,
   } = req.body;
-  res.send('Book created!');
+  console.log(req.body);
+  console.log(req.files);
+  res.send('Llegamos, banda! vamooo los pibeeesss');
 };
 
 module.exports = handleCreateBook;
