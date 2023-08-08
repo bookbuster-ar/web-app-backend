@@ -1,7 +1,6 @@
 // Books
 const getAllBooks = require('./books/getAllBooks');
 const getBookById = require('./books/getBookById');
-const getBooksByGenreWithSubgenres = require('./genres/getBooksByGenreWithSubgenres');
 const getFilteredBooks = require('./books/getFilteredBooks');
 
 const createBook = require('./books/createBook');

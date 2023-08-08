@@ -22,20 +22,16 @@ const formatBooks = (books) =>
 const getBooksBySubgenre = async (subgenreId) => {
   try {
     const subgenre = await BookSubgenre.findByPk(subgenreId, {
-      include: [
-        {
-          model: BookGenre,
-          as: 'genres',
-          include: [{ model: Book, as: 'books' }],
-        },
-      ],
+      include: [{ model: Book, as: 'books' }],
     });
-    if (!subgenre || !subgenre.genres.length) {
-      throw new Error('Subgénero no encontrado o sin géneros asociados');
+
+    if (!subgenre) {
+      throw new Error('Subgenre not found');
     }
+
     const publishedBooksBySubgenre = await PublishedBook.findAll({
       where: {
-        book_id: subgenre.genres[0].books.map((book) => book.id),
+        book_id: subgenre.books.map((book) => book.id),
       },
       include: [
         {
@@ -45,6 +41,7 @@ const getBooksBySubgenre = async (subgenreId) => {
         },
       ],
     });
+
     return {
       id: subgenre.id,
       subgenre: subgenre.name,
