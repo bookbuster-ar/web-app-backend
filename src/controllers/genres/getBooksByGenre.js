@@ -1,9 +1,4 @@
-const {
-  PublishedBook,
-  Book,
-  BookGenre,
-  BookSubgenre,
-} = require('../../models');
+const { PublishedBook, Book, BookGenre } = require('../../models/');
 
 const formatBooks = (books) =>
   books.map((book) => {
@@ -19,13 +14,10 @@ const formatBooks = (books) =>
     };
   });
 
-const getBooksByGenreWithSubgenres = async (id) => {
+const getBooksByGenre = async (id) => {
   try {
     const booksOfSpecificGenre = await BookGenre.findByPk(id, {
-      include: [
-        { model: Book, as: 'books' },
-        { model: BookSubgenre, as: 'subgenres' },
-      ],
+      include: [{ model: Book, as: 'books' }],
     });
 
     const publishedBooksByGenre = await PublishedBook.findAll({
@@ -48,7 +40,6 @@ const getBooksByGenreWithSubgenres = async (id) => {
     return {
       id: booksOfSpecificGenre.id,
       genre: booksOfSpecificGenre.name,
-      subgenre: booksOfSpecificGenre.subgenres.map((field) => field.name),
       books: formatBooks(publishedBooksByGenre.map((field) => field.book)),
     };
   } catch (error) {
@@ -56,4 +47,4 @@ const getBooksByGenreWithSubgenres = async (id) => {
   }
 };
 
-module.exports = getBooksByGenreWithSubgenres;
+module.exports = getBooksByGenre;
