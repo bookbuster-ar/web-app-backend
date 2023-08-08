@@ -1,39 +1,17 @@
-const { createBook } = require('../../controllers');
+const { createBook } = require('@controllers');
+const { validate: validateUUID } = require('uuid');
 
 const handleCreateBook = async (req, res) => {
   try {
-    const {
-      title,
-      author,
-      publication_year,
-      editorial_id,
-      editorial_name,
-      editorial_collection_id,
-      editorial_collection_name,
-      genres,
-      size,
-      pages,
-      subgenres,
-      synopsis,
-    } = req.body;
-
-    const { statusCode } = await createBook({
-      title,
-      author,
-      publication_year,
-      editorial_id,
-      editorial_name,
-      editorial_collection_id,
-      editorial_collection_name,
-      genres,
-      subgenres,
-      pages,
-      size,
-      synopsis,
+    const bookDataToCreate = {
+      ...req.body,
       images: req.files,
-    });
-    if (statusCode === 201) {
-      return res.sendStatus(statusCode);
+    };
+    const { id } = await createBook(bookDataToCreate);
+    if (id && validateUUID(id)) {
+      return res
+        .status(201)
+        .json({ created: { id }, message: 'El libro fue creado con éxito' });
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
