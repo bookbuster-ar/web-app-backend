@@ -1,7 +1,7 @@
-const validateBook = require('./validateBook');
+const bookValidator = require('./bookValidator');
 const validateImageFile = require('./validateImageFile');
 
 module.exports = {
-  validateBook,
+  bookValidator,
   validateImageFile,
 };
