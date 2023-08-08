@@ -1,4 +1,4 @@
-const { Book } = require('../../../models');
+const { Book } = require('@models');
 
 const createNewBook = async (
   bookInfo,

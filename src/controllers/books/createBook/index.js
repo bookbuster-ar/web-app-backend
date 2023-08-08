@@ -1,5 +1,5 @@
 // Sequelize
-const sequelize = require('../../../config/database');
+const sequelize = require('@config/database');
 
 // UUID
 const { v4: uuidv4 } = require('uuid');

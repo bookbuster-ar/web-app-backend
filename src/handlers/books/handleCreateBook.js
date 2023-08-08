@@ -1,4 +1,4 @@
-const { createBook } = require('../../controllers');
+const { createBook } = require('@controllers');
 
 const handleCreateBook = async (req, res) => {
   try {

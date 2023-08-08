@@ -1,5 +1,6 @@
-const cloudinary = require('../../../config/cloudinary');
-const { BookImage } = require('../../../models');
+const cloudinary = require('@config/cloudinary');
+const { BookImage } = require('@models');
+
 const { v4: uuidv4 } = require('uuid');
 
 const uploadImageToCloudinary = async (imageBuffer, newBookId) => {

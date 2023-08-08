@@ -1,4 +1,4 @@
-const { EditorialCollection } = require('../../../models');
+const { EditorialCollection } = require('@models');
 const { v4: uuidv4 } = require('uuid');
 
 const createEditorialCollection = async (

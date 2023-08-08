@@ -1,4 +1,4 @@
-const { BookDetail, BookToReview } = require('../../../models');
+const { BookDetail, BookToReview } = require('@models');
 const { v4: uuidv4 } = require('uuid');
 
 const createDependentBookEntities = async (bookInfo, transaction) => {

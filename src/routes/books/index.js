@@ -20,7 +20,7 @@ const {
 } = require('../../handlers');
 
 // Middlewares
-const { bookValidator, validateImageFile } = require('../../middlewares');
+const { bookValidator, validateImageFile } = require('@middlewares');
 
 bookRouter.get('/genre', handleGetBooksByGenre);
 bookRouter.get('/:id', handleGetBookById);
