@@ -1,28 +1,11 @@
-const { initializeApp } = require('firebase/app');
-const { getAuth } = require('firebase/auth');
+const admin = require('firebase-admin');
 
-const {
-  API_KEY,
-  AUTH_DOMAIN,
-  PROJECT_ID,
-  STORAGE_BUCKET,
-  MESSAGING_SENDER_ID,
-  APP_ID,
-  MEASUREMENT_ID,
-} = require('../utils/env');
+const serviceAccount = require('../../authentication-bookbuster-firebase.json');
 
-const firebaseConfig = {
-  apiKey: API_KEY,
-  authDomain: AUTH_DOMAIN,
-  projectId: PROJECT_ID,
-  storageBucket: STORAGE_BUCKET,
-  messagingSenderId: MESSAGING_SENDER_ID,
-  appId: APP_ID,
-  measurementId: MEASUREMENT_ID,
-};
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 
-const app = initializeApp(firebaseConfig);
+const auth = admin.auth();
 
-const auth = getAuth(app);
-
-module.exports = { app, auth };
+module.exports = { auth };
