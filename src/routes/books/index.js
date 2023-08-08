@@ -31,11 +31,6 @@ bookRouter.post(
   multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } }).fields(
     uploadFields
   ),
-  (req, res, next) => {
-    console.log(req.body);
-    console.log(req.files);
-    next();
-  },
   bookValidator,
   validateImageFile,
   handleCreateBook

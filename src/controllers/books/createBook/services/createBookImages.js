@@ -37,20 +37,21 @@ const uploadMultipleToCloudinary = async (imageList, bookId) => {
   return imageUrlList;
 };
 
-const prepareImageEntries = (imageUrlList, bookId) => {
-  return imageUrlList.map((imageUrl) => ({
-    id: uuidv4(),
-    book_id: bookId,
-    image: imageUrl,
-  }));
-};
-
 const createBookImages = async (bookInfo) => {
   const imageUrlList = await uploadMultipleToCloudinary(
     [...bookInfo.images.cover, ...bookInfo.images.extra],
     bookInfo.id
   );
   await BookImage.bulkCreate(prepareImageEntries(imageUrlList, bookInfo.id));
+};
+
+const prepareImageEntries = (imageUrlList, bookId) => {
+  return imageUrlList.map((imageUrl, index) => ({
+    id: uuidv4(),
+    book_id: bookId,
+    image: imageUrl,
+    is_cover: index === 0,
+  }));
 };
 
 module.exports = createBookImages;

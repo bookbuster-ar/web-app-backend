@@ -1,8 +1,6 @@
 const {
   createEditorial,
-  createEditorialCollection,
   createNewBook,
-  createDependentBookEntities,
   createBookImages,
 } = require('./services');
 
@@ -12,24 +10,14 @@ const sequelize = require('@config/database');
 const { v4: uuidv4 } = require('uuid');
 
 const createBook = async (bookInfo) => {
-  let editorialInstance, collectionInstance;
+  let editorialInstance;
   bookInfo.id = uuidv4();
 
   // Transacción 1
   const coreTransaction = await sequelize.transaction();
   try {
     editorialInstance = await createEditorial(bookInfo, coreTransaction);
-    collectionInstance = await createEditorialCollection(
-      bookInfo,
-      editorialInstance,
-      coreTransaction
-    );
-    await createNewBook(
-      bookInfo,
-      editorialInstance,
-      collectionInstance,
-      coreTransaction
-    );
+    await createNewBook(bookInfo, editorialInstance, coreTransaction);
 
     await coreTransaction.commit();
   } catch (error) {
@@ -41,7 +29,6 @@ const createBook = async (bookInfo) => {
   const secondaryTransaction = await sequelize.transaction();
   try {
     await createBookImages(bookInfo, secondaryTransaction);
-    await createDependentBookEntities(bookInfo, secondaryTransaction);
 
     await secondaryTransaction.commit();
   } catch (error) {
@@ -49,11 +36,7 @@ const createBook = async (bookInfo) => {
     await secondaryTransaction.rollback();
 
     // Limpieza
-    await cleanupAfterFailure(
-      bookInfo.id,
-      editorialInstance?.id,
-      collectionInstance?.id
-    );
+    await cleanupAfterFailure(bookInfo.id, editorialInstance?.id);
     throw error;
   }
 

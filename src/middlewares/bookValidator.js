@@ -2,6 +2,7 @@ const { validate: uuidValidate } = require('uuid');
 
 const bookValidator = (req, res, next) => {
   const { editorial_id, editorial_name, genres } = req.body;
+  console.log(req.body);
 
   const validator = {
     title: (value) =>
@@ -10,14 +11,6 @@ const bookValidator = (req, res, next) => {
       !!value && typeof value === 'string' && value.trim() !== '',
     publication_year: (value) =>
       !!value && typeof value === 'string' && value.trim() !== '',
-    synopsis: (value) =>
-      !!value && typeof value === 'string' && value.trim() !== '',
-    language: (value) =>
-      !!value && typeof value === 'string' && value.trim() !== '',
-    size: (value) =>
-      !!value && typeof value === 'string' && value.trim() !== '',
-    pages: (value) => !isNaN(value) && value % 1 === 0 && value > 0,
-    price: (value) => value && !isNaN(value),
   };
 
   const fieldErrorMessage = {};
@@ -30,11 +23,11 @@ const bookValidator = (req, res, next) => {
 
   const genreList = JSON.parse(genres);
 
-  if (!genreList || !Array.isArray(genreList) || genreList.length === 0) {
+  if (!Array.isArray(genreList) || genreList.length === 0) {
     fieldErrorMessage.genres = 'Al menos un género literario es requerido';
   }
 
-  if (genreList?.some((genre) => !uuidValidate(genre.id))) {
+  if (genreList?.some((genre) => !uuidValidate(genre))) {
     fieldErrorMessage.genres =
       'Al menos un género literario no es un UUID válido';
   }
