@@ -15,6 +15,9 @@ const getAllGenres = require('./getAllGenres');
 const getEditorials = require('./editorial/getEditorials');
 const getCollection = require('./editorial/getCollection');
 
+// Auth
+const registerUserWithEmail = require('./auth/registerUserWithEmail');
+
 module.exports = {
   // Books
   getAllBooks,
@@ -29,4 +32,7 @@ module.exports = {
   // Editorial
   getEditorials,
   getCollection,
+
+  // Auth
+  registerUserWithEmail,
 };

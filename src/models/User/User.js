@@ -20,18 +20,21 @@ const User = sequelize.define(
     },
     email: {
       type: DataTypes.STRING,
+      unique: true,
       // allowNull: false,
     },
-    password: {
-      type: DataTypes.STRING,
-      // allowNull: false,
+    email_verified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     suscription: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
       // allowNull: false,
     },
     date_of_register: {
       type: DataTypes.DATEONLY,
+      defaultValue: DataTypes.NOW,
       // allowNull: false,
     },
     is_blocked: {
@@ -41,6 +44,7 @@ const User = sequelize.define(
     },
     credit: {
       type: DataTypes.FLOAT,
+      defaultValue: 0,
       // allowNull: false,
     },
     is_inactive: {
