@@ -1,4 +1,4 @@
-const { Book, Editorial, EditorialCollection } = require('@models');
+const { Book, Editorial } = require('@models');
 
 const cleanupAfterFailure = async (bookId, editorialId) => {
   try {

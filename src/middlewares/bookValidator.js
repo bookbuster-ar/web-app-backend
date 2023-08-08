@@ -1,8 +1,7 @@
 const { validate: uuidValidate } = require('uuid');
 
 const bookValidator = (req, res, next) => {
-  const { editorial_id, editorial_name, genres } = req.body;
-  console.log(req.body);
+  const { editorial_id, editorial_name } = req.body;
 
   const validator = {
     title: (value) =>
@@ -20,17 +19,6 @@ const bookValidator = (req, res, next) => {
       fieldErrorMessage[field] = `Este campo no tiene un formato válido`;
     }
   });
-
-  const genreList = JSON.parse(genres);
-
-  if (!Array.isArray(genreList) || genreList.length === 0) {
-    fieldErrorMessage.genres = 'Al menos un género literario es requerido';
-  }
-
-  if (genreList?.some((genre) => !uuidValidate(genre))) {
-    fieldErrorMessage.genres =
-      'Al menos un género literario no es un UUID válido';
-  }
 
   if (editorial_id && editorial_name) {
     fieldErrorMessage.editorial = `Solo se debe proporcionar 'editorial_id' para referenciar a una editorial o el 'editorial_name' para crear una, no ambos`;
