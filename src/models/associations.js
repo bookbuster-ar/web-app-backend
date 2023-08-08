@@ -292,14 +292,26 @@ Models.Book.belongsToMany(Models.User, {
   as: 'reactions',
 });
 
-// BookGenre - BookSubGenre
+// BookGenre - BookSubgenre
 Models.BookSubgenre.belongsToMany(Models.BookGenre, {
-  through: Models.BookSubgenreInterm,
+  through: Models.GenreSubgenreInterm,
   foreignKey: 'book_subgenre_id',
   as: 'genres',
 });
 Models.BookGenre.belongsToMany(Models.BookSubgenre, {
-  through: Models.BookSubgenreInterm,
+  through: Models.GenreSubgenreInterm,
   foreignKey: 'book_genre_id',
   as: 'subgenres',
+});
+
+// Book - BookSubgenre
+Models.Book.belongsToMany(Models.BookSubgenre, {
+  through: Models.BookSubgenreInterm,
+  foreignKey: 'book_id',
+  as: 'subgenres',
+});
+Models.BookSubgenre.belongsToMany(Models.Book, {
+  through: Models.BookSubgenreInterm,
+  foreignKey: 'book_subgenre_id',
+  as: 'books',
 });

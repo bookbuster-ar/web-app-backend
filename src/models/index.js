@@ -41,5 +41,6 @@ module.exports = {
   BookShelfCategoryInterm: require('./Intermediate/BookShelfCategoryInterm'),
   TransactionDetail: require('./Intermediate/TransactionDetail'),
   Reaction: require('./Intermediate/Reaction'),
+  GenreSubgenreInterm: require('./Intermediate/GenreSubgenreInterm'),
   BookSubgenreInterm: require('./Intermediate/BookSubgenreInterm'),
 };

@@ -1,15 +1,17 @@
 const { validate } = require('uuid');
-const { getBooksByGenre } = require('../../controllers');
+const getBooksBySubgenre = require('../../controllers/genres/getBooksBySubgenre');
+const getBooksByGenreWithSubgenres = require('../../controllers/genres/getBooksByGenreWithSubgenres');
 
 const handleGetBooksByGenre = async (req, res) => {
-  const genreId = req.query.id;
+  const { genreId, subgenreId } = req.query;
   try {
-    if (genreId && validate(genreId)) {
-      const booksByGenre = await getBooksByGenre(genreId);
-      return res.status(200).json(booksByGenre);
-    }
+    let booksByGenre;
+    if (subgenreId && validate(subgenreId)) {
+      booksByGenre = await getBooksBySubgenre(genreId, subgenreId);
+    } else booksByGenre = await getBooksByGenreWithSubgenres(genreId);
+
     return res.status(200).json({
-      message: 'Provide a valid id (UUID)',
+      booksByGenre,
     });
   } catch (error) {
     return res.status(500).json({ error: error.message });
