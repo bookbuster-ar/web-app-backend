@@ -9,6 +9,7 @@ module.exports = {
   PublishedBook: require('./Book/PublishedBook'),
   BookToReview: require('./Book/BookToReview'),
   EditorialCollection: require('./Book/EditorialCollection'),
+  BookSubgenre: require('./Book/BookSubgenre'),
 
   // User
   User: require('./User/User'),
@@ -40,4 +41,5 @@ module.exports = {
   BookShelfCategoryInterm: require('./Intermediate/BookShelfCategoryInterm'),
   TransactionDetail: require('./Intermediate/TransactionDetail'),
   Reaction: require('./Intermediate/Reaction'),
+  BookSubgenreInterm: require('./Intermediate/BookSubgenreInterm'),
 };
