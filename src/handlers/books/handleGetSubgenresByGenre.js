@@ -1,4 +1,4 @@
-const getSubgenresByGenre = require('../../controllers');
+const {getSubgenresByGenre} = require('../../controllers');
 const { validate } = require('uuid');
 
 const handleGetSubgenresByGenre = async (req, res) => {
