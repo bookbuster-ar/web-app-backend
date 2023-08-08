@@ -7,12 +7,16 @@ const createBook = require('./books/createBook');
 
 // Genres
 
+const getBooksByGenre = require('./genres/getBooksByGenre');
+const getBooksBySubgenre = require('./genres/getBooksBySubgenre');
+const getSubgenresByGenre = require('./genres/getSubgenresByGenre');
 const getAllGenres = require('./genres/getAllGenres');
 
 // Editorial
 
 const getEditorials = require('./editorial/getEditorials');
 const getCollection = require('./editorial/getCollection');
+const getSubgenresByGenre = require('./genres/getSubgenresByGenre');
 
 module.exports = {
   // Books
@@ -23,6 +27,9 @@ module.exports = {
   createBook,
 
   // Genres
+  getBooksByGenre,
+  getBooksBySubgenre,
+  getSubgenresByGenre,
   getAllGenres,
 
   // Editorial
