@@ -16,7 +16,8 @@ const bookValidator = (req, res, next) => {
       !!value && typeof value === 'string' && value.trim() !== '',
     size: (value) =>
       !!value && typeof value === 'string' && value.trim() !== '',
-    pages: (value) => typeof value === 'number' && value % 1 === 0 && value > 0,
+    pages: (value) => !isNaN(value) && value % 1 === 0 && value > 0,
+    price: (value) => value && !isNaN(value),
   };
 
   const fieldErrorMessage = {};
@@ -27,11 +28,13 @@ const bookValidator = (req, res, next) => {
     }
   });
 
-  if (!genres || !Array.isArray(genres) || genres.length === 0) {
+  const genreList = JSON.parse(genres);
+
+  if (!genreList || !Array.isArray(genreList) || genreList.length === 0) {
     fieldErrorMessage.genres = 'Al menos un género literario es requerido';
   }
 
-  if (genres?.some((genre) => !uuidValidate(genre))) {
+  if (genreList?.some((genre) => !uuidValidate(genre.id))) {
     fieldErrorMessage.genres =
       'Al menos un género literario no es un UUID válido';
   }

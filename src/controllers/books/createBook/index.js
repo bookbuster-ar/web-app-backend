@@ -1,39 +1,64 @@
-// Sequelize
+const {
+  createEditorial,
+  createEditorialCollection,
+  createNewBook,
+  createDependentBookEntities,
+  createBookImages,
+} = require('./services');
+
+const { cleanupAfterFailure } = require('./cleanup');
 const sequelize = require('@config/database');
 
-// UUID
 const { v4: uuidv4 } = require('uuid');
 
-const createEditorial = require('./createEditorial');
-const createEditorialCollection = require('./createEditorialCollection');
-const createNewBook = require('./createNewBook');
-const createDependentBookEntities = require('./createDependentBookEntities');
-const createBookImages = require('./createBookImages');
-
 const createBook = async (bookInfo) => {
-  const transaction = await sequelize.transaction();
+  let editorialInstance, collectionInstance;
   bookInfo.id = uuidv4();
 
+  // Transacción 1
+  const coreTransaction = await sequelize.transaction();
   try {
-    const editorialInstance = await createEditorial(bookInfo, transaction);
-    const collectionInstance = await createEditorialCollection(
+    editorialInstance = await createEditorial(bookInfo, coreTransaction);
+    collectionInstance = await createEditorialCollection(
       bookInfo,
       editorialInstance,
-      transaction
+      coreTransaction
     );
     await createNewBook(
       bookInfo,
       editorialInstance,
       collectionInstance,
-      transaction
+      coreTransaction
     );
-    await createDependentBookEntities(bookInfo, transaction);
-    await transaction.commit();
-    await createBookImages(bookInfo);
+
+    await coreTransaction.commit();
   } catch (error) {
-    await transaction.rollback();
+    await coreTransaction.rollback();
     throw error;
   }
+
+  // Transacción 2
+  const secondaryTransaction = await sequelize.transaction();
+  try {
+    await createBookImages(bookInfo, secondaryTransaction);
+    await createDependentBookEntities(bookInfo, secondaryTransaction);
+
+    await secondaryTransaction.commit();
+  } catch (error) {
+    console.error(error);
+    await secondaryTransaction.rollback();
+
+    // Limpieza
+    await cleanupAfterFailure(
+      bookInfo.id,
+      editorialInstance?.id,
+      collectionInstance?.id
+    );
+    throw error;
+  }
+
+  // Retorno
+  return { id: bookInfo.id };
 };
 
 module.exports = createBook;

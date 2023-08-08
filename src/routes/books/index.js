@@ -3,10 +3,10 @@ const multer = require('multer');
 
 // Multer
 const storage = multer.memoryStorage();
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // Limitar a 5MB
-});
+const uploadFields = [
+  { name: 'cover', maxCount: 1 },
+  { name: 'extra', maxCount: 3 },
+];
 
 // Book Router
 const bookRouter = Router();
@@ -28,7 +28,14 @@ bookRouter.get('/', handleGetBooks);
 
 bookRouter.post(
   '/',
-  upload.array('images', 4),
+  multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } }).fields(
+    uploadFields
+  ),
+  (req, res, next) => {
+    console.log(req.body);
+    console.log(req.files);
+    next();
+  },
   bookValidator,
   validateImageFile,
   handleCreateBook

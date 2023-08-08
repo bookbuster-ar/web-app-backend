@@ -3,13 +3,13 @@ const { BookImage } = require('@models');
 
 const { v4: uuidv4 } = require('uuid');
 
-const uploadImageToCloudinary = async (imageBuffer, newBookId) => {
+const uploadImageToCloudinary = async (imageBuffer, bookId) => {
   try {
     return new Promise((resolve, reject) => {
       const streamLoad = cloudinary.uploader.upload_stream(
         {
           resource_type: 'image',
-          public_id: `book/${newBookId}/${uuidv4()}`,
+          public_id: `book/${bookId}/${uuidv4()}`,
         },
         (error, result) => {
           if (error) {
@@ -45,12 +45,12 @@ const prepareImageEntries = (imageUrlList, bookId) => {
   }));
 };
 
-const createBookImages = async (bookInfo, newBookId) => {
+const createBookImages = async (bookInfo) => {
   const imageUrlList = await uploadMultipleToCloudinary(
-    bookInfo.images,
-    newBookId
+    [...bookInfo.images.cover, ...bookInfo.images.extra],
+    bookInfo.id
   );
-  await BookImage.bulkCreate(prepareImageEntries(imageUrlList, newBookId));
+  await BookImage.bulkCreate(prepareImageEntries(imageUrlList, bookInfo.id));
 };
 
 module.exports = createBookImages;

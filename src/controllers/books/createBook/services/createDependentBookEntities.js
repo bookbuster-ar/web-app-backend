@@ -6,7 +6,7 @@ const createDependentBookEntities = async (bookInfo, transaction) => {
     BookDetail.create(
       {
         id: uuidv4(),
-        book_id: newBookId,
+        book_id: bookInfo.id,
         synopsis: bookInfo.synopsis,
         pages: bookInfo.pages,
         isbn: null,
