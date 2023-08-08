@@ -1,6 +1,15 @@
 const validateImageFile = (req, res, next) => {
-  const fileList = req.files;
-  const invalidFile = fileList.some((file) => !file.buffer);
+  const { cover, extra } = req.files;
+
+  const combinedFiles = [...cover, ...extra];
+
+  if (!combinedFiles || combinedFiles.length === 0) {
+    return res
+      .status(400)
+      .json({ error: 'No se han enviado ningún archivo de imagen' });
+  }
+
+  const invalidFile = combinedFiles.some((file) => !file.buffer);
 
   if (invalidFile) {
     return res
@@ -8,13 +17,13 @@ const validateImageFile = (req, res, next) => {
       .json({ error: 'Al menos un archivo no tiene un formato válido' });
   }
 
-  const validImageExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+  const validImageExtension = ['jpg', 'jpeg', 'png'];
 
-  const allImagesValid = fileList.every((file) =>
-    validImageExtensions.includes(file.mimetype.split('/')[1])
+  const validImages = combinedFiles.every((file) =>
+    validImageExtension.includes(file.mimetype.split('/')[1])
   );
 
-  if (!allImagesValid) {
+  if (!validImages) {
     return res.status(400).json({
       error: 'Algún archivo no es una imagen válida o está corrupto',
     });
