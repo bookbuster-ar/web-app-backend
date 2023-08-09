@@ -10,7 +10,7 @@ const BookImage = sequelize.define(
       defaultValue: DataTypes.UUIDV4,
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       // allowNull: false,
     },
     is_cover: {
