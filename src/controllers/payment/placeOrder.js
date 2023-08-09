@@ -1,5 +1,4 @@
 const mercadopago = require('../../config/mercadopago');
-const { FE_URL } = require('../../utils/env');
 
 const placeOrder = async (items) => {
   let preference = {
@@ -10,14 +9,13 @@ const placeOrder = async (items) => {
       currency_id: 'ARS',
       unit_price: item.price,
       condition: item.condition,
-      stock: item.stock,
       description: item.description,
       picture_url: item.image,
     })),
     back_urls: {
-      success: FE_URL,
-      failure: `${FE_URL}/payment/failure`,
-      pending: `${FE_URL}/payment/pending`,
+      success: 'http://localhost:3001/api/payment/success',
+      failure: 'http://localhost:3001/api/payment/failure',
+      pending: 'http://localhost:3001/api/payment/pending',
     },
   };
 

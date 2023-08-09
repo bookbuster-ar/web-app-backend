@@ -1,8 +1,13 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const paymentRouter = Router();
-const {handlePlaceOrder, handleSuccessfulPayment, handleFailurePayment, handlePendingPayment} = require('../../handlers');
+const {
+  handlePlaceOrder,
+  handleSuccessfulPayment,
+  handleFailurePayment,
+  handlePendingPayment,
+} = require('../../handlers');
 
-paymentRouter.get('/placeOrder', handlePlaceOrder);
+paymentRouter.post('/placeOrder', handlePlaceOrder);
 paymentRouter.get('/success', handleSuccessfulPayment);
 paymentRouter.get('/failure', handleFailurePayment);
 paymentRouter.get('/pending', handlePendingPayment);

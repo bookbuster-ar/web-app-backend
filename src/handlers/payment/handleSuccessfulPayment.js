@@ -1,14 +1,13 @@
-const handleSuccessfulPayment = async(req, res) => {
+const registerSuccessfulPayment = require('../../controllers/payment/registerSuccessfulPayment');
 
-    try{
-      
+const handleSuccessfulPayment = async (req, res) => {
+  try {
     console.log(req.query);
-    const result = await registerOrder(req.query);
+    const result = await registerSuccessfulPayment(req.query);
+    if (result.success) res.send(result.message);
+  } catch (error) {
+    res.status(500).send(result.error);
+  }
+};
 
-    res.send('pago con exito');
-    }catch(error){
-      res.status(500).json({error: error.message});
-    }
-  };
-  
-  module.exports = handleSuccessfulPayment;
+module.exports = handleSuccessfulPayment;
