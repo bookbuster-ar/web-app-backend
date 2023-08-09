@@ -1,6 +1,6 @@
-const { singInWithEmail } = require('@controllers');
+const { signInWithEmail } = require('@controllers');
 
-const handleSingInWithEmail = async (req, res) => {
+const handleSignInWithEmail = async (req, res) => {
   try {
     const { email, password } = req.body;
     const userData = await singInWithEmail({ email, password });
@@ -13,4 +13,4 @@ const handleSingInWithEmail = async (req, res) => {
   }
 };
 
-module.exports = handleSingInWithEmail;
+module.exports = handleSignInWithEmail;

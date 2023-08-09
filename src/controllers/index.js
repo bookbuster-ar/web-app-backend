@@ -19,7 +19,7 @@ const getCollection = require('./editorial/getCollection');
 const registerUserWithEmail = require('./auth/registerUserWithEmail');
 const verifyUserEmail = require('./auth/verifyUserEmail');
 
-const singInWithEmail = require('./auth/singInWithEmail');
+const signInWithEmail = require('./auth/signInWithEmail');
 
 module.exports = {
   // Books
@@ -39,5 +39,5 @@ module.exports = {
   // Auth
   registerUserWithEmail,
   verifyUserEmail,
-  singInWithEmail,
+  signInWithEmail,
 };
