@@ -84,4 +84,4 @@ pnpm-lock.yaml
 package-lock.json
 
 # Firebase Admin
-authentication-bookbuster-firebase.json
+auth-bookbuster.json

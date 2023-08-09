@@ -82,7 +82,7 @@ const registerUserWithEmail = async (userInfo) => {
       await deleteUser(auth, firebaseUser);
     }
 
-    throw new Error(error.message);
+    throw error;
   }
 };
 

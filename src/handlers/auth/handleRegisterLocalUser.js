@@ -9,12 +9,16 @@ const handleRegisterLocalUser = async (req, res) => {
       email,
       password,
     });
-    return res.status(201).json(registeredUser);
+    return res.status(201).json({
+      data: registeredUser,
+      message: 'El usuario fue registrado correctamente',
+    });
   } catch (error) {
     if (error.message === 'Ya existe un usuario con esa dirección de correo') {
-      return res.status(409).json({ error: error.message });
+      return res.status(409).json({ error: 'Error de registro' });
     }
-    return res.status(500).json({ error: error.message });
+    console.error(error);
+    return res.status(500).json({ error: 'Error interno del servidor' });
   }
 };
 

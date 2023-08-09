@@ -4,11 +4,11 @@ const authRouter = Router();
 const {
   handleRegisterLocalUser,
   handleVerifyEmail,
-  handleLoginLocal,
+  handleSingInWithEmail,
 } = require('@handlers');
 
 // Login
-authRouter.post('/login/local', handleLoginLocal);
+authRouter.post('/login/local', handleSingInWithEmail);
 
 authRouter.post('/login/google', (req, res) => {
   res.send('Ruta POST login google authentication');

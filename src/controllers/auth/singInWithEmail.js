@@ -8,12 +8,14 @@ const loginLocal = async (body) => {
     body.email,
     body.password
   );
-  const token = await userCredential.user.getIdToken();
 
-  const user = await User.findOne({
-    where: { email: body.email },
-    include: ['image', 'role'],
-  });
+  const [token, user] = Promise.all([
+    userCredential.user.getIdToken(),
+    User.findOne({
+      where: { email: body.email },
+      include: ['image', 'role'],
+    }),
+  ]);
 
   const [session, wasCreated] = await Session.findOrCreate({
     where: { session_token: token },
@@ -21,12 +23,11 @@ const loginLocal = async (body) => {
   });
 
   if (!wasCreated) {
-    throw Error('El usuario tiene una sesión activa');
+    throw Error('El usuario tiene ya una sesión activa');
   }
 
   const { role_id, image_id, ...formatedUser } = user.toJSON();
-
-  return { token, ...formatedUser };
+  return { token, user: { ...formatedUser } };
 };
 
 module.exports = loginLocal;
