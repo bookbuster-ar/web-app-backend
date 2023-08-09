@@ -15,10 +15,10 @@ const handleRegisterLocalUser = async (req, res) => {
     });
   } catch (error) {
     if (error.message === 'Ya existe un usuario con esa dirección de correo') {
-      return res.status(409).json({ error: 'Error de registro' });
+      return res.status(409).json({ error: error.message });
     }
     console.error(error);
-    return res.status(500).json({ error: 'Error interno del servidor' });
+    return res.status(500).json({ error: error.message });
   }
 };
 
