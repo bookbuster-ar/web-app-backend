@@ -1,6 +1,6 @@
 var admin = require('firebase-admin');
 
-var serviceAccount = require('../../auth-bookbuster.json');
+var serviceAccount = require('./credential/auth-bookbuster.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

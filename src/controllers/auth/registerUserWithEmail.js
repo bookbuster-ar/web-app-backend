@@ -1,11 +1,9 @@
+const { auth } = require('@config/firebase/client');
 const {
   createUserWithEmailAndPassword,
   sendEmailVerification,
   deleteUser,
 } = require('firebase/auth');
-
-const { auth } = require('@config/firebase');
-
 const { User, Role } = require('@models');
 const sequelize = require('@config/database');
 

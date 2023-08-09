@@ -1,8 +1,8 @@
-const { auth } = require('../../config/firebase');
+const { auth } = require('@config/firebase/client');
 const { signInWithEmailAndPassword } = require('firebase/auth');
-const { Session, User } = require('../../models/index');
+const { Session, User } = require('@models');
 
-const loginLocal = async (body) => {
+const singInWithEmail = async (body) => {
   const userCredential = await signInWithEmailAndPassword(
     auth,
     body.email,
@@ -30,4 +30,4 @@ const loginLocal = async (body) => {
   return { token, user: { ...formatedUser } };
 };
 
-module.exports = loginLocal;
+module.exports = singInWithEmail;

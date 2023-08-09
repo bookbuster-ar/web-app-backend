@@ -1,4 +1,4 @@
-const admin = require('@config/firebase-admin');
+const admin = require('@config/firebase/admin');
 const { User } = require('@models');
 
 const verifyUserMail = async (firebaseId) => {

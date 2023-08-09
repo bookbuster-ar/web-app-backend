@@ -8,7 +8,7 @@ const {
   STORAGE_BUCKET,
   MESSAGING_SENDER_ID,
   APP_ID,
-} = require('../utils/env');
+} = require('@utils/env');
 
 const firebaseConfig = {
   apiKey: API_KEY,
