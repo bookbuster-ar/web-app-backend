@@ -1,14 +1,16 @@
 // Books
 const getAllBooks = require('./books/getAllBooks');
 const getBookById = require('./books/getBookById');
-const getBooksByGenre = require('./books/getBooksByGenre');
 const getFilteredBooks = require('./books/getFilteredBooks');
 
 const createBook = require('./books/createBook');
 
 // Genres
 
-const getAllGenres = require('./getAllGenres');
+const getBooksByGenre = require('./genres/getBooksByGenre');
+const getBooksBySubgenre = require('./genres/getBooksBySubgenre');
+const getSubgenresByGenre = require('./genres/getSubgenresByGenre');
+const getAllGenres = require('./genres/getAllGenres');
 
 // Editorial
 
@@ -19,11 +21,13 @@ module.exports = {
   // Books
   getAllBooks,
   getBookById,
-  getBooksByGenre,
   getFilteredBooks,
   createBook,
 
   // Genres
+  getBooksByGenre,
+  getBooksBySubgenre,
+  getSubgenresByGenre,
   getAllGenres,
 
   // Editorial
