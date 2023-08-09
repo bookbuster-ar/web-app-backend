@@ -13,6 +13,12 @@ const handleGetGenres = require('./Genre/handleGetGenres');
 const handleGetEditorials = require('./editorial/handleGetEditorials');
 const handleGetCollection = require('./editorial/handleGetCollection');
 
+//Payment
+const handlePlaceOrder = require('./payment/handlePlaceOrder');
+const handleSuccessfulPayment = require('./payment/handleSuccessfulPayment');
+const handleFailurePayment = require('./payment/handleFailurePayment');
+const handlePendingPayment = require('./payment/handlePendingPayment');
+
 module.exports = {
   // Books
   handleGetBooks,
@@ -28,4 +34,11 @@ module.exports = {
   // Editorial
   handleGetEditorials,
   handleGetCollection,
+
+  //Payment 
+  handlePlaceOrder,
+  handleSuccessfulPayment,
+  handleFailurePayment,
+  handlePendingPayment
+  
 };
