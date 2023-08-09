@@ -1,4 +1,4 @@
-const { PublishedBook, Book, BookGenre } = require('../../models/');
+const { Book, BookGenre } = require('../../models/');
 
 const formatBooks = (books) =>
   books.map((book) => {
@@ -9,38 +9,31 @@ const formatBooks = (books) =>
       title: book.title,
       author: book.author,
       publication_year: book.publication_year,
-      editorial: book.editorial.name,
-      editorial_collection: book.editorial_collection.name,
+      editorial: book.editorial?.name ?? null,
+      editorial_collection: book.editorial_collection?.name ?? null,
     };
   });
 
 const getBooksByGenre = async (id) => {
   try {
-    const booksOfSpecificGenre = await BookGenre.findByPk(id, {
-      include: [{ model: Book, as: 'books' }],
-    });
-
-    const publishedBooksByGenre = await PublishedBook.findAll({
-      where: {
-        book_id: booksOfSpecificGenre.books.map((book) => book.id),
-      },
+    const genreMatched = await BookGenre.findByPk(id, {
       include: [
         {
           model: Book,
-          as: 'book',
+          as: 'books',
           include: ['images', 'editorial', 'editorial_collection'],
         },
       ],
     });
 
-    if (!publishedBooksByGenre) {
+    if (!genreMatched) {
       throw new Error('Genre not found');
     }
 
     return {
-      id: booksOfSpecificGenre.id,
-      genre: booksOfSpecificGenre.name,
-      books: formatBooks(publishedBooksByGenre.map((field) => field.book)),
+      id: genreMatched.id,
+      genre: genreMatched.name,
+      books: formatBooks(genreMatched.books),
     };
   } catch (error) {
     throw error;

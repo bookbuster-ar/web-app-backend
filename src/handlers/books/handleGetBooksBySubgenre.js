@@ -1,8 +1,8 @@
-const { getBooksBySubgenre } = require('../../controllers')
+const { getBooksBySubgenre } = require('../../controllers');
 const { validate } = require('uuid');
 
-const handleGetBooksBySubgenre= async (req, res) => {
-    const subgenreId = req.query.subgenreId;
+const handleGetBooksBySubgenre = async (req, res) => {
+  const subgenreId = req.query.id;
   try {
     if (subgenreId && validate(subgenreId)) {
       const books = await getBooksBySubgenre(subgenreId);
@@ -14,8 +14,6 @@ const handleGetBooksBySubgenre= async (req, res) => {
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
-    
-}
+};
 
 module.exports = handleGetBooksBySubgenre;
-

@@ -16,13 +16,11 @@ const getAllGenres = require('./genres/getAllGenres');
 
 const getEditorials = require('./editorial/getEditorials');
 const getCollection = require('./editorial/getCollection');
-const getSubgenresByGenre = require('./genres/getSubgenresByGenre');
 
 module.exports = {
   // Books
   getAllBooks,
   getBookById,
-  getBooksByGenreWithSubgenres,
   getFilteredBooks,
   createBook,
 
