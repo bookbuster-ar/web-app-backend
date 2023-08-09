@@ -6,7 +6,8 @@ const {
 } = require('../../models');
 
 const formatBooks = (books) =>
-  books?.map((book) => {
+  books?.map((publishedBook) => {
+    const book = publishedBook.book;
     const [cover, ...extra] = book.images?.map((image) => image.image);
     return {
       id: book.id,
@@ -52,7 +53,7 @@ const getBooksBySubgenre = async (subgenreId) => {
     return {
       id: subgenre.id,
       subgenre: subgenre.name,
-      books: formatBooks(publishedBooksBySubgenre.book),
+      books: formatBooks(publishedBooksBySubgenre),
     };
   } catch (error) {
     throw error;
