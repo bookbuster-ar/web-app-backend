@@ -13,6 +13,7 @@ const Session = sequelize.define(
     starting_date: {
       type: DataTypes.DATEONLY,
       // allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     last_connection: {
       type: DataTypes.DATEONLY,
@@ -26,7 +27,7 @@ const Session = sequelize.define(
       defaultValue: false,
     },
     session_token: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
   },
   { timestamps: false, freezeTableName: true }

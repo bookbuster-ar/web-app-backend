@@ -1,12 +1,14 @@
 const { Router } = require('express');
 const authRouter = Router();
 
-const { handleRegisterLocalUser, handleVerifyEmail } = require('@handlers');
+const {
+  handleRegisterLocalUser,
+  handleVerifyEmail,
+  handleLoginLocal,
+} = require('@handlers');
 
 // Login
-authRouter.post('/login/local', (req, res) => {
-  res.send('Ruta POST login local authentication');
-});
+authRouter.post('/login/local', handleLoginLocal);
 
 authRouter.post('/login/google', (req, res) => {
   res.send('Ruta POST login google authentication');
@@ -22,7 +24,7 @@ authRouter.post('/signup/google', (req, res) => {
 
 // Logout
 authRouter.post('/logout', (req, res) => {
-  res.send('Ruta POST logout authentication');
+  res.send('Ruta POST logout');
 });
 
 module.exports = authRouter;

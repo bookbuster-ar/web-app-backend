@@ -19,6 +19,8 @@ const getCollection = require('./editorial/getCollection');
 const registerUserWithEmail = require('./auth/registerUserWithEmail');
 const verifyUserEmail = require('./auth/verifyUserEmail');
 
+const loginLocal = require('./auth/loginLocal');
+
 module.exports = {
   // Books
   getAllBooks,
@@ -37,4 +39,5 @@ module.exports = {
   // Auth
   registerUserWithEmail,
   verifyUserEmail,
+  loginLocal,
 };
