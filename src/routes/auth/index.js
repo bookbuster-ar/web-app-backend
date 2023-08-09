@@ -5,7 +5,10 @@ const {
   handleRegisterLocalUser,
   handleVerifyEmail,
   handleSignInWithEmail,
+  handleLogOut,
 } = require('@handlers');
+
+const { validateUserRegistration } = require('@middlewares');
 
 // Login
 authRouter.post('/login/local', handleSignInWithEmail);
@@ -15,7 +18,11 @@ authRouter.post('/login/google', (req, res) => {
 });
 
 // Signup
-authRouter.post('/signup/local', handleRegisterLocalUser);
+authRouter.post(
+  '/signup/local',
+  validateUserRegistration,
+  handleRegisterLocalUser
+);
 authRouter.post('/verifyEmail', handleVerifyEmail);
 
 authRouter.post('/signup/google', (req, res) => {
@@ -23,8 +30,6 @@ authRouter.post('/signup/google', (req, res) => {
 });
 
 // Logout
-authRouter.post('/logout', (req, res) => {
-  res.send('Ruta POST logout');
-});
+authRouter.post('/logout', handleLogOut);
 
 module.exports = authRouter;

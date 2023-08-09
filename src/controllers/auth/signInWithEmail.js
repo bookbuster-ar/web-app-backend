@@ -3,6 +3,7 @@ const { signInWithEmailAndPassword } = require('firebase/auth');
 const { Session, User } = require('@models');
 
 const singInWithEmail = async (body) => {
+  // Recibo el session id y con eso valido
   const userCredential = await signInWithEmailAndPassword(
     auth,
     body.email,
@@ -27,7 +28,7 @@ const singInWithEmail = async (body) => {
   }
 
   const { role_id, image_id, ...formatedUser } = user.toJSON();
-  return { token, user: { ...formatedUser } };
+  return { session_id: session.id, token, user: { ...formatedUser } };
 };
 
 module.exports = singInWithEmail;

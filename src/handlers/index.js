@@ -16,6 +16,7 @@ const handleGetCollection = require('./editorial/handleGetCollection');
 const handleRegisterLocalUser = require('./auth/handleRegisterLocalUser');
 const handleVerifyEmail = require('./auth/handleVerifyEmail');
 const handleSignInWithEmail = require('./auth/handleSignInWithEmail');
+const handleLogOut = require('./auth/handleLogOut');
 
 module.exports = {
   // Books
@@ -35,4 +36,5 @@ module.exports = {
   handleRegisterLocalUser,
   handleVerifyEmail,
   handleSignInWithEmail,
+  handleLogOut,
 };
