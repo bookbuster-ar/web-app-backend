@@ -10,6 +10,9 @@ const User = sequelize.define(
       primaryKey: true,
       // allowNull: false,
     },
+    firebase_id: {
+      type: DataTypes.STRING,
+    },
     name: {
       type: DataTypes.STRING,
       // allowNull: false,

@@ -20,7 +20,6 @@ const createWhereClause = (columnName, value) => {
 const getFilteredBooks = async ({ title, author, search }) => {
   try {
     const whereClause = {};
-     console.log("title:",title, "author:",author, "search:",search);
     if (search) {
       whereClause[Op.or] = [
         createWhereClause('title', search),
@@ -61,6 +60,5 @@ const getFilteredBooks = async ({ title, author, search }) => {
     throw error;
   }
 };
-
 
 module.exports = getFilteredBooks;
