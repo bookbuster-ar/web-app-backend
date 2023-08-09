@@ -15,6 +15,11 @@ const getAllGenres = require('./getAllGenres');
 const getEditorials = require('./editorial/getEditorials');
 const getCollection = require('./editorial/getCollection');
 
+// Auth
+
+const loginLocal = require('./auth/loginLocal');
+const logOut = require('./auth/logOut');
+
 module.exports = {
   // Books
   getAllBooks,
@@ -29,4 +34,8 @@ module.exports = {
   // Editorial
   getEditorials,
   getCollection,
+
+  // Auth
+  loginLocal,
+  logOut,
 };

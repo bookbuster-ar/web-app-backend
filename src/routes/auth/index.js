@@ -1,10 +1,10 @@
 const { Router } = require('express');
 const authRouter = Router();
 
+const { handleLoginLocal, handleLogOut } = require('../../handlers/index');
+
 // Login
-authRouter.post('/login/local', (req, res) => {
-  res.send('Ruta POST login local authentication');
-});
+authRouter.post('/login/local', handleLoginLocal);
 
 authRouter.post('/login/google', (req, res) => {
   res.send('Ruta POST login google authentication');
@@ -20,8 +20,6 @@ authRouter.post('/signup/google', (req, res) => {
 });
 
 // Logout
-authRouter.post('/logout', (req, res) => {
-  res.send('Ruta POST logout authentication');
-});
+authRouter.post('/logout', handleLogOut);
 
 module.exports = authRouter;

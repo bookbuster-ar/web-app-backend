@@ -12,6 +12,10 @@ const handleGetGenres = require('./handleGetGenres');
 const handleGetEditorials = require('./editorial/handleGetEditorials');
 const handleGetCollection = require('./editorial/handleGetCollection');
 
+// Auth
+const handleLoginLocal = require('./auth/handleLoginLocal');
+const handleLogOut = require('./auth/handleLogOut');
+
 module.exports = {
   // Books
   handleGetBooks,
@@ -25,4 +29,8 @@ module.exports = {
   // Editorial
   handleGetEditorials,
   handleGetCollection,
+
+  // Auth
+  handleLoginLocal,
+  handleLogOut,
 };
