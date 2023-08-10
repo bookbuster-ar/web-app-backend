@@ -1,4 +1,4 @@
-const { registerUserWithEmail } = require('@controllers');
+const { registerUserWithEmail } = require('../../controllers/index');
 
 const handleRegisterLocalUser = async (req, res) => {
   try {

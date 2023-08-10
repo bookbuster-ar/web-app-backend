@@ -1,4 +1,4 @@
-const { createBook } = require('@controllers');
+const { createBook } = require('../../controllers/index');
 const { validate: validateUUID } = require('uuid');
 
 const handleCreateBook = async (req, res) => {

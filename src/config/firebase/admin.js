@@ -11,7 +11,7 @@ const {
   FIREBASE_TOKEN_URI,
   FIREBASE_PROVIDER_CERT_URL,
   FIREBASE_CLEINT_CERT_URL,
-} = require('@utils/env');
+} = require('../../utils/env');
 
 admin.initializeApp({
   credential: admin.credential.cert({

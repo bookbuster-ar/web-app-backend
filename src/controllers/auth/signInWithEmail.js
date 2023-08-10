@@ -1,6 +1,6 @@
-const { auth } = require('@config/firebase/client');
+const { auth } = require('../../config/firebase/client');
 const { signInWithEmailAndPassword } = require('firebase/auth');
-const { Session, User } = require('@models');
+const { Session, User } = require('../../models/index');
 
 const singInWithEmail = async ({ email, password }) => {
   const user = await User.findOne({

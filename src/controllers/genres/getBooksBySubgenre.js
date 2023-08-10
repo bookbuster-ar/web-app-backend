@@ -1,4 +1,4 @@
-const { PublishedBook, Book, BookSubgenre } = require('@models');
+const { PublishedBook, Book, BookSubgenre } = require('../../models/index');
 
 const formatBooks = (books) =>
   books?.map((publishedBook) => {

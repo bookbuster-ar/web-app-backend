@@ -1,4 +1,4 @@
-const { getBooksBySubgenre } = require('@controllers');
+const { getBooksBySubgenre } = require('../../controllers/index');
 const { validate } = require('uuid');
 
 const handleGetBooksBySubgenre = async (req, res) => {

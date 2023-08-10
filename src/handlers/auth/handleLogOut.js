@@ -1,4 +1,4 @@
-const { logOut } = require('@controllers');
+const { logOut } = require('../../controllers/index');
 
 const handleLogOut = async (req, res) => {
   try {

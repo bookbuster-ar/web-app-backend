@@ -1,4 +1,4 @@
-const { Session } = require('@models');
+const { Session } = require('../../models/index');
 
 const logOut = async (sessionId) => {
   const activeSession = await Session.findByPk(sessionId);

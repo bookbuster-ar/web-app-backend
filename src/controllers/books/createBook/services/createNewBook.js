@@ -1,4 +1,4 @@
-const { Book, BookToReview } = require('@models');
+const { Book, BookToReview } = require('../../../../models/index');
 const { v4: uuidv4 } = require('uuid');
 
 const createNewBook = async (bookInfo, editorialInstance, transaction) => {

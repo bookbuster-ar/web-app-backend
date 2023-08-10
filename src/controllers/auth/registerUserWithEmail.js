@@ -1,4 +1,4 @@
-const { auth } = require('@config/firebase/client');
+const { auth } = require('../../config/firebase/client');
 const {
   createUserWithEmailAndPassword,
   sendEmailVerification,

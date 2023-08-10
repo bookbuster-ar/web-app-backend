@@ -1,4 +1,4 @@
-const { verifyUserEmail } = require('@controllers');
+const { verifyUserEmail } = require('../../controllers/index');
 
 const handleVerifyEmail = async (req, res) => {
   const { userId } = req.body;

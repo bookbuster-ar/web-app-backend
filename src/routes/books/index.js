@@ -20,10 +20,10 @@ const {
   handleGetSubgenresByGenre,
   handleGetBooksBySubgenre,
   handleGetBookSubgenres,
-} = require('../../handlers');
+} = require('../../handlers/index');
 
 // Middlewares
-const { bookValidator, validateImageFile } = require('@middlewares');
+const { bookValidator, validateImageFile } = require('../../middlewares/index');
 
 bookRouter.get('/genre', handleGetBooksByGenre);
 bookRouter.get('/subgenres', handleGetBookSubgenres);

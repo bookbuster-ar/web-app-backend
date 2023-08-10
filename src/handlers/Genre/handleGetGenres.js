@@ -1,4 +1,4 @@
-const { getAllGenres } = require('@controllers');
+const { getAllGenres } = require('../../controllers/index');
 
 const handleGetGenres = async (req, res) => {
   try {

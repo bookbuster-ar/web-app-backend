@@ -1,4 +1,4 @@
-const { signInWithEmail } = require('@controllers');
+const { signInWithEmail } = require('../../controllers/index');
 
 const handleSignInWithEmail = async (req, res) => {
   try {

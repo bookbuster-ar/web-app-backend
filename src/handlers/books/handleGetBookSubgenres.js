@@ -1,5 +1,5 @@
 const { validate } = require('uuid');
-const { getBookSubgenres } = require('@controllers');
+const { getBookSubgenres } = require('../../controllers/index');
 
 const handleGetSubgenresByBook = async (req, res) => {
   const bookId = req.query.id;

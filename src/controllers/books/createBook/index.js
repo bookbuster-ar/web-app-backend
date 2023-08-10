@@ -5,7 +5,7 @@ const {
 } = require('./services');
 
 const { cleanupAfterFailure } = require('./cleanup');
-const sequelize = require('@config/database');
+const sequelize = require('../../../config/database');
 
 const { v4: uuidv4 } = require('uuid');
 
