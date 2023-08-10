@@ -1,4 +1,4 @@
-const { PublishedBook, Book } = require('../../models/');
+const { PublishedBook, Book } = require('@models');
 const { Op, Sequelize } = require('sequelize');
 
 const normalizeAndLowerCase = (input) => {

@@ -1,4 +1,4 @@
-const { Book, BookDetail } = require('../../models/index');
+const { Book, BookDetail } = require('@models');
 
 const getBookDetail = async (id) => {
   return BookDetail.findOne({ where: { book_id: id } });
