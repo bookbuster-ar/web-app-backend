@@ -8,8 +8,8 @@ const handleGetBooksByGenre = async (req, res) => {
       const booksByGenre = await getBooksByGenre(genreId);
       return res.status(200).json(booksByGenre);
     }
-    return res.status(200).json({
-      message: 'Provide a valid id (UUID)',
+    return res.status(400).json({
+      message: 'Proporcione una identificacion valida (UUID)',
     });
   } catch (error) {
     return res.status(500).json({ error: error.message });

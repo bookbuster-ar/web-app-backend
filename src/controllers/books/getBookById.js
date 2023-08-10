@@ -1,4 +1,4 @@
-const { Book, BookDetail } = require('../../models/index');
+const { Book, BookDetail } = require('@models');
 
 const getBookDetail = async (id) => {
   return BookDetail.findOne({ where: { book_id: id } });
@@ -20,14 +20,21 @@ const getBookById = async (id) => {
     ...bookBasicInfo.toJSON(),
     ...bookDetail.toJSON(),
   };
-  const [cover, ...extra] = completeBookInfo.images.map((image) => image.image);
+
+  const cover = completeBookInfo.images.find(
+    (image) => image.is_cover === true
+  );
+
+  const extra = completeBookInfo.images
+    .filter((image) => image.is_cover !== true)
+    .map((image) => image.image);
 
   return {
     id: completeBookInfo.id,
     title: completeBookInfo.title,
     author: completeBookInfo.author,
     publication_year: completeBookInfo.publication_year,
-    images: { cover, extra },
+    images: { cover: cover?.image, extra },
     editorial: completeBookInfo.editorial.name,
     editorial_collection: completeBookInfo.editorial_collection.name,
     genres: completeBookInfo.genres.map((genre) => genre.name),

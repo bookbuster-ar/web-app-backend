@@ -1,4 +1,4 @@
-const { Book } = require('../../models/');
+const { PublishedBook, Book } = require('@models');
 const { Op, Sequelize } = require('sequelize');
 
 const normalizeAndLowerCase = (input) => {
@@ -17,33 +17,43 @@ const createWhereClause = (columnName, value) => {
   );
 };
 
-const getFilteredBooks = async ({ title, author }) => {
+const getFilteredBooks = async ({ title, author, search }) => {
   try {
     const whereClause = {};
+    if (search) {
+      whereClause[Op.or] = [
+        createWhereClause('title', search),
+        createWhereClause('author', search),
+      ];
+    } else {
+      if (title) {
+        whereClause.title = createWhereClause('title', title);
+      }
 
-    if (title) {
-      whereClause.title = createWhereClause('title', title);
+      if (author) {
+        whereClause.author = createWhereClause('author', author);
+      }
     }
 
-    if (author) {
-      whereClause.author = createWhereClause('author', author);
-    }
-
-    const filteredBooks = await Book.findAll({
+    const filteredBooks = await PublishedBook.findAll({
       where: whereClause,
-      include: ['images', 'editorial_collection', 'editorial'],
+      include: {
+        model: Book,
+        as: 'book',
+        include: ['images', 'editorial', 'editorial_collection'],
+      },
     });
 
-    return filteredBooks.map((book) => {
-      const [cover, ...extra] = book.images.map((image) => image.image);
+    return filteredBooks.map((field) => {
+      const cover = field.book.images.find((image) => image.is_cover === true);
       return {
-        id: book.id,
-        images: { cover, extra },
-        title: book.title,
-        author: book.author,
-        publication_year: book.publication_year,
-        editorial: book.editorial.name,
-        editorial_collection: book.editorial_collection.name,
+        id: field.book.id,
+        images: { cover: cover.image },
+        title: field.book.title,
+        author: field.book.author,
+        publication_year: field.book.publication_year,
+        editorial_collection: field.book.editorial_collection.name,
+        editorial: field.book.editorial.name,
       };
     });
   } catch (error) {

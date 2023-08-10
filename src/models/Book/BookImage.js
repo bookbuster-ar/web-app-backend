@@ -13,6 +13,10 @@ const BookImage = sequelize.define(
       type: DataTypes.STRING,
       // allowNull: false,
     },
+    is_cover: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   { timestamps: false, freezeTableName: true }
 );
