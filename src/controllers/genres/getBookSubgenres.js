@@ -1,24 +1,27 @@
 const { PublishedBook, Book, BookSubgenre } = require('@models');
 
-const getBookSubgenres = async (bookId) => {
+const getBookSubgenres = async (publishedBookId) => {
   try {
-    const publishedBooksWithSubgenres = await PublishedBook.findByPk(bookId, {
-      include: [
-        {
-          model: Book,
-          as: 'book',
-          include: [{ model: BookSubgenre, as: 'subgenres' }],
-        },
-      ],
-    });
+    const publishedBookWithSubgenres = await PublishedBook.findByPk(
+      publishedBookId,
+      {
+        include: [
+          {
+            model: Book,
+            as: 'book',
+            include: [{ model: BookSubgenre, as: 'subgenres' }],
+          },
+        ],
+      }
+    );
 
-    if (!publishedBooksWithSubgenres) {
+    if (!publishedBookWithSubgenres) {
       throw new Error('El libro no tiene ningún subgénero');
     }
 
-    const { subgenres } = publishedBooksWithSubgenres;
+    const { book } = publishedBookWithSubgenres;
 
-    return subgenres;
+    return { subgenres: book.subgenres };
   } catch (error) {
     throw error;
   }
