@@ -20,6 +20,12 @@ const handleVerifyEmail = require('./auth/handleVerifyEmail');
 const handleSignInWithEmail = require('./auth/handleSignInWithEmail');
 const handleLogOut = require('./auth/handleLogOut');
 
+//Payment
+const handlePlaceOrder = require('./payment/handlePlaceOrder');
+const handleSuccessfulPayment = require('./payment/handleSuccessfulPayment');
+const handleFailurePayment = require('./payment/handleFailurePayment');
+const handlePendingPayment = require('./payment/handlePendingPayment');
+
 module.exports = {
   // Books
   handleGetBooks,

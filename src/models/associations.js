@@ -167,24 +167,24 @@ Models.PublishedBook.belongsTo(Models.Book, {
   as: 'book',
 });
 
-//* Book-SaleStock
-Models.Book.hasOne(Models.SaleStock, {
-  foreignKey: 'book_id',
+//* PublishedBook-SaleStock
+Models.PublishedBook.hasOne(Models.SaleStock, {
+  foreignKey: 'published_book_id',
   as: 'sale_stock',
 });
-Models.SaleStock.belongsTo(Models.Book, {
-  foreignKey: 'book_id',
-  as: 'book',
+Models.SaleStock.belongsTo(Models.PublishedBook, {
+  foreignKey: 'published_book_id',
+  as: 'published_book',
 });
 
 //* Book-RentStock
-Models.Book.hasOne(Models.RentStock, {
-  foreignKey: 'book_id',
+Models.PublishedBook.hasOne(Models.RentStock, {
+  foreignKey: 'published_book_id',
   as: 'rent_stock',
 });
-Models.RentStock.belongsTo(Models.Book, {
-  foreignKey: 'book_id',
-  as: 'book',
+Models.RentStock.belongsTo(Models.PublishedBook, {
+  foreignKey: 'published_book_id',
+  as: 'published_book',
 });
 
 //! EditorialCollection
