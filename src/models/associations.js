@@ -190,13 +190,15 @@ Models.RentStock.belongsTo(Models.Book, {
 //! EditorialCollection
 
 //* EditorialCollection-Book
-Models.EditorialCollection.hasMany(Models.Book, {
-  foreignKey: 'editorial_collection_id',
-  as: 'books',
-});
+
 Models.Book.belongsTo(Models.EditorialCollection, {
   foreignKey: 'editorial_collection_id',
   as: 'editorial_collection',
+});
+
+Models.EditorialCollection.hasMany(Models.Book, {
+  foreignKey: 'editorial_collection_id',
+  as: 'books',
 });
 
 //! Editorial

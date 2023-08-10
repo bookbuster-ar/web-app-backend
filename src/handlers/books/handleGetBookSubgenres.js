@@ -10,7 +10,7 @@ const handleGetSubgenresByBook = async (req, res) => {
       return res.status(200).json(subgenres);
     }
     return res.status(400).json({
-      message: 'Proporcione una identificación válida (UUID)',
+      message: 'Proporcione una identificación de libro válida (UUID)',
     });
   } catch (error) {
     return res.status(500).json({ error: error.message });

@@ -45,10 +45,10 @@ const getFilteredBooks = async ({ title, author, search }) => {
     });
 
     return filteredBooks.map((field) => {
-      const [cover, ...extra] = field.book.images.map((image) => image.image);
+      const cover = field.book.images.find((image) => image.is_cover === true);
       return {
         id: field.book.id,
-        images: { cover, extra },
+        images: { cover: cover.image },
         title: field.book.title,
         author: field.book.author,
         publication_year: field.book.publication_year,
