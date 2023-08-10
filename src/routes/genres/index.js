@@ -5,4 +5,5 @@ const { handleGetGenres } = require('../../handlers');
 
 genresRouter.get('/', handleGetGenres);
 
+
 module.exports = genresRouter;

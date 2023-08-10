@@ -82,3 +82,6 @@ jspm_packages/
 # package-lock.json
 pnpm-lock.yaml
 package-lock.json
+
+# Firebase Admin
+auth-bookbuster.json
