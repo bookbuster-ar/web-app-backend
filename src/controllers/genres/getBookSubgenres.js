@@ -9,7 +9,12 @@ const getBookSubgenres = async (publishedBookId) => {
           {
             model: Book,
             as: 'book',
-            include: [{ model: BookSubgenre, as: 'subgenres' }],
+            include: [
+              {
+                model: BookSubgenre,
+                as: 'subgenres',
+              },
+            ],
           },
         ],
       }
@@ -21,7 +26,12 @@ const getBookSubgenres = async (publishedBookId) => {
 
     const { book } = publishedBookWithSubgenres;
 
-    return { subgenres: book.subgenres };
+    const filteredSubgenres = book.subgenres.map((subgenre) => ({
+      id: subgenre.id,
+      name: subgenre.name,
+    }));
+
+    return { subgenres: filteredSubgenres };
   } catch (error) {
     throw error;
   }
