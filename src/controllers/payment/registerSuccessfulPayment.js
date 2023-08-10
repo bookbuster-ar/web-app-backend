@@ -7,8 +7,13 @@ const registerSuccessfulPayment = async (paymentData) => {
     const { payment_id, status, payment_type, external_reference } =
       paymentData;
     console.log(external_reference);
-    const bookIds = external_reference.split(',');
+    const bookIds = JSON.parse(external_reference);
     console.log(bookIds);
+
+    let totalAmount = 0;
+    for (const book of bookIds) {
+      totalAmount += book.quantity * book.unit_price;
+    }
 
     let paymentMethod = await Models.PaymentMethod.findOne({
       where: { name: payment_type },
@@ -22,12 +27,15 @@ const registerSuccessfulPayment = async (paymentData) => {
       transaction_date: date,
       transaction_status: status,
       payment_method_id: paymentMethod.id,
+      total_amount: totalAmount,
     });
 
     for (const bookId of bookIds) {
-      await Models.SaleStock.destroy({
-        where: { published_book_id: bookId },
-      });
+      await Models.SaleStock.decrement(
+        'stock',
+        { by: bookId.quantity },
+        { where: { published_book_id: book.id } }
+      );
     }
 
     return { success: true, message: 'Pago registrado con éxito' };

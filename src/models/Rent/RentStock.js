@@ -13,6 +13,9 @@ const RentStock = sequelize.define(
       type: DataTypes.INTEGER,
       // allowNull: false,
     },
+    stock: {
+      type: DataTypes.INTEGER,
+    },
   },
   { timestamps: false, freezeTableName: true }
 );
