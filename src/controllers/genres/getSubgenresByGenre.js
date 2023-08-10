@@ -1,4 +1,4 @@
-const { BookGenre, BookSubgenre } = require('../../models');
+const { BookGenre, BookSubgenre } = require('@models');
 
 const getSubgenresByGenre = async (genreId) => {
   try {

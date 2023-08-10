@@ -1,9 +1,4 @@
-const {
-  PublishedBook,
-  Book,
-  BookGenre,
-  BookSubgenre,
-} = require('../../models');
+const { PublishedBook, Book, BookSubgenre } = require('@models');
 
 const formatBooks = (books) =>
   books?.map((publishedBook) => {
@@ -48,7 +43,6 @@ const getBooksBySubgenre = async (subgenreId) => {
         },
       ],
     });
-    console.log(publishedBooksBySubgenre);
 
     return {
       id: subgenre.id,

@@ -1,12 +1,12 @@
-const { getBooksBySubgenre } = require('../../controllers');
+const { getBooksBySubgenre } = require('@controllers');
 const { validate } = require('uuid');
 
 const handleGetBooksBySubgenre = async (req, res) => {
   const subgenreId = req.query.id;
   try {
     if (subgenreId && validate(subgenreId)) {
-      const books = await getBooksBySubgenre(subgenreId);
-      return res.status(200).json(books);
+      const booksBySubgenre = await getBooksBySubgenre(subgenreId);
+      return res.status(200).json(booksBySubgenre);
     }
     return res.status(200).json({
       message: 'Proporcione una identificación válida (UUID)',

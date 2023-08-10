@@ -19,14 +19,14 @@ const {
   handleCreateBook,
   handleGetSubgenresByGenre,
   handleGetBooksBySubgenre,
-  handleGetSubgenresByBook
+  handleGetBookSubgenres,
 } = require('../../handlers');
 
 // Middlewares
 const { bookValidator, validateImageFile } = require('@middlewares');
 
 bookRouter.get('/genre', handleGetBooksByGenre);
-bookRouter.get('/subgenres' , handleGetSubgenresByBook )
+bookRouter.get('/subgenres', handleGetBookSubgenres);
 bookRouter.get('/genre/subgenres', handleGetSubgenresByGenre);
 bookRouter.get('/subgenre', handleGetBooksBySubgenre);
 bookRouter.get('/:id', handleGetBookById);
