@@ -9,6 +9,9 @@ const SaleStock = sequelize.define(
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
+    stock: {
+      type: DataTypes.INTEGER,
+    },
   },
   { timestamps: false, freezeTableName: true }
 );

@@ -1,7 +1,11 @@
 const mercadopago = require('../../config/mercadopago');
 
 const placeOrder = async (items) => {
-  const itemIds = items.map((item) => item.id);
+  const itemIds = items.map((item) => ({
+    id: item.id,
+    quantity: item.quantity,
+    unit_price: item.price,
+  }));
   let preference = {
     items: items.map((item) => ({
       id: item.id,
@@ -13,7 +17,8 @@ const placeOrder = async (items) => {
       description: item.description,
       picture_url: item.image,
     })),
-    external_reference: itemIds.join(','),
+    external_reference: JSON.stringify(itemIds),
+
     back_urls: {
       success: 'http://localhost:3001/api/payment/success',
       failure: 'http://localhost:3001/api/payment/failure',
