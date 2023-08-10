@@ -18,7 +18,7 @@ const getAllBooks = async () => {
         title: field.book.title,
         author: field.book.author,
         publication_year: field.book.publication_year,
-        editorial_collection: field.book.editorial_collection.name,
+        editorial_collection: field.book.editorial_collection?.name,
         editorial: field.book.editorial.name,
       };
     });
