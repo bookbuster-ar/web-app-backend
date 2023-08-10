@@ -11,7 +11,7 @@ const getBooksByGenre = require('./genres/getBooksByGenre');
 const getBooksBySubgenre = require('./genres/getBooksBySubgenre');
 const getSubgenresByGenre = require('./genres/getSubgenresByGenre');
 const getAllGenres = require('./genres/getAllGenres');
-
+const getSubgenresByBook = require('./genres/getSubgenresByBook');
 // Editorial
 
 const getEditorials = require('./editorial/getEditorials');
@@ -35,6 +35,7 @@ module.exports = {
   getBooksBySubgenre,
   getSubgenresByGenre,
   getAllGenres,
+  getSubgenresByBook,
 
   // Editorial
   getEditorials,
