@@ -4,7 +4,11 @@ const moment = require('moment');
 const registerSuccessfulPayment = async (paymentData) => {
   const date = moment().format('YYYY-MM-DD');
   try {
-    const { payment_id, status, payment_type } = paymentData;
+    const { payment_id, status, payment_type, external_reference } =
+      paymentData;
+    console.log(external_reference);
+    const bookIds = external_reference.split(',');
+    console.log(bookIds);
 
     let paymentMethod = await Models.PaymentMethod.findOne({
       where: { name: payment_type },
@@ -17,7 +21,14 @@ const registerSuccessfulPayment = async (paymentData) => {
       mercadopago_transaction_id: payment_id,
       transaction_date: date,
       transaction_status: status,
+      payment_method_id: paymentMethod.id,
     });
+
+    for (const bookId of bookIds) {
+      await Models.SaleStock.destroy({
+        where: { published_book_id: bookId },
+      });
+    }
 
     return { success: true, message: 'Pago registrado con éxito' };
   } catch (error) {
