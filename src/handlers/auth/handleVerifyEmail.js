@@ -1,14 +1,21 @@
 const { verifyUserEmail } = require('@controllers');
 
 const handleVerifyEmail = async (req, res) => {
-  const { firebaseId } = req.body;
+  const { userId } = req.body;
   try {
-    const updatedEmailStatus = await verifyUserEmail(firebaseId);
+    if (!userId) {
+      return res.status(400).json({
+        error:
+          'Es necesario proporcionar el ID del usuario para validar su mail',
+      });
+    }
 
-    if (updatedEmailStatus) {
+    const userUpated = await verifyUserEmail(userId);
+
+    if (userUpated) {
       res
         .status(201)
-        .json({ data: null, message: 'E-mail verificado con éxito' });
+        .json({ data: userUpated, message: 'E-mail verificado con éxito' });
     }
   } catch (error) {
     let statusCode = 500;

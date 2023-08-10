@@ -2,33 +2,44 @@ const { auth } = require('@config/firebase/client');
 const { signInWithEmailAndPassword } = require('firebase/auth');
 const { Session, User } = require('@models');
 
-const singInWithEmail = async (body) => {
-  // Recibo el session id y con eso valido
+const singInWithEmail = async ({ email, password }) => {
+  const user = await User.findOne({
+    where: { email: email },
+    include: ['image', 'role'],
+  });
+
+  if (!user) {
+    throw new Error('El usuario no está registrado');
+  }
   const userCredential = await signInWithEmailAndPassword(
     auth,
-    body.email,
-    body.password
+    email,
+    password
   );
 
-  const [token, user] = Promise.all([
+  const [token, activeUser] = await Promise.all([
     userCredential.user.getIdToken(),
     User.findOne({
-      where: { email: body.email },
+      where: { email: email },
       include: ['image', 'role'],
     }),
   ]);
 
   const [session, wasCreated] = await Session.findOrCreate({
-    where: { session_token: token },
-    defaults: { session_status: true, session_token: token, user_id: user.id },
+    where: { user_id: activeUser.id, session_status: true },
+    defaults: {
+      session_status: true,
+      user_id: activeUser.id,
+    },
   });
 
   if (!wasCreated) {
     throw Error('El usuario tiene ya una sesión activa');
   }
 
-  const { role_id, image_id, ...formatedUser } = user.toJSON();
-  return { session_id: session.id, token, user: { ...formatedUser } };
+  const { role_id, image_id, firebase_id, ...formatedUser } =
+    activeUser.toJSON();
+  return { session_id: session.id, user: { ...formatedUser } };
 };
 
 module.exports = singInWithEmail;

@@ -1,23 +1,32 @@
 const admin = require('@config/firebase/admin');
 const { User } = require('@models');
 
-const verifyUserMail = async (firebaseId) => {
+const verifyUserMail = async (userId) => {
   try {
-    const userToUpdate = await User.findOne({
-      where: { firebase_id: firebaseId },
+    const user = await User.findOne({
+      where: { id: userId },
     });
-    if (!userToUpdate) {
+    if (!user) {
       throw new Error('Usuario no encontrado');
     }
 
-    if (userToUpdate.email_verified) {
+    if (user.email_verified) {
       throw new Error('El mail del usuario ya fue verificado');
     }
 
-    await userToUpdate.update({ email_verified: true });
-    verifyUserMailInFirebase(firebaseId);
+    await user.update({ email_verified: true });
+    verifyUserMailInFirebase(user.firebase_id);
 
-    return true;
+    const userUpdated = await User.findByPk(userId, {
+      include: ['image', 'role'],
+    });
+
+    const { role_id, image_id, firebase_id, ...userWithoutRoleId } =
+      userUpdated.toJSON();
+
+    return {
+      ...userWithoutRoleId,
+    };
   } catch (error) {
     throw error;
   }

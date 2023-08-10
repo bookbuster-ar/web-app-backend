@@ -16,7 +16,7 @@ const validateUserRegistration = (req, res, next) => {
     errorList.push('El correo electrónico no es válido');
   }
 
-  if (!password || !password.trim().length < 6) {
+  if (!password || password.trim().length < 6) {
     errorList.push('La contraseña debe tener al menos 6 caracteres');
   }
 

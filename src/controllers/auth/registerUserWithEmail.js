@@ -63,9 +63,11 @@ const registerUserWithEmail = async (userInfo) => {
       url: CLIENT_VERIFY_EMAIL_URL,
       handleCodeInApp: true,
     });
+
     await transaction.commit();
 
-    const { role_id, ...userWithoutRoleId } = createdUser.toJSON();
+    const { role_id, image_id, firebase_id, ...userWithoutRoleId } =
+      createdUser.toJSON();
 
     return {
       ...userWithoutRoleId,

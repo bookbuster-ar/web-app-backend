@@ -26,9 +26,6 @@ const Session = sequelize.define(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    session_token: {
-      type: DataTypes.TEXT,
-    },
   },
   { timestamps: false, freezeTableName: true }
 );

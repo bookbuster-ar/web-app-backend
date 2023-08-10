@@ -8,11 +8,13 @@ const logOut = async (sessionId) => {
   }
 
   activeSession.last_connection = new Date();
-  activeSession.session_duration =
-    (new Date() - new Date(activeSession.starting_date)) / 1000;
+  activeSession.session_duration = Math.floor(
+    (new Date() - new Date(activeSession.starting_date)) / (1000 * 60)
+  ); // Session duration (min)
+
   activeSession.session_status = false;
 
-  return activeSession.save();
+  return await activeSession.save();
 };
 
 module.exports = logOut;

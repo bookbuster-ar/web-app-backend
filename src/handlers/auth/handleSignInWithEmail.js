@@ -3,13 +3,16 @@ const { signInWithEmail } = require('@controllers');
 const handleSignInWithEmail = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const userData = await singInWithEmail({ email, password });
+    const data = await signInWithEmail({ email, password });
     res.status(200).json({
-      data: userData,
-      message: 'El usuario tiene una sesión activa',
+      data,
+      message: 'El usuario ahora tiene una sesión activa',
     });
   } catch (error) {
-    res.status(401).send({ error: error.message });
+    if (error.message === 'El usuario tiene ya una sesión activa') {
+      return res.status(409).json({ error: error.message });
+    }
+    return res.status(401).send({ error: error.message });
   }
 };
 
