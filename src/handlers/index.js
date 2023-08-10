@@ -13,6 +13,12 @@ const handleGetGenres = require('./Genre/handleGetGenres');
 const handleGetEditorials = require('./editorial/handleGetEditorials');
 const handleGetCollection = require('./editorial/handleGetCollection');
 
+// Auth
+const handleRegisterLocalUser = require('./auth/handleRegisterLocalUser');
+const handleVerifyEmail = require('./auth/handleVerifyEmail');
+const handleSignInWithEmail = require('./auth/handleSignInWithEmail');
+const handleLogOut = require('./auth/handleLogOut');
+
 module.exports = {
   // Books
   handleGetBooks,
@@ -28,4 +34,10 @@ module.exports = {
   // Editorial
   handleGetEditorials,
   handleGetCollection,
+
+  // Auth
+  handleRegisterLocalUser,
+  handleVerifyEmail,
+  handleSignInWithEmail,
+  handleLogOut,
 };

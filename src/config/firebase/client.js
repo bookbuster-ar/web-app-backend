@@ -8,8 +8,7 @@ const {
   STORAGE_BUCKET,
   MESSAGING_SENDER_ID,
   APP_ID,
-  MEASUREMENT_ID,
-} = require('../utils/env');
+} = require('@utils/env');
 
 const firebaseConfig = {
   apiKey: API_KEY,
@@ -18,7 +17,6 @@ const firebaseConfig = {
   storageBucket: STORAGE_BUCKET,
   messagingSenderId: MESSAGING_SENDER_ID,
   appId: APP_ID,
-  measurementId: MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
