@@ -8,7 +8,7 @@ const handleCreateBook = require('./books/handleCreateBook');
 const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
 
 // Genres
-const handleGetGenres = require('./genre/handleGetGenres');
+const handleGetGenres = require('./genres/handleGetGenres');
 
 // Editorial
 const handleGetEditorials = require('./editorial/handleGetEditorials');
