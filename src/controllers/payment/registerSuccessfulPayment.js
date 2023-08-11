@@ -65,7 +65,7 @@ const registerSuccessfulPayment = async (paymentData) => {
   } catch (error) {
     console.error('Error al registrar el pago:', error);
     await transaction.rollback();
-    return { success: false, error: 'Error al registrar el pago' };
+    return { success: false, error: 'Error al registrar  el pago' };
   }
 };
 
