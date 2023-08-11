@@ -1,48 +1,54 @@
 const Models = require('../../models');
 const moment = require('moment');
 const sequelize = require('../../config/database');
+const sendSuccessfullOrder = require('../../services/sendSuccessfullOrder');
 
-const registerSuccessfulPayment = async (paymentData) => {
+const registerSuccessfulPayment = async (paymentInfo) => {
   const date = moment().format('YYYY-MM-DD');
   const transaction = await sequelize.transaction();
   try {
     const { payment_id, status, payment_type, external_reference } =
-      paymentData;
+      paymentInfo;
 
-    const bookIds = JSON.parse(external_reference);
+    const externalData = JSON.parse(external_reference);
 
     let totalAmount = 0;
-    for (const book of bookIds) {
+    for (const book of externalData.products) {
       totalAmount += book.quantity * book.unit_price;
     }
 
-    let paymentMethod = await Models.PaymentMethod.findOne(
-      {
-        where: { name: payment_type },
-      },
-      { transaction }
-    );
-    if (!paymentMethod) {
-      paymentMethod = await Models.PaymentMethod.create(
-        { name: payment_type },
-        { transaction }
-      );
-    }
+    const [paymentMethod] = await Models.PaymentMethod.findOrCreate({
+      where: { name: payment_type },
+      transaction,
+    });
 
-    const newTransaction = await Models.Transaction.create(
+    const promiseTransaction = Models.Transaction.create(
       {
         mercadopago_transaction_id: payment_id,
         transaction_date: date,
         transaction_status: status,
         payment_method_id: paymentMethod.id,
         total_amount: totalAmount,
+        user_id: externalData.userId,
       },
       { transaction }
     );
 
+    const promiseUserData = Models.User.findOne({
+      where: {
+        id: externalData.userId,
+      },
+      attributes: ['name', 'last_name', 'email', 'suscription'],
+    });
+
+    const [newTransaction, userData] = await Promise.all([
+      promiseTransaction,
+      promiseUserData,
+    ]);
+
     const transactionId = newTransaction.id;
 
-    for (const bookId of bookIds) {
+    for (const bookId of externalData.products) {
       await Models.SaleStock.decrement(
         { stock: bookId.quantity },
         { where: { published_book_id: bookId.id } },
@@ -61,6 +67,7 @@ const registerSuccessfulPayment = async (paymentData) => {
       );
     }
     await transaction.commit();
+    sendSuccessfullOrder(newTransaction, userData, paymentMethod);
     return { success: true, message: 'Pago registrado con éxito' };
   } catch (error) {
     console.error('Error al registrar el pago:', error);

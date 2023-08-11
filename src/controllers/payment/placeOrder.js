@@ -1,14 +1,17 @@
 const mercadopago = require('../../config/mercadopago');
 const Models = require('../../models');
 
-const placeOrder = async (items) => {
-  const itemIds = items.map((item) => ({
+const placeOrder = async (items, userId) => {
+  const productData = items.map((item) => ({
     id: item.id,
     quantity: item.quantity,
     unit_price: item.price,
   }));
-
-  for (const item of itemIds) {
+  const externalData = {
+    products: [...productData],
+    userId,
+  };
+  for (const item of productData) {
     const saleStock = await Models.SaleStock.findOne({
       where: {
         published_book_id: item.id,
@@ -31,7 +34,9 @@ const placeOrder = async (items) => {
       description: item.description,
       picture_url: item.image,
     })),
-    external_reference: JSON.stringify(itemIds),
+
+    additional_info: userId,
+    external_reference: JSON.stringify(externalData),
 
     back_urls: {
       success: 'http://localhost:3001/api/payment/success',

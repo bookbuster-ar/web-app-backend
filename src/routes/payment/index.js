@@ -6,11 +6,11 @@ const {
   handleFailurePayment,
   handlePendingPayment,
 } = require('../../handlers');
+const verifySession = require('../../middlewares/verifySession');
 
-paymentRouter.post('/placeOrder', handlePlaceOrder);
+paymentRouter.post('/placeOrder', verifySession, handlePlaceOrder);
 paymentRouter.get('/success', handleSuccessfulPayment);
 paymentRouter.get('/failure', handleFailurePayment);
 paymentRouter.get('/pending', handlePendingPayment);
-
 
 module.exports = paymentRouter;
