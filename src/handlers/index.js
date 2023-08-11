@@ -20,6 +20,9 @@ const handleSuccessfulPayment = require('./payment/handleSuccessfulPayment');
 const handleFailurePayment = require('./payment/handleFailurePayment');
 const handlePendingPayment = require('./payment/handlePendingPayment');
 
+// Stock
+const handleIncreaseStock = require('./stock/handleIncreaseStock');
+
 module.exports = {
   // Books
   handleGetBooks,
@@ -37,10 +40,12 @@ module.exports = {
   handleGetEditorials,
   handleGetCollection,
 
-  //Payment 
+  //Payment
   handlePlaceOrder,
   handleSuccessfulPayment,
   handleFailurePayment,
-  handlePendingPayment
-  
+  handlePendingPayment,
+
+  // Stock
+  handleIncreaseStock,
 };

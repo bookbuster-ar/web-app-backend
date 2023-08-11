@@ -17,6 +17,10 @@ const getSubgenresByBook = require('./genres/getSubgenresByBook');
 const getEditorials = require('./editorial/getEditorials');
 const getCollection = require('./editorial/getCollection');
 
+// Stock
+
+const increaseStock = require('./stock/increaseStock');
+
 module.exports = {
   // Books
   getAllBooks,
@@ -34,4 +38,7 @@ module.exports = {
   // Editorial
   getEditorials,
   getCollection,
+
+  // Stock
+  increaseStock,
 };
