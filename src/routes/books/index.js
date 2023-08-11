@@ -20,18 +20,40 @@ const {
   handleGetSubgenresByGenre,
   handleGetBooksBySubgenre,
   handleGetBookSubgenres,
+  handleCreateReview,
 } = require('../../handlers/index');
 
 // Middlewares
-const { bookValidator, validateImageFile } = require('../../middlewares/index');
+const {
+  bookValidator,
+  validateImageFile,
+  verifySession,
+  reviewValidator,
+} = require('../../middlewares/index');
 
+// Genre
 bookRouter.get('/genre', handleGetBooksByGenre);
+
+// Subgenre
 bookRouter.get('/subgenres', handleGetBookSubgenres);
 bookRouter.get('/genre/subgenres', handleGetSubgenresByGenre);
 bookRouter.get('/subgenre', handleGetBooksBySubgenre);
+
+// Detail
 bookRouter.get('/:id', handleGetBookById);
+
+// Review
+bookRouter.post(
+  '/:id/review',
+  verifySession,
+  reviewValidator,
+  handleCreateReview
+);
+
+// All
 bookRouter.get('/', handleGetBooks);
 
+// Create
 bookRouter.post(
   '/',
   multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } }).fields(

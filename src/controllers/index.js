@@ -5,6 +5,16 @@ const getFilteredBooks = require('./books/getFilteredBooks');
 
 const createBook = require('./books/createBook');
 
+// Review
+const getBookReviews = require('./review/getBookReviews');
+
+const createReview = require('./review/createReview');
+const createReviewComment = require('./review/createReviewComment');
+
+// Review-Comment Like
+const likeReview = require('./review/likeReview');
+const likeComment = require('./review/likeComment');
+
 // Genres
 
 const getBooksByGenre = require('./genres/getBooksByGenre');
@@ -29,6 +39,15 @@ module.exports = {
   getBookById,
   getFilteredBooks,
   createBook,
+
+  // Review
+  getBookReviews,
+  createReview,
+  createReviewComment,
+
+  // Review-Comment Like
+  likeReview,
+  likeComment,
 
   // Genres
   getBooksByGenre,
