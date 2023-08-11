@@ -27,7 +27,6 @@ const placeOrder = async (items) => {
   };
 
   const response = await mercadopago.preferences.create(preference); //Esto crea la orden de compra con la info de preference
-  console.log(response);
 
   return response;
 };
