@@ -123,12 +123,12 @@ Models.BookFormat.belongsToMany(Models.Book, {
 });
 
 //* Books-Transaction
-Models.Book.belongsToMany(Models.Transaction, {
+Models.PublishedBook.belongsToMany(Models.Transaction, {
   through: Models.TransactionDetail,
-  foreignKey: 'book_id',
+  foreignKey: 'published_book_id',
   as: 'transactions',
 });
-Models.Transaction.belongsToMany(Models.Book, {
+Models.Transaction.belongsToMany(Models.PublishedBook, {
   through: Models.TransactionDetail,
   foreignKey: 'transaction_id',
   as: 'books',
