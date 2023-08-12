@@ -7,6 +7,7 @@ const createBook = require('./books/createBook');
 
 // Review
 const getBookReviews = require('./review/getBookReviews');
+const getReviewComments = require('./review/getReviewComments');
 
 const createReview = require('./review/createReview');
 const createReviewComment = require('./review/createReviewComment');
@@ -36,6 +37,7 @@ const logOut = require('./auth/logOut');
 module.exports = {
   // Books
   getAllBooks,
+  getReviewComments,
   getBookById,
   getFilteredBooks,
   createBook,

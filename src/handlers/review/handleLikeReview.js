@@ -1,15 +1,16 @@
 const { likeReview } = require('../../controllers');
 
 const handleLikeReview = async (req, res) => {
-  const { reviewId, userId } = req.headers;
+  const { userid: userId } = req.headers;
+  const { reviewId } = req.params;
+  const { reactionType } = req.body;
+
   try {
-    const updatedReview = await likeReview({ reviewId, userId });
-    if (updatedReview) {
-      return res.status(201).json({
-        data: updatedReview,
-        message: 'La reseña fue likeada por <userName>',
-      });
+    const reviewReaction = await likeReview({ reviewId, userId, reactionType });
+    if (reviewReaction) {
+      return res.status(201).json(reviewReaction);
     }
+    return res.status(400).json({ error: 'No fue posible crear la reacción' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

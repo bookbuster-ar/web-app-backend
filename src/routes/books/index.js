@@ -13,14 +13,30 @@ const bookRouter = Router();
 
 // Handlers
 const {
+  // Book
   handleGetBooks,
-  handleGetBookById,
-  handleGetBooksByGenre,
   handleCreateBook,
+
+  // Book Detail
+  handleGetBookById,
+
+  // Book Genre
+  handleGetBooksByGenre,
   handleGetSubgenresByGenre,
+
+  // Book Subgenre
   handleGetBooksBySubgenre,
   handleGetBookSubgenres,
+
+  // Book Review
+  handleGetBookReviews,
   handleCreateReview,
+  handleLikeReview,
+
+  // Book Review Comment
+  handleCreateReviewComment,
+  handleGetReviewComments,
+  handleLikeComment,
 } = require('../../handlers/index');
 
 // Middlewares
@@ -29,6 +45,7 @@ const {
   validateImageFile,
   verifySession,
   reviewValidator,
+  reviewLikeValidator,
 } = require('../../middlewares/index');
 
 // Genre
@@ -43,11 +60,31 @@ bookRouter.get('/subgenre', handleGetBooksBySubgenre);
 bookRouter.get('/:id', handleGetBookById);
 
 // Review
+bookRouter.get('/:bookId/reviews', handleGetBookReviews);
+bookRouter.get('/:bookId/reviews/:reviewId/comments', handleGetReviewComments);
+
 bookRouter.post(
-  '/:id/review',
+  '/:bookId/reviews',
   verifySession,
   reviewValidator,
   handleCreateReview
+);
+bookRouter.post(
+  '/:bookId/reviews/:reviewId/react',
+  verifySession,
+  reviewLikeValidator,
+  handleLikeReview
+);
+
+bookRouter.post(
+  '/:bookId/reviews/:reviewId/comments',
+  verifySession,
+  handleCreateReviewComment
+);
+bookRouter.post(
+  '/:id/reviews/:reviewId/comments/:commentId/like',
+  verifySession,
+  handleLikeComment
 );
 
 // All

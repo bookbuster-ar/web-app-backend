@@ -1,5 +1,14 @@
+const { validate } = require('uuid');
+
 const reviewValidator = (req, res, next) => {
+  const { bookId } = req.params;
   const { content, rating } = req.body;
+
+  if (!bookId || !validate(bookId)) {
+    return res.status(400).json({
+      error: 'Debe proporcionar una identificación de libro válida (UUID)',
+    });
+  }
 
   const review = {
     maxContentLength: 200,
