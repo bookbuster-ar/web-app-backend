@@ -79,7 +79,7 @@ const registerUserWithEmail = async (userInfo) => {
   } catch (error) {
     await transaction.rollback();
     if (firebaseUser) {
-      await deleteUser(auth, firebaseUser);
+      await firebaseUser.delete();
     }
 
     throw error;
