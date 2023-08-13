@@ -1,5 +1,7 @@
 const { PublishedBook, Book } = require('../../models/');
 const { Op, Sequelize } = require('sequelize');
+const getPaginationData = require('../../utils/pagination');
+
 
 const normalizeAndLowerCase = (input) => {
   return input
@@ -17,8 +19,11 @@ const createWhereClause = (columnName, value) => {
   );
 };
 
-const getFilteredBooks = async ({ title, author, search }) => {
+const getFilteredBooks = async (req,{ title, author, search }) => {
   try {
+
+    const { limit, offset, page } = getPaginationData(req, 15);
+
     const whereClause = {};
      console.log("title:",title, "author:",author, "search:",search);
     if (search) {
@@ -37,6 +42,8 @@ const getFilteredBooks = async ({ title, author, search }) => {
     }
 
     const filteredBooks = await PublishedBook.findAll({
+      limit: limit,
+      offset: offset,
       where: whereClause,
       include: {
         model: Book,
@@ -45,7 +52,9 @@ const getFilteredBooks = async ({ title, author, search }) => {
       },
     });
 
-    return filteredBooks.map((field) => {
+    const totalFilteredBooks = await PublishedBook.count({where: whereClause});
+
+    const filteredData = filteredBooks.map((field) => {
       const [cover, ...extra] = field.book.images.map((image) => image.image);
       return {
         id: field.book.id,
@@ -56,7 +65,18 @@ const getFilteredBooks = async ({ title, author, search }) => {
         editorial_collection: field.book.editorial_collection.name,
         editorial: field.book.editorial.name,
       };
-    });
+    })
+    
+    return {
+      data: filteredData,
+      paginated: {
+        currentPage: page,
+        itemsPerPage: limit,
+        totalItems: totalFilteredBooks,
+        totalPages: Math.ceil(totalFilteredBooks / limit)
+      }
+    }
+    ;
   } catch (error) {
     throw error;
   }

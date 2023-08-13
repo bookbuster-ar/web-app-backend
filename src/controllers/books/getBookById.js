@@ -11,6 +11,9 @@ const getBasicInfoOfBook = async (id) => {
 };
 
 const getBookById = async (id) => {
+
+   
+
   const [bookBasicInfo, bookDetail] = await Promise.all([
     getBasicInfoOfBook(id),
     getBookDetail(id),

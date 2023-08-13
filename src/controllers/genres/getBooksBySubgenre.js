@@ -1,9 +1,10 @@
 const {
   PublishedBook,
   Book,
-  BookGenre,
   BookSubgenre,
 } = require('../../models');
+const getPaginationData = require('../../utils/getPaginationData');
+
 
 const formatBooks = (books) =>
   books?.map((publishedBook) => {
@@ -20,14 +21,19 @@ const formatBooks = (books) =>
     };
   });
 
-const getBooksBySubgenre = async (subgenreId) => {
+const getBooksBySubgenre = async (req, subgenreId) => {
   try {
+
+    const{limit, offset, page} = getPaginationData(req,15);
+
     const subgenre = await BookSubgenre.findByPk(subgenreId, {
       include: [
         {
           model: Book,
           as: 'books',
           include: ['images', 'editorial', 'editorial_collection'],
+          limit: limit,
+          offset: offset
         },
       ],
     });
@@ -35,6 +41,17 @@ const getBooksBySubgenre = async (subgenreId) => {
     if (!subgenre) {
       throw new Error('Subgenre not found');
     }
+
+    const totalBooks = await Book.count({
+      include:[
+        {
+        model: BookSubgenre,
+        as:'subgenres', 
+        where:{
+          id: subgenreId
+        }}
+      ]
+    })
 
     const publishedBooksBySubgenre = await PublishedBook.findAll({
       where: {
@@ -50,11 +67,23 @@ const getBooksBySubgenre = async (subgenreId) => {
     });
     console.log(publishedBooksBySubgenre);
 
-    return {
+  const booksBySubgenre =  {
       id: subgenre.id,
       subgenre: subgenre.name,
       books: formatBooks(publishedBooksBySubgenre),
-    };
+    }
+    
+    return {
+      data: booksBySubgenre,
+      paginated:{
+        currentPage: page,
+        itemsPerPage: limit,
+        totalItems: totalBooks,  
+        totalPages: Math.ceil(totalBooks / limit)
+
+      }
+    }
+    ;
   } catch (error) {
     throw error;
   }
