@@ -1,4 +1,5 @@
 const { Comment, User, Review } = require('../../models');
+const { timeAgo } = require('../../utils');
 
 const createReviewComment = async ({ reviewId, userId, comment }) => {
   const createCommentPromise = Comment.create({
@@ -23,10 +24,15 @@ const createReviewComment = async ({ reviewId, userId, comment }) => {
       getReviewWhereCommentedPromise,
     ]);
 
+  const { createdAt, updatedAt, ...relevantCommentInfo } =
+    createdComment.toJSON();
+
   return {
-    commented: createdComment?.content,
+    id: createdComment.id,
+    commented: relevantCommentInfo?.content,
+    createdAt: timeAgo(createdAt),
     by: { ...userWhoCommented.toJSON() },
-    in: { ...reviewWhereCommented.toJSON() },
+    inReview: { ...reviewWhereCommented.toJSON() },
   };
 };
 

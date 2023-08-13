@@ -11,6 +11,9 @@ const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
 const handleGetBookReviews = require('./review/handleGetBookReviews');
 const handleGetReviewComments = require('./review/handleGetReviewComments');
 
+const handleDeleteReview = require('./review/handleDeleteReview');
+const handleDeleteReviewComment = require('./review/handleDeleteReviewComment');
+
 const handleCreateReview = require('./review/handleCreateReview');
 const handleCreateReviewComment = require('./review/handleCreateReviewComment');
 
@@ -46,6 +49,9 @@ module.exports = {
   handleGetReviewComments,
   handleCreateReview,
   handleCreateReviewComment,
+
+  handleDeleteReview,
+  handleDeleteReviewComment,
 
   // Review-Comment Like
   handleLikeReview,

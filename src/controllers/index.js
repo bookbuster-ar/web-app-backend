@@ -9,6 +9,9 @@ const createBook = require('./books/createBook');
 const getBookReviews = require('./review/getBookReviews');
 const getReviewComments = require('./review/getReviewComments');
 
+const deleteReview = require('./review/deleteReview');
+const deleteReviewComment = require('./review/deleteReviewComment');
+
 const createReview = require('./review/createReview');
 const createReviewComment = require('./review/createReviewComment');
 
@@ -17,7 +20,6 @@ const likeReview = require('./review/likeReview');
 const likeComment = require('./review/likeComment');
 
 // Genres
-
 const getBooksByGenre = require('./genres/getBooksByGenre');
 const getBooksBySubgenre = require('./genres/getBooksBySubgenre');
 const getSubgenresByGenre = require('./genres/getSubgenresByGenre');
@@ -46,6 +48,9 @@ module.exports = {
   getBookReviews,
   createReview,
   createReviewComment,
+
+  deleteReview,
+  deleteReviewComment,
 
   // Review-Comment Like
   likeReview,

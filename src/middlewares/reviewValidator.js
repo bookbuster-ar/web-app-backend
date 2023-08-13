@@ -1,8 +1,42 @@
 const { validate } = require('uuid');
 
+const validReactionType = [
+  'mld',
+  'mct',
+  'pv',
+  'sf',
+  'ppl',
+  'rom',
+  'ado',
+  'nfnf',
+  'pro',
+  'pp',
+  'esp',
+  'jeeb',
+  'adi',
+  'pplp',
+  'hap',
+];
+
+// Me lo devoré: 'mld',
+// Me costó terminarlo: 'mct',
+// Para viajar: 'pv',
+// Soy Fan: 'sf',
+// Preparate para llorar: 'ppl',
+// Romántico: 'rom',
+// Adorable: 'ado',
+// Ni fu ni fa: 'nfnf',
+// Profundo: 'pro',
+// Para regalar: 'pp',
+// Espeluznante: 'esp',
+// Justo en el blanco: 'jeeb',
+// Adictivo: 'adi',
+// Perfecto para la playa: 'pplp',
+// He aprendido mucho: 'hap'
+
 const reviewValidator = (req, res, next) => {
   const { bookId } = req.params;
-  const { content, rating } = req.body;
+  const { content, rating, reaction } = req.body;
 
   if (!bookId || !validate(bookId)) {
     return res.status(400).json({
@@ -52,6 +86,14 @@ const reviewValidator = (req, res, next) => {
     return res.status(400).json({
       error: `La calificación debe ser un entero entre ${review.minRatingValue} y ${review.maxRatingValue}`,
     });
+  }
+
+  if (reaction) {
+    if (!validReactionType.includes(reaction)) {
+      return res.status(400).json({
+        error: 'La reacción proporcionada no es válida',
+      });
+    }
   }
 
   next();

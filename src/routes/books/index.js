@@ -33,6 +33,9 @@ const {
   handleCreateReview,
   handleLikeReview,
 
+  handleDeleteReview,
+  handleDeleteReviewComment,
+
   // Book Review Comment
   handleCreateReviewComment,
   handleGetReviewComments,
@@ -70,9 +73,9 @@ bookRouter.post(
   handleCreateReview
 );
 bookRouter.post(
-  '/:bookId/reviews/:reviewId/react',
+  '/:bookId/reviews/:reviewId/like',
   verifySession,
-  reviewLikeValidator,
+  // reviewLikeValidator,
   handleLikeReview
 );
 
@@ -85,6 +88,17 @@ bookRouter.post(
   '/:id/reviews/:reviewId/comments/:commentId/like',
   verifySession,
   handleLikeComment
+);
+
+bookRouter.delete(
+  '/:bookId/reviews/:reviewId/',
+  verifySession,
+  handleDeleteReview
+);
+bookRouter.delete(
+  '/:bookId/reviews/:reviewId/comments/:commentId/',
+  verifySession,
+  handleDeleteReviewComment
 );
 
 // All

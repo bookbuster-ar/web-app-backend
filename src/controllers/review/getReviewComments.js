@@ -1,4 +1,5 @@
 const { Review, Comment, User, CommentLike } = require('../../models');
+const { timeAgo } = require('../../utils');
 
 const getReviewComments = async ({ bookId, reviewId }) => {
   const reviewWithComments = await Review.findOne({
@@ -16,19 +17,40 @@ const getReviewComments = async ({ bookId, reviewId }) => {
             attributes: ['id', 'name', 'last_name'],
             include: ['image'],
           },
-          { model: CommentLike, as: 'likes' },
+          {
+            model: CommentLike,
+            as: 'likes',
+            include: [
+              {
+                model: User,
+                as: 'user',
+                attributes: ['id', 'name', 'last_name'],
+                include: ['image'],
+              },
+            ],
+          },
         ],
       },
     ],
   });
 
-  return {
-    ...reviewWithComments.toJSON(),
-    comments: reviewWithComments?.comments?.map((comment) => ({
-      ...comment.toJSON(),
-      likes: comment.likes.length,
-    })),
-  };
+  if (!reviewWithComments) {
+    return [];
+  }
+
+  return [
+    ...reviewWithComments?.toJSON().comments?.map((comment) => {
+      const { createdAt, updatedAt, ...commentInfo } = comment;
+      return {
+        ...commentInfo,
+        createdAt: timeAgo(createdAt),
+        likes: {
+          count: comment.likes?.length,
+          whoLiked: comment.likes?.map((like) => like.user),
+        },
+      };
+    }),
+  ];
 };
 
 module.exports = getReviewComments;

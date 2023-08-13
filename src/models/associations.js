@@ -241,6 +241,8 @@ Models.Transaction.belongsTo(Models.PaymentMethod, {
 Models.Review.hasMany(Models.Comment, {
   foreignKey: 'review_id',
   as: 'comments',
+  onDelete: 'CASCADE',
+  hooks: true,
 });
 Models.Comment.belongsTo(Models.Review, {
   foreignKey: 'review_id',
@@ -250,7 +252,9 @@ Models.Comment.belongsTo(Models.Review, {
 // Review-ReviewLike
 Models.Review.hasMany(Models.ReviewLike, {
   foreignKey: 'review_id',
-  as: 'reactions',
+  as: 'likes',
+  onDelete: 'CASCADE',
+  hooks: true,
 });
 Models.ReviewLike.belongsTo(Models.Review, {
   foreignKey: 'review_id',
@@ -263,6 +267,8 @@ Models.ReviewLike.belongsTo(Models.Review, {
 Models.Comment.hasMany(Models.CommentLike, {
   foreignKey: 'comment_id',
   as: 'likes',
+  onDelete: 'CASCADE',
+  hooks: true,
 });
 Models.CommentLike.belongsTo(Models.Comment, {
   foreignKey: 'comment_id',

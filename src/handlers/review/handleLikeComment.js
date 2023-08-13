@@ -1,7 +1,8 @@
 const { likeComment } = require('../../controllers');
 
 const handleLikeComment = async (req, res) => {
-  const { commentId, userId } = req.headers;
+  const { commentId } = req.params;
+  const { userid: userId } = req.headers;
   try {
     const reviewComment = await likeComment({ commentId, userId });
     if (reviewComment) {

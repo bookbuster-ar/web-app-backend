@@ -4,18 +4,31 @@ const sequelize = require('../../config/database');
 const likeComment = async ({ commentId, userId }) => {
   const transaction = await sequelize.transaction();
   try {
-    const likeCommentPromise = CommentLike.create(
-      {
+    let likeExist = await CommentLike.findOne({
+      where: {
         comment_id: commentId,
         user_id: userId,
       },
-      { transaction }
-    );
+      transaction,
+    });
+
+    if (likeExist) {
+      await likeExist.destroy({ transaction });
+    } else {
+      await CommentLike.create(
+        {
+          comment_id: commentId,
+          user_id: userId,
+        },
+        { transaction }
+      );
+    }
 
     const getLikedCommentPromise = Comment.findOne({
       where: {
         id: commentId,
       },
+      attributes: ['id', 'content'],
       transaction,
     });
 
@@ -25,8 +38,7 @@ const likeComment = async ({ commentId, userId }) => {
       transaction,
     });
 
-    const [likeComment, likedComment, userWhoLiked] = Promise.all([
-      likeCommentPromise,
+    const [likedComment, userWhoLiked] = await Promise.all([
       getLikedCommentPromise,
       getUserLikingPromise,
     ]);
@@ -34,9 +46,9 @@ const likeComment = async ({ commentId, userId }) => {
     await transaction.commit();
 
     return {
-      reacted: 'like',
+      reacted: likeExist ? 'dislike' : 'like',
       by: { ...userWhoLiked.toJSON() },
-      in: { ...likedComment.toJSON() },
+      inComment: { ...likedComment.toJSON() },
     };
   } catch (error) {
     await transaction.rollback();

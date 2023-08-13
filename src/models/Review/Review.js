@@ -17,6 +17,10 @@ const Review = sequelize.define(
       type: DataTypes.INTEGER,
       // allowNull: false,
     },
+    reaction: {
+      type: DataTypes.STRING,
+      // allowNull: false,
+    },
   },
   { timestamps: true, freezeTableName: true }
 );

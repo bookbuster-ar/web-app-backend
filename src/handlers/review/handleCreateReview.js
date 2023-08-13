@@ -3,9 +3,9 @@ const { createReview } = require('../../controllers');
 const handleCreateReview = async (req, res) => {
   const { userid: userId } = req.headers;
   const { bookId } = req.params;
-  const { content, rating } = req.body;
+  const { content, rating, reaction } = req.body;
   try {
-    const reviewInfo = { bookId, userId, content, rating };
+    const reviewInfo = { bookId, userId, content, rating, reaction };
     const createdReview = await createReview(reviewInfo);
     if (createdReview) {
       return res.status(201).json(createdReview);

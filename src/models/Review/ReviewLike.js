@@ -9,9 +9,6 @@ const ReviewLike = sequelize.define(
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    type: {
-      type: DataTypes.STRING,
-    },
   },
   { timestamps: false, freezeTableName: true }
 );
