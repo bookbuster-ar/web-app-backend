@@ -7,6 +7,7 @@ require('./src/models/associations');
 const Models = require('./src/models');
 const bookDb = require('./src/utils/data');
 const cloudinary = require('./src/config/cloudinary');
+const { v4: uuidv4 } = require('uuid');
 
 const uploadBooks = async (bookDb) => {
   const transaction = await sequelize.transaction();
