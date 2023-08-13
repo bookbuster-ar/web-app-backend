@@ -35,7 +35,6 @@ const placeOrder = async (items, userId) => {
       picture_url: item.image,
     })),
 
-    additional_info: userId,
     external_reference: JSON.stringify(externalData),
 
     back_urls: {

@@ -1,7 +1,7 @@
 const Models = require('../../models');
 const moment = require('moment');
 const sequelize = require('../../config/database');
-const sendSuccessfullOrder = require('../../services/sendSuccessfullOrder');
+const sendSuccessfulOrder = require('../../services/sendSuccessfulOrder');
 
 const registerSuccessfulPayment = async (paymentInfo) => {
   const date = moment().format('YYYY-MM-DD');
@@ -67,7 +67,7 @@ const registerSuccessfulPayment = async (paymentInfo) => {
       );
     }
     await transaction.commit();
-    sendSuccessfullOrder(newTransaction, userData, paymentMethod);
+    sendSuccessfulOrder(newTransaction, userData, paymentMethod);
     return { success: true, message: 'Pago registrado con éxito' };
   } catch (error) {
     console.error('Error al registrar el pago:', error);
