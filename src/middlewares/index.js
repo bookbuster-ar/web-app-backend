@@ -7,7 +7,6 @@ const verifySession = require('./verifySession');
 
 // Review
 const reviewValidator = require('./reviewValidator');
-const reviewLikeValidator = require('./reviewLikeValidator');
 
 module.exports = {
   bookValidator,
@@ -15,5 +14,4 @@ module.exports = {
   validateUserRegistration,
   verifySession,
   reviewValidator,
-  reviewLikeValidator,
 };
