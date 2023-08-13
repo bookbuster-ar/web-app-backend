@@ -1,4 +1,4 @@
-const { EditorialCollection } = require('../../models');
+const { EditorialCollection } = require('../../models/index');
 
 const getCollection = async (editorialId) => {
   const collection = await EditorialCollection.findAll({

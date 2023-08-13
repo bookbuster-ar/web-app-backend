@@ -1,4 +1,4 @@
-const { Editorial } = require('@models');
+const { Editorial } = require('../../../../models/index');
 const { v4: uuidv4 } = require('uuid');
 
 const createEditorial = async (bookInfo, transaction) => {

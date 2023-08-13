@@ -1,4 +1,4 @@
-const { getAllBooks, getFilteredBooks } = require('../../controllers');
+const { getAllBooks, getFilteredBooks } = require('../../controllers/index');
 
 const handleGetBooks = async (req, res) => {
   const { title, author, search } = req.query;

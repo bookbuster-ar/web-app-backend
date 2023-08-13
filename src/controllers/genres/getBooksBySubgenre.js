@@ -65,7 +65,6 @@ const getBooksBySubgenre = async (req, subgenreId) => {
         },
       ],
     });
-    console.log(publishedBooksBySubgenre);
 
   const booksBySubgenre =  {
       id: subgenre.id,

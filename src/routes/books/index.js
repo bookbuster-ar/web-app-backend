@@ -13,8 +13,14 @@ const bookRouter = Router();
 
 // Handlers
 const {
+  // Book
   handleGetBooks,
+  handleCreateBook,
+
+  // Book Detail
   handleGetBookById,
+
+  // Book Genre
   handleGetBooksByGenre,
   handleCreateBook,
   handleGetBooksBySubgenre,
@@ -22,14 +28,64 @@ const {
 } = require('../../handlers');
 
 // Middlewares
-const { bookValidator, validateImageFile } = require('@middlewares');
+const {
+  bookValidator,
+  validateImageFile,
+  verifySession,
+  reviewValidator,
+  reviewLikeValidator,
+} = require('../../middlewares/index');
 
+// Genre
 bookRouter.get('/genre', handleGetBooksByGenre);
 bookRouter.get('/subgenres', handleGetSubgenresByBook )
 bookRouter.get('/subgenre', handleGetBooksBySubgenre);
+
+// Detail
 bookRouter.get('/:id', handleGetBookById);
+
+// Review
+bookRouter.get('/:bookId/reviews', handleGetBookReviews);
+bookRouter.get('/:bookId/reviews/:reviewId/comments', handleGetReviewComments);
+
+bookRouter.post(
+  '/:bookId/reviews',
+  verifySession,
+  reviewValidator,
+  handleCreateReview
+);
+bookRouter.post(
+  '/:bookId/reviews/:reviewId/like',
+  verifySession,
+  handleLikeReview
+);
+
+bookRouter.post(
+  '/:bookId/reviews/:reviewId/comments',
+  verifySession,
+  handleCreateReviewComment
+);
+bookRouter.post(
+  '/:id/reviews/:reviewId/comments/:commentId/like',
+  verifySession,
+  handleLikeComment
+);
+
+bookRouter.delete(
+  '/:bookId/reviews/:reviewId/',
+  verifySession,
+  handleDeleteReview
+);
+bookRouter.delete(
+  '/:bookId/reviews/:reviewId/comments/:commentId/',
+  verifySession,
+  handleDeleteReviewComment
+);
+
+// All
 bookRouter.get('/', handleGetBooks);
 
+// Create
 bookRouter.post(
   '/',
   multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } }).fields(

@@ -34,6 +34,8 @@
     "@config": "src/config",
     "@models": "src/models",
     "@controllers": "src/controllers",
-    "@middlewares": "src/middlewares"
+    "@handlers": "src/handlers",
+    "@middlewares": "src/middlewares",
+    "@utils": "src/utils"
   }
 }

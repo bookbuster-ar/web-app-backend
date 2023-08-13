@@ -2,10 +2,10 @@ const { Sequelize } = require('sequelize');
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_URL } = require('../utils/env');
 
-const ENVIORMENT = 'dev';
+const ENVIROMENT = 'production';
 
 const sequelize =
-  ENVIORMENT === 'dev'
+  ENVIROMENT === 'dev'
     ? new Sequelize('bookbuster', DB_USER, DB_PASSWORD, {
         host: DB_HOST,
         dialect: 'postgres',
