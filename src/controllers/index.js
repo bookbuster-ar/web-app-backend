@@ -18,7 +18,7 @@ const getCollection = require('./editorial/getCollection');
 // Auth
 
 const loginLocal = require('./auth/loginLocal');
-const logOut = require('./auth/logOut');
+const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
 
 module.exports = {
   // Books
@@ -37,5 +37,5 @@ module.exports = {
 
   // Auth
   loginLocal,
-  logOut,
+  registerUserWithGoogle,
 };

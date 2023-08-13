@@ -14,7 +14,7 @@ const handleGetCollection = require('./editorial/handleGetCollection');
 
 // Auth
 const handleLoginLocal = require('./auth/handleLoginLocal');
-const handleLogOut = require('./auth/handleLogOut');
+const handleRegisterWithGoogle = require('./auth/handleRegisterWithGoogle');
 
 module.exports = {
   // Books
@@ -32,5 +32,5 @@ module.exports = {
 
   // Auth
   handleLoginLocal,
-  handleLogOut,
+  handleRegisterWithGoogle,
 };
