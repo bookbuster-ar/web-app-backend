@@ -1,5 +1,5 @@
 const { Book, BookGenre } = require('../../models/');
-const getPaginationData = require('../../utils/getPaginationData');
+const getPaginationData = require('../../utils/pagination');
 
 const formatBooks = (books) =>
   books.map((book) => {

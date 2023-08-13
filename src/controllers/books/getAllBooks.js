@@ -7,9 +7,6 @@ const getAllBooks = async (req) => {
     //GET /api/books?page=1
     //Metodo LIMIT-OFFSET
 
-    //  const page = parseInt(req.query.page) || 1 ;
-    //  const itemsPerPage = 15;
-
     const {limit, offset, page} = getPaginationData(req, 15);
 
     const allBooks = await PublishedBook.findAll({
@@ -25,7 +22,7 @@ const getAllBooks = async (req) => {
     const totalBooks = await PublishedBook.count();
 
     const booksData = allBooks.map((field) => {
-      const [cover, ...extra] = field.book.images.map((image) => image.image);
+      const [cover, ...extra] = field.book?.images.map((image) => image.image);
       return {
         id: field.book.id,
         images: { cover, extra },
