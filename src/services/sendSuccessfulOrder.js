@@ -1,11 +1,7 @@
 const { USER_NODEMAILER } = require('../utils/env');
 const transporter = require('../config/nodemailer');
 
-const sendSuccessfullOrder = async (
-  newTransaction,
-  userData,
-  paymentMethod
-) => {
+const sendSuccessfulOrder = async (newTransaction, userData, paymentMethod) => {
   const {
     mercadopago_transaction_id,
     transaction_date,
@@ -40,4 +36,4 @@ const sendSuccessfullOrder = async (
   return info;
 };
 
-module.exports = sendSuccessfullOrder;
+module.exports = sendSuccessfulOrder;

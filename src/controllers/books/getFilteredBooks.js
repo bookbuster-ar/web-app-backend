@@ -23,7 +23,7 @@ const getFilteredBooks = async (req,{ title, author, search }) => {
     const { limit, offset, page } = getPaginationData(req, 15);
 
     const whereClause = {};
-   
+
     if (search) {
 
       whereClause[Op.or] = [
