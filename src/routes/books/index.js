@@ -75,7 +75,6 @@ bookRouter.post(
 bookRouter.post(
   '/:bookId/reviews/:reviewId/like',
   verifySession,
-  // reviewLikeValidator,
   handleLikeReview
 );
 
