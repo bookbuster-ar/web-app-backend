@@ -10,7 +10,6 @@ const registerSuccessfulSubscription = async (userData, subscriptionData) => {
     const { userId, endDate } = userData;
     const { payment_id, status, transactionAmount, preapproval_id } =
       subscriptionData;
-    console.log(preapproval_id);
 
     const promiseTransaction = Transaction.create(
       {

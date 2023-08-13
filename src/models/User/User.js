@@ -27,7 +27,7 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       // allowNull: false,
     },
-    suscription: {
+    subscription: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
       // allowNull: false,
