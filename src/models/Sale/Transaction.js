@@ -11,7 +11,7 @@ const Transaction = sequelize.define(
       defaultValue: DataTypes.UUIDV4,
     },
     mercadopago_transaction_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       // allowNull: false,
     },
     transaction_date: {

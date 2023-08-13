@@ -29,6 +29,7 @@ const User = sequelize.define(
     },
     suscription: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
       // allowNull: false,
     },
     date_of_register: {
