@@ -15,7 +15,7 @@ const getAllBooks = async () => {
 
       return {
         id: field.book.id,
-        images: { cover: cover.image },
+        images: { cover: cover?.image },
         title: field.book.title,
         author: field.book.author,
         publication_year: field.book.publication_year,

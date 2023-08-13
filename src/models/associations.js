@@ -32,7 +32,7 @@ Models.User.hasMany(Models.Review, {
   foreignKey: 'user_id',
   as: 'reviews',
 });
-Models.Review.belongsTo(Models.User, { foreignKey: 'user_id', as: 'user' });
+Models.Review.belongsTo(Models.User, { foreignKey: 'user_id', as: 'creator' });
 
 //* User-ReviewLike
 Models.User.hasMany(Models.ReviewLike, {
@@ -46,7 +46,7 @@ Models.User.hasMany(Models.Comment, {
   foreignKey: 'user_id',
   as: 'comments',
 });
-Models.Comment.belongsTo(Models.User, { foreignKey: 'user_id', as: 'user' });
+Models.Comment.belongsTo(Models.User, { foreignKey: 'user_id', as: 'by' });
 
 //* User-CommentLike
 Models.User.hasMany(Models.CommentLike, {
@@ -241,6 +241,8 @@ Models.Transaction.belongsTo(Models.PaymentMethod, {
 Models.Review.hasMany(Models.Comment, {
   foreignKey: 'review_id',
   as: 'comments',
+  onDelete: 'CASCADE',
+  hooks: true,
 });
 Models.Comment.belongsTo(Models.Review, {
   foreignKey: 'review_id',
@@ -250,7 +252,9 @@ Models.Comment.belongsTo(Models.Review, {
 // Review-ReviewLike
 Models.Review.hasMany(Models.ReviewLike, {
   foreignKey: 'review_id',
-  as: 'review_likes',
+  as: 'likes',
+  onDelete: 'CASCADE',
+  hooks: true,
 });
 Models.ReviewLike.belongsTo(Models.Review, {
   foreignKey: 'review_id',
@@ -262,7 +266,9 @@ Models.ReviewLike.belongsTo(Models.Review, {
 // Comment-CommentLike
 Models.Comment.hasMany(Models.CommentLike, {
   foreignKey: 'comment_id',
-  as: 'comment_likes',
+  as: 'likes',
+  onDelete: 'CASCADE',
+  hooks: true,
 });
 Models.CommentLike.belongsTo(Models.Comment, {
   foreignKey: 'comment_id',

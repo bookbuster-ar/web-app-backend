@@ -10,7 +10,7 @@ const PublishedBook = sequelize.define(
       primaryKey: true,
     },
   },
-  { timestamps: false, freezeTableName: true }
+  { timestamps: true, freezeTableName: true }
 );
 
 module.exports = PublishedBook;

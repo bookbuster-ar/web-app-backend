@@ -7,6 +7,20 @@ const handleGetSubgenresByGenre = require('./books/handleGetSubgenresByGenre');
 const handleCreateBook = require('./books/handleCreateBook');
 const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
 
+// Review
+const handleGetBookReviews = require('./review/handleGetBookReviews');
+const handleGetReviewComments = require('./review/handleGetReviewComments');
+
+const handleDeleteReview = require('./review/handleDeleteReview');
+const handleDeleteReviewComment = require('./review/handleDeleteReviewComment');
+
+const handleCreateReview = require('./review/handleCreateReview');
+const handleCreateReviewComment = require('./review/handleCreateReviewComment');
+
+// Review-Comment Like
+const handleLikeReview = require('./review/handleLikeReview');
+const handleLikeComment = require('./review/handleLikeComment');
+
 // Genres
 const handleGetGenres = require('./genres/handleGetGenres');
 
@@ -29,6 +43,19 @@ module.exports = {
   handleGetBooksBySubgenre,
   handleGetSubgenresByGenre,
   handleGetBookSubgenres,
+
+  // Review
+  handleGetBookReviews,
+  handleGetReviewComments,
+  handleCreateReview,
+  handleCreateReviewComment,
+
+  handleDeleteReview,
+  handleDeleteReviewComment,
+
+  // Review-Comment Like
+  handleLikeReview,
+  handleLikeComment,
 
   // Genres
   handleGetGenres,
