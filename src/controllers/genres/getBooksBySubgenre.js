@@ -26,7 +26,7 @@ const getBooksBySubgenre = async ( req,subgenreId) => {
 
     const{limit, offset, page} = getPaginationData(req,15);
 
-    const subgenre = await BookSubgenre.findByPk(subgenreId, {
+    const subgenreMatched = await BookSubgenre.findByPk(subgenreId, {
        limit: limit,
        offset: offset,
       include: [
@@ -38,8 +38,12 @@ const getBooksBySubgenre = async ( req,subgenreId) => {
       ],
     });
 
-    if (!subgenre) {
-      throw new Error('Subgenre not found');
+    if (!subgenreMatched) {
+      return {
+        data: {},
+        paginated: {},
+        message: 'Subgenre not found'
+      };
     }
 
     const totalBooks = await Book.count({
@@ -55,7 +59,7 @@ const getBooksBySubgenre = async ( req,subgenreId) => {
 
     const publishedBooksBySubgenre = await PublishedBook.findAll({
       where: {
-        book_id: subgenre.books?.map((book) => book.id),
+        book_id: subgenreMatched.books?.map((book) => book.id),
       },
       include: [
         {
@@ -65,11 +69,11 @@ const getBooksBySubgenre = async ( req,subgenreId) => {
         },
       ],
     });
-    console.log(publishedBooksBySubgenre);
+    //console.log(publishedBooksBySubgenre);
 
   const booksBySubgenre =  {
-      id: subgenre.id,
-      subgenre: subgenre.name,
+      id: subgenreMatched.id,
+      subgenre: subgenreMatched.name,
       books: formatBooks(publishedBooksBySubgenre),
     }
     

@@ -33,7 +33,11 @@ const getBooksByGenre = async (req,id) => {
     });
 
     if (!genreMatched) {
-      throw new Error('Genre not found');
+      return {
+        data: {},
+        paginated: {},
+        message: 'Genre not found'
+      };
     }
 
     const totalBooks = await Book.count({

@@ -7,9 +7,9 @@ const handleGetBooksBySubgenre = async (req, res) => {
     if (subgenreId && validate(subgenreId)) {
       const books = await getBooksBySubgenre(req,subgenreId);
 
-      if(!books.data.length){
+       if(!books.data.books){
         return res.status(404).json({ message: 'No se encontraron resultados' });
-      }else {
+       }else {
       return res.status(200).json(books);
       }
       
