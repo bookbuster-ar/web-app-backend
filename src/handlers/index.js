@@ -19,6 +19,7 @@ const handleRegisterLocalUser = require('./auth/handleRegisterLocalUser');
 const handleVerifyEmail = require('./auth/handleVerifyEmail');
 const handleSignInWithEmail = require('./auth/handleSignInWithEmail');
 const handleLogOut = require('./auth/handleLogOut');
+const handleRegisterWithGoogle = require('./auth/handleRegisterWithGoogle');
 
 //Payment
 const handlePlaceOrder = require('./payment/handlePlaceOrder');
@@ -48,4 +49,11 @@ module.exports = {
   handleVerifyEmail,
   handleSignInWithEmail,
   handleLogOut,
+  handleRegisterWithGoogle,
+
+  // mercado pago
+  handlePlaceOrder,
+  handleSuccessfulPayment,
+  handleFailurePayment,
+  handlePendingPayment,
 };

@@ -8,9 +8,9 @@ const {
   handleLogOut,
   handleLoginLocal,
   handleRegisterWithGoogle,
-} = require('@handlers');
+} = require('../../handlers/index');
 
-const { validateUserRegistration } = require('@middlewares');
+const { validateUserRegistration } = require('../../middlewares/index');
 
 // Login
 authRouter.post('/login/local', handleSignInWithEmail);

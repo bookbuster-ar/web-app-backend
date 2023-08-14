@@ -22,6 +22,7 @@ const registerUserWithEmail = require('./auth/registerUserWithEmail');
 const verifyUserEmail = require('./auth/verifyUserEmail');
 const signInWithEmail = require('./auth/signInWithEmail');
 const logOut = require('./auth/logOut');
+const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
 
 module.exports = {
   // Books
@@ -46,4 +47,5 @@ module.exports = {
   verifyUserEmail,
   signInWithEmail,
   logOut,
+  registerUserWithGoogle,
 };
