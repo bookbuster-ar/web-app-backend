@@ -6,6 +6,8 @@ const {
   handleVerifyEmail,
   handleSignInWithEmail,
   handleLogOut,
+  handleLoginLocal,
+  handleRegisterWithGoogle,
 } = require('@handlers');
 
 const { validateUserRegistration } = require('@middlewares');
@@ -25,9 +27,7 @@ authRouter.post(
 );
 authRouter.post('/verifyEmail', handleVerifyEmail);
 
-authRouter.post('/signup/google', (req, res) => {
-  res.send('Ruta POST signup google authentication');
-});
+authRouter.post('/signup/google', handleRegisterWithGoogle);
 
 // Logout
 authRouter.post('/logout', handleLogOut);
