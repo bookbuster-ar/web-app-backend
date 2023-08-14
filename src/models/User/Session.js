@@ -11,11 +11,12 @@ const Session = sequelize.define(
       defaultValue: DataTypes.UUIDV4,
     },
     starting_date: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       // allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     last_connection: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       // allowNull: false,
     },
     session_duration: {
@@ -24,9 +25,6 @@ const Session = sequelize.define(
     session_status: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-    },
-    session_token: {
-      type: DataTypes.STRING,
     },
   },
   { timestamps: false, freezeTableName: true }

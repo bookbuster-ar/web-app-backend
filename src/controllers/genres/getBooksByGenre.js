@@ -1,4 +1,5 @@
 const { Book, BookGenre } = require('../../models/');
+const getPaginationData = require('../../utils/pagination');
 
 const formatBooks = (books) =>
   books.map((book) => {
@@ -14,14 +15,19 @@ const formatBooks = (books) =>
     };
   });
 
-const getBooksByGenre = async (id) => {
+const getBooksByGenre = async (req,id) => {
   try {
+
+    const{limit, offset, page} = getPaginationData(req, 15);
+
     const genreMatched = await BookGenre.findByPk(id, {
       include: [
         {
           model: Book,
           as: 'books',
           include: ['images', 'editorial', 'editorial_collection'],
+          limit: limit,
+          offset: offset
         },
       ],
     });
@@ -30,11 +36,33 @@ const getBooksByGenre = async (id) => {
       throw new Error('Genre not found');
     }
 
-    return {
+    const totalBooks = await Book.count({
+      include:[
+        {
+        model: BookGenre,
+        as:'genres', 
+        where:{
+          id: genreMatched.id
+        }}
+      ]
+    }) 
+
+    const BooksByGenre =  {
       id: genreMatched.id,
       genre: genreMatched.name,
       books: formatBooks(genreMatched.books),
-    };
+    }
+
+return {
+  data: BooksByGenre,
+  paginated:{
+      currentPage: page,
+      itemsPerPage: limit,
+      totalItems: totalBooks,
+      totalPages: Math.ceil(totalBooks / limit)
+    }
+}
+
   } catch (error) {
     throw error;
   }

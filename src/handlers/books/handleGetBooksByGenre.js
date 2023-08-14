@@ -1,11 +1,11 @@
 const { validate } = require('uuid');
-const { getBooksByGenre } = require('../../controllers');
+const { getBooksByGenre } = require('../../controllers/index');
 
 const handleGetBooksByGenre = async (req, res) => {
   const genreId = req.query.id;
   try {
     if (genreId && validate(genreId)) {
-      const booksByGenre = await getBooksByGenre(genreId);
+      const booksByGenre = await getBooksByGenre(req,genreId);
       return res.status(200).json(booksByGenre);
     }
     return res.status(400).json({

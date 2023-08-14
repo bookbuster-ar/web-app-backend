@@ -1,4 +1,4 @@
-const { getEditorials } = require('../../controllers');
+const { getEditorials } = require('../../controllers/index');
 
 const handleGetEditorials = async (req, res) => {
   try {

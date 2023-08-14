@@ -10,6 +10,9 @@ const User = sequelize.define(
       primaryKey: true,
       // allowNull: false,
     },
+    firebase_id: {
+      type: DataTypes.STRING,
+    },
     name: {
       type: DataTypes.STRING,
       // allowNull: false,
@@ -20,12 +23,13 @@ const User = sequelize.define(
     },
     email: {
       type: DataTypes.STRING,
+      unique: true,
       // allowNull: false,
       // unique: true,
     },
-    password: {
-      type: DataTypes.STRING,
-      // allowNull: false,
+    email_verified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     subscription: {
       type: DataTypes.BOOLEAN,
@@ -34,6 +38,7 @@ const User = sequelize.define(
     },
     date_of_register: {
       type: DataTypes.DATEONLY,
+      defaultValue: DataTypes.NOW,
       // allowNull: false,
     },
     is_blocked: {
@@ -43,6 +48,7 @@ const User = sequelize.define(
     },
     credit: {
       type: DataTypes.FLOAT,
+      defaultValue: 0,
       // allowNull: false,
     },
     is_inactive: {

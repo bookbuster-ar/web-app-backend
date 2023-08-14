@@ -17,8 +17,12 @@ const Review = sequelize.define(
       type: DataTypes.INTEGER,
       // allowNull: false,
     },
+    reaction: {
+      type: DataTypes.STRING,
+      // allowNull: false,
+    },
   },
-  { timestamps: false, freezeTableName: true }
+  { timestamps: true, freezeTableName: true }
 );
 
 module.exports = Review;

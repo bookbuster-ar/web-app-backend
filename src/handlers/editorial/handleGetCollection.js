@@ -1,4 +1,4 @@
-const { getCollection } = require('../../controllers');
+const { getCollection } = require('../../controllers/index');
 
 const handleGetCollection = async (req, res) => {
   const { id: editorialId } = req.query;

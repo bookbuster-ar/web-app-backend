@@ -1,5 +1,5 @@
-const cloudinary = require('@config/cloudinary');
-const { BookImage } = require('@models');
+const cloudinary = require('../../../../config/cloudinary');
+const { BookImage } = require('../../../../models/index');
 
 const { v4: uuidv4 } = require('uuid');
 
