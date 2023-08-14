@@ -21,13 +21,13 @@ const getBooksByGenre = async (req,id) => {
     const{limit, offset, page} = getPaginationData(req, 15);
 
     const genreMatched = await BookGenre.findByPk(id, {
+      limit: limit,
+      offset: offset,
       include: [
         {
           model: Book,
           as: 'books',
           include: ['images', 'editorial', 'editorial_collection'],
-          limit: limit,
-          offset: offset
         },
       ],
     });

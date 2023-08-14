@@ -80,8 +80,6 @@ const getBooksBySubgenre = async ( req,subgenreId) => {
          itemsPerPage: limit,
          totalItems: totalBooks,  
          totalPages: Math.ceil(totalBooks / limit)
-
-      // }
     }
   }
   } catch (error) {
