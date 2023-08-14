@@ -1,5 +1,6 @@
 const { PublishedBook, Book } = require('../../models/index');
 const { Op, Sequelize } = require('sequelize');
+const getPaginationData = require('../../utils/pagination');
 
 const normalizeAndLowerCase = (input) => {
   return input
@@ -53,11 +54,19 @@ const getFilteredBooks = async (req,{ title, author, search }) => {
       },
     });
 
-    const filteredData = filteredBooks.map((field) => {
+    const totalFilteredBooks = await Book.count({
+      include: [{
+        model: PublishedBook,
+        as: 'published_book'
+      }],
+      where: whereClause
+    });
+      
+     const filteredData = filteredBooks.map((field) => {
       const [cover, ...extra] = field.book.images.map((image) => image.image);
       return {
         id: field.book.id,
-        images: { cover: cover.image },
+       // images: { cover: cover.image },
         title: field.book.title,
         author: field.book.author,
         publication_year: field.book.publication_year,

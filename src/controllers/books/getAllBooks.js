@@ -25,7 +25,7 @@ const getAllBooks = async (req) => {
       const [cover, ...extra] = field.book?.images.map((image) => image.image);
       return {
         id: field.book.id,
-        images: { cover, extra },
+       // images: { cover, extra },
         title: field.book.title,
         author: field.book.author,
         publication_year: field.book.publication_year,

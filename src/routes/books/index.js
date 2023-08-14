@@ -2,6 +2,7 @@ const { Router } = require('express');
 const multer = require('multer');
 
 // Multer
+
 const storage = multer.memoryStorage();
 const uploadFields = [
   { name: 'cover', maxCount: 1 },
@@ -22,9 +23,17 @@ const {
 
   // Book Genre
   handleGetBooksByGenre,
-  handleCreateBook,
   handleGetBooksBySubgenre,
-  handleGetSubgenresByBook
+  handleGetSubgenresByBook,
+   handleGetBookReviews,
+   handleGetReviewComments,
+   handleCreateReview,
+   handleLikeReview,
+   handleCreateReviewComment,
+  handleLikeComment,
+  handleDeleteReview,
+  handleDeleteReviewComment
+
 } = require('../../handlers');
 
 // Middlewares
@@ -34,6 +43,7 @@ const {
   verifySession,
   reviewValidator,
   reviewLikeValidator,
+ 
 } = require('../../middlewares/index');
 
 // Genre

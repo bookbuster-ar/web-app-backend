@@ -6,7 +6,7 @@ const {
   handleVerifyEmail,
   handleSignInWithEmail,
   handleLogOut,
-} = require('@handlers');
+} = require('../../handlers');
 
 const { validateUserRegistration } = require('@middlewares');
 

@@ -38,7 +38,7 @@ const reviewValidator = (req, res, next) => {
   const { bookId } = req.params;
   const { content, rating, reaction } = req.body;
 
-  console.log('Body: ', req.body);
+  //console.log('Body: ', req.body);
 
   if (!bookId || !validate(bookId)) {
     return res.status(400).json({
