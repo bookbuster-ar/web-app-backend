@@ -21,19 +21,19 @@ const formatBooks = (books) =>
     };
   });
 
-const getBooksBySubgenre = async (req, subgenreId) => {
+const getBooksBySubgenre = async ( req,subgenreId) => {
   try {
 
     const{limit, offset, page} = getPaginationData(req,15);
 
     const subgenre = await BookSubgenre.findByPk(subgenreId, {
+       limit: limit,
+       offset: offset,
       include: [
         {
           model: Book,
           as: 'books',
           include: ['images', 'editorial', 'editorial_collection'],
-          limit: limit,
-          offset: offset
         },
       ],
     });
@@ -76,14 +76,14 @@ const getBooksBySubgenre = async (req, subgenreId) => {
     return {
       data: booksBySubgenre,
       paginated:{
-        currentPage: page,
-        itemsPerPage: limit,
-        totalItems: totalBooks,  
-        totalPages: Math.ceil(totalBooks / limit)
+         currentPage: page,
+         itemsPerPage: limit,
+         totalItems: totalBooks,  
+         totalPages: Math.ceil(totalBooks / limit)
 
-      }
+      // }
     }
-    ;
+  }
   } catch (error) {
     throw error;
   }
