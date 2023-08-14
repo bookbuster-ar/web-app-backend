@@ -14,7 +14,7 @@ const createSubscriptionLink = async (userId) => {
 
   const transactionAmount = 2000;
 
-  const returnUrl = `https://d9e5-2803-9800-988c-7bb1-1908-c25d-7d35-63fa.ngrok-free.app/api/payment/successfulSubscription?userId=${userId}&endDate=${formattedEndDate}&transactionAmount=${transactionAmount}`;
+  const returnUrl = `https://bookbuster-deploy.vercel.app?userId=${userId}&endDate=${formattedEndDate}&transactionAmount=${transactionAmount}`;
 
   const user = await Models.User.findOne({
     where: { id: userId },
@@ -36,7 +36,7 @@ const createSubscriptionLink = async (userId) => {
   };
 
   try {
-    user.suscription = true;
+    user.subscription = true;
     const mp = await mercadopago.preapproval.create(preference);
     const linkCheckout = mp && mp.response && mp.response.init_point;
     const subscriptionData = {

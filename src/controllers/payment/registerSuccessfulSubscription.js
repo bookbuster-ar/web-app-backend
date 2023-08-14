@@ -26,7 +26,7 @@ const registerSuccessfulSubscription = async (userData, subscriptionData) => {
       where: {
         id: userId,
       },
-      attributes: ['name', 'last_name', 'email', 'suscription'],
+      attributes: ['name', 'last_name', 'email', 'subscription'],
     });
 
     const [userInfo, newTransaction] = await Promise.all([

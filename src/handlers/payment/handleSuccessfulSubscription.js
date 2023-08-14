@@ -20,7 +20,11 @@ const handleSuccessfulSubscription = async (req, res) => {
 
   await registerSuccessfulSubscription(userData, subscriptionData);
   try {
-    res.send('Datos recibidos con éxito');
+    res.redirect(
+      `https://bookbuster-deploy.vercel.app/?data=${encodeURIComponent(
+        JSON.stringify({userData, subscriptionData})
+      )}`
+    );    
   } catch (error) {
     res.status(500).send(result.error);
   }

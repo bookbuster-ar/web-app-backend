@@ -38,7 +38,7 @@ const registerSuccessfulPayment = async (paymentInfo) => {
       where: {
         id: externalData.userId,
       },
-      attributes: ['name', 'last_name', 'email', 'suscription'],
+      attributes: ['name', 'last_name', 'email', 'subscription'],
     });
 
     const [newTransaction, userData] = await Promise.all([
