@@ -95,13 +95,11 @@ const uploadBooks = async (bookDb) => {
   }
 };
 
-
 app.listen(3001, async () => {
   try {
-    await sequelize.sync({ alter: true, logging: false }); 
-    await uploadBooks(bookDb);
+    await sequelize.sync({ alter: true, logging: false });
+    // await uploadBooks(bookDb);
   } catch (error) {
     console.log(error.message);
   }
 });
-

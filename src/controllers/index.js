@@ -33,6 +33,13 @@ const getCollection = require('./editorial/getCollection');
 
 const increaseStock = require('./stock/increaseStock');
 
+// Auth
+
+const signInWithEmail = require('./auth/signInWithEmail');
+const registerUserWithEmail = require('./auth/registerUserWithEmail');
+const logOut = require('./auth/logOut');
+const verifyUserEmail = require('./auth/verifyUserEmail');
+
 module.exports = {
   // Books
   getAllBooks,
@@ -66,4 +73,10 @@ module.exports = {
 
   // Stock
   increaseStock,
+
+  // Auth
+  signInWithEmail,
+  registerUserWithEmail,
+  logOut,
+  verifyUserEmail,
 };
