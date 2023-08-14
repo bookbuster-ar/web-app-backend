@@ -34,6 +34,9 @@ const handleVerifyEmail = require('./auth/handleVerifyEmail');
 const handleSignInWithEmail = require('./auth/handleSignInWithEmail');
 const handleLogOut = require('./auth/handleLogOut');
 
+// User
+const handleAddFavoriteGenres = require('./user/handleAddFavoriteGenres');
+
 module.exports = {
   // Books
   handleGetBooks,
@@ -69,4 +72,7 @@ module.exports = {
   handleVerifyEmail,
   handleSignInWithEmail,
   handleLogOut,
+
+  // User
+  handleAddFavoriteGenres,
 };
