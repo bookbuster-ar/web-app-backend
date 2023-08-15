@@ -122,6 +122,8 @@ Models.BookFormat.belongsToMany(Models.Book, {
   as: 'books',
 });
 
+
+
 //* Books-Transaction
 Models.PublishedBook.belongsToMany(Models.Transaction, {
   through: Models.TransactionDetail,
@@ -176,6 +178,18 @@ Models.SaleStock.belongsTo(Models.PublishedBook, {
   foreignKey: 'published_book_id',
   as: 'published_book',
 });
+
+//*PublishedBook-Format
+Models.PublishedBook.belongsToMany(Models.BookFormat, {
+  through: Models.PublishedBookPrice,
+  foreignKey: 'published_book_id',
+  as: 'formats',
+});
+Models.BookFormat.belongsToMany(Models.PublishedBook, {
+  through: Models.PublishedBookPrice,
+  foreignKey: 'book_format_id',
+  as: 'published_books',
+})
 
 //* Book-RentStock
 Models.PublishedBook.hasOne(Models.RentStock, {

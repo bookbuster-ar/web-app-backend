@@ -10,31 +10,31 @@ module.exports = {
   BookToReview: require('./Book/BookToReview'),
   EditorialCollection: require('./Book/EditorialCollection'),
   BookSubgenre: require('./Book/BookSubgenre'),
-
+  
   // User
   User: require('./User/User'),
   UserImage: require('./User/UserImage'),
   Role: require('./User/Role'),
   Session: require('./User/Session'),
-
+  
   // Sale
   SaleStock: require('./Sale/SaleStock'),
   Transaction: require('./Sale/Transaction'),
   PaymentMethod: require('./Sale/PaymentMethod'),
-
+  
   // Rent
   RentStock: require('./Rent/RentStock'),
-
+  
   // Review
   Review: require('./Review/Review'),
   Comment: require('./Review/Comment'),
   ReviewLike: require('./Review/ReviewLike'),
   CommentLike: require('./Review/CommentLike'),
-
+  
   // Shelves
   BookShelves: require('./Shelves/BookShelves'),
   BookShelfCategory: require('./Shelves/BookShelfCategory'),
-
+  
   //intermediate
   BookGenreInterm: require('./Intermediate/BookGenreInterm'),
   BookFormatInterm: require('./Intermediate/BookFormatInterm'),
@@ -43,4 +43,5 @@ module.exports = {
   Reaction: require('./Intermediate/Reaction'),
   GenreSubgenreInterm: require('./Intermediate/GenreSubgenreInterm'),
   BookSubgenreInterm: require('./Intermediate/BookSubgenreInterm'),
+  PublishedBookPrice: require('./Intermediate/PublishedBookPrice'),
 };
