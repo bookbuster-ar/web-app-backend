@@ -1,6 +1,7 @@
 const { Transaction, User } = require('../../models');
 const sendSuccessfulSubscription = require('../../services/sendSuccessfulSubscription');
 const moment = require('moment');
+const cron = require('node-cron');
 const sequelize = require('../../config/database');
 
 const registerSuccessfulSubscription = async (userData, subscriptionData) => {
@@ -34,6 +35,16 @@ const registerSuccessfulSubscription = async (userData, subscriptionData) => {
       promiseTransaction,
     ]);
 
+    await User.update(
+      { subscription: true },
+      {
+        where: {
+          id: userId,
+        },
+        transaction,
+      }
+    );
+
     await transaction.commit();
 
     sendSuccessfulSubscription(
@@ -42,6 +53,22 @@ const registerSuccessfulSubscription = async (userData, subscriptionData) => {
       endDate,
       preapproval_id
     );
+
+    cron.schedule(`0 0 */30 * *`, async () => {
+      try {
+        await User.update(
+          { subscription: false },
+          {
+            where: {
+              id: userId,
+            },
+          }
+        );
+        console.log('Suscripción actualizada a falso después de 30 días.');
+      } catch (error) {
+        console.error('Error al actualizar la suscripción:', error);
+      }
+    });
 
     return { success: true, message: 'Pago registrado con éxito' };
   } catch (error) {

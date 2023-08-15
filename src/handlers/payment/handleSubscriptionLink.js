@@ -2,8 +2,9 @@ const createSubscriptionLink = require('../../controllers/payment/createSubscrip
 
 const handleSubscriptionLink = async (req, res) => {
   const { sessionid: sessionId, userid: userId } = req.headers;
+  const { price } = req.body;
   try {
-    const link = await createSubscriptionLink(userId);
+    const link = await createSubscriptionLink(userId, price);
     if (link)
       return res
         .status(200)

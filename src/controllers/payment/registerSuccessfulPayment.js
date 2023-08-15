@@ -49,11 +49,11 @@ const registerSuccessfulPayment = async (paymentInfo) => {
     const transactionId = newTransaction.id;
 
     for (const bookId of externalData.products) {
-      await Models.SaleStock.decrement(
-        { stock: bookId.quantity },
-        { where: { published_book_id: bookId.id } },
-        { transaction }
-      );
+      // await Models.SaleStock.decrement(
+      //   { stock: bookId.quantity },
+      //   { where: { published_book_id: bookId.id } },  //Comentado hasta que haya stock
+      //   { transaction }
+      // );
 
       await Models.TransactionDetail.create(
         {
@@ -66,6 +66,7 @@ const registerSuccessfulPayment = async (paymentInfo) => {
         { transaction }
       );
     }
+
     await transaction.commit();
     sendSuccessfulOrder(newTransaction, userData, paymentMethod);
     return { success: true, message: 'Pago registrado con éxito' };
