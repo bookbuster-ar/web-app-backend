@@ -1,6 +1,7 @@
 const mercadopago = require('../../config/mercadopago');
 const Models = require('../../models');
 const moment = require('moment');
+const { BACK_URL } = require('../../utils/env');
 
 const createSubscriptionLink = async (userId) => {
   const startDate = moment().toISOString();
@@ -14,7 +15,7 @@ const createSubscriptionLink = async (userId) => {
 
   const transactionAmount = 2000;
 
-  const returnUrl = `https://d9e5-2803-9800-988c-7bb1-1908-c25d-7d35-63fa.ngrok-free.app/api/payment/successfulSubscription?userId=${userId}&endDate=${formattedEndDate}&transactionAmount=${transactionAmount}`;
+  const returnUrl = `https://0e8b-2803-9800-988c-7bb1-db-5a2b-1cb9-e31.ngrok-free.app/api/payment/successfulSubscription?userId=${userId}&endDate=${formattedEndDate}&transactionAmount=${transactionAmount}`;
 
   const user = await Models.User.findOne({
     where: { id: userId },
@@ -36,18 +37,15 @@ const createSubscriptionLink = async (userId) => {
   };
 
   try {
-    user.suscription = true;
+    user.subscription = true;
     const mp = await mercadopago.preapproval.create(preference);
     const linkCheckout = mp && mp.response && mp.response.init_point;
-    console.log(mp);
     const subscriptionData = {
       linkCheckout,
-      // returnUrl,
     };
 
     return subscriptionData;
   } catch (error) {
-    console.log(error);
     return false;
   }
 };

@@ -1,4 +1,4 @@
-const { BookGenre } = require('../../models');
+const { BookGenre } = require('../../models/index');
 
 const getAllGenres = async () => await BookGenre.findAll();
 

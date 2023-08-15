@@ -1,7 +1,6 @@
-const { PublishedBook, Book } = require('../../models/');
+const { PublishedBook, Book } = require('../../models/index');
 const { Op, Sequelize } = require('sequelize');
 const getPaginationData = require('../../utils/pagination');
-
 
 const normalizeAndLowerCase = (input) => {
   return input
@@ -25,13 +24,16 @@ const getFilteredBooks = async (req,{ title, author, search }) => {
     const { limit, offset, page } = getPaginationData(req, 15);
 
     const whereClause = {};
-     console.log("title:",title, "author:",author, "search:",search);
+
     if (search) {
+
       whereClause[Op.or] = [
         createWhereClause('title', search),
         createWhereClause('author', search),
       ];
+
     } else {
+
       if (title) {
         whereClause.title = createWhereClause('title', title);
       }
@@ -44,21 +46,27 @@ const getFilteredBooks = async (req,{ title, author, search }) => {
     const filteredBooks = await PublishedBook.findAll({
       limit: limit,
       offset: offset,
-      where: whereClause,
       include: {
         model: Book,
         as: 'book',
+        where: whereClause,
         include: ['images', 'editorial', 'editorial_collection'],
       },
     });
 
-    const totalFilteredBooks = await PublishedBook.count({where: whereClause});
-
-    const filteredData = filteredBooks.map((field) => {
+    const totalFilteredBooks = await Book.count({
+      include: [{
+        model: PublishedBook,
+        as: 'published_book'
+      }],
+      where: whereClause
+    });
+      
+     const filteredData = filteredBooks.map((field) => {
       const [cover, ...extra] = field.book.images.map((image) => image.image);
       return {
         id: field.book.id,
-        images: { cover, extra },
+       // images: { cover: cover.image },
         title: field.book.title,
         author: field.book.author,
         publication_year: field.book.publication_year,
@@ -75,12 +83,10 @@ const getFilteredBooks = async (req,{ title, author, search }) => {
         totalItems: totalFilteredBooks,
         totalPages: Math.ceil(totalFilteredBooks / limit)
       }
-    }
-    ;
+    };
   } catch (error) {
     throw error;
   }
 };
-
 
 module.exports = getFilteredBooks;

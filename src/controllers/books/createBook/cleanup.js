@@ -1,4 +1,4 @@
-const { Book, Editorial } = require('@models');
+const { Book, Editorial } = require('../../../models/index');
 
 const cleanupAfterFailure = async (bookId, editorialId) => {
   try {

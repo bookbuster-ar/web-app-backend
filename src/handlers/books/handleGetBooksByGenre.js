@@ -1,5 +1,5 @@
 const { validate } = require('uuid');
-const { getBooksByGenre } = require('../../controllers');
+const { getBooksByGenre } = require('../../controllers/index');
 
 const handleGetBooksByGenre = async (req, res) => {
   const genreId = req.query.id;

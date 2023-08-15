@@ -10,7 +10,6 @@ const registerSuccessfulSubscription = async (userData, subscriptionData) => {
     const { userId, endDate } = userData;
     const { payment_id, status, transactionAmount, preapproval_id } =
       subscriptionData;
-    console.log(preapproval_id);
 
     const promiseTransaction = Transaction.create(
       {
@@ -27,7 +26,7 @@ const registerSuccessfulSubscription = async (userData, subscriptionData) => {
       where: {
         id: userId,
       },
-      attributes: ['name', 'last_name', 'email', 'suscription'],
+      attributes: ['name', 'last_name', 'email', 'subscription'],
     });
 
     const [userInfo, newTransaction] = await Promise.all([

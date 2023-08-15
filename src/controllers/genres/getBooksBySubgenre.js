@@ -3,7 +3,7 @@ const {
   Book,
   BookSubgenre,
 } = require('../../models');
-const getPaginationData = require('../../utils/getPaginationData');
+const getPaginationData = require('../../utils/pagination');
 
 
 const formatBooks = (books) =>
@@ -65,7 +65,6 @@ const getBooksBySubgenre = async (req, subgenreId) => {
         },
       ],
     });
-    console.log(publishedBooksBySubgenre);
 
   const booksBySubgenre =  {
       id: subgenre.id,

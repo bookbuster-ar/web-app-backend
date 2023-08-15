@@ -1,4 +1,4 @@
-const { BookGenre, BookSubgenre } = require('../../models');
+const { BookGenre, BookSubgenre } = require('../../models/index');
 
 const getSubgenresByGenre = async (genreId) => {
   try {
@@ -10,7 +10,14 @@ const getSubgenresByGenre = async (genreId) => {
       throw new Error('Género no encontrado');
     }
 
-    return genre.subgenres;
+    return {
+      id: genre.id,
+      name: genre.name,
+      subgenres: genre.subgenres?.map((subgenre) => ({
+        id: subgenre.id,
+        name: subgenre.name,
+      })),
+    };
   } catch (error) {
     throw {
       message: 'No se encontraron los subgéneros para el género dado',
