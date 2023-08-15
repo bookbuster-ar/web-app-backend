@@ -38,6 +38,7 @@ const logOut = require('./auth/logOut');
 
 // User
 const addFavoriteGenres = require('./user/addFavoriteGenres');
+const getFavoriteGenres = require('./user/getFavoriteGenres');
 
 module.exports = {
   // Books
@@ -78,4 +79,5 @@ module.exports = {
 
   // User
   addFavoriteGenres,
+  getFavoriteGenres,
 };

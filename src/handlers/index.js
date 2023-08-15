@@ -36,6 +36,7 @@ const handleLogOut = require('./auth/handleLogOut');
 
 // User
 const handleAddFavoriteGenres = require('./user/handleAddFavoriteGenres');
+const handleGetFavoriteGenres = require('./user/handleGetFavoriteGenres');
 
 module.exports = {
   // Books
@@ -75,4 +76,5 @@ module.exports = {
 
   // User
   handleAddFavoriteGenres,
+  handleGetFavoriteGenres,
 };

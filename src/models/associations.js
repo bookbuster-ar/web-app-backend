@@ -324,13 +324,23 @@ Models.BookSubgenre.belongsToMany(Models.Book, {
   as: 'books',
 });
 
-//! UserDetail - BookGenre
-Models.UserDetail.belongsToMany(Models.BookGenre, {
+//! UserDetail - User
+Models.User.hasOne(Models.UserDetail, {
+  foreignKey: 'user_id',
+  as: 'detail',
+});
+Models.UserDetail.belongsTo(Models.User, {
+  foreignKey: 'user_id',
+  as: 'user',
+});
+
+//! User - BookGenre
+Models.User.belongsToMany(Models.BookGenre, {
   through: Models.UserBookGenreInterm,
   foreignKey: 'user_id',
-  as: 'favorite_genres',
+  as: 'favoriteGenres',
 });
-Models.BookGenre.belongsToMany(Models.UserDetail, {
+Models.BookGenre.belongsToMany(Models.User, {
   through: Models.UserBookGenreInterm,
   foreignKey: 'book_genre_id',
   as: 'users',
