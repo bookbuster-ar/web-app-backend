@@ -1,4 +1,4 @@
-const { Book, BookDetail } = require('../../models/index');
+const { Book, BookDetail, PublishedBook } = require('../../models/index');
 
 const getBookDetail = async (id) => {
   return BookDetail.findOne({ where: { book_id: id } });
@@ -11,12 +11,10 @@ const getBasicInfoOfBook = async (id) => {
 };
 
 const getBookById = async (id) => {
-
-   
-
+  const publishedBook = await PublishedBook.findByPk(id);
   const [bookBasicInfo, bookDetail] = await Promise.all([
-    getBasicInfoOfBook(id),
-    getBookDetail(id),
+    getBasicInfoOfBook(publishedBook.toJSON().book_id),
+    getBookDetail(publishedBook.toJSON().book_id),
   ]);
 
   const completeBookInfo = {
@@ -33,7 +31,7 @@ const getBookById = async (id) => {
     .map((image) => image.image);
 
   return {
-    id: completeBookInfo.id,
+    id: id,
     title: completeBookInfo.title,
     author: completeBookInfo.author,
     publication_year: completeBookInfo.publication_year,

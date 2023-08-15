@@ -1,5 +1,6 @@
 const mercadopago = require('../../config/mercadopago');
 const Models = require('../../models');
+const { BACK_URL } = require('../../utils/env');
 
 const placeOrder = async (items, userId) => {
   const productData = items.map((item) => ({
