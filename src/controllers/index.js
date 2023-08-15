@@ -5,6 +5,8 @@ const getFilteredBooks = require('./books/getFilteredBooks');
 
 const createBook = require('./books/createBook');
 
+const getWeekRecommendations = require('./books/getWeekRecommendations');
+
 // Review
 const getBookReviews = require('./review/getBookReviews');
 const getReviewComments = require('./review/getReviewComments');
@@ -47,6 +49,8 @@ module.exports = {
   getBookById,
   getFilteredBooks,
   createBook,
+
+  getWeekRecommendations,
 
   // Review
   getBookReviews,

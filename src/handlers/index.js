@@ -6,6 +6,7 @@ const handleGetBooksBySubgenre = require('./books/handleGetBooksBySubgenre');
 const handleGetSubgenresByGenre = require('./books/handleGetSubgenresByGenre');
 const handleCreateBook = require('./books/handleCreateBook');
 const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
+const handleGetWeekRecommendations = require('./books/handleGetWeekRecomendations');
 
 // Review
 const handleGetBookReviews = require('./review/handleGetBookReviews');
@@ -47,6 +48,7 @@ module.exports = {
   handleGetBooksBySubgenre,
   handleGetSubgenresByGenre,
   handleGetBookSubgenres,
+  handleGetWeekRecommendations,
 
   // Review
   handleGetBookReviews,

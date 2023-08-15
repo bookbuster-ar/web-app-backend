@@ -40,7 +40,10 @@ const {
   handleCreateReviewComment,
   handleGetReviewComments,
   handleLikeComment,
-} = require('../../handlers/index');
+
+  // Categories
+  handleGetWeekRecommendations,
+} = require('../../handlers');
 
 // Middlewares
 const {
@@ -49,7 +52,7 @@ const {
   verifySession,
   reviewValidator,
   reviewLikeValidator,
-} = require('../../middlewares/index');
+} = require('../../middlewares');
 
 // Genre
 bookRouter.get('/genre', handleGetBooksByGenre);
@@ -102,6 +105,12 @@ bookRouter.delete(
 
 // All
 bookRouter.get('/', handleGetBooks);
+
+// Categories
+bookRouter.get(
+  '/categories/week-recommendations',
+  handleGetWeekRecommendations
+);
 
 // Create
 bookRouter.post(
