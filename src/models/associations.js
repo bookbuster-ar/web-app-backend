@@ -170,16 +170,16 @@ Models.PublishedBook.belongsTo(Models.Book, {
 });
 
 //* PublishedBook-SaleStock
-Models.PublishedBook.hasOne(Models.SaleStock, {
-  foreignKey: 'published_book_id',
+Models.BookFormatInterm.hasOne(Models.SaleStock, {
+  foreignKey: 'book_format_interm_id',
   as: 'sale_stock',
 });
-Models.SaleStock.belongsTo(Models.PublishedBook, {
-  foreignKey: 'published_book_id',
-  as: 'published_book',
+Models.SaleStock.belongsTo(Models.BookFormatInterm, {
+  foreignKey: 'book_format_interm_id',
+  as: 'book_format_interm',
 });
 
-//*PublishedBook-Format
+//*PublishedBook - Format
 Models.PublishedBook.belongsToMany(Models.BookFormat, {
   through: Models.PublishedBookPrice,
   foreignKey: 'published_book_id',
@@ -189,16 +189,17 @@ Models.BookFormat.belongsToMany(Models.PublishedBook, {
   through: Models.PublishedBookPrice,
   foreignKey: 'book_format_id',
   as: 'published_books',
-})
+});
 
-//* Book-RentStock
-Models.PublishedBook.hasOne(Models.RentStock, {
-  foreignKey: 'published_book_id',
+
+//* BookFormatInterm - RentStock
+Models.BookFormatInterm.hasOne(Models.RentStock, {
+  foreignKey: 'book_format_interm_id',
   as: 'rent_stock',
 });
-Models.RentStock.belongsTo(Models.PublishedBook, {
-  foreignKey: 'published_book_id',
-  as: 'published_book',
+Models.RentStock.belongsTo(Models.BookFormatInterm, {
+  foreignKey: 'book_format_interm_id',
+  as: 'book_format_interm',
 });
 
 //! EditorialCollection

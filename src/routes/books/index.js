@@ -18,6 +18,9 @@ const {
   handleGetBooks,
   handleCreateBook,
 
+  //Price
+  handleGetPriceByFormat,
+
   // Book Detail
   handleGetBookById,
 
@@ -50,6 +53,9 @@ const {
 bookRouter.get('/genre', handleGetBooksByGenre);
 bookRouter.get('/subgenres', handleGetSubgenresByBook )
 bookRouter.get('/subgenre', handleGetBooksBySubgenre);
+
+//Price
+bookRouter.get('/price', handleGetPriceByFormat);
 
 // Detail
 bookRouter.get('/:id', handleGetBookById);
