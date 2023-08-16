@@ -25,12 +25,13 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       unique: true,
       // allowNull: false,
+      // unique: true,
     },
     email_verified: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    suscription: {
+    subscription: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
       // allowNull: false,

@@ -12,6 +12,7 @@ const PaymentMethod = sequelize.define(
     },
     name: {
       type: DataTypes.STRING,
+      defaultValue: 'Mercado Pago',
       // allowNull: false,
     },
   },

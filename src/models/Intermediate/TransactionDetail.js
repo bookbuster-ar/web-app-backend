@@ -10,7 +10,7 @@ const TransactionDetail = sequelize.define(
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    quiantity: {
+    quantity: {
       type: DataTypes.INTEGER,
       // allowNull: false,
     },

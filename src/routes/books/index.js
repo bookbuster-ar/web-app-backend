@@ -2,6 +2,7 @@ const { Router } = require('express');
 const multer = require('multer');
 
 // Multer
+
 const storage = multer.memoryStorage();
 const uploadFields = [
   { name: 'cover', maxCount: 1 },
@@ -22,25 +23,18 @@ const {
 
   // Book Genre
   handleGetBooksByGenre,
-  handleGetSubgenresByGenre,
-
-  // Book Subgenre
   handleGetBooksBySubgenre,
-  handleGetBookSubgenres,
-
-  // Book Review
-  handleGetBookReviews,
-  handleCreateReview,
-  handleLikeReview,
-
-  handleDeleteReview,
-  handleDeleteReviewComment,
-
-  // Book Review Comment
-  handleCreateReviewComment,
-  handleGetReviewComments,
+  handleGetSubgenresByBook,
+   handleGetBookReviews,
+   handleGetReviewComments,
+   handleCreateReview,
+   handleLikeReview,
+   handleCreateReviewComment,
   handleLikeComment,
-} = require('../../handlers/index');
+  handleDeleteReview,
+  handleDeleteReviewComment
+
+} = require('../../handlers');
 
 // Middlewares
 const {
@@ -49,14 +43,12 @@ const {
   verifySession,
   reviewValidator,
   reviewLikeValidator,
+ 
 } = require('../../middlewares/index');
 
 // Genre
 bookRouter.get('/genre', handleGetBooksByGenre);
-
-// Subgenre
-bookRouter.get('/subgenres', handleGetBookSubgenres);
-bookRouter.get('/genre/subgenres', handleGetSubgenresByGenre);
+bookRouter.get('/subgenres', handleGetSubgenresByBook )
 bookRouter.get('/subgenre', handleGetBooksBySubgenre);
 
 // Detail

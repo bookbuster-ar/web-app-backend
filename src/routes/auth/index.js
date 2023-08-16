@@ -6,9 +6,9 @@ const {
   handleVerifyEmail,
   handleSignInWithEmail,
   handleLogOut,
-} = require('@handlers');
+} = require('../../handlers');
 
-const { validateUserRegistration } = require('@middlewares');
+const { validateUserRegistration } = require('../../middlewares');
 
 // Login
 authRouter.post('/login/local', handleSignInWithEmail);
