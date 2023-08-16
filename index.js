@@ -60,23 +60,23 @@ const uploadBooks = async (bookDb) => {
       await createdBook.createPublished_book();
       await genre.addSubgenres(subgenresToAdd);
 
-      const rutaImagenLocal = `./book-images/${currentBook['id']}/${currentBook['id']}.jpg`;
+      // const rutaImagenLocal = `./book-images/${currentBook['id']}/${currentBook['id']}.jpg`;
 
-      // Subimos la imagen a Cloudinary
-      const result = await cloudinary.uploader.upload(rutaImagenLocal, {
-        public_id: `book/${currentBook['id']}/${uuidv4()}`,
-      });
+      // // Subimos la imagen a Cloudinary
+      // const result = await cloudinary.uploader.upload(rutaImagenLocal, {
+      //   public_id: `book/${currentBook['id']}/${uuidv4()}`,
+      // });
 
-      if (result && result.url) {
-        await Models.BookImage.create({
-          book_id: createdBook.id,
-          image: result.url,
-          is_cover: true,
-        });
-        console.log('Imagen subida y guardada con essito:', result.url);
-      } else {
-        console.error('Error subiendo la imagen a Cloudinary.');
-      }
+      // if (result && result.url) {
+      //   await Models.BookImage.create({
+      //     book_id: createdBook.id,
+      //     image: result.url,
+      //     is_cover: true,
+      //   });
+      //   console.log('Imagen subida y guardada con essito:', result.url);
+      // } else {
+      //   console.error('Error subiendo la imagen a Cloudinary.');
+      // }
 
       // const properties = Object.getOwnPropertyNames(
       //   Object.getPrototypeOf(editorial)
