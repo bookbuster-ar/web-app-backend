@@ -38,6 +38,12 @@ const handleLogOut = require('./auth/handleLogOut');
 const handleAddFavoriteGenres = require('./user/handleAddFavoriteGenres');
 const handleGetFavoriteGenres = require('./user/handleGetFavoriteGenres');
 
+// quote
+const handleCreateQuote = require('./quotes/handleCreateQuote');
+const handleGetBookQuotes = require('./quotes/handleGetBookQuotes');
+const handleLikeQuote = require('./quotes/handleLikeQuote');
+const handleDeleteQuote = require('./quotes/handleDeleteQuote');
+
 module.exports = {
   // Books
   handleGetBooks,
@@ -77,4 +83,10 @@ module.exports = {
   // User
   handleAddFavoriteGenres,
   handleGetFavoriteGenres,
+
+  // quote
+  handleCreateQuote,
+  handleGetBookQuotes,
+  handleLikeQuote,
+  handleDeleteQuote,
 };

@@ -40,6 +40,12 @@ const logOut = require('./auth/logOut');
 const addFavoriteGenres = require('./user/addFavoriteGenres');
 const getFavoriteGenres = require('./user/getFavoriteGenres');
 
+// quote
+const createQuote = require('./quotes/createQuote');
+const getBookQuotes = require('./quotes/getBookQuotes');
+const likedQuote = require('./quotes/likeQuote');
+const deleteQuote = require('./quotes/deleteQuote');
+
 module.exports = {
   // Books
   getAllBooks,
@@ -80,4 +86,10 @@ module.exports = {
   // User
   addFavoriteGenres,
   getFavoriteGenres,
+
+  //quote
+  createQuote,
+  getBookQuotes,
+  likedQuote,
+  deleteQuote,
 };

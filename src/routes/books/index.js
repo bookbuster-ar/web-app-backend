@@ -40,6 +40,12 @@ const {
   handleCreateReviewComment,
   handleGetReviewComments,
   handleLikeComment,
+
+  // Book Quote
+  handleCreateQuote,
+  handleGetBookQuotes,
+  handleLikeQuote,
+  handleDeleteQuote,
 } = require('../../handlers/index');
 
 // Middlewares
@@ -99,6 +105,27 @@ bookRouter.delete(
   verifySession,
   handleDeleteReviewComment
 );
+
+//* Quote
+bookRouter.post('/:bookId/quotes', handleCreateQuote);
+
+bookRouter.get('/:bookId/quotes', handleGetBookQuotes);
+
+bookRouter.post('/:bookId/quotes/:quoteId/like', handleLikeQuote);
+
+bookRouter.delete('/:bookId/quotes/:quoteId', handleDeleteQuote);
+
+// bookRouter.post('/comment/quote', (req, res) => {
+//   res.send('comentar una cita');
+// });
+
+// bookRouter.post('/likeComment/quote', (req, res) => {
+//   res.send('likear un comentario de una cita');
+// });
+
+// bookRouter.get('/allComment/quote', (req, res) => {
+//   res.send('obtener todos los comentarios de una cita');
+// });
 
 // All
 bookRouter.get('/', handleGetBooks);

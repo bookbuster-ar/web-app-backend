@@ -78,6 +78,37 @@ Models.BookToReview.belongsTo(Models.User, {
   as: 'user',
 });
 
+//* User-Quote
+Models.User.hasMany(Models.Quote, {
+  foreignKey: 'user_id',
+  as: 'quotes',
+});
+Models.Quote.belongsTo(Models.User, { foreignKey: 'user_id', as: 'create' });
+
+//* User-QuoteLike
+Models.User.hasMany(Models.QuoteLike, {
+  foreignKey: 'user_id',
+  as: 'quote_likes',
+});
+Models.QuoteLike.belongsTo(Models.User, { foreignKey: 'user_id', as: 'user' });
+
+// //* User-CommentQuote
+// Models.User.hasMany(Models.CommentQuote, {
+//   foreignKey: 'user_id',
+//   as: 'comments_quote',
+// });
+// Models.CommentQuote.belongsTo(Models.User, { foreignKey: 'user_id', as: 'by' });
+
+// //* User-CommentQuoteLike
+// Models.User.hasMany(Models.CommentQuoteLike, {
+//   foreignKey: 'user_id',
+//   as: 'comment_quote_likes',
+// });
+// Models.CommentQuoteLike.belongsTo(Models.User, {
+//   foreignKey: 'user_id',
+//   as: 'user',
+// });
+
 //! Book
 
 //* Book-Review
