@@ -62,22 +62,21 @@ const uploadBooks = async (bookDb) => {
 
       const rutaImagenLocal = `./book-images/${currentBook['id']}/${currentBook['id']}.jpg`;
 
-      // // Subimos la imagen a Cloudinary
-      // const result = await cloudinary.uploader.upload(rutaImagenLocal, {
-      //   public_id: `book/${currentBook['id']}/${uuidv4()}`,
-      // });
+      // Subimos la imagen a Cloudinary
+      const result = await cloudinary.uploader.upload(rutaImagenLocal, {
+        public_id: `book/${currentBook['id']}/${uuidv4()}`,
+      });
 
-      // if (result && result.url) {
-      //   // Guardamos el URL de la imagen en la tabla book_image
-      //   await Models.BookImage.create({
-      //     book_id: createdBook.id,
-      //     image: result.url,
-      //     is_cover: true,
-      //   });
-      //   console.log('Imagen subida y guardada con Ã©xito:', result.url);
-      // } else {
-      //   console.error('Error subiendo la imagen a Cloudinary.');
-      // }
+      if (result && result.url) {
+        await Models.BookImage.create({
+          book_id: createdBook.id,
+          image: result.url,
+          is_cover: true,
+        });
+        console.log('Imagen subida y guardada con essito:', result.url);
+      } else {
+        console.error('Error subiendo la imagen a Cloudinary.');
+      }
 
       // const properties = Object.getOwnPropertyNames(
       //   Object.getPrototypeOf(editorial)
@@ -97,7 +96,8 @@ const uploadBooks = async (bookDb) => {
 
 app.listen(3001, async () => {
   try {
-    await sequelize.sync({ force: false, logging: false });
+    await sequelize.sync({ force: true, logging: false });
+    await uploadBooks(bookDb);
   } catch (error) {
     console.log(error.message);
   }
