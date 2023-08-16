@@ -291,6 +291,20 @@ Models.ReviewLike.belongsTo(Models.Review, {
   as: 'review',
 });
 
+//! Quote
+
+//* Quote-QuoteLike
+Models.Quote.hasMany(Models.QuoteLike, {
+  foreignKey: 'quote_id',
+  as: 'likes',
+  onDelete: 'CASCADE',
+  hooks: true,
+});
+Models.QuoteLike.belongsTo(Models.Quote, {
+  foreignKey: 'quote_id',
+  as: 'quote',
+});
+
 //! Comment
 
 // Comment-CommentLike
