@@ -48,6 +48,7 @@ const verifyUserEmail = require('./auth/verifyUserEmail');
 // User
 const addFavoriteGenres = require('./user/addFavoriteGenres');
 const getFavoriteGenres = require('./user/getFavoriteGenres');
+const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
 
 module.exports = {
   // Books
@@ -96,4 +97,5 @@ module.exports = {
   // User
   addFavoriteGenres,
   getFavoriteGenres,
+  registerUserWithGoogle,
 };
