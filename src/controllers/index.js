@@ -36,6 +36,10 @@ const verifyUserEmail = require('./auth/verifyUserEmail');
 const signInWithEmail = require('./auth/signInWithEmail');
 const logOut = require('./auth/logOut');
 
+// User
+const addFavoriteGenres = require('./user/addFavoriteGenres');
+const getFavoriteGenres = require('./user/getFavoriteGenres');
+
 module.exports = {
   // Books
   getAllBooks,
@@ -72,4 +76,8 @@ module.exports = {
   verifyUserEmail,
   signInWithEmail,
   logOut,
+
+  // User
+  addFavoriteGenres,
+  getFavoriteGenres,
 };

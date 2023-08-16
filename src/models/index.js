@@ -13,6 +13,7 @@ module.exports = {
 
   // User
   User: require('./User/User'),
+  UserDetail: require('./User/UserDetail'),
   UserImage: require('./User/UserImage'),
   Role: require('./User/Role'),
   Session: require('./User/Session'),
@@ -43,4 +44,5 @@ module.exports = {
   Reaction: require('./Intermediate/Reaction'),
   GenreSubgenreInterm: require('./Intermediate/GenreSubgenreInterm'),
   BookSubgenreInterm: require('./Intermediate/BookSubgenreInterm'),
+  UserBookGenreInterm: require('./Intermediate/UserBookGenreInterm'),
 };
