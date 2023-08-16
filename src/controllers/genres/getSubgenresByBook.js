@@ -2,7 +2,7 @@ const { PublishedBook, Book, BookSubgenre } = require('../../models');
 
 const getSubgenresByBook = async (bookId) => {
   try {
-    const subgenres = await PublishedBook.findByPk(bookId, {
+    const bookWithSubgenres = await PublishedBook.findByPk(bookId, {
       include: [
         {
           model: Book,
@@ -12,11 +12,14 @@ const getSubgenresByBook = async (bookId) => {
       ],
     });
 
-    if (!subgenres) {
+    if (!bookWithSubgenres) {
       throw new Error('No tiene subgeneros');
     }
 
-    return book.subgenres;
+    return bookWithSubgenres.book?.subgenres.map((subgenre) => ({
+      id: subgenre.id,
+      name: subgenre.name,
+    }));
   } catch (error) {
     throw error;
   }
