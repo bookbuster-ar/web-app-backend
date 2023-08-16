@@ -28,15 +28,14 @@ const {
   handleGetBooksByGenre,
   handleGetBooksBySubgenre,
   handleGetSubgenresByBook,
-   handleGetBookReviews,
-   handleGetReviewComments,
-   handleCreateReview,
-   handleLikeReview,
-   handleCreateReviewComment,
+  handleGetBookReviews,
+  handleGetReviewComments,
+  handleCreateReview,
+  handleLikeReview,
+  handleCreateReviewComment,
   handleLikeComment,
   handleDeleteReview,
-  handleDeleteReviewComment
-
+  handleDeleteReviewComment,
 } = require('../../handlers');
 
 // Middlewares
@@ -45,13 +44,11 @@ const {
   validateImageFile,
   verifySession,
   reviewValidator,
-  reviewLikeValidator,
- 
 } = require('../../middlewares/index');
 
 // Genre
 bookRouter.get('/genre', handleGetBooksByGenre);
-bookRouter.get('/subgenres', handleGetSubgenresByBook )
+bookRouter.get('/subgenres', handleGetSubgenresByBook);
 bookRouter.get('/subgenre', handleGetBooksBySubgenre);
 
 //Price

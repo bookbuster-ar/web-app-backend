@@ -39,9 +39,9 @@ const placeOrder = async (items, userId) => {
     external_reference: JSON.stringify(externalData),
 
     back_urls: {
-      success: 'http://localhost:3001/api/payment/success',
-      failure: 'http://localhost:3001/api/payment/failure',
-      pending: 'http://localhost:3001/api/payment/pending',
+      success: `${BACK_URL}/api/payment/success`,
+      failure: `${BACK_URL}/api/payment/failure`,
+      pending: `${BACK_URL}/api/payment/pending`,
     },
   };
 

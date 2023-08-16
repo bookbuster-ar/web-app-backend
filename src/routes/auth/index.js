@@ -6,7 +6,6 @@ const {
   handleVerifyEmail,
   handleSignInWithEmail,
   handleLogOut,
-  handleLoginLocal,
   handleRegisterWithGoogle,
 } = require('../../handlers/index');
 
@@ -14,10 +13,6 @@ const { validateUserRegistration } = require('../../middlewares/index');
 
 // Login
 authRouter.post('/login/local', handleSignInWithEmail);
-
-authRouter.post('/login/google', (req, res) => {
-  res.send('Ruta POST login google authentication');
-});
 
 // Signup
 authRouter.post(

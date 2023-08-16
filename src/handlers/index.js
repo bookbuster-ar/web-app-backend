@@ -36,6 +36,7 @@ const handleRegisterLocalUser = require('./auth/handleRegisterLocalUser');
 const handleVerifyEmail = require('./auth/handleVerifyEmail');
 const handleSignInWithEmail = require('./auth/handleSignInWithEmail');
 const handleLogOut = require('./auth/handleLogOut');
+const handleRegisterWithGoogle = require('./auth/handleRegisterWithGoogle');
 
 // User
 const handleAddFavoriteGenres = require('./user/handleAddFavoriteGenres');
@@ -91,6 +92,7 @@ module.exports = {
   handleVerifyEmail,
   handleSignInWithEmail,
   handleLogOut,
+  handleRegisterWithGoogle,
 
   // User
   handleAddFavoriteGenres,

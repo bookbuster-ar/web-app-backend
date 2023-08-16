@@ -13,7 +13,7 @@ const createSubscriptionLink = async (userId, price) => {
 
   const formattedEndDate = moment(endDate).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
 
-  const returnUrl = `https://bf3f-2803-9800-988c-7bb1-5588-ff48-da4f-be2d.ngrok-free.app/api/payment/successfulSubscription?userId=${userId}&endDate=${formattedEndDate}&transactionAmount=${price}`;
+  const returnUrl = `${BACK_URL}/api/payment/successfulSubscription?userId=${userId}&endDate=${formattedEndDate}&transactionAmount=${price}`;
 
   const user = await Models.User.findOne({
     where: { id: userId },
