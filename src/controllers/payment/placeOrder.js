@@ -12,17 +12,17 @@ const placeOrder = async (items, userId) => {
     products: [...productData],
     userId,
   };
-  for (const item of productData) {
-    const saleStock = await Models.SaleStock.findOne({
-      where: {
-        published_book_id: item.id,
-      },
-    });
+  // for (const item of productData) {
+  //   const saleStock = await Models.SaleStock.findOne({
+  //     where: {
+  //       published_book_id: item.id,
+  //     },
+  //   });
 
-    if (!saleStock || saleStock.stock < item.quantity) {
-      throw new Error('No hay suficiente stock del libro solicitado');
-    }
-  }
+  //   if (!saleStock || saleStock.stock < item.quantity) {
+  //     throw new Error('No hay suficiente stock del libro solicitado');
+  //   }
+  // } // Comentado para pruebas
 
   let preference = {
     items: items.map((item) => ({
