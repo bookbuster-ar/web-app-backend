@@ -21,6 +21,9 @@ const {
   //Pages
   handleGetBooksByPages,
 
+  //Format
+  handleGetBooksByFormat,
+
   //Price
   handleGetPriceByFormat,
 
@@ -64,6 +67,9 @@ bookRouter.get('/subgenre', handleGetBooksBySubgenre);
 
 //Filtro por paginas
 bookRouter.get('/filterbypages' , handleGetBooksByPages);
+
+//Filtro por formato
+bookRouter.get('/filterbyformat', handleGetBooksByFormat);
 
 //Price
 bookRouter.get('/price', handleGetPriceByFormat);

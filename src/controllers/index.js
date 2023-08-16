@@ -8,6 +8,9 @@ const createBook = require('./books/createBook');
 //Pages
 const getBooksByPages = require('./books/getBooksByPages');
 
+//Format
+const getBooksByFormat = require('./books/getBooksByFormat');
+
 //Price
 const getPriceByFormat = require('./books/getPriceByFormat');
 
@@ -40,6 +43,7 @@ const getCollection = require('./editorial/getCollection');
 // Stock
 
 const increaseStock = require('./stock/increaseStock');
+const registerBookFormat = require('./stock/registerBookFormat');
 
 // Auth
 
@@ -70,6 +74,9 @@ module.exports = {
   //Pages
   getBooksByPages,
 
+  //Format
+  getBooksByFormat,
+
   //Price
   getPriceByFormat,
 
@@ -99,6 +106,7 @@ module.exports = {
 
   // Stock
   increaseStock,
+  registerBookFormat,
 
   // Auth
   signInWithEmail,
