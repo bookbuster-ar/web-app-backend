@@ -1,7 +1,8 @@
 const admin = require('../../config/firebase/admin');
 const { User, Role, UserImage, Session } = require('../../models/index');
 const sequelize = require('../../config/database');
-//espero recibir el token para decodificarlo
+const { Op } = require('sequelize');
+
 const registerUserWithGoogle = async (token) => {
   return sequelize.transaction(async (t) => {
     const decodedToken = await admin.auth().verifyIdToken(token);
@@ -59,10 +60,6 @@ const registerUserWithGoogle = async (token) => {
     return {
       session_id: session.id,
       user: { ...userWithoutRoleId },
-      // role: {
-      //   id: userRole.id,
-      //   name: userRole.name,
-      // },
     };
   });
 };

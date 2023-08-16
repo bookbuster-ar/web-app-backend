@@ -2,7 +2,7 @@ const { validate } = require('uuid');
 const { getSubgenresByBook } = require('../../controllers');
 
 const handleGetSubgenresByBook = async (req, res) => {
-  const bookId = req.query.id;
+  const bookId = req.query.bookId;
 
   try {
     if (bookId && validate(bookId)) {
@@ -12,7 +12,9 @@ const handleGetSubgenresByBook = async (req, res) => {
     return res.status(400).json({
       message: 'Proporcione una identificacion valida (UUID)',
     });
-  } catch (error) {}
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
 };
 
 module.exports = handleGetSubgenresByBook;

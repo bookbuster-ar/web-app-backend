@@ -53,6 +53,12 @@ const addFavoriteGenres = require('./user/addFavoriteGenres');
 const getFavoriteGenres = require('./user/getFavoriteGenres');
 const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
 
+// Quote
+const createQuote = require('./quotes/createQuote');
+const getBookQuotes = require('./quotes/getBookQuotes');
+const likeQuote = require('./quotes/likeQuote');
+const deleteQuote = require('./quotes/deleteQuote');
+
 module.exports = {
   // Books
   getAllBooks,
@@ -104,4 +110,10 @@ module.exports = {
   addFavoriteGenres,
   getFavoriteGenres,
   registerUserWithGoogle,
+
+  // Quote
+  createQuote,
+  getBookQuotes,
+  likeQuote,
+  deleteQuote,
 };

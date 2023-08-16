@@ -31,6 +31,8 @@ const {
   handleGetBooksByGenre,
   handleGetBooksBySubgenre,
   handleGetSubgenresByBook,
+
+  // Book Review
   handleGetBookReviews,
   handleGetReviewComments,
   handleCreateReview,
@@ -39,6 +41,12 @@ const {
   handleLikeComment,
   handleDeleteReview,
   handleDeleteReviewComment,
+
+  // Book Quote
+  handleCreateQuote,
+  handleGetBookQuotes,
+  handleLikeQuote,
+  handleDeleteQuote,
 } = require('../../handlers');
 
 // Middlewares
@@ -101,7 +109,19 @@ bookRouter.delete(
   handleDeleteReviewComment
 );
 
-// All
+//* Quote
+bookRouter.post('/:bookId/quotes', verifySession, handleCreateQuote);
+
+bookRouter.get('/:bookId/quotes', handleGetBookQuotes);
+
+bookRouter.post(
+  '/:bookId/quotes/:quoteId/like',
+  verifySession,
+  handleLikeQuote
+);
+
+bookRouter.delete('/:bookId/quotes/:quoteId', verifySession, handleDeleteQuote);
+
 bookRouter.get('/', handleGetBooks);
 
 // Create

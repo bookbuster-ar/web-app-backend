@@ -57,6 +57,12 @@ const handleSuccessfulSubscription = require('./payment/handleSuccessfulSubscrip
 // Stock
 const handleIncreaseStock = require('./stock/handleIncreaseStock');
 
+// Quote
+const handleCreateQuote = require('./quotes/handleCreateQuote');
+const handleGetBookQuotes = require('./quotes/handleGetBookQuotes');
+const handleLikeQuote = require('./quotes/handleLikeQuote');
+const handleDeleteQuote = require('./quotes/handleDeleteQuote');
+
 module.exports = {
   // Books
   handleGetBooks,
@@ -115,4 +121,10 @@ module.exports = {
 
   // Stock
   handleIncreaseStock,
+
+  // Quote
+  handleCreateQuote,
+  handleGetBookQuotes,
+  handleLikeQuote,
+  handleDeleteQuote,
 };
