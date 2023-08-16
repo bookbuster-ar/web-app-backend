@@ -5,6 +5,8 @@ const Models = require('./src/models');
 require('./src/models/associations');
 
 const bookDb = require('./src/utils/data');
+const cloudinary = require('./src/config/cloudinary');
+const { v4: uuidv4 } = require('uuid');
 
 const uploadBooks = async (bookDb) => {
   const transaction = await sequelize.transaction();
@@ -78,9 +80,9 @@ const uploadBooks = async (bookDb) => {
         console.error('Error subiendo la imagen a Cloudinary.');
       }
 
-      const properties = Object.getOwnPropertyNames(
-        Object.getPrototypeOf(editorial)
-      );
+      // const properties = Object.getOwnPropertyNames(
+      //   Object.getPrototypeOf(editorial)
+      // );
 
       // properties.forEach((property, index) => {
       //   console.log(`Property ${index + 1}: ${property}`);
