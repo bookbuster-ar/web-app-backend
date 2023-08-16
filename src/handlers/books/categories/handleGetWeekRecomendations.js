@@ -1,4 +1,4 @@
-const { getWeekRecommendations } = require('../../controllers');
+const { getWeekRecommendations } = require('../../../controllers');
 
 const handleGetWeekRecommendations = async (req, res) => {
   try {

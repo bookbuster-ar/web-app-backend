@@ -43,6 +43,9 @@ const {
 
   // Categories
   handleGetWeekRecommendations,
+  handleGetMostPopular,
+  handleGetNewcommers,
+  handleGetLatestNews,
 } = require('../../handlers');
 
 // Middlewares
@@ -51,7 +54,6 @@ const {
   validateImageFile,
   verifySession,
   reviewValidator,
-  reviewLikeValidator,
 } = require('../../middlewares');
 
 // Genre
@@ -111,6 +113,9 @@ bookRouter.get(
   '/categories/week-recommendations',
   handleGetWeekRecommendations
 );
+bookRouter.get('/categories/most-popular', handleGetMostPopular);
+bookRouter.get('/categories/newcommers', handleGetNewcommers);
+bookRouter.get('/categories/latest-news', handleGetLatestNews);
 
 // Create
 bookRouter.post(

@@ -1,5 +1,5 @@
-const { PublishedBook, Book } = require('../../models');
-const sequelize = require('../../config/database');
+const { PublishedBook, Book } = require('../../../models');
+const sequelize = require('../../../config/database');
 
 const getWeekRecommendations = async () => {
   const rawRecommendations = await PublishedBook.findAll({

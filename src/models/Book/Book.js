@@ -22,7 +22,7 @@ const Book = sequelize.define(
       // allowNull: false,
     },
   },
-  { timestamps: false, freezeTableName: true }
+  { timestamps: true, freezeTableName: true }
 );
 
 module.exports = Book;

@@ -6,7 +6,12 @@ const handleGetBooksBySubgenre = require('./books/handleGetBooksBySubgenre');
 const handleGetSubgenresByGenre = require('./books/handleGetSubgenresByGenre');
 const handleCreateBook = require('./books/handleCreateBook');
 const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
-const handleGetWeekRecommendations = require('./books/handleGetWeekRecomendations');
+
+// Book Categories
+const handleGetWeekRecommendations = require('./books/categories/handleGetWeekRecomendations');
+const handleGetMostPopular = require('./books/categories/handleGetMostPopular');
+const handleGetNewcommers = require('./books/categories/handleGetNewcommers');
+const handleGetLatestNews = require('./books/categories/handleGetLatestNews');
 
 // Review
 const handleGetBookReviews = require('./review/handleGetBookReviews');
@@ -48,7 +53,12 @@ module.exports = {
   handleGetBooksBySubgenre,
   handleGetSubgenresByGenre,
   handleGetBookSubgenres,
+
+  // Book Categories
   handleGetWeekRecommendations,
+  handleGetMostPopular,
+  handleGetNewcommers,
+  handleGetLatestNews,
 
   // Review
   handleGetBookReviews,
