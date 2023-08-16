@@ -5,6 +5,9 @@ const getFilteredBooks = require('./books/getFilteredBooks');
 
 const createBook = require('./books/createBook');
 
+//Price
+const getPriceByFormat = require('./books/getPriceByFormat');
+
 // Review
 const getBookReviews = require('./review/getBookReviews');
 const getReviewComments = require('./review/getReviewComments');
@@ -25,6 +28,8 @@ const getBooksBySubgenre = require('./genres/getBooksBySubgenre');
 const getSubgenresByGenre = require('./genres/getSubgenresByGenre');
 const getAllGenres = require('./genres/getAllGenres');
 const getSubgenresByBook = require('./genres/getSubgenresByBook');
+const getBookSubgenres = require('./genres/getBookSubgenres');
+
 // Editorial
 const getEditorials = require('./editorial/getEditorials');
 const getCollection = require('./editorial/getCollection');
@@ -52,6 +57,9 @@ module.exports = {
   getFilteredBooks,
   createBook,
 
+  //Price
+  getPriceByFormat,
+
   // Review
   getBookReviews,
   createReview,
@@ -70,6 +78,7 @@ module.exports = {
   getSubgenresByGenre,
   getAllGenres,
   getSubgenresByBook,
+  getBookSubgenres,
 
   // Editorial
   getEditorials,

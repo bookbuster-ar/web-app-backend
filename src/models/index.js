@@ -45,4 +45,5 @@ module.exports = {
   GenreSubgenreInterm: require('./Intermediate/GenreSubgenreInterm'),
   BookSubgenreInterm: require('./Intermediate/BookSubgenreInterm'),
   UserBookGenreInterm: require('./Intermediate/UserBookGenreInterm'),
+  PublishedBookPrice: require('./Intermediate/PublishedBookPrice'),
 };
