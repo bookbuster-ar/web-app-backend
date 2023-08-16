@@ -33,10 +33,8 @@ module.exports = {
   CommentLike: require('./Review/CommentLike'),
 
   // Quote
-  Quote: require('./quote/Quote'),
-  CommentQuote: require('./quote/CommentQuote'),
-  QuoteLike: require('./quote/QuoteLike'),
-  CommentQuoteLike: require('./quote/CommentQuoteLike'),
+  Quote: require('./Quote/Quote'),
+  QuoteLike: require('./Quote/QuoteLike'),
 
   // Shelves
   BookShelves: require('./Shelves/BookShelves'),

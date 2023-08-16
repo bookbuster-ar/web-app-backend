@@ -104,27 +104,18 @@ bookRouter.delete(
 );
 
 //* Quote
-bookRouter.post('/:bookId/quotes', handleCreateQuote);
+bookRouter.post('/:bookId/quotes', verifySession, handleCreateQuote);
 
 bookRouter.get('/:bookId/quotes', handleGetBookQuotes);
 
-bookRouter.post('/:bookId/quotes/:quoteId/like', handleLikeQuote);
+bookRouter.post(
+  '/:bookId/quotes/:quoteId/like',
+  verifySession,
+  handleLikeQuote
+);
 
-bookRouter.delete('/:bookId/quotes/:quoteId', handleDeleteQuote);
+bookRouter.delete('/:bookId/quotes/:quoteId', verifySession, handleDeleteQuote);
 
-// bookRouter.post('/comment/quote', (req, res) => {
-//   res.send('comentar una cita');
-// });
-
-// bookRouter.post('/likeComment/quote', (req, res) => {
-//   res.send('likear un comentario de una cita');
-// });
-
-// bookRouter.get('/allComment/quote', (req, res) => {
-//   res.send('obtener todos los comentarios de una cita');
-// });
-
-// All
 bookRouter.get('/', handleGetBooks);
 
 // Create

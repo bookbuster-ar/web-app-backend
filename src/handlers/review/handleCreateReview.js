@@ -5,6 +5,11 @@ const handleCreateReview = async (req, res) => {
   const { bookId } = req.params;
   const { content, rating, reaction } = req.body;
   try {
+    if (!content) {
+      return res.status(400).json({
+        message: 'Proporcione un contenido para la review',
+      });
+    }
     const reviewInfo = { bookId, userId, content, rating, reaction };
     const createdReview = await createReview(reviewInfo);
     if (createdReview) {

@@ -92,24 +92,11 @@ Models.User.hasMany(Models.QuoteLike, {
 });
 Models.QuoteLike.belongsTo(Models.User, { foreignKey: 'user_id', as: 'user' });
 
-// //* User-CommentQuote
-// Models.User.hasMany(Models.CommentQuote, {
-//   foreignKey: 'user_id',
-//   as: 'comments_quote',
-// });
-// Models.CommentQuote.belongsTo(Models.User, { foreignKey: 'user_id', as: 'by' });
-
-// //* User-CommentQuoteLike
-// Models.User.hasMany(Models.CommentQuoteLike, {
-//   foreignKey: 'user_id',
-//   as: 'comment_quote_likes',
-// });
-// Models.CommentQuoteLike.belongsTo(Models.User, {
-//   foreignKey: 'user_id',
-//   as: 'user',
-// });
-
 //! Book
+
+//* Book-Quote
+Models.Book.hasMany(Models.Quote, { foreignKey: 'book_id', as: 'quotes' });
+Models.Quote.belongsTo(Models.Book, { foreignKey: 'book_id', as: 'book' });
 
 //* Book-Review
 Models.Book.hasMany(Models.Review, { foreignKey: 'book_id', as: 'reviews' });
@@ -152,8 +139,6 @@ Models.BookFormat.belongsToMany(Models.Book, {
   foreignKey: 'book_format_id',
   as: 'books',
 });
-
-
 
 //* Books-Transaction
 Models.PublishedBook.belongsToMany(Models.Transaction, {
@@ -221,7 +206,6 @@ Models.BookFormat.belongsToMany(Models.PublishedBook, {
   foreignKey: 'book_format_id',
   as: 'published_books',
 });
-
 
 //* BookFormatInterm - RentStock
 Models.BookFormatInterm.hasOne(Models.RentStock, {

@@ -5,6 +5,11 @@ const handleCreateQuote = async (req, res) => {
   const { bookId } = req.params;
   const { content } = req.body;
   try {
+    if (!content) {
+      return res.status(400).json({
+        message: 'Proporcione un contenido para la cita',
+      });
+    }
     const quoteInfo = { bookId, userId, content };
     const createdQuote = await createQuote(quoteInfo);
     if (createdQuote) {
