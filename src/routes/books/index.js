@@ -18,6 +18,9 @@ const {
   handleGetBooks,
   handleCreateBook,
 
+  //Pages
+  handleGetBooksByPages,
+
   //Price
   handleGetPriceByFormat,
 
@@ -60,6 +63,9 @@ bookRouter.get('/:id', handleGetBookById);
 // Review
 bookRouter.get('/:bookId/reviews', handleGetBookReviews);
 bookRouter.get('/:bookId/reviews/:reviewId/comments', handleGetReviewComments);
+
+//Filtro por paginas
+bookRouter.get('/pages' , handleGetBooksByPages);
 
 bookRouter.post(
   '/:bookId/reviews',
