@@ -18,22 +18,18 @@ const createWhereClause = (columnName, value) => {
   );
 };
 
-const getFilteredBooks = async (req,{ title, author, search }) => {
+const getFilteredBooks = async (req, { title, author, search }) => {
   try {
-
     const { limit, offset, page } = getPaginationData(req, 15);
 
     const whereClause = {};
 
     if (search) {
-
       whereClause[Op.or] = [
         createWhereClause('title', search),
         createWhereClause('author', search),
       ];
-
     } else {
-
       if (title) {
         whereClause.title = createWhereClause('title', title);
       }
@@ -55,34 +51,36 @@ const getFilteredBooks = async (req,{ title, author, search }) => {
     });
 
     const totalFilteredBooks = await Book.count({
-      include: [{
-        model: PublishedBook,
-        as: 'published_book'
-      }],
-      where: whereClause
+      include: [
+        {
+          model: PublishedBook,
+          as: 'published_book',
+        },
+      ],
+      where: whereClause,
     });
-      
-     const filteredData = filteredBooks.map((field) => {
+
+    const filteredData = filteredBooks.map((field) => {
       const [cover, ...extra] = field.book.images.map((image) => image.image);
       return {
         id: field.book.id,
-       // images: { cover: cover.image },
+        images: { cover: cover.image },
         title: field.book.title,
         author: field.book.author,
         publication_year: field.book.publication_year,
         editorial_collection: field.book.editorial_collection.name,
         editorial: field.book.editorial.name,
       };
-    })
-    
+    });
+
     return {
       data: filteredData,
       paginated: {
         currentPage: page,
         itemsPerPage: limit,
         totalItems: totalFilteredBooks,
-        totalPages: Math.ceil(totalFilteredBooks / limit)
-      }
+        totalPages: Math.ceil(totalFilteredBooks / limit),
+      },
     };
   } catch (error) {
     throw error;
