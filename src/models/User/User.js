@@ -59,6 +59,10 @@ const User = sequelize.define(
       // allowNull: false,
       defaultValue: false,
     },
+    want_notifications: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   { timestamps: false, freezeTableName: true }
 );

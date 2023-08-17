@@ -27,7 +27,7 @@ const handleUpdateUserProfile = async (req, res) => {
 
   try {
     const updatedUser = await updateUserProfile(userInfo, userAddress);
-    return res.status(201).json(updatedUser);
+    return res.status(200).json(updatedUser);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
