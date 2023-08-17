@@ -32,7 +32,7 @@ const getBookById = async (id) => {
       .map((image) => image.image);
 
     return {
-      id: id,
+      id: publishedBook.id,
       title: completeBookInfo.title,
       author: completeBookInfo.author,
       publication_year: completeBookInfo.publication_year,
