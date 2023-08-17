@@ -83,7 +83,7 @@ Models.User.hasMany(Models.Quote, {
   foreignKey: 'user_id',
   as: 'quotes',
 });
-Models.Quote.belongsTo(Models.User, { foreignKey: 'user_id', as: 'create' });
+Models.Quote.belongsTo(Models.User, { foreignKey: 'user_id', as: 'creator' });
 
 //* User-QuoteLike
 Models.User.hasMany(Models.QuoteLike, {

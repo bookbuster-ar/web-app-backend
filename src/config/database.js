@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_URL } = require('../utils/env');
 
-const ENVIROMENT = 'dev';
+const ENVIROMENT = 'production';
 
 const sequelize =
   ENVIROMENT === 'dev'

@@ -3,7 +3,7 @@ const sequelize = require('./src/config/database');
 const { v4: uuidv4 } = require('uuid');
 
 
-const Models = require('./src/models');
+require('./src/models');
 require('./src/models/associations');
 
 const bookDb = require('./src/utils/data');
