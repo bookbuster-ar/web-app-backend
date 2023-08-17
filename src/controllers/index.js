@@ -47,13 +47,14 @@ const increaseStock = require('./stock/increaseStock');
 
 const signInWithEmail = require('./auth/signInWithEmail');
 const registerUserWithEmail = require('./auth/registerUserWithEmail');
+const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
 const logOut = require('./auth/logOut');
 const verifyUserEmail = require('./auth/verifyUserEmail');
 
 // User
 const addFavoriteGenres = require('./user/addFavoriteGenres');
 const getFavoriteGenres = require('./user/getFavoriteGenres');
-const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
+const updateUserProfile = require('./user/updateUserProfile');
 
 // Quote
 const createQuote = require('./quotes/createQuote');
@@ -115,6 +116,7 @@ module.exports = {
   addFavoriteGenres,
   getFavoriteGenres,
   registerUserWithGoogle,
+  updateUserProfile,
 
   // Quote
   createQuote,

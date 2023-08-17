@@ -4,12 +4,11 @@ const userRouter = Router();
 const {
   handleAddFavoriteGenres,
   handleGetFavoriteGenres,
+  handleUpdateUserProfile,
 } = require('../../handlers');
 const { verifySession } = require('../../middlewares');
 
-userRouter.get('/profile', (req, res) => {
-  res.send('Ruta GET de usuario');
-});
+userRouter.put('/profile', verifySession, handleUpdateUserProfile);
 
 userRouter.get('/preferences/genres', verifySession, handleGetFavoriteGenres);
 userRouter.post('/preferences/genres', verifySession, handleAddFavoriteGenres);

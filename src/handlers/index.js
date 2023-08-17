@@ -47,6 +47,7 @@ const handleRegisterWithGoogle = require('./auth/handleRegisterWithGoogle');
 // User
 const handleAddFavoriteGenres = require('./user/handleAddFavoriteGenres');
 const handleGetFavoriteGenres = require('./user/handleGetFavoriteGenres');
+const handleUpdateUserProfile = require('./user/handleUpdateUserProfile');
 
 //Payment
 const handlePlaceOrder = require('./payment/handlePlaceOrder');
@@ -115,6 +116,7 @@ module.exports = {
   // User
   handleAddFavoriteGenres,
   handleGetFavoriteGenres,
+  handleUpdateUserProfile,
 
   //Payment
   handlePlaceOrder,
