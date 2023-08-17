@@ -1,11 +1,11 @@
-const { Book, BookGenre } = require('../../models/');
+const { Book, BookGenre, PublishedBook } = require('../../models/');
 const getPaginationData = require('../../utils/pagination');
 
 const formatBooks = (books) =>
   books.map((book) => {
     const [cover, ...extra] = book.images.map((image) => image.image);
     return {
-      id: book.id,
+      id: book.published_book.id,
       images: { cover, extra },
       title: book.title,
       author: book.author,
@@ -15,10 +15,9 @@ const formatBooks = (books) =>
     };
   });
 
-const getBooksByGenre = async (req,id) => {
+const getBooksByGenre = async (req, id) => {
   try {
-
-    const{limit, offset, page} = getPaginationData(req, 15);
+    const { limit, offset, page } = getPaginationData(req, 15);
 
     const genreMatched = await BookGenre.findByPk(id, {
       limit: limit,
@@ -27,7 +26,17 @@ const getBooksByGenre = async (req,id) => {
         {
           model: Book,
           as: 'books',
-          include: ['images', 'editorial', 'editorial_collection'],
+          attributes: ['title', 'author', 'publication_year'],
+          include: [
+            'images',
+            'editorial',
+            'editorial_collection',
+            {
+              model: PublishedBook,
+              as: 'published_book',
+              attributes: ['id'],
+            },
+          ],
         },
       ],
     });
@@ -36,37 +45,37 @@ const getBooksByGenre = async (req,id) => {
       return {
         data: {},
         paginated: {},
-        message: 'Genre not found'
+        message: 'Genre not found',
       };
     }
 
     const totalBooks = await Book.count({
-      include:[
+      include: [
         {
-        model: BookGenre,
-        as:'genres', 
-        where:{
-          id: genreMatched.id
-        }}
-      ]
-    }) 
+          model: BookGenre,
+          as: 'genres',
+          where: {
+            id: genreMatched.id,
+          },
+        },
+      ],
+    });
 
-    const BooksByGenre =  {
+    const booksByGenre = {
       id: genreMatched.id,
       genre: genreMatched.name,
       books: formatBooks(genreMatched.books),
-    }
+    };
 
-return {
-  data: BooksByGenre,
-  paginated:{
-      currentPage: page,
-      itemsPerPage: limit,
-      totalItems: totalBooks,
-      totalPages: Math.ceil(totalBooks / limit)
-    }
-}
-
+    return {
+      data: booksByGenre,
+      paginated: {
+        currentPage: page,
+        itemsPerPage: limit,
+        totalItems: totalBooks,
+        totalPages: Math.ceil(totalBooks / limit),
+      },
+    };
   } catch (error) {
     throw error;
   }
