@@ -1,9 +1,17 @@
-const { Review, Comment, User, CommentLike } = require('../../models');
+const {
+  Review,
+  Comment,
+  User,
+  CommentLike,
+  PublishedBook,
+} = require('../../models');
 const { timeAgo } = require('../../utils');
 
 const getReviewComments = async ({ bookId, reviewId }) => {
+  const publishedBook = await PublishedBook.findByPk(bookId);
+
   const reviewWithComments = await Review.findOne({
-    where: { id: reviewId, book_id: bookId },
+    where: { id: reviewId, book_id: publishedBook.book_id },
     attributes: { exclude: ['user_id', 'book_id'] },
     include: [
       {
