@@ -21,8 +21,12 @@ const Book = sequelize.define(
       type: DataTypes.INTEGER,
       // allowNull: false,
     },
+    weekly_recommended: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
-  { timestamps: false, freezeTableName: true }
+  { timestamps: true, freezeTableName: true }
 );
 
 module.exports = Book;

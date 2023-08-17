@@ -10,6 +10,12 @@ const handleGetSubgenresByBook = require('./books/handleGetSubgenresByBook');
 //Price
 const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
 
+// Book Categories
+const handleGetRecommendedBooks = require('./books/categories/handleGetRecommendedBooks');
+const handleGetMostPopularBooks = require('./books/categories/handleGetMostPopularBooks');
+const handleGetNewlyArrivedBooks = require('./books/categories/handleGetNewlyArrivedBooks');
+const handleGetLatestBooksReleases = require('./books/categories/handleGetLatestBooksReleases');
+
 // Review
 const handleGetBookReviews = require('./review/handleGetBookReviews');
 const handleGetReviewComments = require('./review/handleGetReviewComments');
@@ -72,6 +78,12 @@ module.exports = {
 
   //Price
   handleGetPriceByFormat,
+
+  // Book Categories
+  handleGetRecommendedBooks,
+  handleGetMostPopularBooks,
+  handleGetNewlyArrivedBooks,
+  handleGetLatestBooksReleases,
 
   // Review
   handleGetBookReviews,
