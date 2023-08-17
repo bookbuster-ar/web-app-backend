@@ -2,6 +2,7 @@
 const getAllBooks = require('./books/getAllBooks');
 const getBookById = require('./books/getBookById');
 const getFilteredBooks = require('./books/getFilteredBooks');
+const getWeeklyRecommended = require('./books/getWeeklyRecommended');
 
 const createBook = require('./books/createBook');
 
@@ -56,6 +57,12 @@ const getBookQuotes = require('./quotes/getBookQuotes');
 const likeQuote = require('./quotes/likeQuote');
 const deleteQuote = require('./quotes/deleteQuote');
 
+// Admin
+const markBookAsRecommended = require('./admin/markBookAsRecommended');
+const getUsers = require('./admin/getUsers');
+const searchUser = require('./admin/searchUser');
+const banUser = require('./admin/banUser');
+
 module.exports = {
   // Books
   getAllBooks,
@@ -63,6 +70,7 @@ module.exports = {
   getBookById,
   getFilteredBooks,
   createBook,
+  getWeeklyRecommended,
 
   //Price
   getPriceByFormat,
@@ -110,4 +118,10 @@ module.exports = {
   getBookQuotes,
   likeQuote,
   deleteQuote,
+
+  // Admin
+  markBookAsRecommended,
+  getUsers,
+  searchUser,
+  banUser,
 };

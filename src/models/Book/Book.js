@@ -21,6 +21,10 @@ const Book = sequelize.define(
       type: DataTypes.INTEGER,
       // allowNull: false,
     },
+    in_recommendation: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   { timestamps: false, freezeTableName: true }
 );

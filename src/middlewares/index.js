@@ -8,10 +8,14 @@ const verifySession = require('./verifySession');
 // Review
 const reviewValidator = require('./reviewValidator');
 
+// Admin
+const adminValidator = require('./adminValidator');
+
 module.exports = {
   bookValidator,
   validateImageFile,
   validateUserRegistration,
   verifySession,
   reviewValidator,
+  adminValidator,
 };
