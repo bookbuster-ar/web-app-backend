@@ -31,6 +31,9 @@ const User = sequelize.define(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    about: {
+      type: DataTypes.TEXT,
+    },
     subscription: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
