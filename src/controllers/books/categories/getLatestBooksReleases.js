@@ -1,14 +1,14 @@
 const { Book } = require('../../../models');
 
-const getLatestNews = async () => {
-  const mostRecentBooks = await Book.findAll({
+const getLatestBooksReleases = async () => {
+  const lastestBooks = await Book.findAll({
     include: ['images', 'editorial', 'editorial_collection'],
     attributes: ['title', 'author', 'publication_year'],
     order: [['publication_year', 'DESC']],
     limit: 10,
   });
 
-  return mostRecentBooks?.map((book) => {
+  return lastestBooks?.map((book) => {
     return {
       ...book.toJSON(),
       images: {
@@ -21,4 +21,4 @@ const getLatestNews = async () => {
   });
 };
 
-module.exports = getLatestNews;
+module.exports = getLatestBooksReleases;

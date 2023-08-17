@@ -31,11 +31,8 @@ const {
 
   // Book Review
   handleGetBookReviews,
-  handleGetReviewComments,
   handleCreateReview,
   handleLikeReview,
-  handleCreateReviewComment,
-  handleLikeComment,
   handleDeleteReview,
   handleDeleteReviewComment,
 
@@ -45,10 +42,11 @@ const {
   handleLikeComment,
 
   // Categories
-  handleGetWeekRecommendations,
-  handleGetMostPopular,
-  handleGetNewcommers,
-  handleGetLatestNews,
+  handleGetRecommendedBooks,
+  handleGetMostPopularBooks,
+  handleGetNewlyArrivedBooks,
+  handleGetLatestBooksReleases,
+
   // Book Quote
   handleCreateQuote,
   handleGetBookQuotes,
@@ -62,11 +60,7 @@ const {
   validateImageFile,
   verifySession,
   reviewValidator,
-<<<<<<< HEAD
 } = require('../../middlewares');
-=======
-} = require('../../middlewares/index');
->>>>>>> 6e424413049be5ff6a164cbfabef582b4d54e707
 
 // Genre
 bookRouter.get('/genre', handleGetBooksByGenre);
@@ -133,13 +127,10 @@ bookRouter.delete('/:bookId/quotes/:quoteId', verifySession, handleDeleteQuote);
 bookRouter.get('/', handleGetBooks);
 
 // Categories
-bookRouter.get(
-  '/categories/week-recommendations',
-  handleGetWeekRecommendations
-);
-bookRouter.get('/categories/most-popular', handleGetMostPopular);
-bookRouter.get('/categories/newcommers', handleGetNewcommers);
-bookRouter.get('/categories/latest-news', handleGetLatestNews);
+bookRouter.get('/categories/week-recommendations', handleGetRecommendedBooks);
+bookRouter.get('/categories/most-popular', handleGetMostPopularBooks);
+bookRouter.get('/categories/newly-arrived', handleGetNewlyArrivedBooks);
+bookRouter.get('/categories/latest-releases', handleGetLatestBooksReleases);
 
 // Create
 bookRouter.post(

@@ -3,7 +3,7 @@ const sequelize = require('../../../config/database');
 
 const { Op } = require('sequelize');
 
-const getMostPopular = async () => {
+const getMostPopularBooks = async () => {
   const rawMostPopularBooks = await Book.findAll({
     attributes: [
       'id',
@@ -60,4 +60,4 @@ const getMostPopular = async () => {
   });
 };
 
-module.exports = getMostPopular;
+module.exports = getMostPopularBooks;

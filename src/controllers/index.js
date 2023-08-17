@@ -5,10 +5,11 @@ const getFilteredBooks = require('./books/getFilteredBooks');
 const createBook = require('./books/createBook');
 
 // Categories
-const getWeekRecommendations = require('./books/categories/getWeekRecommendations');
-const getMostPopular = require('./books/categories/getMostPopular');
-const getNewcommers = require('./books/categories/getNewcommers');
-const getLatestNews = require('./books/categories/getLatestNews');
+const getRecommendedBooks = require('./books/categories/getRecommendedBooks');
+const getMostPopularBooks = require('./books/categories/getMostPopularBooks');
+const getNewlyArrivedBooks = require('./books/categories/getNewlyArrivedBooks');
+const getLatestBooksReleases = require('./books/categories/getLatestBooksReleases');
+
 //Price
 const getPriceByFormat = require('./books/getPriceByFormat');
 
@@ -69,10 +70,10 @@ module.exports = {
   createBook,
 
   // Book Categories
-  getWeekRecommendations,
-  getMostPopular,
-  getNewcommers,
-  getLatestNews,
+  getRecommendedBooks,
+  getMostPopularBooks,
+  getNewlyArrivedBooks,
+  getLatestBooksReleases,
 
   //Price
   getPriceByFormat,
