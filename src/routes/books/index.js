@@ -2,6 +2,7 @@ const { Router } = require('express');
 const multer = require('multer');
 
 // Multer
+
 const storage = multer.memoryStorage();
 const uploadFields = [
   { name: 'cover', maxCount: 1 },
@@ -17,22 +18,24 @@ const {
   handleGetBooks,
   handleCreateBook,
 
+  //Price
+  handleGetPriceByFormat,
+
   // Book Detail
   handleGetBookById,
 
   // Book Genre
   handleGetBooksByGenre,
-  handleGetSubgenresByGenre,
-
-  // Book Subgenre
   handleGetBooksBySubgenre,
-  handleGetBookSubgenres,
+  handleGetSubgenresByBook,
 
   // Book Review
   handleGetBookReviews,
+  handleGetReviewComments,
   handleCreateReview,
   handleLikeReview,
-
+  handleCreateReviewComment,
+  handleLikeComment,
   handleDeleteReview,
   handleDeleteReviewComment,
 
@@ -46,6 +49,11 @@ const {
   handleGetMostPopular,
   handleGetNewcommers,
   handleGetLatestNews,
+  // Book Quote
+  handleCreateQuote,
+  handleGetBookQuotes,
+  handleLikeQuote,
+  handleDeleteQuote,
 } = require('../../handlers');
 
 // Middlewares
@@ -54,15 +62,19 @@ const {
   validateImageFile,
   verifySession,
   reviewValidator,
+<<<<<<< HEAD
 } = require('../../middlewares');
+=======
+} = require('../../middlewares/index');
+>>>>>>> 6e424413049be5ff6a164cbfabef582b4d54e707
 
 // Genre
 bookRouter.get('/genre', handleGetBooksByGenre);
-
-// Subgenre
-bookRouter.get('/subgenres', handleGetBookSubgenres);
-bookRouter.get('/genre/subgenres', handleGetSubgenresByGenre);
+bookRouter.get('/subgenres', handleGetSubgenresByBook);
 bookRouter.get('/subgenre', handleGetBooksBySubgenre);
+
+//Price
+bookRouter.get('/price', handleGetPriceByFormat);
 
 // Detail
 bookRouter.get('/:id', handleGetBookById);
@@ -105,7 +117,19 @@ bookRouter.delete(
   handleDeleteReviewComment
 );
 
-// All
+//* Quote
+bookRouter.post('/:bookId/quotes', verifySession, handleCreateQuote);
+
+bookRouter.get('/:bookId/quotes', handleGetBookQuotes);
+
+bookRouter.post(
+  '/:bookId/quotes/:quoteId/like',
+  verifySession,
+  handleLikeQuote
+);
+
+bookRouter.delete('/:bookId/quotes/:quoteId', verifySession, handleDeleteQuote);
+
 bookRouter.get('/', handleGetBooks);
 
 // Categories

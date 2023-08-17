@@ -32,6 +32,10 @@ module.exports = {
   ReviewLike: require('./Review/ReviewLike'),
   CommentLike: require('./Review/CommentLike'),
 
+  // Quote
+  Quote: require('./Quote/Quote'),
+  QuoteLike: require('./Quote/QuoteLike'),
+
   // Shelves
   BookShelves: require('./Shelves/BookShelves'),
   BookShelfCategory: require('./Shelves/BookShelfCategory'),
@@ -45,4 +49,5 @@ module.exports = {
   GenreSubgenreInterm: require('./Intermediate/GenreSubgenreInterm'),
   BookSubgenreInterm: require('./Intermediate/BookSubgenreInterm'),
   UserBookGenreInterm: require('./Intermediate/UserBookGenreInterm'),
+  PublishedBookPrice: require('./Intermediate/PublishedBookPrice'),
 };

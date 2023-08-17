@@ -3,11 +3,11 @@ const {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } = require('firebase/auth');
-const { User, Role } = require('@models');
-const sequelize = require('@config/database');
+const { User, Role } = require('../../models');
+const sequelize = require('../../config/database');
 
 const { Op } = require('sequelize');
-const { CLIENT_VERIFY_EMAIL_URL } = require('@utils/env');
+const { CLIENT_VERIFY_EMAIL_URL } = require('../../utils/env');
 
 const doesEmailExist = async (email) => {
   return await User.findOne({ where: { email } });

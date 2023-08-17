@@ -6,16 +6,13 @@ const {
   handleVerifyEmail,
   handleSignInWithEmail,
   handleLogOut,
-} = require('@handlers');
+  handleRegisterWithGoogle,
+} = require('../../handlers/index');
 
-const { validateUserRegistration } = require('@middlewares');
+const { validateUserRegistration } = require('../../middlewares/index');
 
 // Login
 authRouter.post('/login/local', handleSignInWithEmail);
-
-authRouter.post('/login/google', (req, res) => {
-  res.send('Ruta POST login google authentication');
-});
 
 // Signup
 authRouter.post(
@@ -25,9 +22,7 @@ authRouter.post(
 );
 authRouter.post('/verifyEmail', handleVerifyEmail);
 
-authRouter.post('/signup/google', (req, res) => {
-  res.send('Ruta POST signup google authentication');
-});
+authRouter.post('/signup/google', handleRegisterWithGoogle);
 
 // Logout
 authRouter.post('/logout', handleLogOut);

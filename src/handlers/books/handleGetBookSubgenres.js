@@ -3,7 +3,6 @@ const { getBookSubgenres } = require('../../controllers/index');
 
 const handleGetSubgenresByBook = async (req, res) => {
   const bookId = req.query.id;
-
   try {
     if (bookId && validate(bookId)) {
       const subgenres = await getBookSubgenres(bookId);

@@ -1,8 +1,16 @@
-const { PublishedBook, Book } = require('../../models/index');
+const { PublishedBook, Book } = require('../../models/');
+const getPaginationData = require('../../utils/pagination');
 
-const getAllBooks = async () => {
+const getAllBooks = async (req) => {
   try {
+    //GET /api/books?page=1
+    //Metodo LIMIT-OFFSET
+
+    const { limit, offset, page } = getPaginationData(req, 15);
+
     const allBooks = await PublishedBook.findAll({
+      limit: limit,
+      offset: offset,
       include: {
         model: Book,
         as: 'book',
@@ -10,19 +18,30 @@ const getAllBooks = async () => {
       },
     });
 
-    return allBooks.map((field) => {
-      const cover = field.book.images.find((image) => image.is_cover === true);
+    const totalBooks = await PublishedBook.count();
 
+    const booksData = allBooks.map((field) => {
+      const [cover, ...extra] = field.book?.images.map((image) => image.image);
       return {
-        id: field.book.id,
-        images: { cover: cover?.image },
+        id: field.id, //published_book_id
+        images: { cover, extra },
         title: field.book.title,
         author: field.book.author,
         publication_year: field.book.publication_year,
-        editorial_collection: field.book.editorial_collection?.name,
+        editorial_collection: field.book.editorial_collection.name,
         editorial: field.book.editorial.name,
       };
     });
+
+    return {
+      data: booksData,
+      paginated: {
+        currentPage: page,
+        itemsPerPage: limit,
+        totalItems: totalBooks,
+        totalPages: Math.ceil(totalBooks / limit),
+      },
+    };
   } catch (error) {
     throw error;
   }

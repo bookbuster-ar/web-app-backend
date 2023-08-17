@@ -1,4 +1,5 @@
-const { PublishedBook, Book, BookSubgenre } = require('../../models/index');
+const { PublishedBook, Book, BookSubgenre } = require('../../models');
+const getPaginationData = require('../../utils/pagination');
 
 const formatBooks = (books) =>
   books?.map((publishedBook) => {
@@ -15,9 +16,13 @@ const formatBooks = (books) =>
     };
   });
 
-const getBooksBySubgenre = async (subgenreId) => {
+const getBooksBySubgenre = async (req, subgenreId) => {
   try {
-    const subgenre = await BookSubgenre.findByPk(subgenreId, {
+    const { limit, offset, page } = getPaginationData(req, 15);
+
+    const subgenreMatched = await BookSubgenre.findByPk(subgenreId, {
+      limit: limit,
+      offset: offset,
       include: [
         {
           model: Book,
@@ -27,13 +32,29 @@ const getBooksBySubgenre = async (subgenreId) => {
       ],
     });
 
-    if (!subgenre) {
-      throw new Error('Subgenre not found');
+    if (!subgenreMatched) {
+      return {
+        data: {},
+        paginated: {},
+        message: 'Subgenre not found',
+      };
     }
+
+    const totalBooks = await Book.count({
+      include: [
+        {
+          model: BookSubgenre,
+          as: 'subgenres',
+          where: {
+            id: subgenreId,
+          },
+        },
+      ],
+    });
 
     const publishedBooksBySubgenre = await PublishedBook.findAll({
       where: {
-        book_id: subgenre.books?.map((book) => book.id),
+        book_id: subgenreMatched.books?.map((book) => book.id),
       },
       include: [
         {
@@ -44,10 +65,20 @@ const getBooksBySubgenre = async (subgenreId) => {
       ],
     });
 
-    return {
-      id: subgenre.id,
-      subgenre: subgenre.name,
+    const booksBySubgenre = {
+      id: subgenreMatched.id,
+      subgenre: subgenreMatched.name,
       books: formatBooks(publishedBooksBySubgenre),
+    };
+
+    return {
+      data: booksBySubgenre,
+      paginated: {
+        currentPage: page,
+        itemsPerPage: limit,
+        totalItems: totalBooks,
+        totalPages: Math.ceil(totalBooks / limit),
+      },
     };
   } catch (error) {
     throw error;
