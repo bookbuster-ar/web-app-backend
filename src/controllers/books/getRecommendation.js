@@ -1,47 +1,87 @@
 const { Op } = require('sequelize');
-const { Book, BookFormat, BookDetail, BookGenre, BookFormatInterm, PublishedBook } = require('../../models');
+const {
+  Book,
+  BookFormat,
+  BookDetail,
+  BookGenre,
+  BookFormatInterm,
+  PublishedBook,
+} = require('../../models');
 
-const getRecommendation = async (format, pages, genresArray) => {
+const getRecommendation = async (
+  format,
+  pages,
+  genresArray,
+  nacionality_author
+) => {
+
+  
   let whereCondition = {};
-
-  // Filtrado por cantidad de páginas
+  
   if (pages) {
     switch (pages) {
-      case "0to50pages":
+      case '0to50pages':
         whereCondition['$detail.pages$'] = { [Op.between]: [0, 50] };
         break;
-      case "50to100pages":
-        whereCondition['$detail.pages$'] = { [Op.between]: [50, 100] };
+        case '50to100pages':
+          whereCondition['$detail.pages$'] = { [Op.between]: [50, 100] };
         break;
-      case "100to200pages":
+      case '100to200pages':
         whereCondition['$detail.pages$'] = { [Op.between]: [100, 200] };
         break;
-      case "Mayora200pages":
-        whereCondition['$detail.pages$'] = { [Op.gt]: 200 };
+        case 'Mayora200pages':
+          whereCondition['$detail.pages$'] = { [Op.gt]: 200 };
+          break;
+          case 'Indistinto':
+            whereCondition = {};
         break;
       default:
-        throw new Error("Rango de páginas no válido");
+        throw new Error('Rango de páginas no válido');
     }
   }
-
-  // Inclusión condicional por formato
+  
   let includeFormat = {};
+  
   if (format) {
-    const formatInstance = await BookFormat.findOne({ where: { name: format } });
-
-    if (!formatInstance) {
-      throw new Error('Formato no encontrado');
+    if (format === 'Indistinto') {
+      includeFormat = {
+        model: BookFormat,
+        as: 'formats',
+      };
+    } else {
+      const formatInstance = await BookFormat.findOne({
+        where: { name: format },
+      });
+      
+      if (!formatInstance) {
+        throw new Error('Formato no encontrado');
+      }
+      
+      includeFormat = {
+        model: BookFormat,
+        as: 'formats',
+        where: { id: formatInstance.id },
+      };
     }
-
-    includeFormat = {
-      model: BookFormat,
-      as: 'formats',
-      where: { id: formatInstance.id }
-    };
   }
-
-  // Inclusión condicional por género
+  
+  if (nacionality_author) {
+    switch (nacionality_author) {
+      case 'Latinoamericanos':
+        whereCondition.nationality_author = 'Latinoamericana';
+        break;
+      case 'De otras partes del mundo':
+        whereCondition.nationality_author = 'Española';
+        break;
+      case 'Indistinto':
+        break;
+      default:
+        throw new Error('Nacionalidad del autor no válida');
+    }
+  }
+  
   let includeGenres = {};
+  
   if (genresArray && genresArray.length) {
     includeGenres = {
       model: BookGenre,
@@ -50,8 +90,7 @@ const getRecommendation = async (format, pages, genresArray) => {
       //attributes: ['name']
     };
   }
-
-  // Búsqueda final de libros
+  
   const books = await Book.findAll({
     where: whereCondition,
     include: [
@@ -60,43 +99,49 @@ const getRecommendation = async (format, pages, genresArray) => {
       {
         model: PublishedBook,
         as: 'published_book',
-        attributes: ['id']
-      },{
+        attributes: ['id'],
+      },
+      {
         model: BookDetail,
         as: 'detail',
         attributes: ['pages'],
-      },{
+       
+      },
+      {
         model: BookFormatInterm,
         as: 'book_format_interms',
-      }
-    ]
+      },
+    ],
+   
   });
-
-  const transformedBooks = books.map(book => {
-    const [cover, ...extra] = book.book?.images?.map((image) => image.image) || [];
+  
+  
+  const transformedBooks = books.map((book) => {
+    const [cover, ...extra] =
+      book.book?.images?.map((image) => image.image) || [];
     return {
       id: book.id,
       images: { cover, extra },
       title: book.title,
       author: book.author,
+      nationality_author: book.nationality_author,
       publication_year: book.publication_year,
       editorial_collection_id: book.editorial_collection_id,
       editorial_id: book.editorial_id,
-      formats: book.formats.map(format => ({
+      formats: book.formats.map((format) => ({
         id: format.id,
-        name: format.name
+        name: format.name,
       })),
-      genres: book.genres.map(genre => ({
+      genres: book.genres.map((genre) => ({
         id: genre.id,
-        name: genre.name
+        name: genre.name,
       })),
       published_book: book.published_book,
-      detail: book.detail
+      detail: book.detail,
     };
   });
-  
 
   return transformedBooks;
-}
+};
 
 module.exports = getRecommendation;

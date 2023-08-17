@@ -17,8 +17,8 @@ const createWhereClause = (columnName, value) => {
     }
   );
 };
-
 const getFilteredBooks = async (req,{ title, author, search }) => {
+
   try {
 
     const { limit, offset, page } = getPaginationData(req, 15);

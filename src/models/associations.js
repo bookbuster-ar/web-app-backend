@@ -116,6 +116,7 @@ Models.BookImage.belongsTo(Models.Book, {
 Models.Book.hasOne(Models.BookDetail, { foreignKey: 'book_id', as: 'detail' });
 Models.BookDetail.belongsTo(Models.Book, { foreignKey: 'book_id', as: 'book' });
 
+
 //* Book-BookGenre
 Models.Book.belongsToMany(Models.BookGenre, {
   through: Models.BookGenreInterm,
