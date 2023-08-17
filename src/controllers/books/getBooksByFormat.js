@@ -3,7 +3,6 @@ const {
   BookFormat,
   BookFormatInterm,
   PublishedBook,
-  SaleStock,
 } = require('../../models');
 const getBooksByFormat = async (format) => {
   const nameFormat = await BookFormat.findOne({ where: { name: format } });

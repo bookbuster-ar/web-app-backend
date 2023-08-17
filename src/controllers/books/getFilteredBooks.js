@@ -66,7 +66,7 @@ const getFilteredBooks = async (req,{ title, author, search }) => {
       const [cover, ...extra] = field.book.images.map((image) => image.image);
       return {
         id: field.book.id,
-       // images: { cover: cover.image },
+        images: { cover: cover ?? null },
         title: field.book.title,
         author: field.book.author,
         publication_year: field.book.publication_year,

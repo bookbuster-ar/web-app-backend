@@ -3,11 +3,10 @@ const sequelize = require('./src/config/database');
 const { v4: uuidv4 } = require('uuid');
 
 
-require('./src/models');
+const Models = require('./src/models');
 require('./src/models/associations');
 
 const bookDb = require('./src/utils/data');
-
 const uploadBooks = async (bookDb) => {
   const transaction = await sequelize.transaction();
   try {
@@ -62,24 +61,35 @@ const uploadBooks = async (bookDb) => {
       await createdBook.createPublished_book();
       await genre.addSubgenres(subgenresToAdd);
 
+      // Añadimos los formatos "nuevo", "digital" y "usado" a la tabla book_format_interm
+      const formatsToAdd = ['nuevo', 'digital', 'usado', 'audiolibro'];
+      
+      for (const formatName of formatsToAdd) {
+        try {
+            const idFormat = await Models.BookFormat.findOne({
+                where: { name: formatName }
+            });
+    
+            if (!idFormat) {
+                console.error(`No se encontró el formato con nombre: ${formatName}`);
+                continue;
+            }
+    
+            await Models.BookFormatInterm.findOrCreate({
+                where: {
+                    book_id: createdBook.id,
+                    book_format_id: idFormat.id
+                }
+            });
+        } catch (error) {
+            console.error(`Error al agregar el formato '${formatName}' para el libro con ID: ${createdBook.id}. Detalles del error: ${error.message}`);
+        }
+    }
+    
+
       const rutaImagenLocal = `./book-images/${currentBook['id']}/${currentBook['id']}.jpg`;
 
-      // // Subimos la imagen a Cloudinary
-      // const result = await cloudinary.uploader.upload(rutaImagenLocal, {
-      //   public_id: `book/${currentBook['id']}/${uuidv4()}`,
-      // });
-
-      // if (result && result.url) {
-      //   // Guardamos el URL de la imagen en la tabla book_image
-      //   await Models.BookImage.create({
-      //     book_id: createdBook.id,
-      //     image: result.url,
-      //     is_cover: true,
-      //   });
-      //   console.log('Imagen subida y guardada con Ã©xito:', result.url);
-      // } else {
-      //   console.error('Error subiendo la imagen a Cloudinary.');
-      // }
+      // Aquí puedes descomentar y ajustar la parte relacionada con Cloudinary si lo necesitas.
 
       // const properties = Object.getOwnPropertyNames(
       //   Object.getPrototypeOf(editorial)
@@ -119,8 +129,8 @@ const uploadFormats = async () => {
 app.listen(3001, async () => {
   try {
     await sequelize.sync({ force: false, logging: false });
-    await uploadBooks(bookDb);
     await uploadFormats();
+    await uploadBooks(bookDb);
   } catch (error) {
     console.log(error.message);
   }

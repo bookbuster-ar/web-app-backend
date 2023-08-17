@@ -47,6 +47,7 @@ const getCollection = require('./editorial/getCollection');
 
 const increaseStock = require('./stock/increaseStock');
 const registerBookFormat = require('./stock/registerBookFormat');
+const postPriceFormatBook = require('./stock/postPriceFormatBook');
 
 // Auth
 
@@ -113,6 +114,7 @@ module.exports = {
   // Stock
   increaseStock,
   registerBookFormat,
+  postPriceFormatBook,
 
   // Auth
   signInWithEmail,

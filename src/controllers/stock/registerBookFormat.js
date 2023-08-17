@@ -1,4 +1,4 @@
-const {BookFormat , Book, BookFormatInterm} = require('../../models');
+const {BookFormat , BookFormatInterm} = require('../../models');
 const registerBookFormat = async (book_id, format) => {
     
     const idFormat = await BookFormat.findOne({

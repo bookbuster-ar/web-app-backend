@@ -63,6 +63,7 @@ const handleSuccessfulSubscription = require('./payment/handleSuccessfulSubscrip
 // Stock
 const handleIncreaseStock = require('./stock/handleIncreaseStock');
 const handleRegisterFormat = require('./stock/handleRegisterFormat');
+const handlePostPriceAndFormat = require('./stock/handlePostPriceAndFormat');
 
 // Quote
 const handleCreateQuote = require('./quotes/handleCreateQuote');
@@ -135,6 +136,7 @@ module.exports = {
   // Stock
   handleIncreaseStock,
   handleRegisterFormat,
+  handlePostPriceAndFormat,
 
   // Quote
   handleCreateQuote,
