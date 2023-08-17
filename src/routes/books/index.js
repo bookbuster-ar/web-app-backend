@@ -27,6 +27,9 @@ const {
   //Price
   handleGetPriceByFormat,
 
+  //Filtro recomendacion(personalizado)
+  handleRecommendation,
+
   // Book Detail
   handleGetBookById,
 
@@ -70,6 +73,9 @@ bookRouter.get('/filterbypages' , handleGetBooksByPages);
 
 //Filtro por formato
 bookRouter.get('/filterbyformat', handleGetBooksByFormat);
+
+//recommendation
+bookRouter.get('/recommendation', handleRecommendation);
 
 //Price
 bookRouter.get('/price', handleGetPriceByFormat);

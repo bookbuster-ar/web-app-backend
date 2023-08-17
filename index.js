@@ -1,5 +1,7 @@
 const app = require('./src/app');
 const sequelize = require('./src/config/database');
+const { v4: uuidv4 } = require('uuid');
+
 
 const Models = require('./src/models');
 require('./src/models/associations');
@@ -95,9 +97,30 @@ const uploadBooks = async (bookDb) => {
   }
 };
 
+const uploadFormats = async () => {
+  try {
+      const formats = [
+          { id: uuidv4(), name: 'nuevo' },
+          { id: uuidv4(), name: 'usado' },
+          { id: uuidv4(), name: 'digital' },
+          { id: uuidv4(), name: 'audiolibro' }
+      ];
+
+      // Insertar todos los formatos en la base de datos
+      await Models.BookFormat.bulkCreate(formats);
+
+      console.log('Formatos cargados exitosamente');
+  } catch (error) {
+      console.error('Error al cargar los formatos:', error.message);
+  }
+};
+
+
 app.listen(3001, async () => {
   try {
     await sequelize.sync({ force: false, logging: false });
+    await uploadBooks(bookDb);
+    await uploadFormats();
   } catch (error) {
     console.log(error.message);
   }

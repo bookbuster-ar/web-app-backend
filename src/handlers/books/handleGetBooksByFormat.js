@@ -1,3 +1,4 @@
+const {getBooksByFormat} = require('../../controllers');
 
 const handleGetBooksByFormat = async (req, res) => {
     try {
@@ -5,6 +6,8 @@ const handleGetBooksByFormat = async (req, res) => {
         const format = req.query.format;
         
         const books = await getBooksByFormat(format);
+
+        return res.status(200).json(books);
 
     } catch (error) {
 

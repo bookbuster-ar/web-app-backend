@@ -14,6 +14,9 @@ const handleGetBooksByPages = require('./books/handleGetBooksByPages');
 //Format
 const handleGetBooksByFormat = require('./books/handleGetBooksByFormat');
 
+//Recommendation
+const handleRecommendation = require('./books/handleRecommendation');
+
 //Price
 const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
 
@@ -83,6 +86,9 @@ module.exports = {
 
   //Format
   handleGetBooksByFormat,
+
+  //Recommendation
+  handleRecommendation,
 
   //Price
   handleGetPriceByFormat,

@@ -140,6 +140,14 @@ Models.BookFormat.belongsToMany(Models.Book, {
   as: 'books',
 });
 
+Models.BookFormat.hasMany(Models.BookFormatInterm, { foreignKey: 'book_format_id' });
+Models.Book.hasMany(Models.BookFormatInterm, { foreignKey: 'book_id' });
+
+
+Models.BookFormatInterm.belongsTo(Models.Book, { foreignKey: 'book_id' });
+Models.BookFormatInterm.belongsTo(Models.BookFormat, { foreignKey: 'book_format_id' });
+
+
 //* Books-Transaction
 Models.PublishedBook.belongsToMany(Models.Transaction, {
   through: Models.TransactionDetail,

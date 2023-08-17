@@ -3,6 +3,7 @@ const getPaginationData = require('../../utils/pagination');
 
 const getAllBooks = async (req) => {
   try {
+    
     //GET /api/books?page=1
     //Metodo LIMIT-OFFSET
 
