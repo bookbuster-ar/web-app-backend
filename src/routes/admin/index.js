@@ -20,7 +20,7 @@ adminRouter.post('/users/:userId/ban', adminValidator, handleBanUser);
 adminRouter.get('/users', adminValidator, handleGetUsers);
 adminRouter.get('/users/search', adminValidator, handleSearchUser);
 adminRouter.get('/subscriptions', adminValidator, handleSuscription);
-adminRouter.get('/books/sold', handleBooksSold);
+adminRouter.get('/books/sold', adminValidator, handleBooksSold);
 adminRouter.post('/subgenre', adminValidator, handleCreateSubgenre);
 adminRouter.post('/genre', adminValidator, handleCreateGenre);
 adminRouter.post('/user/:userId/credits', adminValidator, handleAddCredits);
