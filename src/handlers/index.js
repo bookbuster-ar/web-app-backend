@@ -9,8 +9,15 @@ const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
 const handleGetSubgenresByBook = require('./books/handleGetSubgenresByBook');
 const handleGetWeeklyRecommended = require('./books/handleGetWeeklyRecommended');
 
+
 //Price
 const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
+
+// Book Categories
+const handleGetRecommendedBooks = require('./books/categories/handleGetRecommendedBooks');
+const handleGetMostPopularBooks = require('./books/categories/handleGetMostPopularBooks');
+const handleGetNewlyArrivedBooks = require('./books/categories/handleGetNewlyArrivedBooks');
+const handleGetLatestBooksReleases = require('./books/categories/handleGetLatestBooksReleases');
 
 // Review
 const handleGetBookReviews = require('./review/handleGetBookReviews');
@@ -43,6 +50,8 @@ const handleRegisterWithGoogle = require('./auth/handleRegisterWithGoogle');
 // User
 const handleAddFavoriteGenres = require('./user/handleAddFavoriteGenres');
 const handleGetFavoriteGenres = require('./user/handleGetFavoriteGenres');
+const handleUpdateUserProfile = require('./user/handleUpdateUserProfile');
+const handleGetUserInfo = require('./user/handleGetUserInfo');
 
 //Payment
 const handlePlaceOrder = require('./payment/handlePlaceOrder');
@@ -54,6 +63,8 @@ const handleSuccessfulSubscription = require('./payment/handleSuccessfulSubscrip
 
 // Stock
 const handleIncreaseStock = require('./stock/handleIncreaseStock');
+const handleRegisterFormat = require('./stock/handleRegisterFormat');
+const handlePostPriceAndFormat = require('./stock/handlePostPriceAndFormat');
 
 // Quote
 const handleCreateQuote = require('./quotes/handleCreateQuote');
@@ -83,9 +94,15 @@ module.exports = {
   handleGetBookSubgenres,
   handleGetSubgenresByBook,
   handleGetWeeklyRecommended,
-
+  
   //Price
   handleGetPriceByFormat,
+
+  // Book Categories
+  handleGetRecommendedBooks,
+  handleGetMostPopularBooks,
+  handleGetNewlyArrivedBooks,
+  handleGetLatestBooksReleases,
 
   // Review
   handleGetBookReviews,
@@ -117,6 +134,8 @@ module.exports = {
   // User
   handleAddFavoriteGenres,
   handleGetFavoriteGenres,
+  handleUpdateUserProfile,
+  handleGetUserInfo,
 
   //Payment
   handlePlaceOrder,
@@ -128,6 +147,8 @@ module.exports = {
 
   // Stock
   handleIncreaseStock,
+  handleRegisterFormat,
+  handlePostPriceAndFormat,
 
   // Quote
   handleCreateQuote,

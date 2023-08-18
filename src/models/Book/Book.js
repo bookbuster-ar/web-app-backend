@@ -17,6 +17,10 @@ const Book = sequelize.define(
       type: DataTypes.STRING,
       // allowNull: false,
     },
+    nationality_author:{
+      type: DataTypes.STRING,
+      // allowNull: false,
+    },
     publication_year: {
       type: DataTypes.INTEGER,
       // allowNull: false,
@@ -26,7 +30,7 @@ const Book = sequelize.define(
       defaultValue: false,
     },
   },
-  { timestamps: false, freezeTableName: true }
+  { timestamps: true, freezeTableName: true }
 );
 
 module.exports = Book;
