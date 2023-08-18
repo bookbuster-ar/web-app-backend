@@ -4,7 +4,6 @@ const moment = require('moment');
 const { BACK_URL } = require('../../utils/env');
 
 const createSubscriptionLink = async (userId, price) => {
-  console.log('userId:', userId, 'price:', price);
   const argentinaTimezone = 'America/Argentina/Buenos_Aires';
   const startDate = moment().tz(argentinaTimezone);
   const endDate = moment().tz(argentinaTimezone).add(30, 'days');
@@ -35,16 +34,13 @@ const createSubscriptionLink = async (userId, price) => {
       currency_id: 'ARS',
     },
   };
-  console.log(preference);
 
   const mp = await mercadopago.preapproval.create(preference);
-  console.log(mp);
   const linkCheckout = mp && mp.response && mp.response.init_point;
-  console.log(linkCheckout);
+
   const subscriptionData = {
     linkCheckout,
   };
-  console.log(subscriptionData);
   return subscriptionData;
 };
 
