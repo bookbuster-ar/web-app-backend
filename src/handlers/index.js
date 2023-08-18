@@ -9,7 +9,6 @@ const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
 const handleGetSubgenresByBook = require('./books/handleGetSubgenresByBook');
 const handleGetWeeklyRecommended = require('./books/handleGetWeeklyRecommended');
 
-
 //Price
 const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
 
@@ -80,6 +79,8 @@ const handleBanUser = require('./admin/handleBanUser');
 const handleCreateSubgenre = require('./admin/handleCreateSubgenre');
 const handleCreateGenre = require('./admin/handleCreateGenre');
 const handleAddCredits = require('./admin/handleAddCredits');
+const handleSuscription = require('./admin/handleSuscription');
+const handleBooksSold = require('./admin/handleBooksSold');
 // const handleGetTransactions = require('./admin/handleGetTransactions');
 
 module.exports = {
@@ -93,7 +94,7 @@ module.exports = {
   handleGetBookSubgenres,
   handleGetSubgenresByBook,
   handleGetWeeklyRecommended,
-  
+
   //Price
   handleGetPriceByFormat,
 
@@ -163,5 +164,7 @@ module.exports = {
   handleCreateSubgenre,
   handleCreateGenre,
   handleAddCredits,
+  handleSuscription,
+  handleBooksSold,
   // handleGetTransactions,
 };
