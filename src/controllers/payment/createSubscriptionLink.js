@@ -38,7 +38,9 @@ const createSubscriptionLink = async (userId, price) => {
 
   try {
     const mp = await mercadopago.preapproval.create(preference);
+    console.log(mp);
     const linkCheckout = mp && mp.response && mp.response.init_point;
+    console.log(linkCheckout);
     const subscriptionData = {
       linkCheckout,
     };
