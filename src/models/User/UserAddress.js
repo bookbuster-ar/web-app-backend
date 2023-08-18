@@ -1,16 +1,13 @@
 const sequelize = require('../../config/database');
 const { DataTypes } = require('sequelize');
 
-const UserDetail = sequelize.define(
-  'user_detail',
+const UserAddress = sequelize.define(
+  'user_address',
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-    },
-    about: {
-      type: DataTypes.TEXT,
     },
     country: {
       type: DataTypes.STRING,
@@ -21,6 +18,9 @@ const UserDetail = sequelize.define(
     city: {
       type: DataTypes.STRING,
     },
+    province: {
+      type: DataTypes.STRING,
+    },
     postal_code: {
       type: DataTypes.INTEGER,
     },
@@ -28,4 +28,4 @@ const UserDetail = sequelize.define(
   { timestamps: false, freezeTableName: true }
 );
 
-module.exports = UserDetail;
+module.exports = UserAddress;

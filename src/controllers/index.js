@@ -2,9 +2,22 @@
 const getAllBooks = require('./books/getAllBooks');
 const getBookById = require('./books/getBookById');
 const getFilteredBooks = require('./books/getFilteredBooks');
+
 const getWeeklyRecommended = require('./books/getWeeklyRecommended');
 
+
 const createBook = require('./books/createBook');
+
+
+//Recommendation
+const getRecommendation = require('./books/getRecommendation');
+
+// Categories
+const getRecommendedBooks = require('./books/categories/getRecommendedBooks');
+const getMostPopularBooks = require('./books/categories/getMostPopularBooks');
+const getNewlyArrivedBooks = require('./books/categories/getNewlyArrivedBooks');
+const getLatestBooksReleases = require('./books/categories/getLatestBooksReleases');
+
 
 //Price
 const getPriceByFormat = require('./books/getPriceByFormat');
@@ -38,18 +51,22 @@ const getCollection = require('./editorial/getCollection');
 // Stock
 
 const increaseStock = require('./stock/increaseStock');
+const registerBookFormat = require('./stock/registerBookFormat');
+const postPriceFormatBook = require('./stock/postPriceFormatBook');
 
 // Auth
 
 const signInWithEmail = require('./auth/signInWithEmail');
 const registerUserWithEmail = require('./auth/registerUserWithEmail');
+const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
 const logOut = require('./auth/logOut');
 const verifyUserEmail = require('./auth/verifyUserEmail');
 
 // User
 const addFavoriteGenres = require('./user/addFavoriteGenres');
 const getFavoriteGenres = require('./user/getFavoriteGenres');
-const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
+const updateUserProfile = require('./user/updateUserProfile');
+const getUserInfo = require('./user/getUserInfo');
 
 // Quote
 const createQuote = require('./quotes/createQuote');
@@ -75,6 +92,17 @@ module.exports = {
   getFilteredBooks,
   createBook,
   getWeeklyRecommended,
+
+
+  //Recommendation
+  getRecommendation,
+
+  // Book Categories
+  getRecommendedBooks,
+  getMostPopularBooks,
+  getNewlyArrivedBooks,
+  getLatestBooksReleases,
+
 
   //Price
   getPriceByFormat,
@@ -105,6 +133,8 @@ module.exports = {
 
   // Stock
   increaseStock,
+  registerBookFormat,
+  postPriceFormatBook,
 
   // Auth
   signInWithEmail,
@@ -116,6 +146,8 @@ module.exports = {
   addFavoriteGenres,
   getFavoriteGenres,
   registerUserWithGoogle,
+  updateUserProfile,
+  getUserInfo,
 
   // Quote
   createQuote,
