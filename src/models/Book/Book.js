@@ -17,7 +17,7 @@ const Book = sequelize.define(
       type: DataTypes.STRING,
       // allowNull: false,
     },
-    nationality_author:{
+    nationality_author: {
       type: DataTypes.STRING,
       // allowNull: false,
     },

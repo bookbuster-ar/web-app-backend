@@ -19,11 +19,10 @@ const {
   handleCreateBook,
   handleGetWeeklyRecommended,
 
-
   //Price
   handleGetPriceByFormat,
 
-  //Filtro recomendacion(personalizado)
+  // Filtro recomendacion(personalizado)
   handleRecommendation,
 
   // Book Detail
@@ -47,7 +46,6 @@ const {
   handleLikeComment,
 
   // Categories
-  handleGetRecommendedBooks,
   handleGetMostPopularBooks,
   handleGetNewlyArrivedBooks,
   handleGetLatestBooksReleases,
@@ -85,7 +83,6 @@ bookRouter.get('/:id', handleGetBookById);
 // Review
 bookRouter.get('/:bookId/reviews', handleGetBookReviews);
 bookRouter.get('/:bookId/reviews/:reviewId/comments', handleGetReviewComments);
-
 
 bookRouter.post(
   '/:bookId/reviews',
@@ -137,7 +134,6 @@ bookRouter.delete('/:bookId/quotes/:quoteId', verifySession, handleDeleteQuote);
 bookRouter.get('/', handleGetBooks);
 
 // Categories
-bookRouter.get('/categories/week-recommendations', handleGetRecommendedBooks);
 bookRouter.get('/categories/most-popular', handleGetMostPopularBooks);
 bookRouter.get('/categories/newly-arrived', handleGetNewlyArrivedBooks);
 bookRouter.get('/categories/latest-releases', handleGetLatestBooksReleases);

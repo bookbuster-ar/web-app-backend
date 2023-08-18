@@ -2,10 +2,8 @@ const app = require('./src/app');
 const sequelize = require('./src/config/database');
 //const { v4: uuidv4 } = require('uuid');
 
-
 require('./src/models');
 require('./src/models/associations');
-
 
 app.listen(3001, async () => {
   try {
