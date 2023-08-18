@@ -1,4 +1,4 @@
-const { Quote, User, Book } = require('../../models');
+const { Quote, User, Book, PublishedBook } = require('../../models');
 const sequelize = require('../../config/database');
 
 const { timeAgo } = require('../../utils');
@@ -6,8 +6,9 @@ const { timeAgo } = require('../../utils');
 const createQuote = async ({ bookId, userId, content }) => {
   const transaction = await sequelize.transaction();
   try {
+    const publishedBook = await PublishedBook.findByPk(bookId);
     const [createdQuote, wasCreated] = await Quote.findOrCreate({
-      where: { user_id: userId, book_id: bookId },
+      where: { user_id: userId, book_id: publishedBook.book_id },
       defaults: { content },
     });
     if (!wasCreated) {
@@ -24,7 +25,7 @@ const createQuote = async ({ bookId, userId, content }) => {
       transaction,
     });
 
-    const getQuoteBookPromise = await Book.findByPk(bookId, {
+    const getQuoteBookPromise = await Book.findByPk(publishedBook.book_id, {
       attributes: ['id', 'title', 'author'],
       transaction,
     });
@@ -36,7 +37,7 @@ const createQuote = async ({ bookId, userId, content }) => {
       ...relevantQuoteInfo,
       createdAt: timeAgo(createdAt),
       by: { ...getQuoteCreatorPromise.toJSON() },
-      inBook: { ...getQuoteBookPromise.toJSON() },
+      inBook: { ...getQuoteBookPromise.toJSON(), id: publishedBook.id },
     };
   } catch (error) {
     await transaction.rollback();

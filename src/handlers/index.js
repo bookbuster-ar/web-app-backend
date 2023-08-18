@@ -15,6 +15,12 @@ const handleRecommendation = require('./books/handleRecommendation');
 //Price
 const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
 
+// Book Categories
+const handleGetRecommendedBooks = require('./books/categories/handleGetRecommendedBooks');
+const handleGetMostPopularBooks = require('./books/categories/handleGetMostPopularBooks');
+const handleGetNewlyArrivedBooks = require('./books/categories/handleGetNewlyArrivedBooks');
+const handleGetLatestBooksReleases = require('./books/categories/handleGetLatestBooksReleases');
+
 // Review
 const handleGetBookReviews = require('./review/handleGetBookReviews');
 const handleGetReviewComments = require('./review/handleGetReviewComments');
@@ -46,6 +52,7 @@ const handleRegisterWithGoogle = require('./auth/handleRegisterWithGoogle');
 // User
 const handleAddFavoriteGenres = require('./user/handleAddFavoriteGenres');
 const handleGetFavoriteGenres = require('./user/handleGetFavoriteGenres');
+const handleUpdateUserProfile = require('./user/handleUpdateUserProfile');
 
 //Payment
 const handlePlaceOrder = require('./payment/handlePlaceOrder');
@@ -83,6 +90,12 @@ module.exports = {
   //Price
   handleGetPriceByFormat,
 
+  // Book Categories
+  handleGetRecommendedBooks,
+  handleGetMostPopularBooks,
+  handleGetNewlyArrivedBooks,
+  handleGetLatestBooksReleases,
+
   // Review
   handleGetBookReviews,
   handleGetReviewComments,
@@ -113,6 +126,7 @@ module.exports = {
   // User
   handleAddFavoriteGenres,
   handleGetFavoriteGenres,
+  handleUpdateUserProfile,
 
   //Payment
   handlePlaceOrder,

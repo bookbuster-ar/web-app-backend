@@ -31,6 +31,9 @@ const User = sequelize.define(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    about: {
+      type: DataTypes.TEXT,
+    },
     subscription: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
@@ -54,6 +57,10 @@ const User = sequelize.define(
     is_inactive: {
       type: DataTypes.BOOLEAN,
       // allowNull: false,
+      defaultValue: false,
+    },
+    want_notifications: {
+      type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
   },

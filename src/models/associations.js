@@ -377,12 +377,12 @@ Models.BookSubgenre.belongsToMany(Models.Book, {
   as: 'books',
 });
 
-//! UserDetail - User
-Models.User.hasOne(Models.UserDetail, {
+//! User - UserAddress
+Models.User.hasOne(Models.UserAddress, {
   foreignKey: 'user_id',
-  as: 'detail',
+  as: 'address',
 });
-Models.UserDetail.belongsTo(Models.User, {
+Models.UserAddress.belongsTo(Models.User, {
   foreignKey: 'user_id',
   as: 'user',
 });

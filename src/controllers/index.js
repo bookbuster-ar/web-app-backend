@@ -2,11 +2,18 @@
 const getAllBooks = require('./books/getAllBooks');
 const getBookById = require('./books/getBookById');
 const getFilteredBooks = require('./books/getFilteredBooks');
-
 const createBook = require('./books/createBook');
+
 
 //Recommendation
 const getRecommendation = require('./books/getRecommendation');
+
+// Categories
+const getRecommendedBooks = require('./books/categories/getRecommendedBooks');
+const getMostPopularBooks = require('./books/categories/getMostPopularBooks');
+const getNewlyArrivedBooks = require('./books/categories/getNewlyArrivedBooks');
+const getLatestBooksReleases = require('./books/categories/getLatestBooksReleases');
+
 
 //Price
 const getPriceByFormat = require('./books/getPriceByFormat');
@@ -47,13 +54,14 @@ const postPriceFormatBook = require('./stock/postPriceFormatBook');
 
 const signInWithEmail = require('./auth/signInWithEmail');
 const registerUserWithEmail = require('./auth/registerUserWithEmail');
+const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
 const logOut = require('./auth/logOut');
 const verifyUserEmail = require('./auth/verifyUserEmail');
 
 // User
 const addFavoriteGenres = require('./user/addFavoriteGenres');
 const getFavoriteGenres = require('./user/getFavoriteGenres');
-const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
+const updateUserProfile = require('./user/updateUserProfile');
 
 // Quote
 const createQuote = require('./quotes/createQuote');
@@ -69,8 +77,16 @@ module.exports = {
   getFilteredBooks,
   createBook,
 
+
   //Recommendation
   getRecommendation,
+
+  // Book Categories
+  getRecommendedBooks,
+  getMostPopularBooks,
+  getNewlyArrivedBooks,
+  getLatestBooksReleases,
+
 
   //Price
   getPriceByFormat,
@@ -114,6 +130,7 @@ module.exports = {
   addFavoriteGenres,
   getFavoriteGenres,
   registerUserWithGoogle,
+  updateUserProfile,
 
   // Quote
   createQuote,
