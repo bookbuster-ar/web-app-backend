@@ -55,6 +55,7 @@ const verifyUserEmail = require('./auth/verifyUserEmail');
 const addFavoriteGenres = require('./user/addFavoriteGenres');
 const getFavoriteGenres = require('./user/getFavoriteGenres');
 const updateUserProfile = require('./user/updateUserProfile');
+const getUserInfo = require('./user/getUserInfo');
 
 // Quote
 const createQuote = require('./quotes/createQuote');
@@ -117,6 +118,7 @@ module.exports = {
   getFavoriteGenres,
   registerUserWithGoogle,
   updateUserProfile,
+  getUserInfo,
 
   // Quote
   createQuote,

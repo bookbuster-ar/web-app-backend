@@ -11,8 +11,11 @@ const {
   handleAddFavoriteGenres,
   handleGetFavoriteGenres,
   handleUpdateUserProfile,
+  handleGetUserInfo,
 } = require('../../handlers');
-const { verifySession } = require('../../middlewares');
+const { verifySession, validateImageFile } = require('../../middlewares');
+
+userRouter.get('/profile', verifySession, handleGetUserInfo);
 
 userRouter.put(
   '/profile',
@@ -20,6 +23,7 @@ userRouter.put(
   multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } }).fields(
     uploadFields
   ),
+  validateImageFile,
   handleUpdateUserProfile
 );
 
