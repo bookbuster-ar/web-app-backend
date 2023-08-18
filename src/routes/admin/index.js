@@ -7,11 +7,17 @@ const {
   handleGetUsers,
   handleSearchUser,
   handleBanUser,
+  handleCreateSubgenre,
+  handleCreateGenre,
+  handleAddCredits,
 } = require('../../handlers');
 
 adminRouter.post('/recommend', adminValidator, handleMarkBookAsRecommended);
 adminRouter.post('/users/:userId/ban', adminValidator, handleBanUser);
 adminRouter.get('/users', adminValidator, handleGetUsers);
 adminRouter.get('/users/search', adminValidator, handleSearchUser);
+adminRouter.post('/subgenre', adminValidator, handleCreateSubgenre);
+adminRouter.post('/genre', adminValidator, handleCreateGenre);
+adminRouter.post('/user/:userId/credits', adminValidator, handleAddCredits);
 
 module.exports = adminRouter;

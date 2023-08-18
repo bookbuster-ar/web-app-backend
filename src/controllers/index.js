@@ -62,6 +62,9 @@ const markBookAsRecommended = require('./admin/markBookAsRecommended');
 const getUsers = require('./admin/getUsers');
 const searchUser = require('./admin/searchUser');
 const banUser = require('./admin/banUser');
+const createSubgenre = require('./admin/createSubgenre');
+const createGenre = require('./admin/createGenre');
+const addCredits = require('./admin/addCredits');
 
 module.exports = {
   // Books
@@ -124,4 +127,7 @@ module.exports = {
   getUsers,
   searchUser,
   banUser,
+  createSubgenre,
+  createGenre,
+  addCredits,
 };

@@ -66,6 +66,9 @@ const handleMarkBookAsRecommended = require('./admin/handleMarkBookAsRecommended
 const handleGetUsers = require('./admin/handleGetUsers');
 const handleSearchUser = require('./admin/handleSearchUser');
 const handleBanUser = require('./admin/handleBanUser');
+const handleCreateSubgenre = require('./admin/handleCreateSubgenre');
+const handleCreateGenre = require('./admin/handleCreateGenre');
+const handleAddCredits = require('./admin/handleAddCredits');
 
 module.exports = {
   // Books
@@ -135,4 +138,7 @@ module.exports = {
   handleGetUsers,
   handleSearchUser,
   handleBanUser,
+  handleCreateSubgenre,
+  handleCreateGenre,
+  handleAddCredits,
 };
