@@ -12,7 +12,7 @@ const getRecommendation = async (
   format,
   pages,
   genresArray,
-  nacionality_author
+  author_nationality
 ) => {
 
   
@@ -64,14 +64,29 @@ const getRecommendation = async (
       };
     }
   }
+
+  const countries = {
+    latam: [
+      "Argentina", "Brasil", "México", "Colombia", "Chile", "Perú", "Venezuela", "Ecuador", "Guatemala", "Cuba",
+      "Bolivia", "República Dominicana", "Honduras", "Paraguay", "Nicaragua", "El Salvador", "Costa Rica", "Panamá",
+      "Uruguay", "Jamaica", "Trinidad y Tobago", "Puerto Rico", "Haití", "Belice", "Barbados", "Guyana", "Surinam",
+      "Bahamas", "Antigua y Barbuda"
+    ],
+    otros: [
+      "Estados Unidos", "Canadá", "Reino Unido", "Francia", "Alemania", "Italia", "España", "China", "Japón", "India",
+      "Australia", "Rusia", "Corea del Sur", "Sudáfrica", "Egipto", "Nigeria", "Arabia Saudita", "Emiratos Árabes Unidos",
+      "Singapur", "Turquía"
+    ]
+  };
   
-  if (nacionality_author) {
-    switch (nacionality_author) {
+  
+  if (author_nationality) {
+    switch (author_nationality) {
       case 'Latinoamericanos':
-        whereCondition.nationality_author = 'Latinoamericana';
+        whereCondition.author_nationality = {[Op.in]: countries.latam};
         break;
       case 'De otras partes del mundo':
-        whereCondition.nationality_author = 'Española';
+        whereCondition.author_nationality = {[Op.in]: countries.otros};
         break;
       case 'Indistinto':
         break;
@@ -124,7 +139,7 @@ const getRecommendation = async (
       images: { cover, extra },
       title: book.title,
       author: book.author,
-      nationality_author: book.nationality_author,
+      author_nationality: book.author_nationality,
       publication_year: book.publication_year,
       editorial_collection_id: book.editorial_collection_id,
       editorial_id: book.editorial_id,
