@@ -69,6 +69,7 @@ const handleBanUser = require('./admin/handleBanUser');
 const handleCreateSubgenre = require('./admin/handleCreateSubgenre');
 const handleCreateGenre = require('./admin/handleCreateGenre');
 const handleAddCredits = require('./admin/handleAddCredits');
+const handleGetTransactions = require('./admin/handleGetTransactions');
 
 module.exports = {
   // Books
@@ -141,4 +142,5 @@ module.exports = {
   handleCreateSubgenre,
   handleCreateGenre,
   handleAddCredits,
+  handleGetTransactions,
 };
