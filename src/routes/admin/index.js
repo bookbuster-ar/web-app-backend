@@ -10,7 +10,8 @@ const {
   handleCreateSubgenre,
   handleCreateGenre,
   handleAddCredits,
-  // handleGetTransactions,
+  handleGetTransactionsById,
+  handleGetAllTransactions,
 } = require('../../handlers');
 
 adminRouter.post('/recommend', adminValidator, handleMarkBookAsRecommended);
@@ -20,6 +21,7 @@ adminRouter.get('/users/search', adminValidator, handleSearchUser);
 adminRouter.post('/subgenre', adminValidator, handleCreateSubgenre);
 adminRouter.post('/genre', adminValidator, handleCreateGenre);
 adminRouter.post('/user/:userId/credits', adminValidator, handleAddCredits);
-// adminRouter.get('/transactions', adminValidator, handleGetTransactions);
+adminRouter.get('/transactions/:id', adminValidator, handleGetTransactionsById);
+adminRouter.get('/transactions', adminValidator, handleGetAllTransactions);
 
 module.exports = adminRouter;

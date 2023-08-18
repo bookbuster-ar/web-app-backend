@@ -65,7 +65,8 @@ const banUser = require('./admin/banUser');
 const createSubgenre = require('./admin/createSubgenre');
 const createGenre = require('./admin/createGenre');
 const addCredits = require('./admin/addCredits');
-// const getTransactions = require('./admin/getTransactions');
+const getTransactionsById = require('./admin/getTransactionsById');
+const getAllTransaction = require('./admin/getAllTransactions');
 
 module.exports = {
   // Books
@@ -131,5 +132,6 @@ module.exports = {
   createSubgenre,
   createGenre,
   addCredits,
-  // getTransactions,
+  getTransactionsById,
+  getAllTransaction,
 };
