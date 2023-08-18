@@ -5,8 +5,9 @@ const { BACK_URL } = require('../../utils/env');
 
 const createSubscriptionLink = async (userId, price) => {
   console.log('userId:', userId, 'price:', price);
-  const startDate = moment().toISOString();
-  const endDate = moment().add(30, 'days').toISOString();
+  const argentinaTimezone = 'America/Argentina/Buenos_Aires';
+  const startDate = moment().tz(argentinaTimezone);
+  const endDate = moment().tz(argentinaTimezone).add(30, 'days');
 
   const formattedStartDate = moment(startDate).format(
     'YYYY-MM-DDTHH:mm:ss.SSSZ'
