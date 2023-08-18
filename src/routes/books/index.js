@@ -18,11 +18,6 @@ const {
   handleGetBooks,
   handleCreateBook,
 
-  //Pages
-  handleGetBooksByPages,
-
-  //Format
-  handleGetBooksByFormat,
 
   //Price
   handleGetPriceByFormat,
@@ -67,12 +62,6 @@ const {
 bookRouter.get('/genre', handleGetBooksByGenre);
 bookRouter.get('/subgenres', handleGetSubgenresByBook);
 bookRouter.get('/subgenre', handleGetBooksBySubgenre);
-
-//Filtro por paginas
-bookRouter.get('/filterbypages' , handleGetBooksByPages);
-
-//Filtro por formato
-bookRouter.get('/filterbyformat', handleGetBooksByFormat);
 
 //recommendation
 bookRouter.get('/recommendation', handleRecommendation);

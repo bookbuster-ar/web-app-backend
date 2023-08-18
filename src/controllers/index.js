@@ -5,12 +5,6 @@ const getFilteredBooks = require('./books/getFilteredBooks');
 
 const createBook = require('./books/createBook');
 
-//Pages
-const getBooksByPages = require('./books/getBooksByPages');
-
-//Format
-const getBooksByFormat = require('./books/getBooksByFormat');
-
 //Recommendation
 const getRecommendation = require('./books/getRecommendation');
 
@@ -74,12 +68,6 @@ module.exports = {
   getBookById,
   getFilteredBooks,
   createBook,
-
-  //Pages
-  getBooksByPages,
-
-  //Format
-  getBooksByFormat,
 
   //Recommendation
   getRecommendation,
