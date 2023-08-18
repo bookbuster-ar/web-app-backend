@@ -36,19 +36,15 @@ const createSubscriptionLink = async (userId, price) => {
   };
   console.log(preference);
 
-  try {
-    const mp = await mercadopago.preapproval.create(preference);
-    console.log(mp);
-    const linkCheckout = mp && mp.response && mp.response.init_point;
-    console.log(linkCheckout);
-    const subscriptionData = {
-      linkCheckout,
-    };
-    console.log(subscriptionData);
-    return subscriptionData;
-  } catch (error) {
-    return false;
-  }
+  const mp = await mercadopago.preapproval.create(preference);
+  console.log(mp);
+  const linkCheckout = mp && mp.response && mp.response.init_point;
+  console.log(linkCheckout);
+  const subscriptionData = {
+    linkCheckout,
+  };
+  console.log(subscriptionData);
+  return subscriptionData;
 };
 
 module.exports = createSubscriptionLink;
