@@ -1,7 +1,8 @@
 const { User, Session } = require('../../models');
+const sendBanNotification = require('../../services/sendBanNotification');
 const cron = require('node-cron');
 
-const banUser = async (userId, duration) => {
+const banUser = async (userId, duration, reason) => {
   try {
     const user = await User.findByPk(userId);
 
@@ -31,6 +32,8 @@ const banUser = async (userId, duration) => {
         console.error('Error al actualizar el usuario:', error);
       }
     });
+    sendBanNotification(user, duration, reason);
+
     return true;
   } catch (error) {
     throw error;
