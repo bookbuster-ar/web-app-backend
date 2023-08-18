@@ -19,7 +19,6 @@ const {
   handleCreateBook,
   handleGetWeeklyRecommended,
 
-
   //Price
   handleGetPriceByFormat,
 
@@ -85,7 +84,6 @@ bookRouter.get('/:id', handleGetBookById);
 // Review
 bookRouter.get('/:bookId/reviews', handleGetBookReviews);
 bookRouter.get('/:bookId/reviews/:reviewId/comments', handleGetReviewComments);
-
 
 bookRouter.post(
   '/:bookId/reviews',

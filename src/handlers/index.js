@@ -8,7 +8,7 @@ const handleCreateBook = require('./books/handleCreateBook');
 const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
 const handleGetSubgenresByBook = require('./books/handleGetSubgenresByBook');
 const handleGetWeeklyRecommended = require('./books/handleGetWeeklyRecommended');
-
+const handleRecommendation = require('./books/handleRecommendation');
 
 //Price
 const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
@@ -94,7 +94,8 @@ module.exports = {
   handleGetBookSubgenres,
   handleGetSubgenresByBook,
   handleGetWeeklyRecommended,
-  
+  handleRecommendation,
+
   //Price
   handleGetPriceByFormat,
 
