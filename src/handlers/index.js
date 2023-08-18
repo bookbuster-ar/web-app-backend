@@ -8,13 +8,15 @@ const handleCreateBook = require('./books/handleCreateBook');
 const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
 const handleGetSubgenresByBook = require('./books/handleGetSubgenresByBook');
 const handleGetWeeklyRecommended = require('./books/handleGetWeeklyRecommended');
+
+// Recommendation
+
 const handleRecommendation = require('./books/handleRecommendation');
 
 //Price
 const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
 
 // Book Categories
-const handleGetRecommendedBooks = require('./books/categories/handleGetRecommendedBooks');
 const handleGetMostPopularBooks = require('./books/categories/handleGetMostPopularBooks');
 const handleGetNewlyArrivedBooks = require('./books/categories/handleGetNewlyArrivedBooks');
 const handleGetLatestBooksReleases = require('./books/categories/handleGetLatestBooksReleases');
@@ -80,8 +82,13 @@ const handleBanUser = require('./admin/handleBanUser');
 const handleCreateSubgenre = require('./admin/handleCreateSubgenre');
 const handleCreateGenre = require('./admin/handleCreateGenre');
 const handleAddCredits = require('./admin/handleAddCredits');
+
 const handleGetTransactionsById = require('./admin/handleGetTransactionsById');
 const handleGetAllTransactions = require('./admin/handleGetAllTransactions');
+
+const handleSuscription = require('./admin/handleSuscription');
+const handleBooksSold = require('./admin/handleBooksSold');
+
 
 module.exports = {
   // Books
@@ -94,13 +101,16 @@ module.exports = {
   handleGetBookSubgenres,
   handleGetSubgenresByBook,
   handleGetWeeklyRecommended,
+
   handleRecommendation,
 
   //Price
   handleGetPriceByFormat,
 
+  // Recommendation
+  handleRecommendation,
+
   // Book Categories
-  handleGetRecommendedBooks,
   handleGetMostPopularBooks,
   handleGetNewlyArrivedBooks,
   handleGetLatestBooksReleases,
@@ -167,4 +177,7 @@ module.exports = {
   handleAddCredits,
   handleGetTransactionsById,
   handleGetAllTransactions,
+  handleSuscription,
+  handleBooksSold,
+ 
 };

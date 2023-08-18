@@ -3,7 +3,7 @@ const handleRecommendation = async (req, res) => {
   try {
     const format = req.query.format;
     const pages = req.query.pages;
-    const nacionality_author = req.query.nacionality_author;
+    const author_nationality = req.query.author_nationality;
     const genresName = req.query.genres;
     const genresArray = genresName ? genresName.split(',') : [];
 
@@ -11,7 +11,7 @@ const handleRecommendation = async (req, res) => {
       format,
       pages,
       genresArray,
-      nacionality_author
+      author_nationality
     );
 
     return res.status(200).json(recommendation);

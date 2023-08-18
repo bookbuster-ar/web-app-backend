@@ -5,9 +5,7 @@ const getFilteredBooks = require('./books/getFilteredBooks');
 
 const getWeeklyRecommended = require('./books/getWeeklyRecommended');
 
-
 const createBook = require('./books/createBook');
-
 
 //Recommendation
 const getRecommendation = require('./books/getRecommendation');
@@ -17,7 +15,6 @@ const getRecommendedBooks = require('./books/categories/getRecommendedBooks');
 const getMostPopularBooks = require('./books/categories/getMostPopularBooks');
 const getNewlyArrivedBooks = require('./books/categories/getNewlyArrivedBooks');
 const getLatestBooksReleases = require('./books/categories/getLatestBooksReleases');
-
 
 //Price
 const getPriceByFormat = require('./books/getPriceByFormat');
@@ -82,8 +79,13 @@ const banUser = require('./admin/banUser');
 const createSubgenre = require('./admin/createSubgenre');
 const createGenre = require('./admin/createGenre');
 const addCredits = require('./admin/addCredits');
+
 const getTransactionsById = require('./admin/getTransactionsById');
 const getAllTransaction = require('./admin/getAllTransactions');
+
+const getSuscriptions = require('./admin/getSuscriptions');
+const getBooksSold = require('./admin/getBooksSold');
+
 
 module.exports = {
   // Books
@@ -94,7 +96,6 @@ module.exports = {
   createBook,
   getWeeklyRecommended,
 
-
   //Recommendation
   getRecommendation,
 
@@ -103,7 +104,6 @@ module.exports = {
   getMostPopularBooks,
   getNewlyArrivedBooks,
   getLatestBooksReleases,
-
 
   //Price
   getPriceByFormat,
@@ -164,6 +164,11 @@ module.exports = {
   createSubgenre,
   createGenre,
   addCredits,
+
   getTransactionsById,
   getAllTransaction,
+
+  getSuscriptions,
+  getBooksSold,
+
 };
