@@ -79,9 +79,13 @@ const banUser = require('./admin/banUser');
 const createSubgenre = require('./admin/createSubgenre');
 const createGenre = require('./admin/createGenre');
 const addCredits = require('./admin/addCredits');
+
+const getTransactionsById = require('./admin/getTransactionsById');
+const getAllTransaction = require('./admin/getAllTransactions');
+
 const getSuscriptions = require('./admin/getSuscriptions');
 const getBooksSold = require('./admin/getBooksSold');
-// const getTransactions = require('./admin/getTransactions');
+
 
 module.exports = {
   // Books
@@ -160,7 +164,11 @@ module.exports = {
   createSubgenre,
   createGenre,
   addCredits,
+
+  getTransactionsById,
+  getAllTransaction,
+
   getSuscriptions,
   getBooksSold,
-  // getTransactions,
+
 };
