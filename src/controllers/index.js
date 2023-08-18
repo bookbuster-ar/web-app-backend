@@ -4,11 +4,16 @@ const getBookById = require('./books/getBookById');
 const getFilteredBooks = require('./books/getFilteredBooks');
 const createBook = require('./books/createBook');
 
+
+//Recommendation
+const getRecommendation = require('./books/getRecommendation');
+
 // Categories
 const getRecommendedBooks = require('./books/categories/getRecommendedBooks');
 const getMostPopularBooks = require('./books/categories/getMostPopularBooks');
 const getNewlyArrivedBooks = require('./books/categories/getNewlyArrivedBooks');
 const getLatestBooksReleases = require('./books/categories/getLatestBooksReleases');
+
 
 //Price
 const getPriceByFormat = require('./books/getPriceByFormat');
@@ -42,6 +47,8 @@ const getCollection = require('./editorial/getCollection');
 // Stock
 
 const increaseStock = require('./stock/increaseStock');
+const registerBookFormat = require('./stock/registerBookFormat');
+const postPriceFormatBook = require('./stock/postPriceFormatBook');
 
 // Auth
 
@@ -70,11 +77,16 @@ module.exports = {
   getFilteredBooks,
   createBook,
 
+
+  //Recommendation
+  getRecommendation,
+
   // Book Categories
   getRecommendedBooks,
   getMostPopularBooks,
   getNewlyArrivedBooks,
   getLatestBooksReleases,
+
 
   //Price
   getPriceByFormat,
@@ -105,6 +117,8 @@ module.exports = {
 
   // Stock
   increaseStock,
+  registerBookFormat,
+  postPriceFormatBook,
 
   // Auth
   signInWithEmail,

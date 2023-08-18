@@ -18,8 +18,12 @@ const {
   handleGetBooks,
   handleCreateBook,
 
+
   //Price
   handleGetPriceByFormat,
+
+  //Filtro recomendacion(personalizado)
+  handleRecommendation,
 
   // Book Detail
   handleGetBookById,
@@ -67,6 +71,9 @@ bookRouter.get('/genre', handleGetBooksByGenre);
 bookRouter.get('/subgenres', handleGetSubgenresByBook);
 bookRouter.get('/subgenre', handleGetBooksBySubgenre);
 
+//recommendation
+bookRouter.get('/recommendation', handleRecommendation);
+
 //Price
 bookRouter.get('/price', handleGetPriceByFormat);
 
@@ -76,6 +83,7 @@ bookRouter.get('/:id', handleGetBookById);
 // Review
 bookRouter.get('/:bookId/reviews', handleGetBookReviews);
 bookRouter.get('/:bookId/reviews/:reviewId/comments', handleGetReviewComments);
+
 
 bookRouter.post(
   '/:bookId/reviews',

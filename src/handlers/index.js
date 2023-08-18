@@ -7,6 +7,11 @@ const handleGetSubgenresByGenre = require('./books/handleGetSubgenresByGenre');
 const handleCreateBook = require('./books/handleCreateBook');
 const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
 const handleGetSubgenresByBook = require('./books/handleGetSubgenresByBook');
+
+
+//Recommendation
+const handleRecommendation = require('./books/handleRecommendation');
+
 //Price
 const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
 
@@ -59,6 +64,8 @@ const handleSuccessfulSubscription = require('./payment/handleSuccessfulSubscrip
 
 // Stock
 const handleIncreaseStock = require('./stock/handleIncreaseStock');
+const handleRegisterFormat = require('./stock/handleRegisterFormat');
+const handlePostPriceAndFormat = require('./stock/handlePostPriceAndFormat');
 
 // Quote
 const handleCreateQuote = require('./quotes/handleCreateQuote');
@@ -76,6 +83,9 @@ module.exports = {
   handleGetSubgenresByGenre,
   handleGetBookSubgenres,
   handleGetSubgenresByBook,
+
+  //Recommendation
+  handleRecommendation,
 
   //Price
   handleGetPriceByFormat,
@@ -128,6 +138,8 @@ module.exports = {
 
   // Stock
   handleIncreaseStock,
+  handleRegisterFormat,
+  handlePostPriceAndFormat,
 
   // Quote
   handleCreateQuote,
