@@ -7,10 +7,8 @@ const handleGetSubgenresByGenre = require('./books/handleGetSubgenresByGenre');
 const handleCreateBook = require('./books/handleCreateBook');
 const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
 const handleGetSubgenresByBook = require('./books/handleGetSubgenresByBook');
+const handleGetWeeklyRecommended = require('./books/handleGetWeeklyRecommended');
 
-
-//Recommendation
-const handleRecommendation = require('./books/handleRecommendation');
 
 //Price
 const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
@@ -74,6 +72,16 @@ const handleGetBookQuotes = require('./quotes/handleGetBookQuotes');
 const handleLikeQuote = require('./quotes/handleLikeQuote');
 const handleDeleteQuote = require('./quotes/handleDeleteQuote');
 
+// Admin
+const handleMarkBookAsRecommended = require('./admin/handleMarkBookAsRecommended');
+const handleGetUsers = require('./admin/handleGetUsers');
+const handleSearchUser = require('./admin/handleSearchUser');
+const handleBanUser = require('./admin/handleBanUser');
+const handleCreateSubgenre = require('./admin/handleCreateSubgenre');
+const handleCreateGenre = require('./admin/handleCreateGenre');
+const handleAddCredits = require('./admin/handleAddCredits');
+// const handleGetTransactions = require('./admin/handleGetTransactions');
+
 module.exports = {
   // Books
   handleGetBooks,
@@ -84,10 +92,8 @@ module.exports = {
   handleGetSubgenresByGenre,
   handleGetBookSubgenres,
   handleGetSubgenresByBook,
-
-  //Recommendation
-  handleRecommendation,
-
+  handleGetWeeklyRecommended,
+  
   //Price
   handleGetPriceByFormat,
 
@@ -148,4 +154,14 @@ module.exports = {
   handleGetBookQuotes,
   handleLikeQuote,
   handleDeleteQuote,
+
+  // Admin
+  handleMarkBookAsRecommended,
+  handleGetUsers,
+  handleSearchUser,
+  handleBanUser,
+  handleCreateSubgenre,
+  handleCreateGenre,
+  handleAddCredits,
+  // handleGetTransactions,
 };

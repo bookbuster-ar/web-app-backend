@@ -25,7 +25,7 @@ const Book = sequelize.define(
       type: DataTypes.INTEGER,
       // allowNull: false,
     },
-    weekly_recommended: {
+    in_recommendation: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },

@@ -17,6 +17,7 @@ const {
   // Book
   handleGetBooks,
   handleCreateBook,
+  handleGetWeeklyRecommended,
 
 
   //Price
@@ -76,6 +77,7 @@ bookRouter.get('/recommendation', handleRecommendation);
 
 //Price
 bookRouter.get('/price', handleGetPriceByFormat);
+bookRouter.get('/weekly', handleGetWeeklyRecommended);
 
 // Detail
 bookRouter.get('/:id', handleGetBookById);
