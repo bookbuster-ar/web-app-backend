@@ -116,6 +116,7 @@ Models.BookImage.belongsTo(Models.Book, {
 Models.Book.hasOne(Models.BookDetail, { foreignKey: 'book_id', as: 'detail' });
 Models.BookDetail.belongsTo(Models.Book, { foreignKey: 'book_id', as: 'book' });
 
+
 //* Book-BookGenre
 Models.Book.belongsToMany(Models.BookGenre, {
   through: Models.BookGenreInterm,
@@ -139,6 +140,14 @@ Models.BookFormat.belongsToMany(Models.Book, {
   foreignKey: 'book_format_id',
   as: 'books',
 });
+
+Models.BookFormat.hasMany(Models.BookFormatInterm, { foreignKey: 'book_format_id' });
+Models.Book.hasMany(Models.BookFormatInterm, { foreignKey: 'book_id' });
+
+
+Models.BookFormatInterm.belongsTo(Models.Book, { foreignKey: 'book_id' });
+Models.BookFormatInterm.belongsTo(Models.BookFormat, { foreignKey: 'book_format_id' });
+
 
 //* Books-Transaction
 Models.PublishedBook.belongsToMany(Models.Transaction, {
@@ -368,12 +377,12 @@ Models.BookSubgenre.belongsToMany(Models.Book, {
   as: 'books',
 });
 
-//! UserDetail - User
-Models.User.hasOne(Models.UserDetail, {
+//! User - UserAddress
+Models.User.hasOne(Models.UserAddress, {
   foreignKey: 'user_id',
-  as: 'detail',
+  as: 'address',
 });
-Models.UserDetail.belongsTo(Models.User, {
+Models.UserAddress.belongsTo(Models.User, {
   foreignKey: 'user_id',
   as: 'user',
 });

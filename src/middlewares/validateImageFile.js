@@ -1,7 +1,7 @@
 const validateImageFile = (req, res, next) => {
-  const { cover, extra } = req.files;
+  const { cover, extra, image } = req.files;
 
-  const combinedFiles = [...cover, ...extra];
+  const combinedFiles = cover || extra ? [...cover, ...extra] : [...image];
 
   if (!combinedFiles || combinedFiles.length === 0) {
     return res

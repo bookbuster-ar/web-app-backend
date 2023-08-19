@@ -7,8 +7,19 @@ const handleGetSubgenresByGenre = require('./books/handleGetSubgenresByGenre');
 const handleCreateBook = require('./books/handleCreateBook');
 const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
 const handleGetSubgenresByBook = require('./books/handleGetSubgenresByBook');
+const handleGetWeeklyRecommended = require('./books/handleGetWeeklyRecommended');
+
+// Recommendation
+
+const handleRecommendation = require('./books/handleRecommendation');
+
 //Price
 const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
+
+// Book Categories
+const handleGetMostPopularBooks = require('./books/categories/handleGetMostPopularBooks');
+const handleGetNewlyArrivedBooks = require('./books/categories/handleGetNewlyArrivedBooks');
+const handleGetLatestBooksReleases = require('./books/categories/handleGetLatestBooksReleases');
 
 // Review
 const handleGetBookReviews = require('./review/handleGetBookReviews');
@@ -41,6 +52,8 @@ const handleRegisterWithGoogle = require('./auth/handleRegisterWithGoogle');
 // User
 const handleAddFavoriteGenres = require('./user/handleAddFavoriteGenres');
 const handleGetFavoriteGenres = require('./user/handleGetFavoriteGenres');
+const handleUpdateUserProfile = require('./user/handleUpdateUserProfile');
+const handleGetUserInfo = require('./user/handleGetUserInfo');
 
 //Payment
 const handlePlaceOrder = require('./payment/handlePlaceOrder');
@@ -52,12 +65,30 @@ const handleSuccessfulSubscription = require('./payment/handleSuccessfulSubscrip
 
 // Stock
 const handleIncreaseStock = require('./stock/handleIncreaseStock');
+const handleRegisterFormat = require('./stock/handleRegisterFormat');
+const handlePostPriceAndFormat = require('./stock/handlePostPriceAndFormat');
 
 // Quote
 const handleCreateQuote = require('./quotes/handleCreateQuote');
 const handleGetBookQuotes = require('./quotes/handleGetBookQuotes');
 const handleLikeQuote = require('./quotes/handleLikeQuote');
 const handleDeleteQuote = require('./quotes/handleDeleteQuote');
+
+// Admin
+const handleMarkBookAsRecommended = require('./admin/handleMarkBookAsRecommended');
+const handleGetUsers = require('./admin/handleGetUsers');
+const handleSearchUser = require('./admin/handleSearchUser');
+const handleBanUser = require('./admin/handleBanUser');
+const handleCreateSubgenre = require('./admin/handleCreateSubgenre');
+const handleCreateGenre = require('./admin/handleCreateGenre');
+const handleAddCredits = require('./admin/handleAddCredits');
+
+const handleGetTransactionsById = require('./admin/handleGetTransactionsById');
+const handleGetAllTransactions = require('./admin/handleGetAllTransactions');
+
+const handleSuscription = require('./admin/handleSuscription');
+const handleBooksSold = require('./admin/handleBooksSold');
+
 
 module.exports = {
   // Books
@@ -69,9 +100,20 @@ module.exports = {
   handleGetSubgenresByGenre,
   handleGetBookSubgenres,
   handleGetSubgenresByBook,
+  handleGetWeeklyRecommended,
+
+  handleRecommendation,
 
   //Price
   handleGetPriceByFormat,
+
+  // Recommendation
+  handleRecommendation,
+
+  // Book Categories
+  handleGetMostPopularBooks,
+  handleGetNewlyArrivedBooks,
+  handleGetLatestBooksReleases,
 
   // Review
   handleGetBookReviews,
@@ -103,6 +145,8 @@ module.exports = {
   // User
   handleAddFavoriteGenres,
   handleGetFavoriteGenres,
+  handleUpdateUserProfile,
+  handleGetUserInfo,
 
   //Payment
   handlePlaceOrder,
@@ -114,10 +158,26 @@ module.exports = {
 
   // Stock
   handleIncreaseStock,
+  handleRegisterFormat,
+  handlePostPriceAndFormat,
 
   // Quote
   handleCreateQuote,
   handleGetBookQuotes,
   handleLikeQuote,
   handleDeleteQuote,
+
+  // Admin
+  handleMarkBookAsRecommended,
+  handleGetUsers,
+  handleSearchUser,
+  handleBanUser,
+  handleCreateSubgenre,
+  handleCreateGenre,
+  handleAddCredits,
+  handleGetTransactionsById,
+  handleGetAllTransactions,
+  handleSuscription,
+  handleBooksSold,
+ 
 };

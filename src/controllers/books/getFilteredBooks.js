@@ -18,7 +18,9 @@ const createWhereClause = (columnName, value) => {
   );
 };
 
+
 const getFilteredBooks = async (req, { title, author, search }) => {
+
   try {
     const { limit, offset, page } = getPaginationData(req, 15);
 
@@ -64,6 +66,7 @@ const getFilteredBooks = async (req, { title, author, search }) => {
       const [cover, ...extra] = field.book?.images.map((image) => image.image);
       return {
         id: field.id,
+
         images: { cover: cover ?? null },
         title: field.book.title,
         author: field.book.author,

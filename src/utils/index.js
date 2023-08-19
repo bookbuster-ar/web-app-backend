@@ -24,6 +24,22 @@ const timeAgo = (dateString) => {
   }
 };
 
+function convertKeysToCamelCase(obj) {
+  const camelCaseObj = {};
+
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const camelKey = key.replace(/([-_][a-z])/gi, ($1) => {
+        return $1.toUpperCase().replace('-', '').replace('_', '');
+      });
+
+      camelCaseObj[camelKey] = obj[key];
+    }
+  }
+
+  return camelCaseObj;
+}
 module.exports = {
   timeAgo,
+  convertKeysToCamelCase,
 };

@@ -13,7 +13,7 @@ module.exports = {
 
   // User
   User: require('./User/User'),
-  UserDetail: require('./User/UserDetail'),
+  UserAddress: require('./User/UserAddress'),
   UserImage: require('./User/UserImage'),
   Role: require('./User/Role'),
   Session: require('./User/Session'),
