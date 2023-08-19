@@ -1,4 +1,4 @@
-const { TransactionDetail } = require('../../models/index');
+const { TransactionDetail, PublishedBook } = require('../../models/index');
 
 const getBooksSold = async () => {
   const books = await TransactionDetail.findAll();
@@ -6,8 +6,9 @@ const getBooksSold = async () => {
   if (!transactions.length) {
     return 'No se han vendido libros';
   }
+  const formattedTransaction = PublishedBook.findByPk(transactions);
   return {
-    transactionCount: transactions.length,
+    transactionCount: transactions,
   };
 };
 
