@@ -94,7 +94,7 @@ const uploadBooks = async (bookDb) => {
 
 app.listen(3001, async () => {
   try {
-    await sequelize.sync({ force: true, logging: false });
+    await sequelize.sync({ force: false, logging: false });
     await uploadBooks(bookDb);
   } catch (error) {
     console.log(error.message);
