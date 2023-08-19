@@ -78,8 +78,7 @@ const getRecommendation = async (
       "Singapur", "Turquía"
     ]
   };
-  
-  
+    
   if (author_nationality) {
     switch (author_nationality) {
       case 'Latinoamericanos':
