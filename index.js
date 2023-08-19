@@ -2,13 +2,10 @@ const app = require('./src/app');
 const sequelize = require('./src/config/database');
 //const { v4: uuidv4 } = require('uuid');
 
-
 const Models = require('./src/models');
 require('./src/models/associations');
 
-
 const bookDb = require('./src/utils/data');
-
 
 const uploadBooks = async (bookDb) => {
   const transaction = await sequelize.transaction();
@@ -67,30 +64,26 @@ const uploadBooks = async (bookDb) => {
 
       for (const format of currentBook['format']) {
         const [bookFormatInstance] = await Models.BookFormat.findOrCreate({
-          where: { name: format.name }
+          where: { name: format.name },
         });
 
         const [bookFormatInterm] = await Models.BookFormatInterm.findOrCreate({
           where: {
             book_id: createdBook.id,
-            book_format_id: bookFormatInstance.id
-          }
+            book_format_id: bookFormatInstance.id,
+          },
         });
 
         await Models.PublishedBookPrice.create({
           published_book_id: publishedBook.id,
           price: format.price,
-          book_format_id: bookFormatInstance.id
+          book_format_id: bookFormatInstance.id,
         });
 
         await Models.SaleStock.create({
           book_format_interm_id: bookFormatInterm.id,
         });
       }
-
-      const rutaImagenLocal = `./book-images/${currentBook['id']}/${currentBook['id']}.jpg`;
-      // Continúa con la lógica relacionada con la carga de imágenes, si es necesario...
-
     }
     await transaction.commit();
   } catch (error) {
@@ -101,8 +94,7 @@ const uploadBooks = async (bookDb) => {
 
 app.listen(3001, async () => {
   try {
-    await sequelize.sync({ force: false, logging: false });
-    //await uploadFormats();
+    await sequelize.sync({ force: true, logging: false });
     await uploadBooks(bookDb);
   } catch (error) {
     console.log(error.message);

@@ -31,6 +31,37 @@ const getBookById = async (id) => {
       .filter((image) => image.is_cover !== true)
       .map((image) => image.image);
 
+    //*** libros recomendados ****
+
+    const genres = completeBookInfo.genres.map((genre) => genre.name);
+
+    const books = await Book.findAll({
+      include: [
+        'images',
+        'genres',
+        { model: PublishedBook, as: 'published_book', attributes: ['id'] },
+      ],
+    });
+
+    const librosConGeneroBuscado = books.filter((libro) => {
+      // Verificar si el género buscado está presente en el array de géneros del libro
+      return (
+        libro.genres.some((genero) => genero.name == genres.join('')) &&
+        libro.title != completeBookInfo.title
+      );
+    });
+
+    const librosRecomendados = [];
+
+    librosConGeneroBuscado.map((libro) =>
+      librosRecomendados.push({
+        id: libro.published_book.id,
+        title: libro.title,
+        author: libro.author,
+        images: { cover: cover?.image || null },
+      })
+    );
+    // *** ***
     return {
       id: publishedBook.id,
       title: completeBookInfo.title,
@@ -47,6 +78,7 @@ const getBookById = async (id) => {
       language: completeBookInfo.language,
       size: completeBookInfo.size,
       price: completeBookInfo.price,
+      recomendedBooks: [...librosRecomendados],
     };
   } catch (error) {
     throw error;

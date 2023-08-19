@@ -1,9 +1,10 @@
-const { Quote, User, QuoteLike } = require('../../models');
+const { Quote, User, QuoteLike, PublishedBook } = require('../../models');
 const { timeAgo } = require('../../utils');
 
 const getBookQuotes = async (bookId) => {
+  const publishedBook = await PublishedBook.findByPk(bookId);
   const rawQuotes = await Quote.findAll({
-    where: { book_id: bookId },
+    where: { book_id: publishedBook.book_id },
     attributes: { exclude: ['user_id', 'book_id'] },
     include: [
       {

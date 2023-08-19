@@ -14,34 +14,32 @@ const getRecommendation = async (
   genresArray,
   author_nationality
 ) => {
-
-  
   let whereCondition = {};
-  
+
   if (pages) {
     switch (pages) {
       case '0to50pages':
         whereCondition['$detail.pages$'] = { [Op.between]: [0, 50] };
         break;
-        case '50to100pages':
-          whereCondition['$detail.pages$'] = { [Op.between]: [50, 100] };
+      case '50to100pages':
+        whereCondition['$detail.pages$'] = { [Op.between]: [50, 100] };
         break;
       case '100to200pages':
         whereCondition['$detail.pages$'] = { [Op.between]: [100, 200] };
         break;
-        case 'Mayora200pages':
-          whereCondition['$detail.pages$'] = { [Op.gt]: 200 };
-          break;
-          case 'Indistinto':
-            whereCondition = {};
+      case 'Mayora200pages':
+        whereCondition['$detail.pages$'] = { [Op.gt]: 200 };
+        break;
+      case 'Indistinto':
+        whereCondition = {};
         break;
       default:
         throw new Error('Rango de páginas no válido');
     }
   }
-  
+
   let includeFormat = {};
-  
+
   if (format) {
     if (format === 'Indistinto') {
       includeFormat = {
@@ -52,11 +50,11 @@ const getRecommendation = async (
       const formatInstance = await BookFormat.findOne({
         where: { name: format },
       });
-      
+
       if (!formatInstance) {
         throw new Error('Formato no encontrado');
       }
-      
+
       includeFormat = {
         model: BookFormat,
         as: 'formats',
@@ -67,25 +65,67 @@ const getRecommendation = async (
 
   const countries = {
     latam: [
-      "Argentina", "Brasil", "México", "Colombia", "Chile", "Perú", "Venezuela", "Ecuador", "Guatemala", "Cuba",
-      "Bolivia", "República Dominicana", "Honduras", "Paraguay", "Nicaragua", "El Salvador", "Costa Rica", "Panamá",
-      "Uruguay", "Jamaica", "Trinidad y Tobago", "Puerto Rico", "Haití", "Belice", "Barbados", "Guyana", "Surinam",
-      "Bahamas", "Antigua y Barbuda"
+      'Argentina',
+      'Brasil',
+      'México',
+      'Colombia',
+      'Chile',
+      'Perú',
+      'Venezuela',
+      'Ecuador',
+      'Guatemala',
+      'Cuba',
+      'Bolivia',
+      'República Dominicana',
+      'Honduras',
+      'Paraguay',
+      'Nicaragua',
+      'El Salvador',
+      'Costa Rica',
+      'Panamá',
+      'Uruguay',
+      'Jamaica',
+      'Trinidad y Tobago',
+      'Puerto Rico',
+      'Haití',
+      'Belice',
+      'Barbados',
+      'Guyana',
+      'Surinam',
+      'Bahamas',
+      'Antigua y Barbuda',
     ],
     otros: [
-      "Estados Unidos", "Canadá", "Reino Unido", "Francia", "Alemania", "Italia", "España", "China", "Japón", "India",
-      "Australia", "Rusia", "Corea del Sur", "Sudáfrica", "Egipto", "Nigeria", "Arabia Saudita", "Emiratos Árabes Unidos",
-      "Singapur", "Turquía"
-    ]
+      'Estados Unidos',
+      'Canadá',
+      'Reino Unido',
+      'Francia',
+      'Alemania',
+      'Italia',
+      'España',
+      'China',
+      'Japón',
+      'India',
+      'Australia',
+      'Rusia',
+      'Corea del Sur',
+      'Sudáfrica',
+      'Egipto',
+      'Nigeria',
+      'Arabia Saudita',
+      'Emiratos Árabes Unidos',
+      'Singapur',
+      'Turquía',
+    ],
   };
     
   if (author_nationality) {
     switch (author_nationality) {
       case 'Latinoamericanos':
-        whereCondition.author_nationality = {[Op.in]: countries.latam};
+        whereCondition.author_nationality = { [Op.in]: countries.latam };
         break;
       case 'De otras partes del mundo':
-        whereCondition.author_nationality = {[Op.in]: countries.otros};
+        whereCondition.author_nationality = { [Op.in]: countries.otros };
         break;
       case 'Indistinto':
         break;
@@ -93,9 +133,9 @@ const getRecommendation = async (
         throw new Error('Nacionalidad del autor no válida');
     }
   }
-  
+
   let includeGenres = {};
-  
+
   if (genresArray && genresArray.length) {
     includeGenres = {
       model: BookGenre,
@@ -104,7 +144,7 @@ const getRecommendation = async (
       //attributes: ['name']
     };
   }
-  
+
   const books = await Book.findAll({
     where: whereCondition,
     include: [
@@ -119,17 +159,14 @@ const getRecommendation = async (
         model: BookDetail,
         as: 'detail',
         attributes: ['pages'],
-       
       },
       {
         model: BookFormatInterm,
         as: 'book_format_interms',
       },
     ],
-   
   });
-  
-  
+
   const transformedBooks = books.map((book) => {
     const [cover, ...extra] =
       book.book?.images?.map((image) => image.image) || [];

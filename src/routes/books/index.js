@@ -17,12 +17,12 @@ const {
   // Book
   handleGetBooks,
   handleCreateBook,
-
+  handleGetWeeklyRecommended,
 
   //Price
   handleGetPriceByFormat,
 
-  //Filtro recomendacion(personalizado)
+  // Filtro recomendacion(personalizado)
   handleRecommendation,
 
   // Book Detail
@@ -35,13 +35,20 @@ const {
 
   // Book Review
   handleGetBookReviews,
-  handleGetReviewComments,
   handleCreateReview,
   handleLikeReview,
-  handleCreateReviewComment,
-  handleLikeComment,
   handleDeleteReview,
   handleDeleteReviewComment,
+
+  // Book Review Comment
+  handleCreateReviewComment,
+  handleGetReviewComments,
+  handleLikeComment,
+
+  // Categories
+  handleGetMostPopularBooks,
+  handleGetNewlyArrivedBooks,
+  handleGetLatestBooksReleases,
 
   // Book Quote
   handleCreateQuote,
@@ -56,7 +63,7 @@ const {
   validateImageFile,
   verifySession,
   reviewValidator,
-} = require('../../middlewares/index');
+} = require('../../middlewares');
 
 // Genre
 bookRouter.get('/genre', handleGetBooksByGenre);
@@ -64,10 +71,11 @@ bookRouter.get('/subgenres', handleGetSubgenresByBook);
 bookRouter.get('/subgenre', handleGetBooksBySubgenre);
 
 //recommendation
-bookRouter.get('/recommendation', handleRecommendation);
+// bookRouter.get('/recommendation', handleRecommendation);
 
 //Price
 bookRouter.get('/price', handleGetPriceByFormat);
+bookRouter.get('/weekly', handleGetWeeklyRecommended);
 
 // Detail
 bookRouter.get('/:id', handleGetBookById);
@@ -75,7 +83,6 @@ bookRouter.get('/:id', handleGetBookById);
 // Review
 bookRouter.get('/:bookId/reviews', handleGetBookReviews);
 bookRouter.get('/:bookId/reviews/:reviewId/comments', handleGetReviewComments);
-
 
 bookRouter.post(
   '/:bookId/reviews',
@@ -125,6 +132,11 @@ bookRouter.post(
 bookRouter.delete('/:bookId/quotes/:quoteId', verifySession, handleDeleteQuote);
 
 bookRouter.get('/', handleGetBooks);
+
+// Categories
+bookRouter.get('/categories/most-popular', handleGetMostPopularBooks);
+bookRouter.get('/categories/newly-arrived', handleGetNewlyArrivedBooks);
+bookRouter.get('/categories/latest-releases', handleGetLatestBooksReleases);
 
 // Create
 bookRouter.post(

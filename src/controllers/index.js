@@ -3,10 +3,18 @@ const getAllBooks = require('./books/getAllBooks');
 const getBookById = require('./books/getBookById');
 const getFilteredBooks = require('./books/getFilteredBooks');
 
+const getWeeklyRecommended = require('./books/getWeeklyRecommended');
+
 const createBook = require('./books/createBook');
 
 //Recommendation
 const getRecommendation = require('./books/getRecommendation');
+
+// Categories
+const getRecommendedBooks = require('./books/categories/getRecommendedBooks');
+const getMostPopularBooks = require('./books/categories/getMostPopularBooks');
+const getNewlyArrivedBooks = require('./books/categories/getNewlyArrivedBooks');
+const getLatestBooksReleases = require('./books/categories/getLatestBooksReleases');
 
 //Price
 const getPriceByFormat = require('./books/getPriceByFormat');
@@ -47,19 +55,37 @@ const postPriceFormatBook = require('./stock/postPriceFormatBook');
 
 const signInWithEmail = require('./auth/signInWithEmail');
 const registerUserWithEmail = require('./auth/registerUserWithEmail');
+const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
 const logOut = require('./auth/logOut');
 const verifyUserEmail = require('./auth/verifyUserEmail');
 
 // User
 const addFavoriteGenres = require('./user/addFavoriteGenres');
 const getFavoriteGenres = require('./user/getFavoriteGenres');
-const registerUserWithGoogle = require('./auth/registerUserWithGoogle');
+const updateUserProfile = require('./user/updateUserProfile');
+const getUserInfo = require('./user/getUserInfo');
 
 // Quote
 const createQuote = require('./quotes/createQuote');
 const getBookQuotes = require('./quotes/getBookQuotes');
 const likeQuote = require('./quotes/likeQuote');
 const deleteQuote = require('./quotes/deleteQuote');
+
+// Admin
+const markBookAsRecommended = require('./admin/markBookAsRecommended');
+const getUsers = require('./admin/getUsers');
+const searchUser = require('./admin/searchUser');
+const banUser = require('./admin/banUser');
+const createSubgenre = require('./admin/createSubgenre');
+const createGenre = require('./admin/createGenre');
+const addCredits = require('./admin/addCredits');
+
+const getTransactionsById = require('./admin/getTransactionsById');
+const getAllTransaction = require('./admin/getAllTransactions');
+
+const getSuscriptions = require('./admin/getSuscriptions');
+const getBooksSold = require('./admin/getBooksSold');
+
 
 module.exports = {
   // Books
@@ -68,9 +94,16 @@ module.exports = {
   getBookById,
   getFilteredBooks,
   createBook,
+  getWeeklyRecommended,
 
   //Recommendation
   getRecommendation,
+
+  // Book Categories
+  getRecommendedBooks,
+  getMostPopularBooks,
+  getNewlyArrivedBooks,
+  getLatestBooksReleases,
 
   //Price
   getPriceByFormat,
@@ -114,10 +147,28 @@ module.exports = {
   addFavoriteGenres,
   getFavoriteGenres,
   registerUserWithGoogle,
+  updateUserProfile,
+  getUserInfo,
 
   // Quote
   createQuote,
   getBookQuotes,
   likeQuote,
   deleteQuote,
+
+  // Admin
+  markBookAsRecommended,
+  getUsers,
+  searchUser,
+  banUser,
+  createSubgenre,
+  createGenre,
+  addCredits,
+
+  getTransactionsById,
+  getAllTransaction,
+
+  getSuscriptions,
+  getBooksSold,
+
 };

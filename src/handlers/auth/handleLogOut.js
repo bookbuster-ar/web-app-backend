@@ -2,7 +2,7 @@ const { logOut } = require('../../controllers/index');
 
 const handleLogOut = async (req, res) => {
   try {
-    const { sessionId } = req.body;
+    const { sessionid: sessionId } = req.headers;
 
     if (!sessionId) {
       return res.status(400).json({

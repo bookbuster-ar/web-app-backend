@@ -1,4 +1,4 @@
-const { Review, User, Book } = require('../../models');
+const { Review, User, Book, PublishedBook } = require('../../models');
 const sequelize = require('../../config/database');
 
 const { timeAgo } = require('../../utils');
@@ -6,8 +6,9 @@ const { timeAgo } = require('../../utils');
 const createReview = async ({ bookId, userId, content, rating, reaction }) => {
   const transaction = await sequelize.transaction();
   try {
+    const publishedBook = await PublishedBook.findByPk(bookId);
     const [createdReview, wasCreated] = await Review.findOrCreate({
-      where: { user_id: userId, book_id: bookId },
+      where: { user_id: userId, book_id: publishedBook.book_id },
       defaults: { content, rating, reaction },
     });
 
@@ -25,7 +26,7 @@ const createReview = async ({ bookId, userId, content, rating, reaction }) => {
       transaction,
     });
 
-    const getReviewBookPromise = Book.findByPk(bookId, {
+    const getReviewBookPromise = Book.findByPk(publishedBook.book_id, {
       attributes: ['id', 'title', 'author'],
       transaction,
     });
@@ -42,7 +43,7 @@ const createReview = async ({ bookId, userId, content, rating, reaction }) => {
       ...relevantReviewInfo,
       createdAt: timeAgo(createdAt),
       by: { ...reviewCreator.toJSON() },
-      inBook: { ...reviewBook.toJSON() },
+      inBook: { ...reviewBook.toJSON(), id: publishedBook.id },
     };
   } catch (error) {
     await transaction.rollback();
