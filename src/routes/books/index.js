@@ -141,6 +141,7 @@ bookRouter.get('/categories/latest-releases', handleGetLatestBooksReleases);
 // Create
 bookRouter.post(
   '/',
+  verifySession,
   multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } }).fields(
     uploadFields
   ),
