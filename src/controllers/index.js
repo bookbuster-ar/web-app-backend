@@ -64,6 +64,7 @@ const addFavoriteGenres = require('./user/addFavoriteGenres');
 const getFavoriteGenres = require('./user/getFavoriteGenres');
 const updateUserProfile = require('./user/updateUserProfile');
 const getUserInfo = require('./user/getUserInfo');
+const getUserBooks = require('./user/getUserBooks');
 
 // Quote
 const createQuote = require('./quotes/createQuote');
@@ -79,13 +80,13 @@ const banUser = require('./admin/banUser');
 const createSubgenre = require('./admin/createSubgenre');
 const createGenre = require('./admin/createGenre');
 const addCredits = require('./admin/addCredits');
-
 const getTransactionsById = require('./admin/getTransactionsById');
 const getAllTransaction = require('./admin/getAllTransactions');
-
 const getSuscriptions = require('./admin/getSuscriptions');
 const getBooksSold = require('./admin/getBooksSold');
-
+const getRoles = require('./admin/getRoles');
+const updateUserRole = require('./admin/updateUserRole');
+const getBannedUsers = require('./admin/getBannedUsers');
 
 module.exports = {
   // Books
@@ -149,6 +150,7 @@ module.exports = {
   registerUserWithGoogle,
   updateUserProfile,
   getUserInfo,
+  getUserBooks,
 
   // Quote
   createQuote,
@@ -164,11 +166,11 @@ module.exports = {
   createSubgenre,
   createGenre,
   addCredits,
-
+  getRoles,
   getTransactionsById,
   getAllTransaction,
-
+  updateUserRole,
   getSuscriptions,
   getBooksSold,
-
+  getBannedUsers,
 };

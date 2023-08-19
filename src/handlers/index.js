@@ -54,6 +54,7 @@ const handleAddFavoriteGenres = require('./user/handleAddFavoriteGenres');
 const handleGetFavoriteGenres = require('./user/handleGetFavoriteGenres');
 const handleUpdateUserProfile = require('./user/handleUpdateUserProfile');
 const handleGetUserInfo = require('./user/handleGetUserInfo');
+const handleGetUserBooks = require('./user/handleGetUserBooks');
 
 //Payment
 const handlePlaceOrder = require('./payment/handlePlaceOrder');
@@ -82,13 +83,13 @@ const handleBanUser = require('./admin/handleBanUser');
 const handleCreateSubgenre = require('./admin/handleCreateSubgenre');
 const handleCreateGenre = require('./admin/handleCreateGenre');
 const handleAddCredits = require('./admin/handleAddCredits');
-
+const handleGetRoles = require('./admin/handleGetRoles');
 const handleGetTransactionsById = require('./admin/handleGetTransactionsById');
 const handleGetAllTransactions = require('./admin/handleGetAllTransactions');
-
+const handleUpdateUserRole = require('./admin/handleUpdateUserRole');
 const handleSuscription = require('./admin/handleSuscription');
 const handleBooksSold = require('./admin/handleBooksSold');
-
+const handleGetBannedUsers = require('./admin/handleGetBannedUsers');
 
 module.exports = {
   // Books
@@ -147,6 +148,7 @@ module.exports = {
   handleGetFavoriteGenres,
   handleUpdateUserProfile,
   handleGetUserInfo,
+  handleGetUserBooks,
 
   //Payment
   handlePlaceOrder,
@@ -179,5 +181,7 @@ module.exports = {
   handleGetAllTransactions,
   handleSuscription,
   handleBooksSold,
- 
+  handleGetRoles,
+  handleUpdateUserRole,
+  handleGetBannedUsers,
 };
