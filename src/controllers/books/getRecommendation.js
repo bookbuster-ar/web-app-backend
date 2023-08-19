@@ -27,10 +27,10 @@ const getRecommendation = async (
       case '100to200pages':
         whereCondition['$detail.pages$'] = { [Op.between]: [100, 200] };
         break;
-      case 'Greater200pages':
+      case 'GreaterThan200pages':
         whereCondition['$detail.pages$'] = { [Op.gt]: 200 };
         break;
-      case 'Indistint':
+      case 'Indistinct':
         whereCondition = {};
         break;
       default:
@@ -41,7 +41,7 @@ const getRecommendation = async (
   let includeFormat = {};
 
   if (format) {
-    if (format === 'Indistinto') {
+    if (format === 'Indistinct') {
       includeFormat = {
         model: BookFormat,
         as: 'formats',
@@ -95,7 +95,7 @@ const getRecommendation = async (
       'Bahamas',
       'Antigua y Barbuda',
     ],
-    otros: [
+    others: [
       'Estados Unidos',
       'Canadá',
       'Reino Unido',
@@ -118,16 +118,16 @@ const getRecommendation = async (
       'Turquía',
     ],
   };
-    
+
   if (author_nationality) {
     switch (author_nationality) {
-      case 'Latinoamericans':
+      case 'Latinamericans':
         whereCondition.author_nationality = { [Op.in]: countries.latam };
         break;
       case 'Others':
-        whereCondition.author_nationality = { [Op.in]: countries.otros };
+        whereCondition.author_nationality = { [Op.in]: countries.others };
         break;
-      case 'Indistint':
+      case 'Indistinct':
         break;
       default:
         throw new Error('Nacionalidad del autor no válida');
