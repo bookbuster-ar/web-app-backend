@@ -27,10 +27,10 @@ const getRecommendation = async (
       case '100to200pages':
         whereCondition['$detail.pages$'] = { [Op.between]: [100, 200] };
         break;
-      case 'Mayora200pages':
+      case 'Greater200pages':
         whereCondition['$detail.pages$'] = { [Op.gt]: 200 };
         break;
-      case 'Indistinto':
+      case 'Indistint':
         whereCondition = {};
         break;
       default:
@@ -121,13 +121,13 @@ const getRecommendation = async (
     
   if (author_nationality) {
     switch (author_nationality) {
-      case 'Latinoamericanos':
+      case 'Latinoamericans':
         whereCondition.author_nationality = { [Op.in]: countries.latam };
         break;
-      case 'De otras partes del mundo':
+      case 'Others':
         whereCondition.author_nationality = { [Op.in]: countries.otros };
         break;
-      case 'Indistinto':
+      case 'Indistint':
         break;
       default:
         throw new Error('Nacionalidad del autor no válida');
