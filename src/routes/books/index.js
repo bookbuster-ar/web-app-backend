@@ -71,7 +71,7 @@ bookRouter.get('/subgenres', handleGetSubgenresByBook);
 bookRouter.get('/subgenre', handleGetBooksBySubgenre);
 
 //recommendation
-// bookRouter.get('/recommendation', handleRecommendation);
+bookRouter.get('/recommendation', handleRecommendation);
 
 //Price
 bookRouter.get('/price', handleGetPriceByFormat);
