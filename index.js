@@ -1,6 +1,9 @@
 const app = require('./src/app');
+
 const sequelize = require('./src/config/database');
-//const { v4: uuidv4 } = require('uuid');
+const cloudinary = require('./src/config/cloudinary');
+
+const { v4: uuidv4 } = require('uuid');
 
 const Models = require('./src/models');
 require('./src/models/associations');
@@ -84,6 +87,23 @@ const uploadBooks = async (bookDb) => {
           book_format_interm_id: bookFormatInterm.id,
         });
       }
+
+      const rutaImagenLocal = `./book-images/${currentBook['id']}/${currentBook['id']}.jpg`;
+
+      const result = await cloudinary.uploader.upload(rutaImagenLocal, {
+        public_id: `book/${currentBook['id']}/${uuidv4()}`,
+      });
+
+      if (result && result.url) {
+        await Models.BookImage.create({
+          book_id: createdBook.id,
+          image: result.url,
+          is_cover: true,
+        });
+        console.log('Imagen subida y guardada con éxito:', result.url);
+      } else {
+        console.error('Error subiendo la imagen a Cloudinary.');
+      }
     }
     await transaction.commit();
   } catch (error) {
@@ -94,7 +114,7 @@ const uploadBooks = async (bookDb) => {
 
 app.listen(3001, async () => {
   try {
-    await sequelize.sync({ force: false, logging: false });
+    await sequelize.sync({ force: true, logging: false });
     await uploadBooks(bookDb);
   } catch (error) {
     console.log(error.message);

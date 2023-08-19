@@ -11,6 +11,7 @@ const data = [
       { name: 'Usado', price: 5560 },
       { name: 'Audiolibro', price: 3150 },
       { name: 'Digital', price: 4865 },
+      { name: 'Alquiler', price: 2500 },
     ],
     detail: {
       synopsis:
@@ -36,6 +37,7 @@ const data = [
       { name: 'Nuevo', price: 7500 },
       { name: 'Usado', price: 6000 },
       { name: 'Audiolibro', price: 4111 },
+      { name: 'Alquiler', price: 2500 },
     ],
     detail: {
       synopsis:
@@ -57,7 +59,10 @@ const data = [
     author_nationality: 'Uruguay',
     publication_year: 2023,
     genre: 'Poesía',
-    format: [{ name: 'Nuevo', price: 5500 }],
+    format: [
+      { name: 'Nuevo', price: 5500 },
+      { name: 'Alquiler', price: 2500 },
+    ],
     detail: {
       synopsis:
         'En este emotivo libro de poemas, Verónica Pérez Arango explora las profundidades de la noche y la soledad. Sus palabras nos transportan a un mundo donde nadie duerme de verdad y donde cada pensamiento cobra vida.',
@@ -83,6 +88,7 @@ const data = [
       { name: 'Usado', price: 4000 },
       { name: 'Audiolibro', price: 2604 },
       { name: 'Digital', price: 3500 },
+      { name: 'Alquiler', price: 2500 },
     ],
     detail: {
       synopsis:
@@ -107,6 +113,7 @@ const data = [
     format: [
       { name: 'Nuevo', price: 4500 },
       { name: 'Usado', price: 3600 },
+      { name: 'Alquiler', price: 2500 },
     ],
     detail: {
       synopsis:
@@ -132,6 +139,7 @@ const data = [
       { name: 'Nuevo', price: 4000 },
       { name: 'Usado', price: 3200 },
       { name: 'Audiolibro', price: 2325 },
+      { name: 'Alquiler', price: 2500 },
     ],
     detail: {
       synopsis:
@@ -157,6 +165,7 @@ const data = [
     format: [
       { name: 'Nuevo', price: 7990 },
       { name: 'Usado', price: 6392 },
+      { name: 'Alquiler', price: 2500 },
     ],
     detail: {
       synopsis:
@@ -179,7 +188,10 @@ const data = [
     author_nationality: 'Singapur',
     publication_year: 2022,
     genre: 'Poesía',
-    format: [{ name: 'Nuevo', price: 6290 }],
+    format: [
+      { name: 'Nuevo', price: 6290 },
+      { name: 'Alquiler', price: 2500 },
+    ],
     detail: {
       synopsis:
         'Una colección de poesías que reflejan la juventud del autor y su perspectiva sobre la comunidad LGBTIQ. Mariano Blatt explora temas de identidad, amor y libertad en esta conmovedora antología de sus primeros trabajos poéticos.',
@@ -1281,7 +1293,10 @@ const data = [
     author: 'Guadalupe Nettel',
     publication_year: 2014,
     genre: 'Narrativa',
-    format: [{ name: 'Nuevo', price: 5448.65 }],
+    format: [
+      { name: 'Nuevo', price: 5448.65 },
+      { name: 'Alquiler', price: 2500 },
+    ],
     detail: {
       synopsis:
         'Claudio es cubano, vive en Nueva York y trabaja en una editorial. Cecilia es mexicana, vive en París y es estudiante. En el pasado de él hay recuerdos de La Habana y el dolor por la pérdida de su primera novia, y en su presente, la complicada relación con Ruth. En el pasado de ella hay una adolescencia difícil, y en su presente, la relación con Tom, un chico de salud delicada con quien comparte su afición por los cementerios. Será durante un viaje de Claudio a París cuando sus destinos se entrecrucen. Mientras Claudio y Cecilia describen con minuciosidad su día a día en París y Nueva York, ambos dejan traslucir sus neurosis, sus pasiones, sus fobias y las reminiscencias del pasado que dictan sus miedos, dando cuenta de cómo se conocieron y de las circunstancias que los llevaron a gustarse, a quererse y a detestarse de manera intermitente. Después del invierno muestra con un estilo incisivo, a veces humorístico y a veces conmovedor, los mecanismos de las relaciones amorosas, así como sus diversos ingredientes. Con una banda sonora de fondo en la que suenan Nick Drake, Kind of Blue de Miles Davis, Keith Jarrett o Las horas de Philip Glass, la historia de amor entre Claudio y Cecilia forma parte de un relato mayor que abarca un periodo importante de sus existencias. Cada uno sigue su periplo trazando un mapa hecho de encuentros y ausencias, de búsquedas e incertidumbres, de anhelos y pesares; cada uno, obligado por sus circunstancias, desciende al abismo de sus derrotas anímicas en busca de las claves para relacionarse tanto con los otros como consigo mismo, y para construir, si es posible, su propio oasis de felicidad. Guadalupe Nettel ha escrito una novela rotunda, de una ambición e intensidad poco usuales, que ahonda con maestría en su reconocible universo, el de los seres que habitan los márgenes, el extrañamiento, la anomalía. Con ella se consagra definitivamente como una de las voces imprescindibles de la actual narrativa latinoamericana.',
@@ -1430,7 +1445,10 @@ const data = [
     author: 'Hebe Uhart',
     publication_year: 2023,
     genre: 'Narrativa',
-    format: [{ name: 'Nuevo', price: 4800 }],
+    format: [
+      { name: 'Nuevo', price: 4800 },
+      { name: 'Alquiler', price: 2500 },
+    ],
     detail: {
       synopsis:
         'Tres novelas inéditas de Hebe Uhart, que fueron descubiertas luego de su muerte, fueron escritas entre fines de la década del ochenta y mediados de los noventa. Las historias que se cuentan están atravesadas por la violencia política de los años setenta. Pero no son historias clásicas ‘de dictadura’. Estas novelas quedaron a la espera de un tiempo que tal vez sea el nuestro.',
@@ -1490,7 +1508,10 @@ const data = [
     author: 'Liliana Villanueva',
     publication_year: 2023,
     genre: 'Narrativa',
-    format: [{ name: 'Nuevo', price: 5690 }],
+    format: [
+      { name: 'Nuevo', price: 5690 },
+      { name: 'Alquiler', price: 2500 },
+    ],
     detail: {
       synopsis:
         'Todo viaje es una forma de adaptarse y adoptar, por un tiempo, otros aires, otras costumbres. Viento del Este es el relato de una madre que viaja a China para encontrarse con su hijo y se deja adoptar por la familia china que la recibe. Pronto el viaje inicial se transforma en una serie de descubrimientos inesperados: los caminos de pueblos la llevan a la China de Mao, las autopistas modernas la acercan a la ciudad de Confucio, a ciudades de piedra, a jardines congelados. Este libro es una invitación a un mundo alejado del turismo, en una narración que convierte el natural extrañamiento de lo cotidiano en material literario. Liliana Villanueva nos invita a descubrir China desde la sorpresa y la maravilla de lo nuevo, lo extraño, lo lejano, de la mano generosa de una familia china.',
@@ -1664,7 +1685,10 @@ const data = [
     author: 'Leila Guerriero',
     publication_year: 2022,
     genre: 'No ficción - Crónicas',
-    format: [{ name: 'Nuevo', price: 13097 }],
+    format: [
+      { name: 'Nuevo', price: 13097 },
+      { name: 'Alquiler', price: 2500 },
+    ],
     detail: {
       synopsis:
         '¿Por qué, para qué y cómo escribe un periodista; de qué está hecha su vocación y qué es lo que le da sentido en estos tiempos? Zona de obras reúne columnas, conferencias y ensayos que la argentina Leila Guerriero hilvanó en torno a esas preguntas y que, publicados en diversos medios o leídos en encuentros literarios en América Latina y en España, se recogen por primera vez en un libro. El resultado es un mural en el que cada pieza apunta al corazón del oficio, lo ilumina y, al mismo tiempo, lo cuestiona: ¿cómo y cuándo nace la pulsión por escribir; de qué manera se alimenta; por qué vale la pena llevar un texto periodístico a su máximo potencial expresivo? Éste es un libro sobre la escritura de no ficción pero, también, sobre el cine, el cómic, las artes plásticas, la infancia, Madame Bovary, África, los padres y las lecturas, y respira, en cada una de sus páginas, la convicción de que el periodismo no es un género menor sino un género literario en sí mismo.',
@@ -1695,6 +1719,7 @@ const data = [
     format: [
       { name: 'Nuevo', price: 25.99 },
       { name: 'Usado', price: 20 },
+      { name: 'Alquiler', price: 2500 },
     ],
     detail: {
       synopsis:
@@ -1729,6 +1754,7 @@ const data = [
       { name: 'Usado', price: 15 },
       { name: 'Audiolibro', price: 2968 },
       { name: 'Digital', price: 13 },
+      { name: 'Alquiler', price: 2500 },
     ],
     detail: {
       synopsis:
@@ -1763,6 +1789,7 @@ const data = [
       { name: 'Nuevo', price: 3190 },
       { name: 'Usado', price: 2552 },
       { name: 'Audiolibro', price: 3115 },
+      { name: 'Alquiler', price: 2500 },
     ],
     detail: {
       synopsis:
@@ -1796,6 +1823,7 @@ const data = [
       { name: 'Nuevo', price: 6200 },
       { name: 'Usado', price: 4960 },
       { name: 'Audiolibro', price: 4653 },
+      { name: 'Alquiler', price: 2500 },
     ],
     detail: {
       synopsis:
@@ -1828,6 +1856,7 @@ const data = [
       { name: 'Nuevo', price: 6900 },
       { name: 'Usado', price: 5520 },
       { name: 'Audiolibro', price: 2974 },
+      { name: 'Alquiler', price: 2500 },
     ],
     detail: {
       synopsis:
