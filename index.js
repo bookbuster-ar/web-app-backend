@@ -9,6 +9,28 @@ const bookDb = require('./src/utils/data');
 const uploadBooks = async (bookDb) => {
   const transaction = await sequelize.transaction();
   try {
+      // 1. Crear 4 usuarios
+    const usersData = [
+      {name: "Maria", last_name: "Cardenas", email: "mcelestecrnl@gmail.com", is_inactive: false, is_blocked: false, subscription: true},
+      {name: "Matias", last_name: "Fenoglio", email: "matifeno@hotmail.com", is_inactive: false, is_blocked: false, subscription: true},
+      {name: "Celeste", last_name: "Coronel", email: "cele_07_c@email.com", is_inactive: false, is_blocked: false, subscription: true},
+      {name: "Benjamin", last_name: "Coronel", email: "benja_coro@email.com", is_inactive: false, is_blocked: false, subscription: true}
+    ];
+    
+    const createdUsers = await Promise.all(usersData.map(userData => Models.User.create(userData)));
+    
+    // 2. Asignar una BookShelves a cada usuario
+    const createdBookShelves = await Promise.all(createdUsers.map(user => Models.BookShelves.create({user_id: user.id})));
+    
+    // 3. Crear BookShelfCategory para cada BookShelves
+    const shelfCategories = ["Todos", "Leer", "Actualmente Leyendo", "Quiero leer"];
+    
+    for (const bookShelf of createdBookShelves) {
+      for (const category of shelfCategories) {
+        await Models.BookShelfCategory.create({name: category, book_shelves_id: bookShelf.id});
+      }
+    }
+
     for (let i = 0; i < bookDb.length; i++) {
       const currentBook = bookDb[i];
 

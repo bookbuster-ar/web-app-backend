@@ -72,6 +72,11 @@ const getBookQuotes = require('./quotes/getBookQuotes');
 const likeQuote = require('./quotes/likeQuote');
 const deleteQuote = require('./quotes/deleteQuote');
 
+//Shelves
+const getShelves = require('./shelves/getShelves');
+const addBookToShelf = require('./shelves/addBookToShelf');
+const deleteBookFromShelf = require('./shelves/deleteBookFromShelf');
+
 // Admin
 const markBookAsRecommended = require('./admin/markBookAsRecommended');
 const getUsers = require('./admin/getUsers');
@@ -151,6 +156,11 @@ module.exports = {
   registerUserWithGoogle,
   updateUserProfile,
   getUserInfo,
+
+  //Shelves
+  getShelves,
+  addBookToShelf,
+  deleteBookFromShelf,
 
   // Quote
   createQuote,
