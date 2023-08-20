@@ -64,12 +64,21 @@ const addFavoriteGenres = require('./user/addFavoriteGenres');
 const getFavoriteGenres = require('./user/getFavoriteGenres');
 const updateUserProfile = require('./user/updateUserProfile');
 const getUserInfo = require('./user/getUserInfo');
+const getUserBooks = require('./user/getUserBooks');
 
 // Quote
 const createQuote = require('./quotes/createQuote');
 const getBookQuotes = require('./quotes/getBookQuotes');
 const likeQuote = require('./quotes/likeQuote');
 const deleteQuote = require('./quotes/deleteQuote');
+
+// Payment
+const createGiftSubscriptionLink = require('./payment/createGiftSubscriptionLink');
+const createSubscriptionLink = require('./payment/createSubscriptionLink');
+const placeOrder = require('./payment/placeOrder');
+const registerSuccessfulPayment = require('./payment/registerSuccessfulPayment');
+const registerSuccessfulSubscription = require('./payment/registerSuccessfulSubscription');
+const registerSuccessfulGiftSubscription = require('./payment/registerSuccessfulGiftSubscription');
 
 // Admin
 const markBookAsRecommended = require('./admin/markBookAsRecommended');
@@ -79,13 +88,13 @@ const banUser = require('./admin/banUser');
 const createSubgenre = require('./admin/createSubgenre');
 const createGenre = require('./admin/createGenre');
 const addCredits = require('./admin/addCredits');
-
 const getTransactionsById = require('./admin/getTransactionsById');
 const getAllTransaction = require('./admin/getAllTransactions');
-
 const getSuscriptions = require('./admin/getSuscriptions');
 const getBooksSold = require('./admin/getBooksSold');
-
+const getRoles = require('./admin/getRoles');
+const updateUserRole = require('./admin/updateUserRole');
+const getBannedUsers = require('./admin/getBannedUsers');
 
 module.exports = {
   // Books
@@ -149,12 +158,21 @@ module.exports = {
   registerUserWithGoogle,
   updateUserProfile,
   getUserInfo,
+  getUserBooks,
 
   // Quote
   createQuote,
   getBookQuotes,
   likeQuote,
   deleteQuote,
+
+  // Payment
+  createGiftSubscriptionLink,
+  createSubscriptionLink,
+  placeOrder,
+  registerSuccessfulPayment,
+  registerSuccessfulSubscription,
+  registerSuccessfulGiftSubscription,
 
   // Admin
   markBookAsRecommended,
@@ -164,11 +182,11 @@ module.exports = {
   createSubgenre,
   createGenre,
   addCredits,
-
+  getRoles,
   getTransactionsById,
   getAllTransaction,
-
+  updateUserRole,
   getSuscriptions,
   getBooksSold,
-
+  getBannedUsers,
 };

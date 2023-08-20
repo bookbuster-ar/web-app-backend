@@ -1,4 +1,4 @@
-const registerSuccessfulSubscription = require('../../controllers/payment/registerSuccessfulSubscription');
+const { registerSuccessfulSubscription } = require('../../controllers');
 const url = require('url');
 const querystring = require('querystring');
 
@@ -17,11 +17,11 @@ const handleSuccessfulSubscription = async (req, res) => {
     transactionAmount,
     preapproval_id,
   };
-  await registerSuccessfulSubscription(userData, subscriptionData);
   try {
-    res.redirect(`https://bookbuster-deploy.vercel.app/`);
+    await registerSuccessfulSubscription(userData, subscriptionData);
+    return res.redirect(`https://bookbuster-deploy.vercel.app/`);
   } catch (error) {
-    res.status(500).send(result.error);
+    return res.status(500).send(result.error);
   }
 };
 

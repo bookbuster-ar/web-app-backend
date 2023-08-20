@@ -14,6 +14,9 @@ const {
   handleGetAllTransactions,
   handleSuscription,
   handleBooksSold,
+  handleGetRoles,
+  handleUpdateUserRole,
+  handleGetBannedUsers,
 } = require('../../handlers');
 
 adminRouter.post('/recommend', adminValidator, handleMarkBookAsRecommended);
@@ -27,5 +30,8 @@ adminRouter.post('/genre', adminValidator, handleCreateGenre);
 adminRouter.post('/user/:userId/credits', adminValidator, handleAddCredits);
 adminRouter.get('/transactions/:id', adminValidator, handleGetTransactionsById);
 adminRouter.get('/transactions', adminValidator, handleGetAllTransactions);
+adminRouter.get('/roles', adminValidator, handleGetRoles);
+adminRouter.put('/user/:userId/role', adminValidator, handleUpdateUserRole);
+adminRouter.get('/banned', adminValidator, handleGetBannedUsers);
 
 module.exports = adminRouter;

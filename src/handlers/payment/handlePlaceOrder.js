@@ -1,4 +1,4 @@
-const placeOrder = require('../../controllers/payment/placeOrder');
+const { placeOrder } = require('../../controllers');
 
 const handlePlaceOrder = async (req, res) => {
   const { sessionid: sessionId, userid: userId } = req.headers;

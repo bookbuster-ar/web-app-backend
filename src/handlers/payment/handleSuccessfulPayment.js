@@ -1,4 +1,4 @@
-const registerSuccessfulPayment = require('../../controllers/payment/registerSuccessfulPayment');
+const { registerSuccessfulPayment } = require('../../controllers');
 
 const handleSuccessfulPayment = async (req, res) => {
   const { payment_id, status, payment_type, external_reference } = req.query;
