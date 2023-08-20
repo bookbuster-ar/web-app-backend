@@ -48,6 +48,7 @@ const handleVerifyEmail = require('./auth/handleVerifyEmail');
 const handleSignInWithEmail = require('./auth/handleSignInWithEmail');
 const handleLogOut = require('./auth/handleLogOut');
 const handleRegisterWithGoogle = require('./auth/handleRegisterWithGoogle');
+const handlePublishBook = require('./admin/handlePublishBook');
 
 // User
 const handleAddFavoriteGenres = require('./user/handleAddFavoriteGenres');
@@ -88,7 +89,6 @@ const handleGetAllTransactions = require('./admin/handleGetAllTransactions');
 
 const handleSuscription = require('./admin/handleSuscription');
 const handleBooksSold = require('./admin/handleBooksSold');
-
 
 module.exports = {
   // Books
@@ -141,6 +141,7 @@ module.exports = {
   handleSignInWithEmail,
   handleLogOut,
   handleRegisterWithGoogle,
+  handlePublishBook,
 
   // User
   handleAddFavoriteGenres,
@@ -179,5 +180,4 @@ module.exports = {
   handleGetAllTransactions,
   handleSuscription,
   handleBooksSold,
- 
 };

@@ -86,6 +86,7 @@ const getAllTransaction = require('./admin/getAllTransactions');
 const getSuscriptions = require('./admin/getSuscriptions');
 const getBooksSold = require('./admin/getBooksSold');
 
+const publishBook = require('./admin/publishBook');
 
 module.exports = {
   // Books
@@ -170,5 +171,5 @@ module.exports = {
 
   getSuscriptions,
   getBooksSold,
-
+  publishBook,
 };
