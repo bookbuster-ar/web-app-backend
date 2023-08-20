@@ -1,14 +1,7 @@
 const { validate: uuidValidate } = require('uuid');
 
 const publishedBookValidator = (req, res, next) => {
-  if (!req.body.data) {
-    return res.status(400).json({
-      error: 'Debe proporcionar información para publicar el libro',
-    });
-  }
-
-  const { editorialId, editorialName, collectionId, collectionName } =
-    req.body.data;
+  const { editorialId, editorialName, collectionId, collectionName } = req.body;
 
   const validator = {
     title: (value) =>
@@ -32,8 +25,10 @@ const publishedBookValidator = (req, res, next) => {
   const fieldErrorMessage = {};
 
   Object.keys(validator).forEach((field) => {
-    if (!validator[field](req.body.data[field])) {
-      fieldErrorMessage[field] = `Este campo no tiene un formato válido`;
+    if (!validator[field](req.body[field])) {
+      fieldErrorMessage[
+        field
+      ] = `Este campo está ausente o no tiene un formato válido`;
     }
   });
 
@@ -51,12 +46,12 @@ const publishedBookValidator = (req, res, next) => {
   if (collectionId && collectionName) {
     fieldErrorMessage.collection = `Solo se debe proporcionar 'collectionId' para referenciar a una colección de editorial o el 'collectionName' para crear una, no ambos`;
   } else if (collectionId && !uuidValidate(collectionId)) {
-    fieldErrorMessage.editorial = `El 'collectionId' proporcionado no es válido`;
+    fieldErrorMessage.collection = `El 'collectionId' proporcionado no es válido`;
   } else if (
     !collectionId &&
     (!collectionName || collectionName.trim().length === 0)
   ) {
-    fieldErrorMessage.editorial = `Debe proporcionar un 'collectionId' válido o un 'collectionName'`;
+    fieldErrorMessage.collection = `Debe proporcionar un 'collectionId' válido o un 'collectionName'`;
   }
 
   const someInvalidField = Object.keys(fieldErrorMessage).length > 0;
