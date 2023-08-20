@@ -9,19 +9,7 @@ const router = require('./routes');
 const app = express();
 
 app.use(morgan('dev'));
-app.use(
-  cors({
-    origin: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: [
-      'Content-Type',
-      'Authorization',
-      'sessionid',
-      'userid',
-      'referer',
-    ],
-  })
-);
+app.use(cors());
 
 app.use(express.json());
 
