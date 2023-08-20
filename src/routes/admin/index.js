@@ -45,10 +45,10 @@ adminRouter.get('/transactions', adminValidator, handleGetAllTransactions);
 adminRouter.post(
   '/publish/:bookId',
   adminValidator,
+  publishedBookValidator,
   multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } }).fields(
     uploadFields
   ),
-  publishedBookValidator,
   validateImageFile,
   handlePublishBook
 );
