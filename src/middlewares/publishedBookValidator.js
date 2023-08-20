@@ -14,12 +14,12 @@ const publishedBookValidator = (req, res, next) => {
       !!value && typeof value === 'string' && value.trim() !== '',
     synopsis: (value) =>
       !!value && typeof value === 'string' && value.trim() !== '',
-    pages: (value) => !!value && typeof value === 'number' && value > 0,
+    pages: (value) => !!value && !isNaN(value) && parseInt(value) > 0,
     language: (value) =>
       !!value && typeof value === 'string' && value.trim() !== '',
     size: (value) =>
       !!value && typeof value === 'string' && value.trim() !== '',
-    price: (value) => !!value && typeof value === 'number' && value > 0,
+    price: (value) => !!value && !isNaN(value) && parseInt(value) > 0,
   };
 
   const fieldErrorMessage = {};
