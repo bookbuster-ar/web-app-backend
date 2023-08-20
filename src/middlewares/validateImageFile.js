@@ -1,11 +1,17 @@
 const validateImageFile = (req, res, next) => {
-  const { cover, extra, image } = req.files;
+  const { cover, backCover, spine, inHalf, image } = req.files;
 
-  if (!cover && !extra && !image) {
+  if (!cover && !backCover && !spine && !inHalf && !image) {
     return next();
   }
 
-  const combinedFiles = cover || extra ? [...cover, ...extra] : [...image];
+  const combinedFiles = [
+    ...(cover || []),
+    ...(backCover || []),
+    ...(spine || []),
+    ...(inHalf || []),
+    ...(image || []),
+  ];
 
   const invalidFile = combinedFiles.some((file) => !file.buffer);
 
