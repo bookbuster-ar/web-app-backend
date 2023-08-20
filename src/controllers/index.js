@@ -15,6 +15,7 @@ const getRecommendedBooks = require('./books/categories/getRecommendedBooks');
 const getMostPopularBooks = require('./books/categories/getMostPopularBooks');
 const getNewlyArrivedBooks = require('./books/categories/getNewlyArrivedBooks');
 const getLatestBooksReleases = require('./books/categories/getLatestBooksReleases');
+const getBooksForRent = require('./books/categories/getBooksForRent');
 
 //Price
 const getPriceByFormat = require('./books/getPriceByFormat');
@@ -104,6 +105,7 @@ module.exports = {
   getMostPopularBooks,
   getNewlyArrivedBooks,
   getLatestBooksReleases,
+  getBooksForRent,
 
   //Price
   getPriceByFormat,

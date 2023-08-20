@@ -20,6 +20,7 @@ const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
 const handleGetMostPopularBooks = require('./books/categories/handleGetMostPopularBooks');
 const handleGetNewlyArrivedBooks = require('./books/categories/handleGetNewlyArrivedBooks');
 const handleGetLatestBooksReleases = require('./books/categories/handleGetLatestBooksReleases');
+const handleGetBooksFoRent = require('./books/categories/handleGetBooksForRent');
 
 // Review
 const handleGetBookReviews = require('./review/handleGetBookReviews');
@@ -114,6 +115,8 @@ module.exports = {
   handleGetMostPopularBooks,
   handleGetNewlyArrivedBooks,
   handleGetLatestBooksReleases,
+  handleGetBooksFoRent,
+  
 
   // Review
   handleGetBookReviews,
