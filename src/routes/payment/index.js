@@ -20,7 +20,11 @@ paymentRouter.get('/success', handleSuccessfulPayment);
 paymentRouter.get('/successful', handlePendingPayment);
 paymentRouter.get('/failure', handleFailurePayment);
 paymentRouter.get('/pending', handlePendingPayment);
-paymentRouter.post('/giftSubscriptionLink', handleGiftSubscriptionLink);
+paymentRouter.post(
+  '/giftSubscriptionLink',
+  verifySession,
+  handleGiftSubscriptionLink
+);
 paymentRouter.get('/successfulGift', handleSuccessfulGiftSubscription);
 
 module.exports = paymentRouter;
