@@ -5,10 +5,7 @@ const handleCreateBook = async (req, res) => {
   try {
     const bookDataToCreate = {
       ...req.body,
-      images:
-        req.files.cover || req.files.extra || req.files.image
-          ? req.files
-          : null,
+      images: Object.keys(req.files).length > 0 ? req.files : null,
     };
 
     const { userid: userId } = req.headers;
