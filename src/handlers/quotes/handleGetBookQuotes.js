@@ -6,7 +6,8 @@ const handleGetBookQuotes = async (req, res) => {
     const bookQuotes = await getBookQuotes(bookId);
     return res.status(200).json(bookQuotes);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    return res.status(500).json({ error: error.message });
   }
 };
 

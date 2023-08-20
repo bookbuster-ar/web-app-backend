@@ -12,6 +12,7 @@ const handleSubscriptionLink = async (req, res) => {
     else
       return res.status(400).json({ error: true, msg: 'Error al crear link' });
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 };

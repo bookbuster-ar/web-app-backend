@@ -19,6 +19,7 @@ const handleCreateReview = async (req, res) => {
       error: 'No se pudo crear la review',
     });
   } catch (error) {
+    console.error(error);
     if (error?.statusCode === 409) {
       return res.status(409).json({ error: error.message });
     }

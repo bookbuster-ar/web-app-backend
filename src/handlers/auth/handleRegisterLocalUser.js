@@ -14,10 +14,10 @@ const handleRegisterLocalUser = async (req, res) => {
       message: 'El usuario fue registrado correctamente',
     });
   } catch (error) {
+    console.error(error);
     if (error.message === 'Ya existe un usuario con esa dirección de correo') {
       return res.status(409).json({ error: error.message });
     }
-    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 };

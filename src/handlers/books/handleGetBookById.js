@@ -9,6 +9,7 @@ const handleGetBookById = async (req, res) => {
 
     return res.status(200).json(bookDetail);
   } catch (error) {
+    console.error(error);
     return res.status(500).json({
       message:
         'Error al recuperar la información del libro: no se encontró el libro con el ID proporcionado',

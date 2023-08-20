@@ -4,9 +4,10 @@ const handleGetCollection = async (req, res) => {
   const { id: editorialId } = req.query;
   try {
     const collection = await getCollection(editorialId);
-    res.status(200).json(collection);
+    return res.status(200).json(collection);
   } catch (error) {
-    res.status(404).json({ error: error.message });
+    console.error(error);
+    return res.status(404).json({ error: error.message });
   }
 };
 

@@ -9,6 +9,7 @@ const handleDeleteQuote = async (req, res) => {
     }
     return res.status(400).json({ error: 'No se pudo borrar la cita' });
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 };

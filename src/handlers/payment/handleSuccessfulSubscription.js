@@ -21,6 +21,7 @@ const handleSuccessfulSubscription = async (req, res) => {
   try {
     res.redirect(`https://bookbuster-deploy.vercel.app/`);
   } catch (error) {
+    console.error(error);
     res.status(500).send(result.error);
   }
 };

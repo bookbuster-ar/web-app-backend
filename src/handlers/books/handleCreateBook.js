@@ -14,7 +14,8 @@ const handleCreateBook = async (req, res) => {
         .json({ created: { id }, message: 'El libro fue creado con éxito' });
     }
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    return res.status(500).json({ error: error.message });
   }
 };
 

@@ -10,6 +10,7 @@ const handleAddCredits = async (req, res) => {
       .status(200)
       .json({ msg: 'Creditos agregados', updatedUser: updatedUser });
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 };

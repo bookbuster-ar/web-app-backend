@@ -25,6 +25,7 @@ const handleGetBooksByGenre = async (req, res) => {
       message: 'Proporcione una identificacion valida (UUID)',
     });
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 };
