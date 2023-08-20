@@ -79,6 +79,7 @@ const handleDeleteQuote = require('./quotes/handleDeleteQuote');
  const handleGetShelves = require('./shelves/handleGetShelves');
  const handleAddBookToShelf = require('./shelves/handleAddBookToShelf');
  const handleDeleteBookFromShelf = require('./shelves/handleDeleteBookFromShelf');
+ const handleGetBooksOffTheShelf = require('./shelves/handleGetBooksOffTheShelf');
 
 // Admin
 const handleMarkBookAsRecommended = require('./admin/handleMarkBookAsRecommended');
@@ -179,6 +180,7 @@ module.exports = {
   handleGetShelves,
   handleAddBookToShelf,
   handleDeleteBookFromShelf,
+  handleGetBooksOffTheShelf,
 
   // Admin
   handleMarkBookAsRecommended,
