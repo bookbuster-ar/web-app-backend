@@ -72,6 +72,14 @@ const getBookQuotes = require('./quotes/getBookQuotes');
 const likeQuote = require('./quotes/likeQuote');
 const deleteQuote = require('./quotes/deleteQuote');
 
+// Payment
+const createGiftSubscriptionLink = require('./payment/createGiftSubscriptionLink');
+const createSubscriptionLink = require('./payment/createSubscriptionLink');
+const placeOrder = require('./payment/placeOrder');
+const registerSuccessfulPayment = require('./payment/registerSuccessfulPayment');
+const registerSuccessfulSubscription = require('./payment/registerSuccessfulSubscription');
+const registerSuccessfulGiftSubscription = require('./payment/registerSuccessfulGiftSubscription');
+
 // Admin
 const markBookAsRecommended = require('./admin/markBookAsRecommended');
 const getUsers = require('./admin/getUsers');
@@ -157,6 +165,14 @@ module.exports = {
   getBookQuotes,
   likeQuote,
   deleteQuote,
+
+  // Payment
+  createGiftSubscriptionLink,
+  createSubscriptionLink,
+  placeOrder,
+  registerSuccessfulPayment,
+  registerSuccessfulSubscription,
+  registerSuccessfulGiftSubscription,
 
   // Admin
   markBookAsRecommended,

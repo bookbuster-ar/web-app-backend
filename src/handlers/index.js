@@ -63,6 +63,8 @@ const handleFailurePayment = require('./payment/handleFailurePayment');
 const handlePendingPayment = require('./payment/handlePendingPayment');
 const handleSubscriptionLink = require('./payment/handleSubscriptionLink');
 const handleSuccessfulSubscription = require('./payment/handleSuccessfulSubscription');
+const handleGiftSubscriptionLink = require('./payment/handleGiftSubscriptionLink');
+const handleSuccessfulGiftSubscription = require('./payment/handleSuccessfulGiftSubscription');
 
 // Stock
 const handleIncreaseStock = require('./stock/handleIncreaseStock');
@@ -157,6 +159,8 @@ module.exports = {
   handlePendingPayment,
   handleSubscriptionLink,
   handleSuccessfulSubscription,
+  handleGiftSubscriptionLink,
+  handleSuccessfulGiftSubscription,
 
   // Stock
   handleIncreaseStock,

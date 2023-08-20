@@ -1,10 +1,11 @@
-const { createSubscriptionLink } = require('../../controllers');
+const { createGiftSubscriptionLink } = require('../../controllers');
 
-const handleSubscriptionLink = async (req, res) => {
+const handleGiftSubscriptionLink = async (req, res) => {
   const { sessionid: sessionId, userid: userId } = req.headers;
-  const { price } = req.body;
+  const { price, userEmail, giftDays } = req.body;
+  const giftData = { userId, price, userEmail, giftDays };
   try {
-    const link = await createSubscriptionLink(userId, price);
+    const link = await createGiftSubscriptionLink(giftData);
     if (link)
       return res
         .status(200)
@@ -16,4 +17,4 @@ const handleSubscriptionLink = async (req, res) => {
   }
 };
 
-module.exports = handleSubscriptionLink;
+module.exports = handleGiftSubscriptionLink;
