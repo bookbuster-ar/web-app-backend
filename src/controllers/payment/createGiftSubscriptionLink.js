@@ -12,7 +12,7 @@ const createGiftSubscriptionLink = async (giftData) => {
     'YYYY-MM-DDTHH:mm:ss.SSSZ'
   );
   const formattedEndDate = moment(endDate).format('YYYY-MM-DDTHH:mm:ss.SSSZ');
-  const returnUrl = `https://dd6a-2803-9800-988c-7bb1-915b-ee3e-7b74-c5cd.ngrok-free.app/api/payment/successfulGift?userId=${userId}&endDate=${formattedEndDate}&transactionAmount=${price}&userEmail=${userEmail}&giftDays=${giftDays}`;
+  const returnUrl = `${BACK_URL}/api/payment/successfulGift?userId=${userId}&endDate=${formattedEndDate}&transactionAmount=${price}&userEmail=${userEmail}&giftDays=${giftDays}`;
 
   const user = await User.findOne({
     where: { id: userId },
