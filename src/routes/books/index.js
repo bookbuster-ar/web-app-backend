@@ -5,7 +5,9 @@ const multer = require('multer');
 const storage = multer.memoryStorage();
 const uploadFields = [
   { name: 'cover', maxCount: 1 },
-  { name: 'extra', maxCount: 3 },
+  { name: 'backCover', maxCount: 1 },
+  { name: 'spine', maxCount: 1 },
+  { name: 'inHalf', maxCount: 1 },
 ];
 
 // Book Router
