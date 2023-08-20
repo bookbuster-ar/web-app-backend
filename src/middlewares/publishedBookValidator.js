@@ -1,6 +1,12 @@
 const { validate: uuidValidate } = require('uuid');
 
 const publishedBookValidator = (req, res, next) => {
+  if (!req.body.data) {
+    return res.status(400).json({
+      error: 'Debe proporcionar información para publicar el libro',
+    });
+  }
+
   const { editorialId, editorialName, collectionId, collectionName } =
     req.body.data;
 
