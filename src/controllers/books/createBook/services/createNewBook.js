@@ -1,4 +1,4 @@
-const { Book, BookToReview } = require('../../../../models');
+const { Book, BookToReview, BookDetail } = require('../../../../models');
 
 const createNewBook = async (
   bookInfo,
@@ -14,6 +14,13 @@ const createNewBook = async (
       publication_year: bookInfo.publicationYear,
       editorial_id: editorialInstance.id,
       editorial_collection_id: null,
+    },
+    { transaction }
+  );
+
+  await BookDetail.create(
+    {
+      book_id: createdBook.id,
     },
     { transaction }
   );
