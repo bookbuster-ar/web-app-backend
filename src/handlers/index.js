@@ -79,13 +79,13 @@ const handleLikeQuote = require('./quotes/handleLikeQuote');
 const handleDeleteQuote = require('./quotes/handleDeleteQuote');
 
 //Shelves
- const handleGetShelves = require('./shelves/handleGetShelves');
- const handleAddBookToShelf = require('./shelves/handleAddBookToShelf');
- const handleDeleteBookFromShelf = require('./shelves/handleDeleteBookFromShelf');
- const handleGetBooksOffTheShelf = require('./shelves/handleGetBooksOffTheShelf');
- const handleCreateNewShelf = require('./shelves/handleCreateNewShelf');
- const handleDeleteNewShelf = require('./shelves/handleDeleteNewShelf'); 
- const handleEditNameShelf = require('./shelves/handleEditNameShelf');
+const handleGetShelves = require('./shelves/handleGetShelves');
+const handleAddBookToShelf = require('./shelves/handleAddBookToShelf');
+const handleDeleteBookFromShelf = require('./shelves/handleDeleteBookFromShelf');
+const handleGetBooksOffTheShelf = require('./shelves/handleGetBooksOffTheShelf');
+const handleCreateNewShelf = require('./shelves/handleCreateNewShelf');
+const handleDeleteNewShelf = require('./shelves/handleDeleteNewShelf');
+const handleEditNameShelf = require('./shelves/handleEditNameShelf');
 
 // Admin
 const handleMarkBookAsRecommended = require('./admin/handleMarkBookAsRecommended');
@@ -99,9 +99,11 @@ const handleGetRoles = require('./admin/handleGetRoles');
 const handleGetTransactionsById = require('./admin/handleGetTransactionsById');
 const handleGetAllTransactions = require('./admin/handleGetAllTransactions');
 const handleUpdateUserRole = require('./admin/handleUpdateUserRole');
-const handleSuscription = require('./admin/handleSuscription');
+const handleSubscription = require('./admin/handleSubscription');
 const handleBooksSold = require('./admin/handleBooksSold');
 const handleGetBannedUsers = require('./admin/handleGetBannedUsers');
+const handlePublishBook = require('./admin/handlePublishBook');
+const handleGetBooksToReview = require('./admin/handleGetBooksToReview');
 
 module.exports = {
   // Books
@@ -128,7 +130,6 @@ module.exports = {
   handleGetNewlyArrivedBooks,
   handleGetLatestBooksReleases,
   handleGetBooksFoRent,
-  
 
   // Review
   handleGetBookReviews,
@@ -204,9 +205,11 @@ module.exports = {
   handleAddCredits,
   handleGetTransactionsById,
   handleGetAllTransactions,
-  handleSuscription,
+  handleSubscription,
   handleBooksSold,
+  handleGetBannedUsers,
   handleGetRoles,
   handleUpdateUserRole,
-  handleGetBannedUsers,
+  handlePublishBook,
+  handleGetBooksToReview,
 };

@@ -5,9 +5,12 @@ const handleCreateBook = async (req, res) => {
   try {
     const bookDataToCreate = {
       ...req.body,
-      images: req.files,
+      images: Object.keys(req.files).length > 0 ? req.files : null,
     };
-    const { id } = await createBook(bookDataToCreate);
+
+    const { userid: userId } = req.headers;
+
+    const { id } = await createBook(bookDataToCreate, userId);
     if (id && validateUUID(id)) {
       return res
         .status(201)
