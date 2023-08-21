@@ -1,6 +1,6 @@
 const { User } = require('../../models/index');
 
-const getSuscriptions = async () => {
+const getSubscriptions = async () => {
   const users = await User.findAll({
     where: {
       subscription: true,
@@ -20,4 +20,4 @@ const getSuscriptions = async () => {
   };
 };
 
-module.exports = getSuscriptions;
+module.exports = getSubscriptions;

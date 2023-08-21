@@ -100,11 +100,11 @@ const createGenre = require('./admin/createGenre');
 const addCredits = require('./admin/addCredits');
 const getTransactionsById = require('./admin/getTransactionsById');
 const getAllTransaction = require('./admin/getAllTransactions');
-const getSuscriptions = require('./admin/getSuscriptions');
+const getSubscriptions = require('./admin/getSuscriptions');
 const getBooksSold = require('./admin/getBooksSold');
 const getRoles = require('./admin/getRoles');
 const updateUserRole = require('./admin/updateUserRole');
-const getBannedUsers = require('./admin/getBannedUsers');
+const getBooksToReview = require('./admin/getBooksToReview');
 
 module.exports = {
   // Books
@@ -206,7 +206,7 @@ module.exports = {
   getTransactionsById,
   getAllTransaction,
   updateUserRole,
-  getSuscriptions,
+  getSubscriptions,
   getBooksSold,
-  getBannedUsers,
+  getBooksToReview,
 };

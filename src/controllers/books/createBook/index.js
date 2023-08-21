@@ -9,7 +9,7 @@ const sequelize = require('../../../config/database');
 
 const { v4: uuidv4 } = require('uuid');
 
-const createBook = async (bookInfo) => {
+const createBook = async (bookInfo, userId) => {
   let editorialInstance;
   bookInfo.id = uuidv4();
 
@@ -17,7 +17,7 @@ const createBook = async (bookInfo) => {
   const coreTransaction = await sequelize.transaction();
   try {
     editorialInstance = await createEditorial(bookInfo, coreTransaction);
-    await createNewBook(bookInfo, editorialInstance, coreTransaction);
+    await createNewBook(bookInfo, userId, editorialInstance, coreTransaction);
 
     await coreTransaction.commit();
   } catch (error) {
@@ -26,18 +26,20 @@ const createBook = async (bookInfo) => {
   }
 
   // Transacción 2
-  const secondaryTransaction = await sequelize.transaction();
-  try {
-    await createBookImages(bookInfo, secondaryTransaction);
+  if (bookInfo.images) {
+    const secondaryTransaction = await sequelize.transaction();
+    try {
+      await createBookImages(bookInfo, secondaryTransaction);
 
-    await secondaryTransaction.commit();
-  } catch (error) {
-    console.error(error);
-    await secondaryTransaction.rollback();
+      await secondaryTransaction.commit();
+    } catch (error) {
+      console.error(error);
+      await secondaryTransaction.rollback();
 
-    // Limpieza
-    await cleanupAfterFailure(bookInfo.id, editorialInstance?.id);
-    throw error;
+      // Limpieza
+      await cleanupAfterFailure(bookInfo.id, editorialInstance?.id);
+      throw error;
+    }
   }
 
   // Retorno
