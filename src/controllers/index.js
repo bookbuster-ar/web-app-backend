@@ -15,6 +15,7 @@ const getRecommendedBooks = require('./books/categories/getRecommendedBooks');
 const getMostPopularBooks = require('./books/categories/getMostPopularBooks');
 const getNewlyArrivedBooks = require('./books/categories/getNewlyArrivedBooks');
 const getLatestBooksReleases = require('./books/categories/getLatestBooksReleases');
+const getBooksForRent = require('./books/categories/getBooksForRent');
 
 //Price
 const getPriceByFormat = require('./books/getPriceByFormat');
@@ -80,6 +81,15 @@ const registerSuccessfulPayment = require('./payment/registerSuccessfulPayment')
 const registerSuccessfulSubscription = require('./payment/registerSuccessfulSubscription');
 const registerSuccessfulGiftSubscription = require('./payment/registerSuccessfulGiftSubscription');
 
+//Shelves
+const getShelves = require('./shelves/getShelves');
+const addBookToShelf = require('./shelves/addBookToShelf');
+const deleteBookFromShelf = require('./shelves/deleteBookFromShelf');
+const getBooksOffTheShelf = require('./shelves/getBooksOffTheShelf');
+const createNewShelf = require('./shelves/createNewShelf');
+const deleteNewShelf = require('./shelves/deleteNewShelf');
+const editNameShelf = require('./shelves/editNameShelf');
+
 // Admin
 const markBookAsRecommended = require('./admin/markBookAsRecommended');
 const getUsers = require('./admin/getUsers');
@@ -113,6 +123,7 @@ module.exports = {
   getMostPopularBooks,
   getNewlyArrivedBooks,
   getLatestBooksReleases,
+  getBooksForRent,
 
   //Price
   getPriceByFormat,
@@ -159,6 +170,15 @@ module.exports = {
   updateUserProfile,
   getUserInfo,
   getUserBooks,
+
+  //Shelves
+  getShelves,
+  addBookToShelf,
+  deleteBookFromShelf,
+  getBooksOffTheShelf,
+  createNewShelf,
+  deleteNewShelf,
+  editNameShelf,
 
   // Quote
   createQuote,

@@ -20,6 +20,7 @@ const handleGetPriceByFormat = require('./books/handleGetPriceByFormat');
 const handleGetMostPopularBooks = require('./books/categories/handleGetMostPopularBooks');
 const handleGetNewlyArrivedBooks = require('./books/categories/handleGetNewlyArrivedBooks');
 const handleGetLatestBooksReleases = require('./books/categories/handleGetLatestBooksReleases');
+const handleGetBooksFoRent = require('./books/categories/handleGetBooksForRent');
 
 // Review
 const handleGetBookReviews = require('./review/handleGetBookReviews');
@@ -77,6 +78,15 @@ const handleGetBookQuotes = require('./quotes/handleGetBookQuotes');
 const handleLikeQuote = require('./quotes/handleLikeQuote');
 const handleDeleteQuote = require('./quotes/handleDeleteQuote');
 
+//Shelves
+ const handleGetShelves = require('./shelves/handleGetShelves');
+ const handleAddBookToShelf = require('./shelves/handleAddBookToShelf');
+ const handleDeleteBookFromShelf = require('./shelves/handleDeleteBookFromShelf');
+ const handleGetBooksOffTheShelf = require('./shelves/handleGetBooksOffTheShelf');
+ const handleCreateNewShelf = require('./shelves/handleCreateNewShelf');
+ const handleDeleteNewShelf = require('./shelves/handleDeleteNewShelf'); 
+ const handleEditNameShelf = require('./shelves/handleEditNameShelf');
+
 // Admin
 const handleMarkBookAsRecommended = require('./admin/handleMarkBookAsRecommended');
 const handleGetUsers = require('./admin/handleGetUsers');
@@ -117,6 +127,8 @@ module.exports = {
   handleGetMostPopularBooks,
   handleGetNewlyArrivedBooks,
   handleGetLatestBooksReleases,
+  handleGetBooksFoRent,
+  
 
   // Review
   handleGetBookReviews,
@@ -172,6 +184,15 @@ module.exports = {
   handleGetBookQuotes,
   handleLikeQuote,
   handleDeleteQuote,
+
+  //Shelves
+  handleGetShelves,
+  handleAddBookToShelf,
+  handleDeleteBookFromShelf,
+  handleGetBooksOffTheShelf,
+  handleCreateNewShelf,
+  handleDeleteNewShelf,
+  handleEditNameShelf,
 
   // Admin
   handleMarkBookAsRecommended,
