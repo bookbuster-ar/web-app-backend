@@ -9,12 +9,12 @@ const handleDeleteBookFromShelf = async (req, res) => {
      const deletedBook = await deleteBookFromShelf(bookId, book_shelf_category_id);
 
         if(deletedBook === 1){
-            return res.status(200).send('Libro eliminado exitosamente');
-        } else {
-            return res.status(404).json('El libro seleccionado no se encuentra en el estante seleccionado');
-        }
-
+            return res.status(200).send('Libro eliminado del estante ');
+        } 
     } catch (error) {
+        if(error.message === 'El libro no se encuentra en el estante seleccionado'){
+            return res.status(409).json({ error: error.message });
+        }
         res.status(500).json({ error: error.message });
     }
 }
