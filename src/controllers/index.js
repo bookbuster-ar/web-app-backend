@@ -78,6 +78,7 @@ const addBookToShelf = require('./shelves/addBookToShelf');
 const deleteBookFromShelf = require('./shelves/deleteBookFromShelf');
 const getBooksOffTheShelf = require('./shelves/getBooksOffTheShelf');
 const createNewShelf = require('./shelves/createNewShelf');
+const deleteNewShelf = require('./shelves/deleteNewShelf');
 
 // Admin
 const markBookAsRecommended = require('./admin/markBookAsRecommended');
@@ -165,6 +166,7 @@ module.exports = {
   deleteBookFromShelf,
   getBooksOffTheShelf,
   createNewShelf,
+  deleteNewShelf,
 
   // Quote
   createQuote,
