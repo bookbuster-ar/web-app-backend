@@ -5,7 +5,7 @@ const handleDeleteNewShelf = async (req, res) => {
         const shelfId = req.query.shelfId;
         const deletedShelf = await deleteNewShelf(shelfId); 
         if(deletedShelf === 1){
-            return res.status(200).send('Libro eliminado del estante ');
+            return res.status(200).send('Libro eliminado de la estanteria ');
         }
        
     } catch (error) {
