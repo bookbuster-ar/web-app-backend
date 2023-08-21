@@ -49,6 +49,7 @@ const {
   handleGetMostPopularBooks,
   handleGetNewlyArrivedBooks,
   handleGetLatestBooksReleases,
+  handleGetBooksFoRent,
 
   // Book Quote
   handleCreateQuote,
@@ -137,6 +138,7 @@ bookRouter.get('/', handleGetBooks);
 bookRouter.get('/categories/most-popular', handleGetMostPopularBooks);
 bookRouter.get('/categories/newly-arrived', handleGetNewlyArrivedBooks);
 bookRouter.get('/categories/latest-releases', handleGetLatestBooksReleases);
+bookRouter.get('/categories/for-rent', handleGetBooksFoRent);
 
 // Create
 bookRouter.post(

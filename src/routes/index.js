@@ -9,6 +9,7 @@ const editorialRouter = require('./editorial');
 const paymentRouter = require('./payment');
 const stockRouter = require('./stock');
 const adminRouter = require('./admin');
+const shelvesRouter = require('./shelves');
 
 router.use('/users', userRouter);
 router.use('/books', bookRouter);
@@ -18,5 +19,6 @@ router.use('/editorials', editorialRouter);
 router.use('/payment', paymentRouter);
 router.use('/stock', stockRouter);
 router.use('/admin', adminRouter);
+router.use('/shelves', shelvesRouter);
 
 module.exports = router;
