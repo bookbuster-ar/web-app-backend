@@ -105,6 +105,7 @@ const getBooksSold = require('./admin/getBooksSold');
 const getRoles = require('./admin/getRoles');
 const updateUserRole = require('./admin/updateUserRole');
 const getBooksToReview = require('./admin/getBooksToReview');
+const publishBook = require('./admin/publishBook');
 
 module.exports = {
   // Books
@@ -209,4 +210,5 @@ module.exports = {
   getSubscriptions,
   getBooksSold,
   getBooksToReview,
+  publishBook,
 };

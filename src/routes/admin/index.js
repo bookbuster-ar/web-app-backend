@@ -53,7 +53,7 @@ adminRouter.get('/booksToReview', handleGetBooksToReview);
 
 // Publish Book
 adminRouter.post(
-  '/publish/:bookId',
+  '/publish',
   adminValidator,
   multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } }).fields(
     uploadFields

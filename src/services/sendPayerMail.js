@@ -1,3 +1,6 @@
+const { USER_NODEMAILER } = require('../utils/env');
+const transporter = require('../config/nodemailer');
+
 const sendPayerMail = async (
   payerInfo,
   newTransaction,
@@ -29,6 +32,16 @@ const sendPayerMail = async (
       <p>Gracias por tu generosidad. Si tienes alguna pregunta sobre el regalo, no dudes en contactarnos.</p>
     </div>
   `;
+
+  const message = {
+    from: USER_NODEMAILER,
+    to: userData.email,
+    subject: 'Comprobante de orden de compra',
+    html: htmlContent,
+  };
+
+  const info = await transporter.sendMail(message);
+  return info;
 };
 
 module.exports = sendPayerMail;
