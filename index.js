@@ -3,6 +3,7 @@ const sequelize = require('./src/config/database');
 
 const Models = require('./src/models');
 require('./src/models/associations');
+const cloudinary = require('./src/config/cloudinary');
 
 const bookDb = require('./src/utils/data');
 
@@ -85,7 +86,23 @@ const uploadBooks = async (bookDb) => {
       }
 
       const rutaImagenLocal = `./book-images/${currentBook['id']}/${currentBook['id']}.jpg`;
-      // Continúa con la lógica relacionada con la carga de imágenes, si es necesario...
+
+      // Subimos la imagen a Cloudinary
+      const result = await cloudinary.uploader.upload(rutaImagenLocal, {
+        public_id: `book/${currentBook['id']}/cover`,
+      });
+
+      if (result && result.url) {
+        // Guardamos el URL de la imagen en la tabla book_image
+        await Models.BookImage.create({
+          book_id: createdBook.id,
+          image: result.url,
+          is_cover: true,
+        });
+        console.log('Imagen subida y guardada con éxito:', result.url);
+      } else {
+        console.error('Error subiendo la imagen a Cloudinary.');
+      }
     }
     await transaction.commit();
   } catch (error) {
@@ -95,8 +112,8 @@ const uploadBooks = async (bookDb) => {
 };
 app.listen(3001, async () => {
   try {
-    await sequelize.sync({ force: false, logging: false });
-    //await uploadBooks(bookDb);
+    await sequelize.sync({ force: true, logging: false });
+    await uploadBooks(bookDb);
   } catch (error) {
     console.log(error.message);
   }

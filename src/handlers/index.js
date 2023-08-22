@@ -8,6 +8,7 @@ const handleCreateBook = require('./books/handleCreateBook');
 const handleGetBookSubgenres = require('./books/handleGetBookSubgenres');
 const handleGetSubgenresByBook = require('./books/handleGetSubgenresByBook');
 const handleGetWeeklyRecommended = require('./books/handleGetWeeklyRecommended');
+const handleGetAllFormatsAndPrice = require('./books/handleGetAllFormatsAndPrice');
 
 // Recommendation
 
@@ -82,7 +83,7 @@ const handleDeleteQuote = require('./quotes/handleDeleteQuote');
 const handleGetShelves = require('./shelves/handleGetShelves');
 const handleAddBookToShelf = require('./shelves/handleAddBookToShelf');
 const handleDeleteBookFromShelf = require('./shelves/handleDeleteBookFromShelf');
-const handleGetBooksOffTheShelf = require('./shelves/handleGetBooksOffTheShelf');
+const handleGetBooksOfTheShelf = require('./shelves/handleGetBooksOfTheShelf');
 const handleCreateNewShelf = require('./shelves/handleCreateNewShelf');
 const handleDeleteNewShelf = require('./shelves/handleDeleteNewShelf');
 const handleEditNameShelf = require('./shelves/handleEditNameShelf');
@@ -116,6 +117,7 @@ module.exports = {
   handleGetBookSubgenres,
   handleGetSubgenresByBook,
   handleGetWeeklyRecommended,
+  handleGetAllFormatsAndPrice,
 
   handleRecommendation,
 
@@ -190,7 +192,7 @@ module.exports = {
   handleGetShelves,
   handleAddBookToShelf,
   handleDeleteBookFromShelf,
-  handleGetBooksOffTheShelf,
+  handleGetBooksOfTheShelf,
   handleCreateNewShelf,
   handleDeleteNewShelf,
   handleEditNameShelf,
