@@ -1,7 +1,7 @@
 const app = require('./src/app');
 const sequelize = require('./src/config/database');
 
-const Models = require('./src/models');
+require('./src/models');
 require('./src/models/associations');
 const cloudinary = require('./src/config/cloudinary');
 
@@ -115,6 +115,6 @@ app.listen(3001, async () => {
     await sequelize.sync({ force: true, logging: false });
     await uploadBooks(bookDb);
   } catch (error) {
-    console.log(error.message);
+    console.error(error.message);
   }
 });

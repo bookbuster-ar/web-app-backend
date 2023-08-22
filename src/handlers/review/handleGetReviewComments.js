@@ -6,7 +6,8 @@ const handleGetReviewComments = async (req, res) => {
     const comments = await getReviewComments({ bookId, reviewId });
     return res.status(200).json(comments);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    return res.status(500).json({ error: error.message });
   }
 };
 

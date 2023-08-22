@@ -7,6 +7,7 @@ const handlePlaceOrder = async (req, res) => {
     const response = await placeOrder(items, userId);
     res.status(200).json({ response });
   } catch (error) {
+    console.error(error);
     if (
       error.message.includes('No hay suficiente stock del libro solicitado')
     ) {

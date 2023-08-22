@@ -4,9 +4,10 @@ const handleCreateSubgenre = async (req, res) => {
   const { genreId, subgenreName } = req.body;
   try {
     const newSubgenre = await createSubgenre(genreId, subgenreName);
-    res.status(201).json(newSubgenre);
+    return res.status(201).json(newSubgenre);
   } catch (error) {
-    res.status(409).json({ error: error.message });
+    console.error(error);
+    return res.status(409).json({ error: error.message });
   }
 };
 

@@ -6,7 +6,8 @@ const handleGetFavoriteGenres = async (req, res) => {
     const favoriteGenres = await getFavoriteGenres(userId);
     return res.status(200).json(favoriteGenres);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    return res.status(500).json({ error: error.message });
   }
 };
 

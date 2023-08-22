@@ -25,10 +25,11 @@ const handleCreateReviewComment = async (req, res) => {
       .status(400)
       .json({ error: 'No fue posible crear el comentario' });
   } catch (error) {
+    console.error(error);
     if (error?.statusCode === 400) {
       return res.status(400).json({ error: error.message });
     }
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 };
 
