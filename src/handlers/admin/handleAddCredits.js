@@ -3,7 +3,6 @@ const { addCredits } = require('../../controllers');
 const handleAddCredits = async (req, res) => {
   const { userId } = req.params;
   const { credits } = req.body;
-  console.log(userId, credits);
   try {
     const updatedUser = await addCredits(userId, credits);
     return res

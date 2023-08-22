@@ -5,7 +5,6 @@ const handleGetGenres = async (req, res) => {
     const genres = await getAllGenres();
     return res.status(200).json(genres);
   } catch (error) {
-    console.log(error);
     return res.status(404).json({ error: error.message });
   }
 };

@@ -2,7 +2,6 @@ const { getAllFormatsAndPrice } = require('../../controllers');
 
 const handleGetAllFormatsAndPrice = async (req, res) => {
   const bookId = req.params.id;
-  console.log(bookId);
   try {
     const formatsAndPrice = await getAllFormatsAndPrice(bookId);
     return res.status(200).json(formatsAndPrice);
