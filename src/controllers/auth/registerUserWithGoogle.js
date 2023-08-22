@@ -38,9 +38,9 @@ const registerUserWithGoogle = async (token) => {
     });
 
 
-    if (!wasCreated) {
-      throw Error('El usuario ya está registrado');
-    }
+    // if (!wasCreated) {
+    //   throw Error('El usuario ya está registrado');
+    // }
 
     const [session, Created] = await Session.findOrCreate({
       where: { user_id: user.id, session_status: true },
@@ -50,23 +50,31 @@ const registerUserWithGoogle = async (token) => {
       },
       transaction: t,
     });
+    
 
-    if (!Created) {
-      throw Error('El usuario tiene ya una sesión activa');
-    }
+    // if (!Created) {
+    //   throw Error('El usuario tiene ya una sesión activa');
+    // }
 
     // 2. Asignar una BookShelves a cada usuario
-    const createdBookShelves = await BookShelves.create({user_id: user.id}, {transaction: t});
+    const [createdBookShelves] = await BookShelves.findOrCreate({
+      where: { user_id: user.id },
+      transaction: t
+    });
+    
 
     // 3. Crear BookShelfCategory para el BookShelves creado
     const shelfCategories = ['Todos', 'Leer', 'Actualmente Leyendo', 'Quiero leer'];
 
     for (const category of shelfCategories) {
-        await BookShelfCategory.create({
-            name: category,
-            book_shelves_id: createdBookShelves.id,
-        }, {transaction: t});
-    };
+      await BookShelfCategory.findOrCreate({
+        where:{
+          name: category,
+          book_shelves_id: createdBookShelves.id,
+        },
+        transaction: t
+      });
+    };      
 
     const { role_id, image_id, firebase_id, ...userWithoutRoleId } =
       user.toJSON();
