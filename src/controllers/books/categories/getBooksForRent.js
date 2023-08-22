@@ -36,8 +36,7 @@ const getBooksForRent = async (req) => {
   });
 
   const books = booksForRent.map((book) => {
-    const [cover, ...extra] =
-      book.book?.images?.map((image) => image.image) || [];
+    const [cover, ...extra] = book.images?.map((image) => image.image) || [];
     return {
       id: book.id,
       images: { cover, extra },
