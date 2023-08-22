@@ -12,8 +12,8 @@ const deleteBookFromShelf = async (bookId, book_shelf_category_id) => {
     },
   });
 
-  const publishedBook = PublishedBook.findByPk(bookId);
-  const book = Book.findByPk(publishedBook.book_id);
+  const publishedBook = await PublishedBook.findByPk(bookId);
+  const book = await Book.findByPk(publishedBook.book_id);
 
   const ShelfTodosID = categoryTodos.toJSON().id;
 
