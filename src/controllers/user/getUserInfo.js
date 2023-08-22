@@ -7,14 +7,12 @@ const getUserInfo = async (userId) => {
   });
 
   const { firebase_id, role_id, image_id, ...userInfo } = user.toJSON();
-  const { id, user_id, ...addressInfo } = user.toJSON().address;
+  const addressInfo = user.address ? user.address.toJSON() : [];
 
   return {
     ...convertKeysToCamelCase(userInfo),
     image: userInfo.image?.image,
-    address: {
-      ...convertKeysToCamelCase(addressInfo),
-    },
+    ...convertKeysToCamelCase(addressInfo),
   };
 };
 

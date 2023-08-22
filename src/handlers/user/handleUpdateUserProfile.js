@@ -17,7 +17,7 @@ const handleUpdateUserProfile = async (req, res) => {
 
   const userInfo = {
     id: userId,
-    image: req.files.image[0]?.buffer,
+    image: req.files?.image?.[0]?.buffer ?? null,
     name,
     lastname,
     email,
