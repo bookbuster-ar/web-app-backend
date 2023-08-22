@@ -150,6 +150,9 @@ const getRecommendation = async (
     include: [
       includeFormat,
       includeGenres,
+      'images',
+      'editorial',
+      'editorial_collection',
       {
         model: PublishedBook,
         as: 'published_book',
@@ -168,8 +171,7 @@ const getRecommendation = async (
   });
 
   const transformedBooks = books.map((book) => {
-    const [cover, ...extra] =
-      book.book?.images?.map((image) => image.image) || [];
+    const [cover, ...extra] = book.images?.map((image) => image.image) || [];
     return {
       id: book.id,
       images: { cover, extra },
