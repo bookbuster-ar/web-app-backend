@@ -28,8 +28,8 @@ const getAllTransactions = async () => {
   const formattedTransactions = transactions.map(async (transaction) => {
     const formattedTransaction = {
       user: {
-        user_name: transaction.user.name,
-        user_last_name: transaction.user.last_name,
+        user_name: transaction.user?.name,
+        user_last_name: transaction.user?.last_name,
       },
       transaction: {
         mercado_pago_transaction_id: transaction.mercadopago_transaction_id,

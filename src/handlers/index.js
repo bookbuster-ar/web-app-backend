@@ -55,6 +55,7 @@ const handleAddFavoriteGenres = require('./user/handleAddFavoriteGenres');
 const handleGetFavoriteGenres = require('./user/handleGetFavoriteGenres');
 const handleUpdateUserProfile = require('./user/handleUpdateUserProfile');
 const handleGetUserInfo = require('./user/handleGetUserInfo');
+const handleGetUserBooks = require('./user/handleGetUserBooks');
 
 //Payment
 const handlePlaceOrder = require('./payment/handlePlaceOrder');
@@ -63,6 +64,8 @@ const handleFailurePayment = require('./payment/handleFailurePayment');
 const handlePendingPayment = require('./payment/handlePendingPayment');
 const handleSubscriptionLink = require('./payment/handleSubscriptionLink');
 const handleSuccessfulSubscription = require('./payment/handleSuccessfulSubscription');
+const handleGiftSubscriptionLink = require('./payment/handleGiftSubscriptionLink');
+const handleSuccessfulGiftSubscription = require('./payment/handleSuccessfulGiftSubscription');
 
 // Stock
 const handleIncreaseStock = require('./stock/handleIncreaseStock');
@@ -93,13 +96,15 @@ const handleBanUser = require('./admin/handleBanUser');
 const handleCreateSubgenre = require('./admin/handleCreateSubgenre');
 const handleCreateGenre = require('./admin/handleCreateGenre');
 const handleAddCredits = require('./admin/handleAddCredits');
-
+const handleGetRoles = require('./admin/handleGetRoles');
 const handleGetTransactionsById = require('./admin/handleGetTransactionsById');
 const handleGetAllTransactions = require('./admin/handleGetAllTransactions');
-
-const handleSuscription = require('./admin/handleSuscription');
+const handleUpdateUserRole = require('./admin/handleUpdateUserRole');
+const handleSubscription = require('./admin/handleSubscription');
 const handleBooksSold = require('./admin/handleBooksSold');
-
+const handleGetBannedUsers = require('./admin/handleGetBannedUsers');
+const handlePublishBook = require('./admin/handlePublishBook');
+const handleGetBooksToReview = require('./admin/handleGetBooksToReview');
 
 module.exports = {
   // Books
@@ -126,7 +131,6 @@ module.exports = {
   handleGetNewlyArrivedBooks,
   handleGetLatestBooksReleases,
   handleGetBooksFoRent,
-  
 
   // Review
   handleGetBookReviews,
@@ -160,6 +164,7 @@ module.exports = {
   handleGetFavoriteGenres,
   handleUpdateUserProfile,
   handleGetUserInfo,
+  handleGetUserBooks,
 
   //Payment
   handlePlaceOrder,
@@ -168,6 +173,8 @@ module.exports = {
   handlePendingPayment,
   handleSubscriptionLink,
   handleSuccessfulSubscription,
+  handleGiftSubscriptionLink,
+  handleSuccessfulGiftSubscription,
 
   // Stock
   handleIncreaseStock,
@@ -200,7 +207,11 @@ module.exports = {
   handleAddCredits,
   handleGetTransactionsById,
   handleGetAllTransactions,
-  handleSuscription,
+  handleSubscription,
   handleBooksSold,
- 
+  handleGetBannedUsers,
+  handleGetRoles,
+  handleUpdateUserRole,
+  handlePublishBook,
+  handleGetBooksToReview,
 };
