@@ -8,7 +8,7 @@ const {
   handleDeleteBookFromShelf,
   handleGetBooksOfTheShelf,
   handleCreateNewShelf,
-  handleDeleteNewShelf,
+  handleDeleteShelf,
   handleEditNameShelf,
 } = require('../../handlers');
 const verifySession = require('../../middlewares/verifySession');
@@ -18,7 +18,7 @@ shelvesRouter.get('/shelfbooks', verifySession, handleGetBooksOfTheShelf);
 shelvesRouter.post('/addBookToShelf', verifySession, handleAddBookToShelf);
 shelvesRouter.post('/createNewShelf', verifySession, handleCreateNewShelf);
 shelvesRouter.put('/editNameShelf', verifySession, handleEditNameShelf);
-shelvesRouter.delete('/deleteShelf', verifySession, handleDeleteNewShelf);
+shelvesRouter.delete('/deleteShelf', verifySession, handleDeleteShelf);
 shelvesRouter.delete(
   '/deleteBookFromShelf',
   verifySession,

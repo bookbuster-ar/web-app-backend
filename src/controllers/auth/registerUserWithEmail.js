@@ -62,28 +62,23 @@ const registerUserWithEmail = async (userInfo) => {
       url: CLIENT_VERIFY_EMAIL_URL,
       handleCodeInApp: true,
     });
-    
+
     await transaction.commit();
-    
-        // 2. Asignar una BookShelves a cada usuario
-        const createdBookShelves = await BookShelves.create({
-          user_id: createdUser.id,
-        });
-    
-        // 3. Crear BookShelfCategory para el BookShelves creado
-        const shelfCategories = [
-          'Todos',
-          'Leer',
-          'Actualmente Leyendo',
-          'Quiero leer',
-        ];
-    
-        for (const category of shelfCategories) {
-          await BookShelfCategory.create({
-            name: category,
-            book_shelves_id: createdBookShelves.id,
-          });
-        }
+
+    // 2. Asignar una BookShelves a cada usuario
+    const createdBookShelves = await BookShelves.create({
+      user_id: createdUser.id,
+    });
+
+    // 3. Crear BookShelfCategory para el BookShelves creado
+    const shelfCategories = ['Leer', 'Actualmente Leyendo', 'Quiero leer'];
+
+    for (const category of shelfCategories) {
+      await BookShelfCategory.create({
+        name: category,
+        book_shelves_id: createdBookShelves.id,
+      });
+    }
 
     const { role_id, image_id, firebase_id, ...userWithoutRoleId } =
       createdUser.toJSON();

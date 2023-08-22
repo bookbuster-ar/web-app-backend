@@ -1,6 +1,6 @@
 const {BookShelfCategory, BookShelves} = require('../../models');
 
-const deleteNewShelf = async (shelfId) => {
+const deleteShelf = async (shelfId) => {
     
 const deletedShelf = await BookShelfCategory.destroy({
     where: {
@@ -15,4 +15,4 @@ if(deletedShelf === 1){
 }
 };
 
-module.exports = deleteNewShelf;
+module.exports = deleteShelf;
