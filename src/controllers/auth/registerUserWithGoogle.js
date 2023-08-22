@@ -1,5 +1,5 @@
 const admin = require('../../config/firebase/admin');
-const { User, Role, UserImage, Session } = require('../../models/index');
+const { User, Role, UserImage, Session , BookShelves , BookShelfCategory } = require('../../models/index');
 const sequelize = require('../../config/database');
 const { Op } = require('sequelize');
 
@@ -37,6 +37,7 @@ const registerUserWithGoogle = async (token) => {
       transaction: t,
     });
 
+
     if (!wasCreated) {
       throw Error('El usuario ya está registrado');
     }
@@ -53,6 +54,19 @@ const registerUserWithGoogle = async (token) => {
     if (!Created) {
       throw Error('El usuario tiene ya una sesión activa');
     }
+
+    // 2. Asignar una BookShelves a cada usuario
+    const createdBookShelves = await BookShelves.create({user_id: user.id}, {transaction: t});
+
+    // 3. Crear BookShelfCategory para el BookShelves creado
+    const shelfCategories = ['Todos', 'Leer', 'Actualmente Leyendo', 'Quiero leer'];
+
+    for (const category of shelfCategories) {
+        await BookShelfCategory.create({
+            name: category,
+            book_shelves_id: createdBookShelves.id,
+        }, {transaction: t});
+    };
 
     const { role_id, image_id, firebase_id, ...userWithoutRoleId } =
       user.toJSON();
