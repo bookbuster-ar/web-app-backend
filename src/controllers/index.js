@@ -2,6 +2,7 @@
 const getAllBooks = require('./books/getAllBooks');
 const getBookById = require('./books/getBookById');
 const getFilteredBooks = require('./books/getFilteredBooks');
+const getAllFormatsAndPrice = require('./books/getAllFormatsAndPrice');
 
 const getWeeklyRecommended = require('./books/getWeeklyRecommended');
 
@@ -85,7 +86,7 @@ const registerSuccessfulGiftSubscription = require('./payment/registerSuccessful
 const getShelves = require('./shelves/getShelves');
 const addBookToShelf = require('./shelves/addBookToShelf');
 const deleteBookFromShelf = require('./shelves/deleteBookFromShelf');
-const getBooksOffTheShelf = require('./shelves/getBooksOffTheShelf');
+const getBooksOfTheShelf = require('./shelves/getBooksOfTheShelf');
 const createNewShelf = require('./shelves/createNewShelf');
 const deleteNewShelf = require('./shelves/deleteNewShelf');
 const editNameShelf = require('./shelves/editNameShelf');
@@ -116,6 +117,7 @@ module.exports = {
   getFilteredBooks,
   createBook,
   getWeeklyRecommended,
+  getAllFormatsAndPrice,
 
   //Recommendation
   getRecommendation,
@@ -177,7 +179,7 @@ module.exports = {
   getShelves,
   addBookToShelf,
   deleteBookFromShelf,
-  getBooksOffTheShelf,
+  getBooksOfTheShelf,
   createNewShelf,
   deleteNewShelf,
   editNameShelf,

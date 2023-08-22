@@ -13,7 +13,8 @@ const handleAddFavoriteGenres = async (req, res) => {
       error: 'No se pudo agregar los géneros favoritos del usuario',
     });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    return res.status(500).json({ error: error.message });
   }
 };
 

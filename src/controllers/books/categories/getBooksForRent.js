@@ -1,38 +1,42 @@
+const { Book, BookFormat, PublishedBook } = require('../../../models');
+const getPaginationData = require('../../../utils/pagination');
 
-const {Book , BookFormat , PublishedBook} = require('../../../models')
-const getPaginationData = require('../../../utils/pagination')
+const getBooksForRent = async (req) => {
+  const { limit, offset, page } = getPaginationData(req, 15);
 
-const getBooksForRent = async(req)=>{
+  const booksForRent = await Book.findAll({
+    limit: limit,
+    offset: offset,
+    include: [
+      'images',
+      'editorial',
+      'editorial_collection',
+      {
+        model: BookFormat,
+        where: { name: 'Alquiler' },
+        as: 'formats',
+        include: [
+          {
+            model: PublishedBook,
+            as: 'published_books',
+          },
+        ],
+      },
+    ],
+  });
 
-    const { limit, offset, page } = getPaginationData(req, 15);
+  const totalBooks = await Book.count({
+    include: [
+      {
+        model: BookFormat,
+        where: { name: 'Alquiler' },
+        as: 'formats',
+      },
+    ],
+  });
 
-    const booksForRent= await Book.findAll({
-        limit: limit,
-        offset: offset,
-        include:[{
-            model:BookFormat,
-            where:{name:'Alquiler'},
-            as:'formats',
-            include:[{
-                model:PublishedBook,
-                as:'published_books',
-            }]
-        }]
-    })
-
-    const totalBooks = await Book.count({
-        include:[{
-            model:BookFormat,
-            where:{name:'Alquiler'},
-            as:'formats',
-        }]
-    })
-
-    console.log(totalBooks);
-
-    const books = booksForRent.map((book) =>{
-        const [cover, ...extra] =
-      book.book?.images?.map((image) => image.image) || [];
+  const books = booksForRent.map((book) => {
+    const [cover, ...extra] = book.images?.map((image) => image.image) || [];
     return {
       id: book.id,
       images: { cover, extra },
@@ -40,26 +44,25 @@ const getBooksForRent = async(req)=>{
       author: book.author,
       author_nationality: book.author_nationality,
       publication_year: book.publication_year,
-      editorial_collection_id: book.editorial_collection_id,
-      editorial_id: book.editorial_id,
+      editorial_collection: book.editorial_collection.name,
+      editorial: book.editorial.name,
       formats: book.formats.map((format) => ({
         id: format.id,
         name: format.name,
       })),
       published_book: book.published_book,
     };
-    })
+  });
 
-    return {
-        data:books,
-        paginated: {
-            currentPage: page,
-            itemsPerPage: limit,
-            totalItems: totalBooks,
-            totalPages: Math.ceil(totalBooks / limit),
-          }
-
-    }
-}
+  return {
+    data: books,
+    paginated: {
+      currentPage: page,
+      itemsPerPage: limit,
+      totalItems: totalBooks,
+      totalPages: Math.ceil(totalBooks / limit),
+    },
+  };
+};
 
 module.exports = getBooksForRent;

@@ -215,7 +215,7 @@ Models.SaleStock.belongsTo(Models.BookFormatInterm, {
   as: 'book_format_interm',
 });
 
-//*PublishedBook - Format
+//* PublishedBook - BookFormat
 Models.PublishedBook.belongsToMany(Models.BookFormat, {
   through: Models.PublishedBookPrice,
   foreignKey: 'published_book_id',

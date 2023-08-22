@@ -26,7 +26,6 @@ const handleSuccessfulGiftSubscription = async (req, res) => {
     endDate,
     giftDays,
   };
-  console.log(subscriptionData, userData);
   try {
     await registerSuccessfulGiftSubscription(userData, subscriptionData);
     return res.redirect(`https://bookbuster-deploy.vercel.app/`);

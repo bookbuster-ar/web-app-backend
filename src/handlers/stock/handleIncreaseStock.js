@@ -6,6 +6,7 @@ const handleIncreaseStock = async (req, res) => {
     const result = await increaseStock(book_format_interm_id, quantity);
     if (result.success) return res.json(result);
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 };

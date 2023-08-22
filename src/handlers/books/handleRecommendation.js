@@ -7,7 +7,7 @@ const handleRecommendation = async (req, res) => {
     const genresName = req.query.genres;
     const genresArray = genresName ? genresName.split(',') : [];
 
-    const recommendation = await getRecommendation(      
+    const recommendation = await getRecommendation(
       format,
       pages,
       genresArray,
@@ -16,6 +16,7 @@ const handleRecommendation = async (req, res) => {
 
     return res.status(200).json(recommendation);
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 };

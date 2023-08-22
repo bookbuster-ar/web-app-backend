@@ -8,7 +8,6 @@ const handleRegisterWithGoogle = async (req, res) => {
     const register = await registerUserWithGoogle(token);
     res.status(200).json(register);
   } catch (error) {
-    console.log(error);
     res.status(401).json({ error: error.message });
   }
 };

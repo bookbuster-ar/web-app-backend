@@ -9,6 +9,7 @@ const handleGetSubgenresByGenre = async (req, res) => {
       return res.status(200).json(subgenres);
     } else return res.status(404).json({ message: 'Género no encontrado' });
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 };
