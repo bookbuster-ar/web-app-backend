@@ -8,19 +8,19 @@ const searchUser = async (name) => {
         { name: { [Op.iLike]: `%${name}%` } },
         { last_name: { [Op.iLike]: `%${name}%` } },
       ],
-      include: [
-        {
-          model: UserImage,
-          as: 'image',
-          attributes: ['image'],
-        },
-        {
-          model: Role,
-          as: 'role',
-          attributes: ['name'],
-        },
-      ],
     },
+    include: [
+      {
+        model: UserImage,
+        as: 'image',
+        attributes: ['image'],
+      },
+      {
+        model: Role,
+        as: 'role',
+        attributes: ['name'],
+      },
+    ],
   });
   const formattedUsers = users.map((user) => ({
     id: user.id,
