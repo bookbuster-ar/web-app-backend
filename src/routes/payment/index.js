@@ -7,6 +7,8 @@ const {
   handleFailurePayment,
   handlePendingPayment,
   handleSubscriptionLink,
+  handleGiftSubscriptionLink,
+  handleSuccessfulGiftSubscription,
 } = require('../../handlers');
 const verifySession = require('../../middlewares/verifySession');
 const handleSuccessfulSubscription = require('../../handlers/payment/handleSuccessfulSubscription');
@@ -18,5 +20,11 @@ paymentRouter.get('/success', handleSuccessfulPayment);
 paymentRouter.get('/successful', handlePendingPayment);
 paymentRouter.get('/failure', handleFailurePayment);
 paymentRouter.get('/pending', handlePendingPayment);
+paymentRouter.post(
+  '/giftSubscriptionLink',
+  verifySession,
+  handleGiftSubscriptionLink
+);
+paymentRouter.get('/successfulGift', handleSuccessfulGiftSubscription);
 
 module.exports = paymentRouter;

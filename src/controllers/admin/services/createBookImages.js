@@ -1,6 +1,7 @@
-const cloudinary = require('../../../../config/cloudinary');
-const { BookImage } = require('../../../../models/index');
+const cloudinary = require('../../../config/cloudinary');
+const { BookImage } = require('../../../models');
 const { v4: uuidv4 } = require('uuid');
+const { Op } = require('sequelize');
 
 const uploadImageToCloudinary = async (imageBuffer, bookId, propertyName) => {
   const uploadToCloud = (buffer) => {
@@ -62,12 +63,39 @@ const uploadImageArrayToCloudinary = async (
   return imageUrlList;
 };
 
-const createBookImages = async (bookInfo) => {
-  const imageUrlList = await uploadMultipleToCloudinary(
-    bookInfo.images,
-    bookInfo.id
-  );
-  await BookImage.bulkCreate(prepareImageEntries(imageUrlList, bookInfo.id));
+const destroySpecificImages = async (bookId, propertyName, transaction) => {
+  await BookImage.destroy({
+    where: {
+      book_id: bookId,
+      image: {
+        [Op.like]: `%book/${bookId}/${propertyName}%`,
+      },
+    },
+    transaction: transaction,
+  });
+};
+
+const createBookImages = async (bookInfo, transaction) => {
+  try {
+    const imageUrlList = await uploadMultipleToCloudinary(
+      bookInfo.images,
+      bookInfo.id
+    );
+
+    for (const imageData of imageUrlList) {
+      await destroySpecificImages(
+        bookInfo.id,
+        imageData.propertyName,
+        transaction
+      );
+    }
+
+    await BookImage.bulkCreate(prepareImageEntries(imageUrlList, bookInfo.id), {
+      transaction: transaction,
+    });
+  } catch (error) {
+    throw error;
+  }
 };
 
 const prepareImageEntries = (imageUrlList, bookId) => {

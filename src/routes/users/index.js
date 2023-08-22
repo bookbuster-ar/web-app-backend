@@ -12,10 +12,12 @@ const {
   handleGetFavoriteGenres,
   handleUpdateUserProfile,
   handleGetUserInfo,
+  handleGetUserBooks,
 } = require('../../handlers');
 const { verifySession, validateImageFile } = require('../../middlewares');
 
 userRouter.get('/profile', verifySession, handleGetUserInfo);
+userRouter.get('/books', verifySession, handleGetUserBooks);
 
 userRouter.put(
   '/profile',
