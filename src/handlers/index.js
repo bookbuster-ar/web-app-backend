@@ -80,13 +80,14 @@ const handleLikeQuote = require('./quotes/handleLikeQuote');
 const handleDeleteQuote = require('./quotes/handleDeleteQuote');
 
 //Shelves
-const handleGetShelves = require('./shelves/handleGetShelves');
-const handleAddBookToShelf = require('./shelves/handleAddBookToShelf');
-const handleDeleteBookFromShelf = require('./shelves/handleDeleteBookFromShelf');
-const handleGetBooksOfTheShelf = require('./shelves/handleGetBooksOfTheShelf');
-const handleCreateNewShelf = require('./shelves/handleCreateNewShelf');
-const handleDeleteNewShelf = require('./shelves/handleDeleteNewShelf');
-const handleEditNameShelf = require('./shelves/handleEditNameShelf');
+ const handleGetShelves = require('./shelves/handleGetShelves');
+ const handleAddBookToShelf = require('./shelves/handleAddBookToShelf');
+ const handleDeleteBookFromShelf = require('./shelves/handleDeleteBookFromShelf');
+ const handleGetBooksOfTheShelf = require('./shelves/handleGetBooksOfTheShelf');
+ const handleCreateNewShelf = require('./shelves/handleCreateNewShelf');
+ const handleDeleteNewShelf = require('./shelves/handleDeleteNewShelf'); 
+ const handleEditNameShelf = require('./shelves/handleEditNameShelf');
+ const handleGetShelfWithBooks = require('./shelves/handleGetShelfWithBooks');
 
 // Admin
 const handleMarkBookAsRecommended = require('./admin/handleMarkBookAsRecommended');
@@ -196,6 +197,7 @@ module.exports = {
   handleCreateNewShelf,
   handleDeleteNewShelf,
   handleEditNameShelf,
+  handleGetShelfWithBooks,
 
   // Admin
   handleMarkBookAsRecommended,

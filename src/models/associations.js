@@ -185,6 +185,16 @@ Models.BookShelfCategory.belongsToMany(Models.Book, {
   as: 'books',
 });
 
+Models.BookShelfCategory.hasMany(Models.BookShelfCategoryInterm, {
+  foreignKey: 'book_shelf_category_id',
+  as: 'booksShelf'
+});
+
+Models.BookShelfCategoryInterm.belongsTo(Models.BookShelfCategory, {
+  foreignKey: 'book_shelf_category_id'
+});
+
+
 //* Book-PublishedBook
 Models.Book.hasOne(Models.PublishedBook, {
   foreignKey: 'book_id',
