@@ -9,7 +9,7 @@ shelvesRouter.get('/shelfbooks', verifySession, handleGetBooksOffTheShelf);
 shelvesRouter.post('/addBookToShelf', verifySession, handleAddBookToShelf);
 shelvesRouter.post('/createNewShelf', verifySession, handleCreateNewShelf);
 shelvesRouter.put('/editNameShelf', verifySession, handleEditNameShelf);
-shelvesRouter.delete('/deleteNewShelf', verifySession, handleDeleteNewShelf);
+shelvesRouter.delete('/deleteShelf', verifySession, handleDeleteNewShelf);
 shelvesRouter.delete('/deleteBookFromShelf', verifySession, handleDeleteBookFromShelf);
 
 module.exports = shelvesRouter;
