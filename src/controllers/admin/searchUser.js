@@ -9,6 +9,7 @@ const searchUser = async (name) => {
         { last_name: { [Op.iLike]: `%${name}%` } },
       ],
     },
+
     include: [
       {
         model: UserImage,
