@@ -1,7 +1,7 @@
 const app = require('./src/app');
 const sequelize = require('./src/config/database');
 
-require('./src/models');
+const Models = require('./src/models');
 require('./src/models/associations');
 const cloudinary = require('./src/config/cloudinary');
 
