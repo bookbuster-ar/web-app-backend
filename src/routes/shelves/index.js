@@ -24,6 +24,6 @@ shelvesRouter.delete(
   verifySession,
   handleDeleteBookFromShelf
 );
-shelvesRouter.get('/shelfWithBooks', handleGetShelfWithBooks);
+shelvesRouter.get('/shelfWithBooks', verifySession, handleGetShelfWithBooks);
 
 module.exports = shelvesRouter;
