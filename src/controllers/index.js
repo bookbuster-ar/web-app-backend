@@ -88,7 +88,7 @@ const addBookToShelf = require('./shelves/addBookToShelf');
 const deleteBookFromShelf = require('./shelves/deleteBookFromShelf');
 const getBooksOfTheShelf = require('./shelves/getBooksOfTheShelf');
 const createNewShelf = require('./shelves/createNewShelf');
-const deleteNewShelf = require('./shelves/deleteNewShelf');
+const deleteShelf = require('./shelves/deleteShelf');
 const editNameShelf = require('./shelves/editNameShelf');
 const getShelfWithBooks = require('./shelves/getShelfWithBooks');
 
@@ -181,7 +181,7 @@ module.exports = {
   deleteBookFromShelf,
   getBooksOfTheShelf,
   createNewShelf,
-  deleteNewShelf,
+  deleteShelf,
   editNameShelf,
   getShelfWithBooks,
 
