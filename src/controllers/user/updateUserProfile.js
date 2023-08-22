@@ -82,7 +82,7 @@ const updateUserProfile = async (userInfo, userAddress) => {
       ...convertKeysToCamelCase(updatedUserInfo),
       role: updatedUserInfo.role?.name,
       image: upatedImage?.image?.image,
-      address: convertKeysToCamelCase(restOfAddress),
+      ...restOfAddress,
     };
   } catch (error) {
     await transaction.rollback();
