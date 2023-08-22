@@ -1,13 +1,17 @@
 const validateImageFile = (req, res, next) => {
-  const { cover, extra, image } = req.files;
+  const { cover, backCover, spine, inHalf, image } = req.files;
 
-  const combinedFiles = cover || extra ? [...cover, ...extra] : [...image];
-
-  if (!combinedFiles || combinedFiles.length === 0) {
-    return res
-      .status(400)
-      .json({ error: 'No se han enviado ningún archivo de imagen' });
+  if (!cover && !backCover && !spine && !inHalf && !image) {
+    return next();
   }
+
+  const combinedFiles = [
+    ...(cover || []),
+    ...(backCover || []),
+    ...(spine || []),
+    ...(inHalf || []),
+    ...(image || []),
+  ];
 
   const invalidFile = combinedFiles.some((file) => !file.buffer);
 

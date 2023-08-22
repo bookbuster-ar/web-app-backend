@@ -1,56 +1,81 @@
 const cloudinary = require('../../../../config/cloudinary');
 const { BookImage } = require('../../../../models/index');
-
 const { v4: uuidv4 } = require('uuid');
 
-const uploadImageToCloudinary = async (imageBuffer, bookId) => {
-  try {
+const uploadImageToCloudinary = async (imageBuffer, bookId, propertyName) => {
+  const uploadToCloud = (buffer) => {
     return new Promise((resolve, reject) => {
       const streamLoad = cloudinary.uploader.upload_stream(
         {
           resource_type: 'image',
-          public_id: `book/${bookId}/${uuidv4()}`,
+          public_id: `book/${bookId}/${propertyName}`,
         },
         (error, result) => {
-          if (error) {
+          if (error)
             reject(
               new Error(`Error uploading to Cloudinary: ${error.message}`)
             );
-          } else {
-            resolve(result.secure_url);
-          }
+          else resolve(result.secure_url);
         }
       );
-
-      streamLoad.end(imageBuffer);
+      streamLoad.end(buffer);
     });
-  } catch (error) {
-    throw new Error(`Error uploading to Cloudinary: ${error.message}`);
-  }
+  };
+
+  return await uploadToCloud(imageBuffer);
 };
 
-const uploadMultipleToCloudinary = async (imageList, bookId) => {
-  const imageUploadPromiseList = imageList.map((image) =>
-    uploadImageToCloudinary(image.buffer, bookId)
-  );
-  const imageUrlList = await Promise.all(imageUploadPromiseList);
+const uploadMultipleToCloudinary = async (imagesObject, bookId) => {
+  const imageUploadPromiseList = [];
+
+  for (const propertyName in imagesObject) {
+    if (Object.prototype.hasOwnProperty.call(imagesObject, propertyName)) {
+      const imageArray = imagesObject[propertyName];
+      const imageUrlList = await uploadImageArrayToCloudinary(
+        imageArray,
+        bookId,
+        propertyName
+      );
+      imageUploadPromiseList.push(...imageUrlList);
+    }
+  }
+
+  return imageUploadPromiseList;
+};
+
+const uploadImageArrayToCloudinary = async (
+  imageArray,
+  bookId,
+  propertyName
+) => {
+  const imageUrlList = [];
+
+  for (const image of imageArray) {
+    const imageUrl = await uploadImageToCloudinary(
+      image.buffer,
+      bookId,
+      propertyName
+    );
+    imageUrlList.push({ url: imageUrl, propertyName });
+  }
+
   return imageUrlList;
 };
 
 const createBookImages = async (bookInfo) => {
   const imageUrlList = await uploadMultipleToCloudinary(
-    [...bookInfo.images.cover, ...bookInfo.images.extra],
+    bookInfo.images,
     bookInfo.id
   );
   await BookImage.bulkCreate(prepareImageEntries(imageUrlList, bookInfo.id));
 };
 
 const prepareImageEntries = (imageUrlList, bookId) => {
-  return imageUrlList.map((imageUrl, index) => ({
+  return imageUrlList.map((imageData) => ({
     id: uuidv4(),
     book_id: bookId,
-    image: imageUrl,
-    is_cover: index === 0,
+    image: imageData.url,
+    is_cover: imageData.propertyName === 'cover',
   }));
 };
 

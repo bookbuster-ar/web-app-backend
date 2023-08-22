@@ -2,11 +2,12 @@ const { Router } = require('express');
 const multer = require('multer');
 
 // Multer
-
 const storage = multer.memoryStorage();
 const uploadFields = [
   { name: 'cover', maxCount: 1 },
-  { name: 'extra', maxCount: 3 },
+  { name: 'backCover', maxCount: 1 },
+  { name: 'spine', maxCount: 1 },
+  { name: 'inHalf', maxCount: 1 },
 ];
 
 // Book Router
@@ -18,6 +19,7 @@ const {
   handleGetBooks,
   handleCreateBook,
   handleGetWeeklyRecommended,
+  handleGetAllFormatsAndPrice,
 
   //Price
   handleGetPriceByFormat,
@@ -73,10 +75,11 @@ bookRouter.get('/subgenre', handleGetBooksBySubgenre);
 
 //recommendation
 bookRouter.get('/recommendation', handleRecommendation);
+bookRouter.get('/weekly', handleGetWeeklyRecommended);
 
 //Price
 bookRouter.get('/price', handleGetPriceByFormat);
-bookRouter.get('/weekly', handleGetWeeklyRecommended);
+bookRouter.get('/format/price/:id', handleGetAllFormatsAndPrice);
 
 // Detail
 bookRouter.get('/:id', handleGetBookById);
@@ -143,6 +146,7 @@ bookRouter.get('/categories/for-rent', handleGetBooksFoRent);
 // Create
 bookRouter.post(
   '/',
+  verifySession,
   multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } }).fields(
     uploadFields
   ),

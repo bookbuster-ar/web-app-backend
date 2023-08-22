@@ -14,7 +14,7 @@ const BookToReview = sequelize.define(
       defaultValue: false,
     },
   },
-  { timestamps: false, freezeTableName: true }
+  { timestamps: true, freezeTableName: true }
 );
 
 module.exports = BookToReview;

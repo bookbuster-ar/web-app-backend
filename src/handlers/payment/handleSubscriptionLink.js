@@ -1,4 +1,4 @@
-const createSubscriptionLink = require('../../controllers/payment/createSubscriptionLink');
+const { createSubscriptionLink } = require('../../controllers');
 
 const handleSubscriptionLink = async (req, res) => {
   const { sessionid: sessionId, userid: userId } = req.headers;

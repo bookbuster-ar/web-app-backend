@@ -1,6 +1,6 @@
-const bookValidator = require('./bookValidator');
 const validateImageFile = require('./validateImageFile');
 const validateUserRegistration = require('./validateUserRegistration');
+const bookValidator = require('./bookValidator');
 
 // Session
 const verifySession = require('./verifySession');
@@ -10,6 +10,7 @@ const reviewValidator = require('./reviewValidator');
 
 // Admin
 const adminValidator = require('./adminValidator');
+const publishedBookValidator = require('./publishedBookValidator');
 
 module.exports = {
   bookValidator,
@@ -18,4 +19,5 @@ module.exports = {
   verifySession,
   reviewValidator,
   adminValidator,
+  publishedBookValidator,
 };

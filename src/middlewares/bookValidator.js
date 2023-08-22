@@ -1,14 +1,14 @@
 const { validate: uuidValidate } = require('uuid');
 
 const bookValidator = (req, res, next) => {
-  const { editorial_id, editorial_name } = req.body;
+  const { editorialId, editorialName } = req.body;
 
   const validator = {
     title: (value) =>
       !!value && typeof value === 'string' && value.trim() !== '',
     author: (value) =>
       !!value && typeof value === 'string' && value.trim() !== '',
-    publication_year: (value) =>
+    publicationYear: (value) =>
       !!value && typeof value === 'string' && value.trim() !== '',
   };
 
@@ -20,15 +20,15 @@ const bookValidator = (req, res, next) => {
     }
   });
 
-  if (editorial_id && editorial_name) {
-    fieldErrorMessage.editorial = `Solo se debe proporcionar 'editorial_id' para referenciar a una editorial o el 'editorial_name' para crear una, no ambos`;
-  } else if (editorial_id && !uuidValidate(editorial_id)) {
-    fieldErrorMessage.editorial = `El 'editorial_id' proporcionado no es válido`;
+  if (editorialId && editorialName) {
+    fieldErrorMessage.editorial = `Solo se debe proporcionar 'editorialId' para referenciar a una editorial o el 'editorialName' para crear una, no ambos`;
+  } else if (editorialId && !uuidValidate(editorialId)) {
+    fieldErrorMessage.editorial = `El 'editorialId' proporcionado no es válido`;
   } else if (
-    !editorial_id &&
-    (!editorial_name || editorial_name.trim().length === 0)
+    !editorialId &&
+    (!editorialName || editorialName.trim().length === 0)
   ) {
-    fieldErrorMessage.editorial = `Debe proporcionar un 'editorial_id' válido o un 'editorial_name'`;
+    fieldErrorMessage.editorial = `Debe proporcionar un 'editorialId' válido o un 'editorialName'`;
   }
 
   const someInvalidField = Object.keys(fieldErrorMessage).length > 0;

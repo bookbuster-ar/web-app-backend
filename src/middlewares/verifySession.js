@@ -1,4 +1,4 @@
-const { Session } = require('../models');
+const { Session, User } = require('../models');
 const { validate } = require('uuid');
 const verifySession = async (req, res, next) => {
   const { sessionid: sessionId, userid: userId } = req.headers;
@@ -31,6 +31,15 @@ const verifySession = async (req, res, next) => {
     return res
       .status(401)
       .json({ error: 'La sesión no coincide con el usuario' });
+  }
+
+  const user = await User.findOne({
+    where: { id: userId },
+    attributes: ['is_blocked'],
+  });
+
+  if (user.is_blocked) {
+    return res.status(401).json({ error: 'El usuario ha sido bloqueado' });
   }
 
   next();
