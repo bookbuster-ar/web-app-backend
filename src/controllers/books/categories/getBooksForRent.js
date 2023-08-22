@@ -8,6 +8,9 @@ const getBooksForRent = async (req) => {
     limit: limit,
     offset: offset,
     include: [
+      'images',
+      'editorial',
+      'editorial_collection',
       {
         model: BookFormat,
         where: { name: 'Alquiler' },
@@ -42,8 +45,8 @@ const getBooksForRent = async (req) => {
       author: book.author,
       author_nationality: book.author_nationality,
       publication_year: book.publication_year,
-      editorial_collection_id: book.editorial_collection_id,
-      editorial_id: book.editorial_id,
+      editorial_collection: book.editorial_collection.name,
+      editorial: book.editorial.name,
       formats: book.formats.map((format) => ({
         id: format.id,
         name: format.name,
