@@ -19,6 +19,7 @@ const {
   handleGetBooks,
   handleCreateBook,
   handleGetWeeklyRecommended,
+  handleGetAllFormatsAndPrice,
 
   //Price
   handleGetPriceByFormat,
@@ -74,10 +75,11 @@ bookRouter.get('/subgenre', handleGetBooksBySubgenre);
 
 //recommendation
 bookRouter.get('/recommendation', handleRecommendation);
+bookRouter.get('/weekly', handleGetWeeklyRecommended);
 
 //Price
 bookRouter.get('/price', handleGetPriceByFormat);
-bookRouter.get('/weekly', handleGetWeeklyRecommended);
+bookRouter.get('/format/price/:id', handleGetAllFormatsAndPrice);
 
 // Detail
 bookRouter.get('/:id', handleGetBookById);

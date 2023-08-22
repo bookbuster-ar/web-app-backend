@@ -18,6 +18,7 @@ const handleMarkBookAsRecommended = async (req, res) => {
       book: result,
     });
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 };

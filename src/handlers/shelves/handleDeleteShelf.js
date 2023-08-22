@@ -1,9 +1,9 @@
-const {deleteNewShelf} = require('../../controllers');
+const {deleteShelf} = require('../../controllers');
 
-const handleDeleteNewShelf = async (req, res) => {
+const handleDeleteShelf = async (req, res) => {
     try {
         const shelfId = req.query.shelfId;
-        const deletedShelf = await deleteNewShelf(shelfId); 
+        const deletedShelf = await deleteShelf(shelfId); 
         if(deletedShelf === 1){
             return res.status(200).send('Libro eliminado de la estanteria ');
         }
@@ -17,4 +17,4 @@ const handleDeleteNewShelf = async (req, res) => {
     }
 }
 
-module.exports = handleDeleteNewShelf;
+module.exports = handleDeleteShelf;

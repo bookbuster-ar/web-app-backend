@@ -6,6 +6,7 @@ const handleCreateGenre = async (req, res) => {
     const createdGenre = await createGenre(name);
     return res.status(201).json(createdGenre);
   } catch (error) {
+    console.error(error);
     return res.status(409).json({ error: error.message });
   }
 };

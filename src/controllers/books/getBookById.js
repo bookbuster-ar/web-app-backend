@@ -61,7 +61,6 @@ const getBookById = async (id) => {
         images: { cover: cover?.image || null },
       })
     );
-    console.log(completeBookInfo);
     // *** ***
     return {
       id: publishedBook.id,

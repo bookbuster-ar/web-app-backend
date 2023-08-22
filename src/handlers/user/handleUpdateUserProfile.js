@@ -30,7 +30,8 @@ const handleUpdateUserProfile = async (req, res) => {
     const updatedUser = await updateUserProfile(userInfo, userAddress);
     return res.status(200).json(updatedUser);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    return res.status(500).json({ error: error.message });
   }
 };
 

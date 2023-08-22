@@ -11,6 +11,7 @@ const handleBanUser = async (req, res) => {
         .json({ message: 'Usuario bloqueado exitosamente' });
     else return res.status(400).json({ error: 'Error al bloquear el usuario' });
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 };

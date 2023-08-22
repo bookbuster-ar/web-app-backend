@@ -9,6 +9,7 @@ const handleSignInWithEmail = async (req, res) => {
       message: 'El usuario ahora tiene una sesión activa',
     });
   } catch (error) {
+    console.error(error);
     if (error.message === 'El usuario tiene ya una sesión activa') {
       return res.status(409).json({ error: error.message });
     }

@@ -3,7 +3,7 @@ const {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } = require('firebase/auth');
-const { User, Role } = require('../../models');
+const { User, Role, BookShelves, BookShelfCategory } = require('../../models');
 const sequelize = require('../../config/database');
 
 const { Op } = require('sequelize');
@@ -64,6 +64,21 @@ const registerUserWithEmail = async (userInfo) => {
     });
 
     await transaction.commit();
+
+    // 2. Asignar una BookShelves a cada usuario
+    const createdBookShelves = await BookShelves.create({
+      user_id: createdUser.id,
+    });
+
+    // 3. Crear BookShelfCategory para el BookShelves creado
+    const shelfCategories = ['Leer', 'Actualmente Leyendo', 'Quiero leer'];
+
+    for (const category of shelfCategories) {
+      await BookShelfCategory.create({
+        name: category,
+        book_shelves_id: createdBookShelves.id,
+      });
+    }
 
     const { role_id, image_id, firebase_id, ...userWithoutRoleId } =
       createdUser.toJSON();

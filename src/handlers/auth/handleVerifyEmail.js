@@ -18,6 +18,7 @@ const handleVerifyEmail = async (req, res) => {
         .json({ data: userUpated, message: 'E-mail verificado con éxito' });
     }
   } catch (error) {
+    console.error(error);
     let statusCode = 500;
 
     if (error.message === 'Usuario no encontrado') {
@@ -26,7 +27,7 @@ const handleVerifyEmail = async (req, res) => {
     if (error.message === 'El mail del usuario ya fue verificado') {
       statusCode = 409;
     }
-    res.status(statusCode).json({ message: error.message });
+    return res.status(statusCode).json({ message: error.message });
   }
 };
 

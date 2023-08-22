@@ -12,7 +12,8 @@ const handleLikeComment = async (req, res) => {
       .status(400)
       .json({ error: 'No fue posible likear el comentario' });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    return res.status(500).json({ error: error.message });
   }
 };
 module.exports = handleLikeComment;
