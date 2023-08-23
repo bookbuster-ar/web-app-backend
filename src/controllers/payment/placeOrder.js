@@ -6,7 +6,7 @@ const placeOrder = async (items, userId) => {
   const productData = items.map((item) => ({
     id: item.id,
     quantity: item.quantity,
-    unit_price: item.price,
+    unit_price: parseInt(item.price),
   }));
   const externalData = {
     products: [...productData],
@@ -30,7 +30,7 @@ const placeOrder = async (items, userId) => {
       title: item.title,
       quantity: item.quantity,
       currency_id: 'ARS',
-      unit_price: item.price,
+      unit_price: parseInt(item.price),
       condition: item.condition,
       description: item.description,
       picture_url: item.image,

@@ -28,7 +28,7 @@ const handleSuccessfulGiftSubscription = async (req, res) => {
   };
   try {
     await registerSuccessfulGiftSubscription(userData, subscriptionData);
-    return res.redirect(`https://bookbuster-deploy.vercel.app/`);
+    return res.redirect(`https://bookbuster.vercel.app/`);
   } catch (error) {
     console.error('Error al registrar el pago:', error);
     return res.status(500).send({ error: 'Error al registrar el pago' });
