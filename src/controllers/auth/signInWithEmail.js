@@ -25,21 +25,22 @@ const singInWithEmail = async ({ email, password }) => {
     }),
   ]);
 
-  const [session, wasCreated] = await Session.findOrCreate({
-    where: { user_id: activeUser.id, session_status: true },
-    defaults: {
-      session_status: true,
-      user_id: activeUser.id,
-    },
-  });
+  await Session.update(
+    { session_status: false },
+    {
+      where: { user_id: activeUser.id, session_status: true },
+    }
+  );
 
-  if (!wasCreated) {
-    throw Error('El usuario tiene ya una sesión activa');
-  }
+  const newSession = await Session.create({
+    session_status: true,
+    user_id: activeUser.id,
+  });
 
   const { role_id, image_id, firebase_id, ...formatedUser } =
     activeUser.toJSON();
-  return { session_id: session.id, user: { ...formatedUser } };
+
+  return { session_id: newSession.id, user: { ...formatedUser } };
 };
 
 module.exports = singInWithEmail;
