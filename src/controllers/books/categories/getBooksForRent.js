@@ -15,12 +15,11 @@ const getBooksForRent = async (req) => {
         model: BookFormat,
         where: { name: 'Alquiler' },
         as: 'formats',
-        include: [
-          {
-            model: PublishedBook,
-            as: 'published_books',
-          },
-        ],
+      },
+      {
+        model: PublishedBook,
+        as: 'published_book',
+        attributes: ['id'],
       },
     ],
   });
@@ -38,7 +37,7 @@ const getBooksForRent = async (req) => {
   const books = booksForRent.map((book) => {
     const [cover, ...extra] = book.images?.map((image) => image.image) || [];
     return {
-      id: book.id,
+      id: book.published_book.id,
       images: { cover, extra },
       title: book.title,
       author: book.author,
@@ -50,7 +49,6 @@ const getBooksForRent = async (req) => {
         id: format.id,
         name: format.name,
       })),
-      published_book: book.published_book,
     };
   });
 

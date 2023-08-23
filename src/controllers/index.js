@@ -8,7 +8,7 @@ const getWeeklyRecommended = require('./books/getWeeklyRecommended');
 
 const createBook = require('./books/createBook');
 
-//Recommendation
+// Recommendation
 const getRecommendation = require('./books/getRecommendation');
 
 // Categories
@@ -108,6 +108,7 @@ const getRoles = require('./admin/getRoles');
 const updateUserRole = require('./admin/updateUserRole');
 const getBooksToReview = require('./admin/getBooksToReview');
 const publishBook = require('./admin/publishBook');
+const getBannedUsers = require('./admin/getBannedUsers');
 
 module.exports = {
   // Books
@@ -215,4 +216,5 @@ module.exports = {
   getBooksSold,
   getBooksToReview,
   publishBook,
+  getBannedUsers,
 };
