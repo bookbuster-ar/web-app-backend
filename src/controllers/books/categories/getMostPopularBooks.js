@@ -1,4 +1,4 @@
-const { Book, Review, ReviewLike } = require('../../../models');
+const { Book, Review, ReviewLike, PublishedBook } = require('../../../models');
 const sequelize = require('../../../config/database');
 
 const { Op } = require('sequelize');
@@ -43,13 +43,24 @@ const getMostPopularBooks = async () => {
         [Op.in]: idsOfMostPopularBooks,
       },
     },
-    include: ['images', 'editorial', 'editorial_collection'],
+    include: [
+      'images',
+      'editorial',
+      'editorial_collection',
+      {
+        model: PublishedBook,
+        as: 'published_book',
+        attributes: ['id'],
+      },
+    ],
     attributes: ['title', 'author', 'publication_year'],
   });
 
   return mostPopularBooks?.map((book) => {
+    const { published_book, ...bookInfo } = book.toJSON();
     return {
-      ...book.toJSON(),
+      ...bookInfo,
+      id: published_book.id,
       images: {
         cover:
           book.images.find((image) => image.is_cover === true)?.image ?? null,

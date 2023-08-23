@@ -2,7 +2,7 @@ const { Book, PublishedBook } = require('../../../models');
 
 const getNewlyArrivedBooks = async () => {
   const latestBooks = await PublishedBook.findAll({
-    attributes: ['createdAt'],
+    attributes: ['id', 'createdAt'],
     include: [
       {
         model: Book,
@@ -19,6 +19,7 @@ const getNewlyArrivedBooks = async () => {
     const { createdAt, ...relevantInfo } = field.toJSON();
     return {
       ...relevantInfo.book,
+      id: field.id,
       images: {
         cover:
           relevantInfo.book.images.find((image) => image.is_cover === true)
