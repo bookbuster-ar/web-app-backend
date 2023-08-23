@@ -62,8 +62,6 @@ const getShelfWithBooks = async (userid) => {
           editorial: book.editorial ? book.editorial.name : '',
         };
       });
-
-      console.log(formattedBooks);
       return {
         ...category, // Esto tomará todas las propiedades existentes de 'category'
         books: formattedBooks,
