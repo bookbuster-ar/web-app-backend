@@ -75,7 +75,7 @@ bookRouter.get('/subgenre', handleGetBooksBySubgenre);
 
 //recommendation
 bookRouter.get('/recommendation', handleRecommendation);
-bookRouter.get('/weekly', handleGetWeeklyRecommended);
+bookRouter.get('/weekly/:genreId', handleGetWeeklyRecommended);
 
 //Price
 bookRouter.get('/price', handleGetPriceByFormat);
