@@ -1,6 +1,6 @@
-const { Book, BookImage } = require('../../models');
+const { Book, BookImage, BookGenre } = require('../../models');
 
-const getWeeklyRecommended = async () => {
+const getWeeklyRecommended = async (genreId) => {
   try {
     const recommendedBook = await Book.findAll({
       where: {
@@ -12,6 +12,13 @@ const getWeeklyRecommended = async () => {
           model: BookImage,
           as: 'images',
           attributes: ['image'],
+        },
+        {
+          model: BookGenre,
+          as: 'genres',
+          where: {
+            id: genreId,
+          },
         },
       ],
     });

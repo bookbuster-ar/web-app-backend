@@ -35,7 +35,11 @@ const {
 
 const { bookValidator, validateImageFile } = require('../../middlewares');
 
-adminRouter.post('/recommend', adminValidator, handleMarkBookAsRecommended);
+adminRouter.post(
+  '/recommend/:genreId',
+  adminValidator,
+  handleMarkBookAsRecommended
+);
 adminRouter.post('/users/:userId/ban', adminValidator, handleBanUser);
 adminRouter.get('/users', adminValidator, handleGetUsers);
 adminRouter.get('/users/search', adminValidator, handleSearchUser);

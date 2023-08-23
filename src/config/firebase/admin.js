@@ -10,7 +10,7 @@ const {
   FIREBASE_AUTH_URI,
   FIREBASE_TOKEN_URI,
   FIREBASE_PROVIDER_CERT_URL,
-  FIREBASE_CLEINT_CERT_URL,
+  FIREBASE_CLIENT_CERT_URL,
 } = require('../../utils/env');
 
 admin.initializeApp({
@@ -24,7 +24,7 @@ admin.initializeApp({
     auth_uri: FIREBASE_AUTH_URI,
     token_uri: FIREBASE_TOKEN_URI,
     auth_provider_x509_cert_url: FIREBASE_PROVIDER_CERT_URL,
-    client_x509_cert_url: FIREBASE_CLEINT_CERT_URL,
+    client_x509_cert_url: FIREBASE_CLIENT_CERT_URL,
   }),
 });
 

@@ -2,6 +2,7 @@ const { markBookAsRecommended } = require('../../controllers');
 
 const handleMarkBookAsRecommended = async (req, res) => {
   const { booksId } = req.body;
+  const { genreId } = req.params;
 
   if (booksId.length > 10) {
     return res.status(400).json({
@@ -11,7 +12,7 @@ const handleMarkBookAsRecommended = async (req, res) => {
   }
 
   try {
-    const result = await markBookAsRecommended(booksId);
+    const result = await markBookAsRecommended(booksId, genreId);
 
     return res.status(200).json({
       msg: 'Recomendación actualizada exitosamente',
