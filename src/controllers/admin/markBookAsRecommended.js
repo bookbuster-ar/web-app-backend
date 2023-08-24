@@ -3,7 +3,7 @@ const markBookAsRecommended = async (bookIds, genreId) => {
   try {
     const updatedBooks = await Promise.all(
       bookIds.map(async (id) => {
-        const book = await PublishedBook.findByPk(id, {
+        const recommendBook = await PublishedBook.findByPk(id, {
           include: [
             {
               model: Book,
@@ -20,9 +20,10 @@ const markBookAsRecommended = async (bookIds, genreId) => {
         if (!book) {
           throw new Error('Book not found');
         }
-        book.in_recommendation = !book.in_recommendation;
-        await book.save();
-        return book;
+        recommendBook.book.in_recommendation =
+          !recommendBook.book.in_recommendation;
+        await recommendBook.book.save();
+        return recommendBook;
       })
     );
     return updatedBooks;
