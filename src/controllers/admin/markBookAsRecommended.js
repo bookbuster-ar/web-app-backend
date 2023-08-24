@@ -8,16 +8,18 @@ const markBookAsRecommended = async (bookIds, genreId) => {
             {
               model: Book,
               as: 'book',
-            },
-            {
-              association: 'genres',
-              where: {
-                id: genreId,
-              },
+              include: [
+                {
+                  association: 'genres',
+                  where: {
+                    id: genreId,
+                  },
+                },
+              ],
             },
           ],
         });
-        if (!book) {
+        if (!recommendBook) {
           throw new Error('Book not found');
         }
         recommendBook.book.in_recommendation =
