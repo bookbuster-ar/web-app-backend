@@ -1,4 +1,4 @@
-const { Book, BookImage, BookGenre } = require('../../models');
+const { Book, BookImage, BookGenre, PublishedBook } = require('../../models');
 
 const getWeeklyRecommended = async (genreId) => {
   try {
@@ -6,7 +6,7 @@ const getWeeklyRecommended = async (genreId) => {
       where: {
         in_recommendation: true,
       },
-      attributes: ['id', 'title'],
+
       include: [
         {
           model: BookImage,
@@ -14,16 +14,20 @@ const getWeeklyRecommended = async (genreId) => {
           attributes: ['image'],
         },
         {
-          model: BookGenre,
-          as: 'genres',
-          where: {
-            id: genreId,
-          },
+          model: PublishedBook,
+          as: 'published_book',
+          attributes: ['id'],
         },
       ],
     });
 
-    return recommendedBook;
+    return recommendedBook.map((book) => {
+      return {
+        id: book.published_book.id,
+        images: book.images.map((image) => image.image)[0],
+        title: book.title,
+      };
+    });
   } catch (error) {
     throw error;
   }
