@@ -1,9 +1,9 @@
-const { Book } = require('../../models');
+const { Book, PublishedBook } = require('../../models');
 const markBookAsRecommended = async (bookIds, genreId) => {
   try {
     const updatedBooks = await Promise.all(
       bookIds.map(async (id) => {
-        const book = await Book.findByPk(id, {
+        const book = await PublishedBook.findByPk(id, {
           include: [
             {
               association: 'genres',
