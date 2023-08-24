@@ -25,6 +25,7 @@ const getWeeklyRecommended = async (genreId) => {
       return {
         id: book.published_book.id,
         images: book.images.map((image) => image.image)[0],
+        author: book.author,
         title: book.title,
       };
     });
