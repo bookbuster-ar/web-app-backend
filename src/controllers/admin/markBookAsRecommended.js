@@ -6,6 +6,10 @@ const markBookAsRecommended = async (bookIds, genreId) => {
         const book = await PublishedBook.findByPk(id, {
           include: [
             {
+              model: Book,
+              as: 'book',
+            },
+            {
               association: 'genres',
               where: {
                 id: genreId,
