@@ -18,6 +18,13 @@ const getWeeklyRecommended = async (genreId) => {
           as: 'published_book',
           attributes: ['id'],
         },
+        {
+          model: BookGenre,
+          as: 'genres',
+          where: {
+            id: genreId,
+          },
+        },
       ],
     });
 
