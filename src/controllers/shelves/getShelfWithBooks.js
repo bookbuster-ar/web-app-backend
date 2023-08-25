@@ -15,6 +15,7 @@ const getShelfWithBooks = async (userid) => {
       {
         model: BookShelfCategory,
         as: 'book_shelf_categories',
+        order: [['createdAt', 'DESC']],  // Ordenamos por fecha de creación en orden descendente
         include: [
           {
             model: Book,
