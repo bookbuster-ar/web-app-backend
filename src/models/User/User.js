@@ -11,7 +11,7 @@ const User = sequelize.define(
       // allowNull: false,
     },
     firebase_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     name: {
       type: DataTypes.STRING,
