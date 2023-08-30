@@ -10,7 +10,7 @@ const handleSuccessfulPayment = async (req, res) => {
       external_reference,
     };
     const result = await registerSuccessfulPayment(paymentInfo);
-    if (result.success) res.redirect('https://bookbuster.vercel.app/');
+    if (result.success) res.redirect('https://bookbuster-ar.vercel.app/');
   } catch (error) {
     console.error(error);
     res.status(500).send(result.error);

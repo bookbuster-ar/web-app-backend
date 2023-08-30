@@ -1,9 +1,7 @@
 const { BookGenre, BookSubgenre } = require('../../models');
 
-const createSubgenre = async (genreId, subgenreName) => {
+const createSubgenre = async (genreIds, subgenreName) => {
   try {
-    const genre = await BookGenre.findByPk(genreId);
-
     const existingSubgenre = await BookSubgenre.findOne({
       where: {
         name: subgenreName,
@@ -14,7 +12,12 @@ const createSubgenre = async (genreId, subgenreName) => {
 
     const newSubgenre = await BookSubgenre.create({ name: subgenreName });
 
-    await genre.addSubgenre(newSubgenre);
+    for (const genreId of genreIds) {
+      const genre = await BookGenre.findByPk(genreId);
+      if (genre) {
+        await genre.addSubgenre(newSubgenre);
+      }
+    }
 
     return { msg: 'Subgénero creado', newSubgenre: newSubgenre };
   } catch (error) {

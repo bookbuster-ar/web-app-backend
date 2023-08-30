@@ -19,7 +19,7 @@ const handleSuccessfulSubscription = async (req, res) => {
   };
   try {
     await registerSuccessfulSubscription(userData, subscriptionData);
-    return res.redirect(`https://bookbuster.vercel.app/`);
+    return res.redirect(`https://bookbuster-ar.vercel.app/`);
   } catch (error) {
     return res.status(500).send(result.error);
   }

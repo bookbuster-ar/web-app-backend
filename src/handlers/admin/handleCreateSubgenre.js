@@ -1,9 +1,9 @@
 const { createSubgenre } = require('../../controllers');
 
 const handleCreateSubgenre = async (req, res) => {
-  const { genreId, subgenreName } = req.body;
+  const { genreIds, subgenreName } = req.body;
   try {
-    const newSubgenre = await createSubgenre(genreId, subgenreName);
+    const newSubgenre = await createSubgenre(genreIds, subgenreName);
     return res.status(201).json(newSubgenre);
   } catch (error) {
     console.error(error);
