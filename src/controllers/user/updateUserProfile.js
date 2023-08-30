@@ -21,7 +21,7 @@ const updateUserProfile = async (userInfo, userAddress) => {
 
     const updatedUserData = {
       name: name ?? outdatedUser.name,
-      lastname: lastname ?? outdatedUser.lastname,
+      last_name: lastname ?? outdatedUser.lastname,
       email: email ?? outdatedUser.email,
       about: aboutMe ?? outdatedUser.aboutMe,
       want_notifications: wantNotifications ?? false,
